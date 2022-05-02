@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{appendix}
+\usepackage{listings}
+\usepackage[super, square]{natbib}
+\usepackage[section]{placeins}
+\usepackage{pdfpages}
+\lstset{
+language=Python,
+breaklines}
+
+\title{Code Outline}
+\author{Ola Carlsson}
+
+\begin{document}
+
+\maketitle
+This is an outline for the code to be written. Ignore the saving of states for now, that's
+a later problem. Possibly keep the saving of the external field.
+\begin{description}
+\item[Some main script] A script for execution, but some of the scripts below should be
+        callable separately.
+\item[Magnetic field generation] This should save magnetic fields as a separate file to be
+        read, numpy has native savefiles.
+\item[Eigenvalue approximation] This is calling some eigenvalue-finding function on the
+        matrix in question. For unique identification the energies are assumed to never
+        cross.
+        %Store in dictionary to reduce unnecessary calculation.
+\item[Eigenstate calculation] Returns eigenfunctions to the fast Hamiltonian, the same
+        function as above?
+\item[Gauge field calculation] This acts the differentiated matrix on the eigenstates and
+        thus calculates the synthetic
+        scalar potential, save to file. 
+\item[Acceleration function] A function to return the acceleration for some set of
+        parameters, i.e. the function used in the ODE solver. This is big. Takes external
+        field, coordinate velocities, coordinates. Calls calculation of eigenvalues and
+        eigenstates in neighbouring sites, gauge field calculation.
+\item[ODE solver] This should integrate the acceleration to generate the path traversed.
+\item[Visualization] This will be some visualisation of the result, as fancy as possible.
+        If time permits animation is a possibility. If parameter space is done the
+        monopoles could perhaps be shown as well.
+\end{description}
+Data treatment can be done in xarray so that labels can be used in arrays. This turns out
+to be ineffective, switch back to full numpy ithink
+
+TODO: index field after position not point, and modify the rest of the code accordingly
+\end{document}
+

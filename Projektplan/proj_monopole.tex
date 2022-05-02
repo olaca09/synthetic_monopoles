@@ -1,0 +1,171 @@
+\documentclass [a4paper]{article}
+\usepackage{epsfig}
+\usepackage{epsf,graphics,graphicx}
+%\renewcommand{\baselinestretch}{1.0}
+\begin{document}
+\section*{{\underline{Project}}: Classical motion in artificial magnetic monopole fields}
+\vskip 0.3 cm
+\subsection*{Background} 
+Berry demonstrated that a general quantum system undergoing adiabatic evolution 
+may pick up a nontrivial phase of purely geometric origin \cite{berry84}. For a spin in a slowly 
+rotating magnetic field this phase turns out to be proportional to the flux of an artificial magnetic 
+monopole sitting at the energy crossing at the origin (corresponding to vanishing magnetic 
+field). Due to the elusiveness of magnetic charges in standard electromagnetism, this result 
+has triggered numerous studies in adiabatic evolution of spin systems \cite{shapere89}.  
+
+Real-space realizations of artificial magnetic monopoles have been demonstrated in spin ice 
+\cite{castelnovo08} and Bose-Einstein condensates \cite{ray15}. Similarly, Berry artificial 
+monopoles in parameter space can be mapped nontrivially to physical space via a nonuniform 
+magnetic field that drives the adiabatic spin system. This opens up for  the experimental 
+study of classical trajectories in the presence of magnetic monopoles.  
+
+\subsection*{Scope and purpose} 
+The aim of the project is to derive classical equations of motion for the centre of mass 
+(CM) of a particle with spin moving in an arbitrary inhomogeneous magnetic field. A key ingredient is to 
+examine the influence of internal spin-spin interaction on the trajectories of the CM. The 
+spin-spin interactions are known to modify the distribution of artificial monopoles in the
+parameter space, for example 
+splitting magnetic charges yielding monopoles located at points where the magnetic field is 
+nonzero \cite{eriksson20}.  
+
+\vskip 0.3 cm 
+\noindent
+The key objectives of the project are: 
+\begin{itemize}
+\item to derive and (numerically) simulate classical CM equations of motion of a composite 
+system (such as an atom or molecule) consisting of pairs of interacting spins; 
+\item to estimate parameter ranges needed to see effects of the internal spin-spin 
+interaction on the CM trajectories.
+\item to discuss the plausibility of realising a system within those parameter ranges.
+\end{itemize}
+The form of spin-spin interaction is restricted to an Ising model interaction.
+Spin-$\frac{1}{2}$ constituents only are
+considered. 
+
+The overall purpose is to develop a physical setting that allows for direct experimental studies 
+of artificial magnetic monopoles in real space. 
+\vskip 0.5 cm
+\subsection*{Method}
+Through the Born-Oppenheimer approximation an effective Hamiltonian for the adiabatic
+evolution of a spin-system in an external magnetic field can be found. This is dependent on a
+scalar potential akin to an electric potential, as well as a vector potential analogous to a
+magnetic field\cite{berrylim90}.%Uppdatera till ursprungskällan?
+This vector potential can be seen as an artificial magnetic field giving rise to the
+geometric Berry phase, and it is the dynamics arising from this field as well as the scalar
+potential that are to be simulated. Evaluating these potentials for a Hamiltonian
+containing the interactions of the system, the effective Hamiltonian is used as a
+basis for classical Hamiltonian dynamics. 
+
+Numerically simulating the resultant differential equations of motion for select parameters
+is carried out by development of a suitable Python-script. Auxiliary tools such
+as graphical illustration and evaluation of the external magnetic field are also necessary.
+
+With these tools in place the effect of different parameter choices on the dynamical
+evolution can be explored and analysed. Of certain importance is the choice of external magnetic
+field, as some properties (e.g. points of zero magnitude) are suspect to yield interesting
+results but must be found within the context of realisable fields (e.g. zero divergence).
+
+\subsection*{Thesis outline}
+As a rough outline the following sections will be included in the report:
+\subsubsection*{Abstract}
+This will be a regular abstract.
+\subsubsection*{Sammanfattning}
+This will be a Swedish version of the abstract.
+\subsubsection*{Introduction}
+This will be a short summary of the background and a thorough statement of the problem and
+aim of the thesis. In particular some example realisation of the simulated system can be
+sketched, and some context of magnetic monopoles. Some summary over the principle of geometric
+phase could also fit in here.
+\subsubsection*{Background}
+This will be mostly a theoretical background considering the work done previously on
+geometric phase and its peculiarities (for example the dependence of artificial monopole positions on
+field and system characteristics).
+\subsubsection*{Theory}
+A section taking a more in depth look at the theory necessary for this specific problem, culminating in the
+equations of motion. One area of interest is specifying the approximations
+necessary.
+\subsubsection*{Simulation}
+Here details of the implementation of the numerical simulation can be described. Complete
+code will follow in an appendix.
+\subsubsection*{Results}
+As results mainly the exploration of the parameter dependence of the resultant dynamics
+should here be considered. Comparisons of different systems would be of interest as well as
+less comparative estimations of say the orders of magnitude of parameters necessary for
+appreciable effects. All of this is preferably done through presenting select simulations
+and their parameters.
+\subsubsection*{Discussion}
+Here a summary and discussion of the relevance of the above results can be carried out. In
+particular the plausibility to realise systems with the required parameters, one of the key
+objectives, should be considered. This is also the somewhat appropriate space for
+reflecting on encountered hindrances and their solutions or negative effects on the final
+result, for example related to the numerical simulation.
+\subsubsection*{Outlook}
+This will be a discussion of unresolved issues and areas of improvement for this project,
+but perhaps also possible further projects, experimental or theoretical, related to or suggested by the results achieved.
+\subsubsection*{Conclusions}
+This will be a short summary of the results and discussion above, so as to conveniently
+summarise the thesis when combined with the abstract and introduction.
+\subsection*{Time plan} 
+The project is carried out during spring 2022. A draft of the time plan with notable
+milestones is as follows: 
+
+\begin{itemize} 
+
+\item[-] Literature study, 10 Jan. - 23 Jan.
+
+\item[-] Formal start of course 25 Jan.
+
+\item[-] Deriving equations of motion, construction of model (external magnetic field 
+configuration), 24 Jan. - 13 Feb.
+
+\item[-] Development of numerical code for classical trajectories, 14 Feb. - 13
+        Mar.
+
+\item[-] Deadline for complete project plan 25 Feb.
+
+\item[-] Numerical simulations and interpretation, 14 Mar. - 10 Apr.
+
+\item[-] ''Mittavstämning'', a five minute presentation on project status, 8 Apr.
+
+\item[-] Writing report, 28 Mar. - 5 Jun. First draft has deadline 13 May, a first version
+        has deadline 20 May and the final report
+        has deadline 5 June.
+
+\item[-] Feedback on report 27 May.
+
+\item[-] Preparation and presentation, 16 May - 5 Jun.
+
+\item[-] Symposium with poster and presentation, 30 and 31 May
+
+\end{itemize}
+
+\subsection*{Supervision}
+Weekly consultations with the supervisor, to a large extent by means of zoom meetings, will take place
+predominantly Thursdays. The aim is to provide if applicable the week's results, say drafts
+of documents or problems encountered, some time in advance so that the meetings remain
+effective and their subjects clear.
+
+\begin{thebibliography}{99}
+\bibitem{berry84} M. V. Berry, 
+Quantal Phase Factors Accompanying Adiabatic Changes, 
+Proc. R. Soc. London Ser. A {\bf 392}, 45 (1984).  
+\bibitem{shapere89} A. Shapere and F. Wilczek, 
+{\it Geometric phases in physics} (1989). 
+\bibitem{castelnovo08} C. Castelnovo, R. Moessner, and S. L. Sondhi, 
+Magnetic monopoles in spin ice, Nature (London) {\bf 451}, 42 (2008).
+\bibitem{ray15} M. W. Ray, E. Ruokokoski, K. Tiurev, M. M\"ott\"onen, and D. S. Hall, 
+Observation of isolated monopoles in a quantum field, 
+Science {\bf 348}, 544 (2015).
+\bibitem{eriksson20} A. Eriksson and E. Sj\"oqvist, 
+Monopole field textures in interacting spin systems, 
+Phys. Rev. A {\bf 101}, 050101(R) (2020). 
+\bibitem{berrylim90} M. V. Berry, R. Lim,
+The Born-Oppenheimer electric gauge force is repulsive near degeneracies,
+J. Phys. A: Math. Gen. {\bf 23}, L655 (1990).
+\end{thebibliography}
+\end{document}
+
+
+
+
+
