@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
+from matplotlib.patches import FancyArrowPatch
 from mpl_toolkits import mplot3d
 from scipy.constants import hbar
 from scipy.integrate import solve_ivp
@@ -29,6 +30,9 @@ mass[3] = mass0*len0**2/4
 mass[4] = mass[3]
 
 tickcount=0 #For testing
+dscalaravg=0
+Faavg=0
+denergyavg=0
 
 
 ##Returns the differentiated Hamiltonian w.r.t. the specified par. diffpar=r, th_r, ph_r at
@@ -279,11 +283,11 @@ def acc(t, posvel, field, n, norot):
 
     #Fit position to a point
     point = [0,0,0,0,0]
-    boundcheck = False #Boolean to check if the boundary has been reached
-    for i in range(3):
-        point[i] = int(round(pos[i]/stepr))
-        if point[i] >= nr-2 or point[i] < 2:
-            return np.zeros(10)
+#    boundcheck = False #Boolean to check if the boundary has been reached
+#    for i in range(3):
+#        point[i] = int(round(pos[i]/stepr))
+#        if point[i] >= nr-2 or point[i] < 2:
+#            return np.zeros(10)
     point[3] = pos[3]
     point[4] = pos[4]
 
@@ -310,6 +314,8 @@ def acc(t, posvel, field, n, norot):
                         np.vdot(eigvec[l], np.dot(dHam[i], eigvec[n]))))
 
     #print(f'Fa = {Fa}') #For testing
+    global Faavg
+    Faavg + (Faavg + np.linalg.norm(Fa))/2
 
 	#To get the derivatives of the scalar fields find coordinate values of all neighbouring sites
 
@@ -349,6 +355,8 @@ def acc(t, posvel, field, n, norot):
     dscalar[4] = (scalar[1,1,1,1,2] - scalar[1,1,1,1,0])/(2*stepphi)
 
     #print(f'dscalar = {dscalar}')
+    global dscalaravg
+    dscalaravg = (dscalaravg + np.linalg.norm(dscalar))/2
 
     #Differentiate the energies
     denergy = np.zeros(5)
@@ -361,6 +369,8 @@ def acc(t, posvel, field, n, norot):
     acc = Fa - dscalar - denergy #Summarize forces
 
     #print(f'denergy = {denergy}')
+    global denergyavg
+    denergyavg = (denergyavg + np.linalg.norm(denergy))/2
 
     for i in range(5):
         acc[i] = acc[i]/mass[i] #Divide by mass to get acceleration
@@ -390,11 +400,11 @@ def accnosyn(t, posvel, field, n, norot):
 
     #Fit position to a point
     point = [0,0,0,0,0]
-    boundcheck = False #Boolean to check if the boundary has been reached
-    for i in range(3):
-        point[i] = int(round(pos[i]/stepr))
-        if point[i] >= nr-2 or point[i] < 2:
-            return np.zeros(10)
+#    boundcheck = False #Boolean to check if the boundary has been reached
+#    for i in range(3):
+#        point[i] = int(round(pos[i]/stepr))
+#        if point[i] >= nr-2 or point[i] < 2:
+#            return np.zeros(10)
     point[3] = pos[3]
     point[4] = pos[4]
 
@@ -447,54 +457,69 @@ def accnosyn(t, posvel, field, n, norot):
 ##dumbbell is placed initially at position pos and with velocity vel of the shape (x, y,
 ##z, theta_r, phi_r). Note that cartesian position here is in m.
 ##The spin subsystem is assumed to remain in the fast
-##eigenstate labeled n. Runs until the dumbbell escapes the field or a fix step count is 
-##reached.
+##eigenstate labeled n. Runs until the time reaches tmax.
 ##The given initial conditions must be tuples.
 def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
     posvel = pos + vel
 
+    #Reset average force counters
+    global Faavg
+    global dscalaravg
+    global denergyavg
+    Faavg = 0
+    dscalaravg = 0
+    denergyavg = 0
+
     #Set error tolerances
     nr = field.shape[1]
     tolr = lablength/(2*nr - 2)
+    #tolr = lablength/4
     toltheta = steptheta/2
+    #toltheta = 1
     tolphi = stepphi/2
+    #tolphi = 1
     atol = [tolr, tolr, tolr, toltheta, tolphi, tolr/10, tolr/10, tolr/10, toltheta/10,
             tolphi/10]
     if nosyn:
         sol = solve_ivp(accnosyn, (0,tmax), posvel, args=(field, n, norot), atol=atol)
     else:
-        sol = solve_ivp(acc, (0,tmax), posvel, args=(field, n, norot), atol=atol)
+        edgedistance.terminal = True
+        sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(field, n, norot), atol=atol)
+
+    sol.Faavg = Faavg
+    sol.denergyavg = denergyavg
+    sol.dscalaravg = dscalaravg
 
     return sol
 
-##Event to terminate integration if the boundary is approached #Doesn't work
-def atbound(t, posvel, field, n, norot):
-    nr = field.shape[1]
-    stepr = lablength/(nr-1)
-    pos= posvel[0:5]
-    atboundbool = False
+##Event to terminate integration, returns distance to the closest edge
+def edgedistance(t, posvel, field, n, norot):
+    pos= posvel[0:3]
+    mindist = np.amin(pos)
+    distancetoedge = min(mindist, lablength - mindist)
 
-    #Fit position to a point
-    point = [0,0,0,0,0]
-    for i in range(3):
-        point[i] = int(round(pos[i]/stepr))
-        if point[i] > nr or point[i] < 0:
-            atboundbool = True
+    return distancetoedge
     
-    if atboundbool:
-        return 0
-    else:
-        return 1
 
 ##Plotting function, takes a list of solutions sol from solve_ivp, a field field and displays an 
 ##interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, field):
+def lineplot(sol, field, I, initvel, n, norot, nosyn):
+
+    #For testing print average acceleration components
+    for stream in sol:
+        print(f'Faavg = {stream.Faavg}')
+        print(f'dscalaravg = {stream.dscalaravg}')
+        print(f'denergyavg = {stream.denergyavg}')
+
     fig, ax = plt.subplots(subplot_kw={'projection': '3d'})
     #fig = plt.figure()
     #ax = fig.axes(projection='3d')
     ax.set_xlim((0, lablength))
     ax.set_ylim((0, lablength))
     ax.set_zlim((0, lablength))
+    ax.set_xlabel('x', fontsize=10)
+    ax.set_ylabel('y', fontsize=10)
+    ax.set_zlabel('z', fontsize=10)
     
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
@@ -512,6 +537,11 @@ def lineplot(sol, field):
     #Extract pos
         pos = stream.y[0:3,:]
         ax.plot3D(pos[0,:], pos[1,:], pos[2,:], color='red') #Plot the integrated path
-    ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
+    #Plot magnetic field for testing purposes
+    #ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
     #plot = mlab.plot3d(pos[0,:], extent=[0,0,0,lablength,lablength,lablength])
+
+
+    plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}norot{norot}nosyn{nosyn}.png',
+                bboxinches='tight')
     plt.show()

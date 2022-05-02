@@ -1,0 +1,44 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[swedish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage[arrowdel]{physics}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{appendix}
+\usepackage[super, square]{natbib}
+\usepackage{listings}
+\usepackage[section]{placeins}
+
+\usepackage{tikz}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\Arg}{\ensuremath{\text{Arg}}}
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{patterns}
+\lstset{language=Python, breaklines, literate=%
+{å}{{\r{a}}}1
+{ä}{{"a}}1
+{ö}{{"o}}1
+{Å}{{\r{A}}}1
+{Ä}{{"A}}1
+{Ö}{{"O}}1
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+\section{Introduction}
+\subsection{On the occurrence of monopoles}
+Our theory of electromagnetism carries certain asymmetries between the magnetic and electric fields. Such a distinction well known and often discussed is the absence of magnetic monopoles, i.e. that
+any analogue of electric charge is absent for the magnetic field. It is an extension commonly suggested by theorists to include magnetic charges, and therefore currents, in Maxwell's equations, but
+there is as of yet no accepted empirical data to support this cause. Magnetic monopoles do however appear every now and then in a less fundamental sense, as for example 
+\end{document}
