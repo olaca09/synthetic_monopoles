@@ -11,9 +11,9 @@ from scipy.integrate import solve_ivp
 
 #Common variables defined below:
 ntheta = 250 #Number of points of theta
-steptheta = np.pi/ntheta #Step size of theta
+steptheta = np.pi/(ntheta-1) #Step size of theta
 nphi = 500 #Number of points of phi
-stepphi = 2*np.pi/nphi #Step size of phi
+stepphi = 2*np.pi/(nphi) #Step size of phi
 lablength = 1e-3 #Side length of environment cube in meters
 tmax = 1 #Maximum simulated time in seconds
 
@@ -44,6 +44,7 @@ def diffhamiltonian(diffpar, point, field):
     #Check if the differentiated Hamiltonian has already been calculated here
     global diffhamsave
     if (diffpar, point) in diffhamsave:
+        #print('diffhamsave used')
         return diffhamsave[(diffpar, point)]
 
     #Find nr and stepr
@@ -76,7 +77,7 @@ def diffhamiltonian(diffpar, point, field):
         Bgrid[1,0,1] = field[3, neighgrid[0,1,0,1], neighgrid[1,1,0,1], neighgrid[2,1,0,1]]
         Bgrid[1,1,2] = field[3, neighgrid[0,1,1,2], neighgrid[1,1,1,2], neighgrid[2,1,1,2]]
         Bgrid[1,1,0] = field[3, neighgrid[0,1,1,0], neighgrid[1,1,1,0], neighgrid[2,1,1,0]]
-        xi = -1 * Gamma * Bgrid[1,1,1]/(J) #Value of xi at point
+        B = Bgrid[1,1,1] #Magnetic field strength at point
 
 	    #Find neighbouring theta_B values
         thetagrid = np.zeros([3,3,3])
@@ -100,12 +101,11 @@ def diffhamiltonian(diffpar, point, field):
         phigrid[1,1,0] = field[5, neighgrid[0,1,1,0], neighgrid[1,1,1,0], neighgrid[2,1,1,0]]
         phi = phigrid[1,1,1] #Value of phi_B at point
 
-        #Approximate the derivatives of xi
+        #Approximate the derivatives of B
         dBdr = np.zeros(3)
         dBdr[0] = 0.5*(Bgrid[2,1,1]-Bgrid[0,1,1])/stepr
         dBdr[1] = 0.5*(Bgrid[1,2,1]-Bgrid[1,0,1])/stepr
         dBdr[2] = 0.5*(Bgrid[1,1,2]-Bgrid[1,1,0])/stepr
-        dxidr = -1*Gamma*dBdr/J
 
         #Approximate the derivatives of theta_B
         dthdr = np.zeros(3)
@@ -122,19 +122,18 @@ def diffhamiltonian(diffpar, point, field):
         #Assign matrix elements
         sin = np.sin(theta) #Calculate the sine
         cos = np.cos(theta) #Calculate the cosine
-        omega = (np.exp(-1j*phi)/np.sqrt(2) * (dxidr*sin-
-                1j*dphdr*xi*sin+dthdr*xi*cos)) #Calculates offdiagonals
-        diff_hamx[0,0], diff_hamy[0,0], diff_hamz[0,0] = (-dxidr*cos + xi*dthdr*sin)
+        omega = (- dBdr*sin + 1j*B*dphdr*sin - B*dthdr*cos)*np.exp(-1j*phi)/np.sqrt(2) #Calculates offdiagonals
+        diff_hamx[0,0], diff_hamy[0,0], diff_hamz[0,0] = (dBdr*cos - B*dthdr*sin)
         diff_hamx[0,1], diff_hamy[0,1], diff_hamz[0,1] = omega
         diff_hamx[1,0], diff_hamy[1,0], diff_hamz[1,0] = np.conjugate(omega)
         diff_hamx[1,2], diff_hamy[1,2], diff_hamz[1,2] = omega
         diff_hamx[2,1], diff_hamy[2,1], diff_hamz[2,1] = np.conjugate(omega)
-        diff_hamx[2,2], diff_hamy[2,2], diff_hamz[2,2] = (dxidr*cos - xi*dthdr*sin)
+        diff_hamx[2,2], diff_hamy[2,2], diff_hamz[2,2] = (-dBdr*cos + B*dthdr*sin)
 
         #Return the matrices with correct prefactors
-        diff_hamx = J*hbar*diff_hamx
-        diff_hamy = J*hbar*diff_hamy
-        diff_hamz = J*hbar*diff_hamz
+        diff_hamx = Gamma*hbar*diff_hamx
+        diff_hamy = Gamma*hbar*diff_hamy
+        diff_hamz = Gamma*hbar*diff_hamz
 
         diffhamsave[(diffpar, point)] = diff_hamx, diff_hamy, diff_hamz #Save the result
 
@@ -154,12 +153,12 @@ def diffhamiltonian(diffpar, point, field):
         diff_ham[0,0] = -sin
         diff_ham[0,1] = -1*np.conjugate(omega)
         diff_ham[0,2] = sin/exp**2
-        diff_ham[1,0] = -omega
+        diff_ham[1,0] = -1*omega
         diff_ham[1,1] = 2*sin
         diff_ham[1,2] = np.conjugate(omega)
         diff_ham[2,0] = exp**2*sin
         diff_ham[2,1] = omega
-        diff_ham[2,2] = sin
+        diff_ham[2,2] = -sin
 
         #Return the matrix with correct prefactors
         diff_ham = J*hbar*diff_ham
@@ -213,7 +212,7 @@ def eigensolver(point, field):
     B = field[3, pointx, pointy, pointz]
     thetaB = field[4, pointx, pointy, pointz]
     phiB = field[5, pointx, pointy, pointz]
-    xi = -1*Gamma*B/J
+    xi = J/(Gamma*B)
 
     #Extract theta_r and phi_r at point
     thetar = point[3]
@@ -221,26 +220,28 @@ def eigensolver(point, field):
 
     #Assign matrix elements
     cosr = np.cos(thetar) #Calculate the cosine of theta_r
-    sinr = np.sin(2*thetar) #Calculate the sine of twice theta_r
-    sinr2 = np.sin(thetar)**2 #Calculate the square of sine of theta_r
+    sin2r = np.sin(2*thetar) #Calculate the sine of twice theta_r
+    cos2r = np.cos(2*thetar) #Calculate the cosine of twice theta_r
+    sinrsq = np.sin(thetar)**2 #Calculate the square of sine of theta_r
+    cosrsq = np.cos(thetar)**2 #Calculate the square of cosine of theta_r
     cosB = np.cos(thetaB) #Calculate the cosine of theta_B
     sinB = np.sin(thetaB) #Calculate the sine of theta_B
     expr = np.exp(1j*phir) #Calculate the complex exponential of phi_r
     expB = np.exp(1j*phiB) #Calculate the complex exponential of phi_B
     sq = np.sqrt(2) #Calculate the square root of two often used
 
-    ham[0,0] = cosr**2 - xi*cosB
-    ham[0,1] = xi/(sq*expB)*sinB - sinr/(sq*expr)
-    ham[0,2] = sinr2/expr**2
-    ham[1,0] = xi*expB*sinB/sq - expr*sinr/sq
-    ham[1,1] = -np.cos(2*thetar)
-    ham[1,2] = xi*sinB/(sq*expB) + sinr/(sq*expr)
-    ham[2,0] = expr**2*sinr2
-    ham[2,1] = xi*expB*sinB/sq + expr*sinr/sq
-    ham[2,2] = xi*cosB-cosr**2
+    ham[0,0] = xi*cosrsq + cosB
+    ham[0,1] = -sinB / (expB*sq) - xi*sin2r/(expr*sq)
+    ham[0,2] = xi*sinrsq/expr**2
+    ham[1,0] = -expB*sinB/sq - xi*expr*sin2r/sq
+    ham[1,1] = -xi*cos2r
+    ham[1,2] = -sinB/(expB*sq) + xi*sin2r/(expr*sq)
+    ham[2,0] = xi*expr**2*sinrsq
+    ham[2,1] = -expB*sinB/sq + xi*expr*sin2r/sq
+    ham[2,2] = xi*cosrsq-cosB
     
     #Fix matrix prefactors
-    ham = J*hbar*ham
+    ham = Gamma*B*hbar*ham
 
     #Calculate eigenvalues and eigenvectors
     eigenvalues, eigenvectors = np.linalg.eigh(ham)
@@ -259,6 +260,7 @@ def scalarcalc(point, field, n):
     #First check if the scalar field has been calculated here before
     global scalarsave
     if (point, n) in scalarsave:
+        #print('scalarsave used')
         return scalarsave[(point, n)]
 
     #Fix point format
@@ -277,12 +279,10 @@ def scalarcalc(point, field, n):
 
     for i in range(5):
         for l in range(3):
-            if l == n: #Remove diagonals
-                break
-            Phi += (hbar**2 /(2*mass[i]) * #Add up contributions to the synthetic scalar
-            (np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l]))*np.vdot(eigvec[l],
-                np.dot(dHam[i], eigvec[n])) / (energies[n] - energies[l])**2)).real 
-            #Note the cast to real numbers, it's probably numerics raising errors otherwise
+            if not l == n: #Remove diagonals
+                braket = np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) #Braket for formula
+                Phi += (hbar**2 /(2*mass[i]) * #Add up contributions to the synthetic scalar
+                braket*np.conjugate(braket) / (energies[n] - energies[l])**2) 
     #print(f'Phi = {Phi}')
     returnlist = (Phi, energies[n])
 
@@ -313,7 +313,7 @@ def acc(t, posvel, field, n, norot):
         point[i] = int(round(pos[i]/stepr))
         if point[i] >= nr-2 or point[i] < 2:
             return np.concatenate((vel, np.zeros(5))) ##Sets the acceleration to zero if a
-                                                    ##a points outside the grid is sampled
+                                                      ##point outside the grid is sampled
     point[3] = pos[3]
     point[4] = pos[4]
 
@@ -332,14 +332,14 @@ def acc(t, posvel, field, n, norot):
     Fa = np.zeros(5)
     for i in range(5):
         for j in range(5):
-            for l in range(3):
-                if l == n: #Remove diagonals
-                    break
-                if energies[n] == energies[l]:
-                    print(f'Degenerate fast eigenvalues {energies[n]} and {energies[l]}!')
-                Fa[i] += (-2*hbar * vel[i] / (energies[n]-energies[l])**2 *
-                        np.imag(np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) *
-                        np.vdot(eigvec[l], np.dot(dHam[i], eigvec[n]))))
+            if not j == i: #Remove diagonals
+                for l in range(3):
+                    if not l == n: #Remove diagonals
+                        if energies[n] == energies[l]:
+                            print(f'Degenerate fast eigenvalues {energies[n]} and {energies[l]}!')
+                        Fa[i] += (-2*hbar * vel[j] / (energies[n]-energies[l])**2 *
+                                np.imag(np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) *
+                                np.vdot(eigvec[l], np.dot(dHam[j], eigvec[n]))))
 
     #print(f'Fa = {Fa}') #For testing
     global Faavg
@@ -468,6 +468,9 @@ def accnosyn(t, posvel, field, n, norot):
     denergy[2] = (energy[1,1,2,1,1] - energy[1,1,0,1,1])/(2*stepr)
     denergy[3] = (energy[1,1,1,2,1] - energy[1,1,1,0,1])/(2*steptheta)
     denergy[4] = (energy[1,1,1,1,2] - energy[1,1,1,1,0])/(2*stepphi)
+
+    global denergyavg
+    denergyavg = (denergyavg + np.linalg.norm(denergy))/2
 
     acc =  - denergy
     for i in range(5):

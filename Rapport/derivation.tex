@@ -392,6 +392,9 @@ case] for the forces due to the synthetic magnetic field:
         n}\ket{l}\bra{l}\ket{\partial_i n}}\\
         &= \sum_{j=1}^{5} \sum_{l \ne n} \frac{\partial r_j}{\partial t}\bqty{\bra{\partial_i
                 n}\ket{l}\bra{l}\ket{\partial_j n}- \bra{\partial_j
+        n}\ket{l}\bra{l}\ket{\partial_i n}}\\
+        &= \sum_{j\ne i} \sum_{l \ne n} \frac{\partial r_j}{\partial t}\bqty{\bra{\partial_i
+                n}\ket{l}\bra{l}\ket{\partial_j n}- \bra{\partial_j
         n}\ket{l}\bra{l}\ket{\partial_i n}}
 .\end{align*}
 Here \(\ket{l}\) simply denotes an eigenstate to \(\mathbb{\cal H}_{f}\) of some index
@@ -413,11 +416,11 @@ Rearranging, a very useful relation emerges:
 .\end{align}
 This we can insert into above:
 \begin{align}\label{eq:FA}
-\frac{1}{i\hbar{}}F_i^A &= \sum_{j=1}^{5} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
+\frac{1}{i\hbar{}}F_i^A &= \sum_{j\ne i} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
         t}}{\pqty{E_n-E_l}^2}\bqty{\bra{n}\partial_i \mathbb{\cal H}_f
         \ket{l}\bra{l}\partial_j\mathbb{\cal H}_f\ket{n} - \bra{n}\partial_j \mathbb{\cal
         H}_f\ket{l}\bra{l}\partial_i \mathbb{\cal H}_f\ket{n}}\\
-        &= 2i\sum_{j=1}^{5} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
+        &= 2i\sum_{j\ne i} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
         t}}{\pqty{E_n-E_l}^2} \Im \bqty{\bra{n}\partial_i \mathbb{\cal H}_f
         \ket{l}\bra{l}\partial_j\mathbb{\cal H}_f\ket{n}}
 .\end{align}
@@ -428,9 +431,12 @@ electric potential:
     n}\ket{l}\bra{l}\ket{\partial_i n}} = \sum_{i=1}^{5} \sum_{l \ne n}
     \frac{\hbar{}^2}{2m_i}\frac{\bra{n}\partial_i \mathbb{\cal H}_f\ket{l}\bra{l}\partial_i
     \mathbb{\cal H}_f\ket{n}}{\pqty{E_n-E_l}^2}\\
-    &= \frac{\hbar{}^2}{2m}\sum_{l \ne n}^{} \frac{\bra{n}\grad \mathbb{\cal H}_f
-    \ket{l}\vdot \bra{l}\grad\mathbb{\cal H}_f\ket{n}}{\pqty{E_n-E_l}^2}
+    &= \sum_{i=1}^{5} \sum_{l \ne n}
+    \frac{\hbar{}^2}{2m_i}\frac{|\bra{n}\partial_i \mathbb{\cal H}_f\ket{l}|^2}{\pqty{E_n-E_l}^2}
 .\end{align}
+For the last equalities to hold in both contributions we require that the derivative of the Hamiltonian is
+hermitian, but thankfully derivatives of hermitian operators are hermitian so this holds
+true.
 Note however that no simple form to the derivative of the electric potential \(\Phi\) has
 been found, which might not be easily described analytically.
 
@@ -447,11 +453,11 @@ as \(r\) the derivatives can
 be written:
 \begin{align}
         \partial_r\mathbb{\cal H}_f  &= \gamma B \hbar{} \pmqty{
- -\dot \vartheta_B \sin(\vartheta_B) & \Omega & 0 \\
+ \frac{\dot B}{B}\cos(\vartheta_B) -\dot \vartheta_B \sin(\vartheta_B) & \Omega & 0 \\
  \Omega^{*} & 0 & \Omega\\
- 0 & \Omega^{*}& \dot \vartheta_B \sin(\vartheta_B)
-        } + \frac{\dot B}{B}\mathbb{\cal H}_f\\
-        \frac{1}{\gamma B \xi \hbar{}}\partial_{\vartheta_r} \mathbb{\cal H}_f &= \pmqty{
+ 0 & \Omega^{*}& -\frac{\dot B}{B}\cos(\vartheta_B) + \dot \vartheta_B \sin(\vartheta_B)
+        }\\
+        \partial_{\vartheta_r} \mathbb{\cal H}_f &= \gamma B \xi \hbar{}\pmqty{
                 -\sin(2\vartheta_r) & -\sqrt{2}  e^{-i\varphi_r}\cos(2\vartheta_r) &
                  e^{-2i\varphi_r}\sin(2\vartheta_r)\\
                 -\sqrt{2}  e^{i\varphi_r}\cos(2\vartheta_r) & 2\sin(2\vartheta_r) &
@@ -459,7 +465,7 @@ be written:
                  e^{2i\varphi_r}\sin(2\vartheta_r) & \sqrt{2} 
                 e^{i\varphi_r}\cos(2\vartheta_r) & -\sin(2\vartheta_r)
         }\\
-        \frac{1}{\gamma B \xi \hbar{}}\partial_{\varphi_r} \mathbb{\cal H}_f &= \pmqty{
+        \partial_{\varphi_r} \mathbb{\cal H}_f &= \gamma B \xi \hbar{}\pmqty{
                 0 & i  \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
                 -2i e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
                 -i  \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) & 0 & -i 
@@ -468,7 +474,7 @@ be written:
                 }\sin(2\vartheta_r) & 0
         }
 .\end{align}
-Here \((i\dot \varphi_B 
+Here \((-\frac{\dot B}{B}\sin(\vartheta_B) + i\dot \varphi_B 
  \sin(\vartheta_B) -\dot \vartheta_B \cos(\vartheta_B)) \frac{e^{-i\varphi_B}}{\sqrt{2}}\) is introduced as a means of compressing the
 rather lengthy expressions for the derivative with respect to \(r\), and asterisks signify
 the complex conjugate.

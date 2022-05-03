@@ -10,7 +10,7 @@ if __name__ == '__main__':
     fieldtype = 'oppositecoils'
     I = 1 #Current parameter for the field
     norot = False #Whether to ignore rotational degrees of freedom
-    nosyn = False #Whether to ignore synthetic fields
+    nosyn = True #Whether to ignore synthetic fields
     overwriteresult = True #Whether to overwrite previous ODE results
     
     #Define parameters
@@ -18,8 +18,8 @@ if __name__ == '__main__':
     nr = 100 #Number of points in field lattice
     lablength = 1e-3 #Cube side of lab in m
     tmax = 1 #Trajectory time in s
-    J = 1e12 #Spin-spin coupling strength
-    Gamma = 1e12 #Spin-field coupling strength
+    J = 1e9 #Spin-spin coupling strength
+    Gamma = 1e9 #Spin-field coupling strength
     
     mass0 = 3.58e-25 #The total mass of the dumbbell in kg, as a placeholder this is the mass of
                      #two silver atoms
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     swarmgrid = np.insert(swarmgrid, 0, np.zeros(swarmgrid.shape[1:3]), axis=0)
     initposarray = initposarray[:,None,None] + swarmgrid
     initvel = (lablength*100/(tmax), 0, 0, 0, 0)
-    eigenstate = 2
+    eigenstate = 1
 
     try: #Try to load pregenerated result
         with open(f'saves/odesols/resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}norot{norot}nosyn{nosyn}.bin', 'rb') as file:
