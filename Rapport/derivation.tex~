@@ -229,22 +229,23 @@ simplicity's sake.
 At last all parts of the potential energy are expressed in a single basis, such that the
 potential part of the Hamiltonian takes the form:
 \begin{align}\label{eq:Hf}
-        \mathbb{\cal H}_f &= J\hbar{} \pmqty{
-                 \cos[2](\vartheta_r) - \xi \cos(\vartheta_B)& \frac{\xi
+        \mathbb{\cal H}_f &= \gamma B \hbar{} \pmqty{
+                 \xi\cos[2](\vartheta_r) + \cos(\vartheta_B)& -\frac{
                         e^{-i\varphi_B}}{\sqrt{2}
-                }\sin(\vartheta_B) - \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
-                e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
-                 \frac{\xi e^{i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B) -
-                \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) & -\cos(2\vartheta_r) & \frac{\xi
-                e^{-i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B)+ \frac{e^{-i\varphi_r}}{\sqrt{2}
+                }\sin(\vartheta_B) - \xi\frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
+                \xi e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
+                 -\frac{e^{i\varphi_B}}{\sqrt{2}}\sin(\vartheta_B) -
+                \xi \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
+                -\xi\cos(2\vartheta_r) & -\frac{
+                e^{-i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B)+ \xi\frac{e^{-i\varphi_r}}{\sqrt{2}
         }\sin(2\vartheta_r)\\
-                e^{2i\varphi_r}\sin[2](\vartheta_r) & \frac{\xi
+                \xi e^{2i\varphi_r}\sin[2](\vartheta_r) & -\frac{
                 e^{i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B) +
-                        \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
-                        \xi\cos(\vartheta_B) - \cos[2](\vartheta_r)
+                        \xi \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
+                        \xi \cos[2](\vartheta_r) - \cos(\vartheta_B) 
         }
 .\end{align}
-Here \(\xi = -\frac{\gamma B}{J}\) is a proportionality factor between the spin-spin
+Here \(\xi = \frac{J}{\gamma B}\) is a proportionality factor between the spin-spin
 and spin-field interactions which will simplify calculations. This together with the
 kinetic part of the Hamiltonian \(\mathbb{\cal H}_s\) will determine the time evolution of
 the system:
@@ -445,35 +446,34 @@ In order to easily evaluate equations \ref{eq:FA} and \ref{eq:ElPot} derivatives
 as \(r\) the derivatives can
 be written:
 \begin{align}
-        \frac{1}{J\hbar{}}  \partial_r\mathbb{\cal H}_f  &= \pmqty{
- -\dot \xi \cos(\vartheta_B) + \xi \dot \vartheta_B \sin(\vartheta_B) & \Omega & 0 \\
- \Omega\* & 0 & \Omega\\
- 0 & \overline{\Omega}& \dot \xi \cos(\vartheta_B)- \xi \dot \vartheta_B
-\sin(\vartheta_B)
+        \partial_r\mathbb{\cal H}_f  &= \gamma B \hbar{} \pmqty{
+ -\dot \vartheta_B \sin(\vartheta_B) & \Omega & 0 \\
+ \Omega^{*} & 0 & \Omega\\
+ 0 & \Omega^{*}& \dot \vartheta_B \sin(\vartheta_B)
+        } + \frac{\dot B}{B}\mathbb{\cal H}_f\\
+        \frac{1}{\gamma B \xi \hbar{}}\partial_{\vartheta_r} \mathbb{\cal H}_f &= \pmqty{
+                -\sin(2\vartheta_r) & -\sqrt{2}  e^{-i\varphi_r}\cos(2\vartheta_r) &
+                 e^{-2i\varphi_r}\sin(2\vartheta_r)\\
+                -\sqrt{2}  e^{i\varphi_r}\cos(2\vartheta_r) & 2\sin(2\vartheta_r) &
+                \sqrt{2} e^{-i\varphi_r}\cos(2\vartheta_r)\\
+                 e^{2i\varphi_r}\sin(2\vartheta_r) & \sqrt{2} 
+                e^{i\varphi_r}\cos(2\vartheta_r) & -\sin(2\vartheta_r)
         }\\
-        \frac{1}{J\hbar{}}\partial_{\vartheta_r} \mathbb{\cal H}_f &= \pmqty{
-                -\sin(2\vartheta_r) & -\sqrt{2} e^{-i\varphi_r}\cos(2\vartheta_r) &
-                e^{-2i\varphi_r}\sin(2\vartheta_r)\\
-                -\sqrt{2} e^{i\varphi_r}\cos(2\vartheta_r) & 2\sin(2\vartheta_r) &
-                \sqrt{2}e^{-i\varphi_r}\cos(2\vartheta_r)\\
-                e^{2i\varphi_r}\sin(2\vartheta_r) & \sqrt{2}
-                e^{i\varphi_r}\cos(2\vartheta_r) & \sin(2\vartheta_r)
-        }\\
-        \frac{1}{J\hbar{}}\partial_{\varphi_r} \mathbb{\cal H}_f &= \pmqty{
-                0 & i \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
-                -2ie^{-2i\varphi_r}\sin[2](\vartheta_r)\\
-                -i \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) & 0 & -i
+        \frac{1}{\gamma B \xi \hbar{}}\partial_{\varphi_r} \mathbb{\cal H}_f &= \pmqty{
+                0 & i  \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
+                -2i e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
+                -i  \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) & 0 & -i 
                 \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) \\
-                2ie^{2i\varphi_r}\sin[2](\vartheta_r) & i \frac{e^{i\varphi_r}}{\sqrt{2}
+                2i e^{2i\varphi_r}\sin[2](\vartheta_r) & i \frac{e^{i\varphi_r}}{\sqrt{2}
                 }\sin(2\vartheta_r) & 0
         }
 .\end{align}
-Here \(\Omega = (\dot \xi \sin(\vartheta_B) - i\dot \varphi_B \xi  \sin(\vartheta_B) + \dot
-\vartheta_B \xi
-\cos(\vartheta_B)) \frac{e^{-i\varphi_B}}{\sqrt{2} }\) is introduced as a means of compressing the
+Here \((i\dot \varphi_B 
+ \sin(\vartheta_B) -\dot \vartheta_B \cos(\vartheta_B)) \frac{e^{-i\varphi_B}}{\sqrt{2}}\) is introduced as a means of compressing the
 rather lengthy expressions for the derivative with respect to \(r\), and asterisks signify
 the complex conjugate.
-\subsection{Solution of the fast subsystem}
+\subsection{Solution of the fast subsystem} %This is not updated, perhaps omit it
+%completely? Actually maybe the result is different now
 The usage of the Born-Oppenheimer approximation requires a solution to the fast subsystem,
 i.e. that the eigenvalues and eigenvectors to \(\mathbb{\cal H}_f\) are found.
 Unfortunately this is not possible analytically for the present system, but we note that it

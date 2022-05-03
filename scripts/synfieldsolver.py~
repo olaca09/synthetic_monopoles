@@ -2,12 +2,13 @@ import numpy as np
 import magfield as mg
 import synfieldtools as sn
 import pickle
+from numpy import pi as pi
 
 if __name__ == '__main__':
     #Set field and modes
     availablefieldtypes = ['simplewire', 'oppositecoils']
     fieldtype = 'oppositecoils'
-    I = 1000 #Current parameter for the field
+    I = 1 #Current parameter for the field
     norot = False #Whether to ignore rotational degrees of freedom
     nosyn = False #Whether to ignore synthetic fields
     overwriteresult = True #Whether to overwrite previous ODE results
@@ -17,8 +18,8 @@ if __name__ == '__main__':
     nr = 100 #Number of points in field lattice
     lablength = 1e-3 #Cube side of lab in m
     tmax = 1 #Trajectory time in s
-    J = 1e9 #Spin-spin coupling strength
-    Gamma = 1e9 #Spin-field coupling strength
+    J = 1e12 #Spin-spin coupling strength
+    Gamma = 1e12 #Spin-field coupling strength
     
     mass0 = 3.58e-25 #The total mass of the dumbbell in kg, as a placeholder this is the mass of
                      #two silver atoms
@@ -38,10 +39,9 @@ if __name__ == '__main__':
     sn.mass = mass
 
     #Set initial position, velocity and the fast eigenstate to consider
-    initpos = (lablength/10, lablength/10, lablength/10, 2, 2)
     step = lablength/nr
-    initposarray = np.array((5*step, 5*step, 5*step, 0, 0))
-    swarmgrid = np.mgrid[0:lablength-7*step:4j,0:lablength-7*step:4j] #Grid to swarm the initial positions
+    initposarray = np.array((10*step, 10*step, 10*step, 0, 0))
+    swarmgrid = np.mgrid[0:lablength-20*step:4j,0:lablength-20*step:4j] #Grid to swarm the initial positions
     swarmgrid = np.insert(swarmgrid, 2, np.zeros(swarmgrid.shape[1:3]), axis=0)
     swarmgrid = np.insert(swarmgrid, 2, np.zeros(swarmgrid.shape[1:3]), axis=0)
     swarmgrid = np.insert(swarmgrid, 0, np.zeros(swarmgrid.shape[1:3]), axis=0)
@@ -71,6 +71,11 @@ if __name__ == '__main__':
                 print(tuple(initposarray[:,i,j]))
                 sol.append(sn.solvedyn(tuple(initposarray[:,i,j]), initvel, field, eigenstate, norot, nosyn))
         
+        #Save the result
+        print(f'Saving result to resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}norot{norot}nosyn{nosyn}.bin')
+        with open(f'saves/odesols/resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}norot{norot}nosyn{nosyn}.bin', 'wb') as file:
+            pickle.dump(sol, file)
+
     else:
         print('Loading previously generated result')
     #Extract positions and orientations
@@ -87,9 +92,6 @@ if __name__ == '__main__':
 #    print('Velocity integrated:')
 #    print(vel)
 
-    #Save the result
-    with open(f'saves/odesols/resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}norot{norot}nosyn{nosyn}.bin', 'wb') as file:
-        pickle.dump(sol, file)
 
     
     sn.lineplot(sol, field, I, initvel, eigenstate, norot, nosyn)

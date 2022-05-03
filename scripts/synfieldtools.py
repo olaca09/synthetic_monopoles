@@ -38,7 +38,15 @@ denergyavg=0
 ##Returns the differentiated Hamiltonian w.r.t. the specified par. diffpar=r, th_r, ph_r at
 ##the point given in point=(x, y, z, th_r, ph_r ) in the external field field.
 ##If diffpar=r a list of matrices for derivatives w.r.t. x, y, z are returned
+diffhamsave = {}
 def diffhamiltonian(diffpar, point, field):
+
+    #Check if the differentiated Hamiltonian has already been calculated here
+    global diffhamsave
+    if (diffpar, point) in diffhamsave:
+        print('diffhamsave used')
+        return diffhamsave[(diffpar, point)]
+
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
     stepr = lablength/(nr-1) #Distance between lattice points
@@ -129,6 +137,8 @@ def diffhamiltonian(diffpar, point, field):
         diff_hamy = J*hbar*diff_hamy
         diff_hamz = J*hbar*diff_hamz
 
+        diffhamsave[(diffpar, point)] = diff_hamx, diff_hamy, diff_hamz #Save the result
+
         return diff_hamx, diff_hamy, diff_hamz
 
     elif(diffpar=="th_r"):
@@ -155,6 +165,8 @@ def diffhamiltonian(diffpar, point, field):
         #Return the matrix with correct prefactors
         diff_ham = J*hbar*diff_ham
 
+        diffhamsave[(diffpar, point)] = diff_ham #Save the result
+
         return diff_ham
 
     elif(diffpar=="ph_r"):
@@ -177,6 +189,8 @@ def diffhamiltonian(diffpar, point, field):
 
         #Return the matrix with correct prefactors
         diff_ham = J*hbar*diff_ham
+
+        diffhamsave[(diffpar, point)] = diff_ham #Save the result
 
         return diff_ham
 
@@ -235,10 +249,22 @@ def eigensolver(point, field):
     #Return the result
     return eigenvalues, eigenvectors
 
-##Calculated the synthetic scalar field at point point for field field for state number n.
+##Calculates the synthetic scalar field at point point for field field for state number n.
 ##The point is taken to be of shape (x, y, z, theta_r, phi_r).
 ##Returns a tuple of the scalar field value followed by the fast energy.
+scalarsave = {}
 def scalarcalc(point, field, n):
+
+    point = tuple(point)
+
+    #First check if the scalar field has been calculated here before
+    global scalarsave
+    if (point, n) in scalarsave:
+        print('scalarsave used')
+        return scalarsave[(point, n)]
+
+    #Fix point format
+    point = tuple(point)
 
     #First retrieve the energies and eigenstates
     energies, eigvec = eigensolver(point, field)
@@ -262,6 +288,8 @@ def scalarcalc(point, field, n):
     #print(f'Phi = {Phi}')
     returnlist = (Phi, energies[n])
 
+    scalarsave[(point, n)] = returnlist
+
     return returnlist
 
 ##Calculates the acceleration due to the synthetic magnetic field and summarizes all
@@ -283,13 +311,15 @@ def acc(t, posvel, field, n, norot):
 
     #Fit position to a point
     point = [0,0,0,0,0]
-#    boundcheck = False #Boolean to check if the boundary has been reached
-#    for i in range(3):
-#        point[i] = int(round(pos[i]/stepr))
-#        if point[i] >= nr-2 or point[i] < 2:
-#            return np.zeros(10)
+    for i in range(3):
+        point[i] = int(round(pos[i]/stepr))
+        if point[i] >= nr-2 or point[i] < 2:
+            return np.concatenate((vel, np.zeros(5))) ##Sets the acceleration to zero if a
+                                                    ##a points outside the grid is sampled
     point[3] = pos[3]
     point[4] = pos[4]
+
+    point = tuple(point)
 
     #Find energies and eigenstates at point
     energies, eigvec = eigensolver(point, field)
@@ -315,7 +345,7 @@ def acc(t, posvel, field, n, norot):
 
     #print(f'Fa = {Fa}') #For testing
     global Faavg
-    Faavg + (Faavg + np.linalg.norm(Fa))/2
+    Faavg = (Faavg + np.linalg.norm(Fa))/2
 
 	#To get the derivatives of the scalar fields find coordinate values of all neighbouring sites
 
@@ -393,18 +423,18 @@ def accnosyn(t, posvel, field, n, norot):
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
     stepr = lablength/(nr-1) #Distance between lattice points
-    #Extract pos and vel:
+    #Extract position and velocity:
     pos = posvel[0:5]
     vel = posvel[5:10]
 
 
     #Fit position to a point
     point = [0,0,0,0,0]
-#    boundcheck = False #Boolean to check if the boundary has been reached
-#    for i in range(3):
-#        point[i] = int(round(pos[i]/stepr))
-#        if point[i] >= nr-2 or point[i] < 2:
-#            return np.zeros(10)
+    for i in range(3):
+        point[i] = int(round(pos[i]/stepr))
+        if point[i] >= nr-2 or point[i] < 2:
+            return np.concatenate((vel, np.zeros(5))) ##Sets the acceleration to zero if a
+                                                    ##a points outside the grid is sampled
     point[3] = pos[3]
     point[4] = pos[4]
 
@@ -470,9 +500,12 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
     dscalaravg = 0
     denergyavg = 0
 
+#    #Find times to require ODE evaluation
+#    t_eval = np.linspace(0, tmax, 100000)
+
     #Set error tolerances
     nr = field.shape[1]
-    tolr = lablength/(2*nr - 2)
+    tolr = lablength/(2*(nr - 1))
     #tolr = lablength/4
     toltheta = steptheta/2
     #toltheta = 1
@@ -481,7 +514,9 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
     atol = [tolr, tolr, tolr, toltheta, tolphi, tolr/10, tolr/10, tolr/10, toltheta/10,
             tolphi/10]
     if nosyn:
-        sol = solve_ivp(accnosyn, (0,tmax), posvel, args=(field, n, norot), atol=atol)
+        edgedistance.terminal = True
+        sol = solve_ivp(accnosyn, (0,tmax), posvel, events=edgedistance, args=(field, n,
+            norot), atol=atol)
     else:
         edgedistance.terminal = True
         sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(field, n, norot), atol=atol)
@@ -492,13 +527,19 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
 
     return sol
 
-##Event to terminate integration, returns distance to the closest edge
+##Event to terminate integration, returns distance to the closest edge minus a small
+##correction to avoid hitting the edge
 def edgedistance(t, posvel, field, n, norot):
     pos= posvel[0:3]
     mindist = np.amin(pos)
-    distancetoedge = min(mindist, lablength - mindist)
+    maxdist = np.amax(pos)
+    distancetoedge = min(mindist, lablength - maxdist)
 
-    return distancetoedge
+    #Find nr and stepr
+    nr = field.shape[1] #Number of points along each axis of the lattice
+    stepr = lablength/(nr-1) #Distance between lattice points
+
+    return distancetoedge - 2*stepr
     
 
 ##Plotting function, takes a list of solutions sol from solve_ivp, a field field and displays an 
@@ -517,9 +558,9 @@ def lineplot(sol, field, I, initvel, n, norot, nosyn):
     ax.set_xlim((0, lablength))
     ax.set_ylim((0, lablength))
     ax.set_zlim((0, lablength))
-    ax.set_xlabel('x', fontsize=10)
-    ax.set_ylabel('y', fontsize=10)
-    ax.set_zlabel('z', fontsize=10)
+    ax.set_xlabel('x', fontsize=10, color='blue')
+    ax.set_ylabel('y', fontsize=10, color='blue')
+    ax.set_zlabel('z', fontsize=10, color='blue')
     
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
