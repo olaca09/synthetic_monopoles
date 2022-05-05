@@ -1,10 +1,12 @@
 import pandas as pd
 import numpy as np
+import scipy
 from matplotlib import pyplot as plt
 from matplotlib.patches import FancyArrowPatch
 from mpl_toolkits import mplot3d
 from scipy.constants import hbar
 from scipy.integrate import solve_ivp
+import warnings
 
 ##This is a collection of scripts related to the finding of eigenstates and thence the
 ##derivation of the synthetic fields.
@@ -202,6 +204,8 @@ def diffhamiltonian(diffpar, point, field):
 ##normalized column vectors in the singlet-triplet basis.
 def eigensolver(point, field):
 
+    warnings.filterwarnings("error")
+    
     #First calculate the fast Hamiltonian at point
     ham = np.zeros([3,3], dtype='complex_') #Initialize empty matrix
     pointx = int(point[0]) #Get point index (this is needed for dtype purposes)
@@ -213,6 +217,8 @@ def eigensolver(point, field):
     thetaB = field[4, pointx, pointy, pointz]
     phiB = field[5, pointx, pointy, pointz]
     xi = J/(Gamma*B)
+    if xi == np.inf or np.isnan(xi):
+        print(f'External field is zero at point {point}! Please correct the field or the streams')
 
     #Extract theta_r and phi_r at point
     thetar = point[3]
@@ -244,7 +250,7 @@ def eigensolver(point, field):
     ham = Gamma*B*hbar*ham
 
     #Calculate eigenvalues and eigenvectors
-    eigenvalues, eigenvectors = np.linalg.eigh(ham)
+    eigenvalues, eigenvectors = scipy.linalg.eigh(ham)
 
     #Return the result
     return eigenvalues, eigenvectors
@@ -282,7 +288,7 @@ def scalarcalc(point, field, n):
             if not l == n: #Remove diagonals
                 braket = np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) #Braket for formula
                 Phi += (hbar**2 /(2*mass[i]) * #Add up contributions to the synthetic scalar
-                braket*np.conjugate(braket) / (energies[n] - energies[l])**2) 
+                braket*np.conjugate(braket) / (energies[n] - energies[l])**2).real #Note the discard of the imaginary part, numerical errors otherwise arise 
     #print(f'Phi = {Phi}')
     returnlist = (Phi, energies[n])
 
@@ -318,6 +324,17 @@ def acc(t, posvel, field, n, norot):
     point[4] = pos[4]
 
     point = tuple(point)
+
+    ##Make sure the B-field is nonzero
+    pointx = int(point[0]) #Get point index (this is needed for dtype purposes)
+    pointy = int(point[1])
+    pointz = int(point[2])
+
+    #Find the values of B, theta_B and phi_B at point
+    B = field[3, pointx, pointy, pointz]
+    if B == 0.0:
+        print(f'Warning, external field of zero encountered at {pos}')
+        return np.zeros(10) #Freeze stream
 
     #Find energies and eigenstates at point
     energies, eigvec = eigensolver(point, field)
@@ -436,7 +453,6 @@ def accnosyn(t, posvel, field, n, norot):
     point[3] = pos[3]
     point[4] = pos[4]
 
-
 	#To get the derivatives of the scalar fields find coordinate values of all neighbouring sites
 
     ##meshgrid to generate neighbours
@@ -501,8 +517,8 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
     dscalaravg = 0
     denergyavg = 0
 
-#    #Find times to require ODE evaluation
-#    t_eval = np.linspace(0, tmax, 100000)
+    #Find times to require ODE evaluation
+    t_eval = np.linspace(0, tmax, 100000)
 
     #Set error tolerances
     nr = field.shape[1]
@@ -517,10 +533,10 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
     if nosyn:
         edgedistance.terminal = True
         sol = solve_ivp(accnosyn, (0,tmax), posvel, events=edgedistance, args=(field, n,
-            norot), atol=atol)
+            norot), atol=atol, t_eval=t_eval)
     else:
         edgedistance.terminal = True
-        sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(field, n, norot), atol=atol)
+        sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(field, n, norot), atol=atol, t_eval=t_eval)
 
     sol.Faavg = Faavg
     sol.denergyavg = denergyavg
@@ -545,7 +561,7 @@ def edgedistance(t, posvel, field, n, norot):
 
 ##Plotting function, takes a list of solutions sol from solve_ivp, a field field and displays an 
 ##interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, field, I, initvel, n, norot, nosyn):
+def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn):
 
     #For testing print average acceleration components
     for stream in sol:
@@ -580,10 +596,10 @@ def lineplot(sol, field, I, initvel, n, norot, nosyn):
         pos = stream.y[0:3,:]
         ax.plot3D(pos[0,:], pos[1,:], pos[2,:], color='red') #Plot the integrated path
     #Plot magnetic field for testing purposes
-    #ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
+    ##ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
     #plot = mlab.plot3d(pos[0,:], extent=[0,0,0,lablength,lablength,lablength])
 
 
-    plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}norot{norot}nosyn{nosyn}.png',
-                bboxinches='tight')
+    plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}.png',
+                bbox_inches='tight')
     plt.show()
