@@ -1,51 +1,50 @@
 \documentclass[a4paper]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[swedish]{babel}
-\usepackage{amsmath, amssymb}
-\usepackage[arrowdel]{physics}
-\usepackage{pdfpages}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{appendix}
-\usepackage[super, square]{natbib}
-\usepackage{listings}
-\usepackage[section]{placeins}
-\usepackage[bb=dsserif]{mathalpha}
-\usepackage[margin=1in]{geometry}
-
-\usepackage{tikz}
-
-\newcommand{\R}{\ensuremath{\mathbb{R}}}
-\newcommand{\C}{\ensuremath{\mathbb{C}}}
-\newcommand{\Arg}{\ensuremath{\text{Arg}}}
-\newcommand{\U}{\ensuremath{\mathbb{\cal U}}}
-
-\usetikzlibrary{arrows.meta}
-\usetikzlibrary{decorations.pathreplacing}
-\usetikzlibrary{decorations.markings}
-\usetikzlibrary{patterns}
-\lstset{language=Python, breaklines, literate=%
-{å}{{\r{a}}}1
-{ä}{{"a}}1
-{ö}{{"o}}1
-{Å}{{\r{A}}}1
-{Ä}{{"A}}1
-{Ö}{{"O}}1
-}
-
-\title{Derivations for synthetic monopoles}
-\author{Ola Carlsson}
-
-
-\pdfsuppresswarningpagegroup=1
+%
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{textcomp}
+%\usepackage[english]{babel}
+%\usepackage{amsmath, amssymb}
+%\usepackage[arrowdel]{physics}
+%\usepackage{pdfpages}
+%\usepackage{graphicx}
+%\usepackage{hyperref}
+%\usepackage{appendix}
+%\usepackage[style=numeric, backend=bibtex]{biblatex}
+%\usepackage{listings}
+%\usepackage[section]{placeins}
+%
+%\usepackage{tikz}
+%
+%\addbibresource{bibliography.bib}
+%
+%\newcommand{\R}{\ensuremath{\mathbb{R}}}
+%\newcommand{\C}{\ensuremath{\mathbb{C}}}
+%\newcommand{\Arg}{\ensuremath{\text{Arg}}}
+%
+%\usetikzlibrary{arrows.meta}
+%\usetikzlibrary{decorations.pathreplacing}
+%\usetikzlibrary{decorations.markings}
+%\usetikzlibrary{patterns}
+%\lstset{language=Python, breaklines, literate=%
+%{å}{{\r{a}}}1
+%{ä}{{"a}}1
+%{ö}{{"o}}1
+%{Å}{{\r{A}}}1
+%{Ä}{{"A}}1
+%{Ö}{{"O}}1
+%}
+%
+%\title{Derivations for synthetic monopoles}
+%\author{Ola Carlsson}
+%
+%
+%\pdfsuppresswarningpagegroup=1
 
 \begin{document}
 \section{System description}
 \subsection{Coordinates and quantities}
-Consider a dumbbell-like system consisting of two equal masses at a distance \(l\) from one
+Consider then a dumbbell-like system consisting of two equal masses at a distance \(l\) from one
 another, and let \(m\) be the total mass. The system can be freely translated and rotated
 throughout space, so let \(x\), \(y\), \(z\)  be the position
 of the centre off mass, and \(\theta_r, \varphi_r\) be the polar and azimuthal angle
@@ -164,9 +163,9 @@ given in the \(z\)-axis basis in a basis aligned with \(\va{B}\) or the Ising ax
 Consider therefore first a rotation of the \textit{state} vectors, which can then easily
 be inverted to receive the forward transformation also necessary for the transformation
 of operator matrices. The inversion process is but a complex
-conjugation since the operator in question is unitary. It can be shown %cite Sakurai
+conjugation since the operator in question is unitary. It can be shown 
 that the rotation about three Euler angles \(\alpha\), \(\beta\), \(\delta\) of a state is
-given  by the matrix with elements as:
+given  by the matrix with elements as\cite{sakurai}:
 \begin{align*}
         \U_{m'm''} = \bra{s,
         m'}e^{\frac{-iS_z\alpha}{\hbar}}e^{\frac{-iS_y\beta}{\hbar}}e^{\frac{-iS_z\delta}{\hbar{}}}\ket{s,
@@ -268,13 +267,16 @@ parameters'', the so-called Born-Oppenheimer approximation is applicable. A vers
 adiabatic approximation, it assumes that a ''fast'' subsystem, described by the fast
 parameters, can be described by eigenstates to a Hamiltonian parametrised by the slow
 parameters. A fast system in such an eigenstate can be considered to remain in the same
-eigenstate as the associated ''fast'' Hamiltonian slowly changes, changing but its
+eigenstate as the associated ''fast'' Hamiltonian slowly changes, changing its
 eigenvalue as the slow parameters evolve. So far this is what is known as the adiabatic
-approximation. 
+approximation\cite{adiab}. In the terminology used for geometric phases the slow
+parameters then form the parameter space of the fast system. %Var specifierar jag att jag håller mig inom adiabatiskt område?
+%Resultat/diskussion antagligen
 
 The Born-Oppenheimer approximation involves the extension of this to also consider how the
 ''slow'' system evolves, in practice finding an effective Hamiltonian to the slow system as
-well. The full system is then considered to be described by the product of a wave function to the slow
+well. Originally, and still mainly, an approximation used in molecular physics proposed in
+1927 \cite{bo} it applies also to the present situation. The full system is then considered to be described by the product of a wave function to the slow
 system \(\Psi_s\) and  some eigenstate to the fast Hamiltonian \(\ket{n}\), i.e.:
 \begin{align*}
         \ket{\Psi_{full}} = \Psi_s\ket{n}
@@ -334,8 +336,22 @@ sought after.
     \bra{n})\ket{\partial_i n}
 .\end{align}
 \subsection{Interpretation}
-[Något om magnetfältskopplingen, monopolerna, \(\va{A} = \sum_{i=1}^{5} A_i\), \(\va{p} =
-\sum_{i=1}^{5} p_i\). En första blick på att det är här den fina fysiken händer]
+Equation \ref{eq:Heff} has been aptly written on a form which suggests the physics to be
+studied. Note that the sum over \(i\) looks precisely like the action of a magnetic field
+with vector potential \(\va{A} = \sum_{i=1}^{5} i\hbar{}\bra{n}\ket{\grad n}\) on a particle of charge
+\(1\) and momentum \(\va{p} = \sum_{i=1}^{5} p_i\). A difference present is that both field and momentum are five dimensional, and
+furthermore that the masses of the two final degrees of freedom are rather moments of
+inertia. No matter, it is this five-dimensional synthetic magnetic field that carries the
+monopoles described in section \ref{sec:introduction}. The dynamics of this term is the
+primal interest to this discussion, but we note also a scalar field, analogously called the
+synthetic electric field, or the synthetic scalar field. Roughly speaking however this
+field is a factor \(\hbar{}\) smaller than the synthetic magnetic field and will in most
+cases be negligible. It can however be shown that this field acts as a repulsive inverse
+square force near degeneracies in the fast Hamiltonian\cite{berrylim}. The inverse square dependence to
+the distance of a degeneracy point means that the scalar field will have appreciable
+effects if the slow parameters are close enough to the degeneracy, and furthermore the
+repulsive nature actually leads to a strengthening of the Born-Oppenheimer approximation as
+the adiabatic approximation loses validity at points of degeneracy.
 \subsection{Dynamics}
 Having found an effective Hamiltonian to the slow system the application of this
 Hamiltonian to the dynamics of the system remains to be performed. One could proceed with
