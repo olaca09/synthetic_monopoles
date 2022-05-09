@@ -44,10 +44,12 @@
 \begin{document}
 \section{System description}
 \subsection{Coordinates and quantities}
-Consider then a dumbbell-like system consisting of two equal masses at a distance \(l\) from one
+Now follows a complete model of the scenario outlined in section \ref{sec:aselsys}, with
+the purpose of simulating the system numerically to gain insights into the dynamics of
+synthetic magnetic fields. Consider then a dumbbell-like system consisting of two equal masses at a distance \(l\) from one
 another, and let \(m\) be the total mass. The system can be freely translated and rotated
 throughout space, so let \(x\), \(y\), \(z\)  be the position
-of the centre off mass, and \(\theta_r, \varphi_r\) be the polar and azimuthal angle
+of the centre off mass, and \(\theta_r\), \(\varphi_r\) be the polar and azimuthal angle
 respectively of the axis connecting the two masses. Notate these coordinates compactly as the
 vector \[
 \va{r}
@@ -62,21 +64,22 @@ momentum, of size \(\frac{1}{2}\) each. %more precise formulation?
  The state of the spin components must be
 described quantum mechanically, so let \(\ket{s, m'}\) denote the state of the system with
 \textit{total} spin magnitude squared \(s(s+1)\hbar^2\) and \textit{total} spin measured
-along the \(z\)-axis \(\hbar m'\). An external field \(\va{B}\) is present, which
+along the \(z\)-axis \(\hbar m'\). Note that the spin quantum number \(s\) will be \(1\) for
+the composite system, and so values of \(m'\) will range from \(-1\) to \(1\). An external field \(\va{B}\) is present, which
 we can describe by its magnitude \(B\) and its angular direction \(\vartheta_B, \varphi_B\)
 in analogue with the angles defined above.
 
-\subsection{The Hamiltonian}
+\subsection{The Hamiltonian}\label{sec:sysham}
 
 The time evolution of such a system is governed in both classical and quantum mechanics by
 its Hamiltonian. Since spin is the epitome of a phenomena demanding a quantum mechanical
-interpretation we have no choice but to model the whole system quantum mechanically.%, at
+interpretation we have no choice but to model the whole system quantum mechanically. %, at
 %least for now?
 The Hamiltonian which will be assumed for the system here is:
 
 \begin{equation}\label{eq:Hamil0}
         \mathbb{\cal H} = \sum_{i=1}^{5} \frac{\va{p_i}^2}{2m_i} +
-        \frac{4J}{\hbar{}}S^{(1)}_{z}S^{(2)}_{z} -
+        \frac{4J}{\hbar{}}S^{(1)}_{\mu}S^{(2)}_{\mu} -
         \gamma\va{B}\cdot \va{S}.
 \end{equation}
 
@@ -93,12 +96,24 @@ three are equal to \(m\).
 For the potential energy the spin-spin interaction is taken to be of Ising form, which is
 the first term after the sum, while the interaction between spin and magnetic field is
 considered in the final term. %correct name of the final term?
+An Ising interaction contains a preferred axis of interaction, which for symmetry reasons
+of the system has been chosen to be the direction of the dumbbell axis \(\mu\), the axis connecting
+the two masses.
  The parameters \(J\) and \(\gamma\) are the strengths of both
-of these interactions, while the operators \(\va{S}\) and \(S^{(n)}_{z}\) are respectively
+of these interactions, while the operators \(\va{S}\) and \(S^{(n)}_{\mu}\) are respectively
 the one
-related to the total spin of the system and the spin in the z-direction of one of the
+related to the total spin of the system and the spin in the \(\mu\)-direction of one of the
 system
-components.
+components. Note that the parameter \(\gamma\) much like the example of section
+\ref{sec:adiab} typically looks like \(\gamma = \frac{g\mu_f}{\hbar{}}\) where \(g\) is a
+g-factor and \(\mu _f\) is some appropriate magneton.
+
+Similar systems as the one considered here has been has been studied before, in particular
+a bipartite spin-\(\frac{1}{2}\) system with coordinate-fixed Ising axis by Sjöqvist and Yi
+\cite{yi}. If the rotational degrees of the present system are ignored and the coordinate
+\(\vartheta_r\) is set to \(0\) whenever present the system of Sjöqvist and Yi will be
+matched in full, save for that the external field is there varied directly instead of
+through centre of mass motion.
 
 \subsection{Effective mass}
 To clearly see the values of the effective masses paired with the rotational momenta a quick derivation
@@ -130,15 +145,15 @@ It is then clear that the effective masses to be used in equation \ref{eq:Hamil0
 
 \subsection{Rotation matrices}
 The potential energy operators will be of great use in some matrix form, so let the spin
-state be described as a coordinate vector in the basis \((\ket{0, 0}, \ket{1, -1}, \ket{1, 0},
-\ket{1, 1})\). In the special case where the axis of the dumbbell (henceforth ''Ising
+state of the entire system be described as a coordinate vector in the basis \((\ket{0, 0}, \ket{1, -1}, \ket{1, 0},
+\ket{1, 1})\) with the coordinate \(z\)-axis as the spin measurement direction. In the special case where the axis of the dumbbell (henceforth ''Ising
 axis'') and the magnetic field \(\va{B}\) is parallell to the \(z\)-axis, it is clear that the operators take the form:
 \begin{align}
         \va{B}\cdot \va{S} &= B\hbar \label{eq:BSmat}
         \begin{pmatrix}
         \dmat{0,-1,0,1}
         \end{pmatrix} \\
-        S^{(1)}_{z}S^{(2)}_{z} &= \frac{\hbar^2}{4} \label{eq:SSmat}
+        S^{(1)}_{\mu}S^{(2)}_{\mu} &= \frac{\hbar^2}{4} \label{eq:SSmat}
         \begin{pmatrix} 
         \diagonalmatrix{-1,1,-1,1}\end{pmatrix} 
 .\end{align}
@@ -168,7 +183,7 @@ that the rotation about three Euler angles \(\alpha\), \(\beta\), \(\delta\) of 
 given  by the matrix with elements as\cite{sakurai}:
 \begin{align*}
         \U_{m'm''} = \bra{s,
-        m'}e^{\frac{-iS_z\alpha}{\hbar}}e^{\frac{-iS_y\beta}{\hbar}}e^{\frac{-iS_z\delta}{\hbar{}}}\ket{s,
+        m'}e^{\frac{-iS_\mu\alpha}{\hbar}}e^{\frac{-iS_y\beta}{\hbar}}e^{\frac{-iS_\mu\delta}{\hbar{}}}\ket{s,
 m''}
 .\end{align*}
 Here \(s\), \(m'\), \(m''\) are spin quantum numbers of the system, which in the more general
@@ -207,7 +222,7 @@ angles \(\vartheta_B\) and \(\varphi_B\) can be written in the \(z\)-axis basis 
 Analogously the matrix of equation \ref{eq:SSmat} is expressed in a basis rotated through
 angles \(\vartheta_r\) and \(\varphi_r\), so in the \(z\)-axis basis it can be written:
 \begin{align}\label{eq:SSrot}
-        S^{(1)}_zS^{(2)}_z &= \frac{\hbar{}^2}{4}\pmqty{-1 & 0 & 0 & 0\\
+        S^{(1)}_\mu S^{(2)}_\mu &= \frac{\hbar{}^2}{4}\pmqty{-1 & 0 & 0 & 0\\
                 0 & \cos[2](\vartheta_r) & -\frac{e^{i\varphi_r}}{\sqrt{2}
                 }\sin(2\vartheta_r) & e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
                 0 & -\frac{e^{-i\varphi_r}}{\sqrt{2}
@@ -335,14 +350,16 @@ sought after.
         \Phi &= \sum_{i=1}^{5} \frac{\hbar{}^{2}}{2m_i}\bra{\partial_i n}(\mathbb{1} - \ket{n}
     \bra{n})\ket{\partial_i n}
 .\end{align}
-\subsection{Interpretation}
+\subsection{Interpretation}\label{sec:BOinterp}
 Equation \ref{eq:Heff} has been aptly written on a form which suggests the physics to be
 studied. Note that the sum over \(i\) looks precisely like the action of a magnetic field
 with vector potential \(\va{A} = \sum_{i=1}^{5} i\hbar{}\bra{n}\ket{\grad n}\) on a particle of charge
-\(1\) and momentum \(\va{p} = \sum_{i=1}^{5} p_i\). A difference present is that both field and momentum are five dimensional, and
+\(1\) and momentum \(\va{p} = \sum_{i=1}^{5} p_i\). Note also that this magnetic field is
+the same as the synthetic magnetic field outlined in section \ref{sec:geophase}, and as of
+such carries precisely the same properties. In particular the field will carry a monopolar
+dependence, as desired. A difference present to Maxwellian magnetic fields is that both field and momentum are here five dimensional, and
 furthermore that the masses of the two final degrees of freedom are rather moments of
-inertia. No matter, it is this five-dimensional synthetic magnetic field that carries the
-monopoles described in section \ref{sec:introduction}. The dynamics of this term is the
+inertia. The dynamics of this term is the
 primal interest to this discussion, but we note also a scalar field, analogously called the
 synthetic electric field, or the synthetic scalar field. Roughly speaking however this
 field is a factor \(\hbar{}\) smaller than the synthetic magnetic field and will in most
@@ -469,12 +486,13 @@ In order to easily evaluate equations \ref{eq:FA} and \ref{eq:ElPot} derivatives
 \(\mathbb{\cal H}_f\) from equation \ref{eq:Hf} are to be found. Writing any of the coordinates \(x\), \(y\), \(z\)
 as \(r\) the derivatives can
 be written:
-\begin{align}
+\begin{align}\label{eq:diffham1}
         \partial_r\mathbb{\cal H}_f  &= \gamma B \hbar{} \pmqty{
  \frac{\dot B}{B}\cos(\vartheta_B) -\dot \vartheta_B \sin(\vartheta_B) & \Omega & 0 \\
  \Omega^{*} & 0 & \Omega\\
  0 & \Omega^{*}& -\frac{\dot B}{B}\cos(\vartheta_B) + \dot \vartheta_B \sin(\vartheta_B)
         }\\
+        \label{eq:diffham2}
         \partial_{\vartheta_r} \mathbb{\cal H}_f &= \gamma B \xi \hbar{}\pmqty{
                 -\sin(2\vartheta_r) & -\sqrt{2}  e^{-i\varphi_r}\cos(2\vartheta_r) &
                  e^{-2i\varphi_r}\sin(2\vartheta_r)\\
@@ -483,6 +501,7 @@ be written:
                  e^{2i\varphi_r}\sin(2\vartheta_r) & \sqrt{2} 
                 e^{i\varphi_r}\cos(2\vartheta_r) & -\sin(2\vartheta_r)
         }\\
+        \label{eq:diffham3}
         \partial_{\varphi_r} \mathbb{\cal H}_f &= \gamma B \xi \hbar{}\pmqty{
                 0 & i  \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
                 -2i e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
@@ -503,48 +522,32 @@ i.e. that the eigenvalues and eigenvectors to \(\mathbb{\cal H}_f\) are found.
 Unfortunately this is not possible analytically for the present system, but we note that it
 is the same as solving the following transcendental characteristic equation, which follows
 from equation \ref{eq:Hf}, for the
-eigenvalues \(\lambda_n = \frac{E_n}{J\hbar{}}\): %Citera Sjöqvist, Yi
-\begin{align}
-         & \mdet{
-                \lambda_n - \cos[2](\vartheta_r) + \xi \cos(\vartheta_B) & -\frac{\xi
-                e^{-i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B) +
-                        \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
-                        -e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
-                        \frac{e^{i\varphi_r}}{\sqrt{2}}\sin(2\vartheta_r) - \xi
-                        \frac{e^{i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B) & \lambda
-                        \cos(2\vartheta_r) & -\xi \frac{e^{-\varphi_B}}{\sqrt{2}
-                        }\sin(\vartheta_B)-\frac{e^{-i\varphi_r}}{\sqrt{2}
-                }\sin(2\vartheta_r)\\
-                -e^{2i\varphi_r}\sin[2](\vartheta_r) & -\xi \frac{e^{i\varphi_B}}{\sqrt{2}
-                }\sin(\vartheta_B) - \frac{e^{i\varphi_r}}{\sqrt{2}}\sin(\vartheta_r) &
-                \lambda + \cos[2](\vartheta_r) - \xi\cos(\vartheta_B)}\nonumber\\
-                &= 0 = \lambda^3 + \lambda^2\cos(2\vartheta_r) +
-                \lambda(2\cos[2](\vartheta_r)[\xi\cos(\vartheta_B)-\sin[2](\vartheta_r))-1-\xi^2)
-                +\dots\nonumber\\
-                &+\cos(2\vartheta_r)(-1 +
-                2\xi\cos[2](\vartheta_r)\cos(\vartheta_B)+\dots\nonumber\\
-                &-\xi^2\cos[2](\vartheta_B)(1+2\cos[2](\vartheta_B)(1+2\cos[2](\vartheta_B)(1+2\cos(\varphi_r-\varphi_B)\sin(\vartheta_B)\sin(2\vartheta_r)]+\dots\nonumber\\
-                &+
-                \frac{\xi}{2}\cos(\varphi_r-\varphi_B)\sin(\vartheta_B)\sin(2\vartheta_r) +
-                \frac{1}{2}\cos(\varphi_r-\varphi_B)\sin(\vartheta_B)\sin(2\vartheta_r) +
-                \dots\nonumber\\
-                &+ \frac{\xi}{2}\cos(2(ph_r-ph_B))\sin[2](\vartheta_B) +
-                \frac{3}{2}\xi\cos(\varphi_r-\varphi_B)\sin(\vartheta_B)\sin(2\vartheta_r)
-                +\dots\nonumber\\
-                &- \frac{1}{2}\cos(\varphi_r-\varphi_B)\sin(\vartheta_B)\sin(2\vartheta_r)
-                - \frac{\xi}{2}\cos(2(\varphi_r-\varphi_B))\sin[2](\vartheta_B) +
-                \frac{1}{2}\sin[2](2\vartheta_r)+\dots\nonumber\\
-                &- 2\xi^2\cos(\vartheta_B)\cos(\varphi_r-\varphi_B)\sin(\vartheta_B)\sin(2\vartheta_r)
-                 \label{eq:lambda}
-.\end{align} %%Uberfult
+eigenvalues \(\lambda_n = \frac{E_n}{\gamma B\hbar{}}\): %Citera Sjöqvist, Yi
+\begin{align}\label{eq:lambda}
+        0 &= \mdet{
+                 \xi\cos[2](\vartheta_r) + \cos(\vartheta_B) - \lambda_n& -\frac{
+                        e^{-i\varphi_B}}{\sqrt{2}
+                }\sin(\vartheta_B) - \xi\frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
+                \xi e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
+                 -\frac{e^{i\varphi_B}}{\sqrt{2}}\sin(\vartheta_B) -
+                \xi \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
+                -\xi\cos(2\vartheta_r) - \lambda_n & -\frac{
+                e^{-i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B)+ \xi\frac{e^{-i\varphi_r}}{\sqrt{2}
+        }\sin(2\vartheta_r)\\
+                \xi e^{2i\varphi_r}\sin[2](\vartheta_r) & -\frac{
+                e^{i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B) +
+                        \xi \frac{e^{i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
+                        \xi \cos[2](\vartheta_r) - \cos(\vartheta_B) - \lambda_n 
+        }
+.\end{align}
 This is rather messy, and unfortunately does not bring much clarity to the behaviour of the
 eigenvalues. 
 
 Solving for the eigenvectors as a function of the eigenvalues does not yield any strikingly
 useful relation neither, so the calculation of eigenvalues and eigenvectors may be left to numerics from
 the onset. Equation \ref{eq:lambda} could in principle be differentiated implicitly to
-receive the derivatives of the energies also needed, but since many other quantities must
-also be calculated numerically the derivatives of the energies will be done so likewise for
+receive the derivatives of the energies also needed, but since simulation of the system requires many other quantities 
+to also be calculated numerically the derivatives of the energies will be done likewise for
 practicality's sake.
 %Derivatives of \(E_n\) are however needed, and the possibility of calculating
 %these analytically for each point in parameter space without requiring the calculation of
