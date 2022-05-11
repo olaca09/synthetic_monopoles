@@ -1,0 +1,22 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Code}\label{app:scripts}
+Below follow the scripts used for numerical simulation of the described dumbbell system,
+all written in Python.
+The code is divided into three files: one containing the tools for constructing the
+external magnetic fields used, one containing the tools used to integrate the dynamics
+within some such field and one main script for setting parameters and calling the necessary
+functions from the two other modules. To execute properly all three .py - files must be
+placed in the same folder additionally containing a subfolder named ''saves'', and that
+subfolder must in turn contain three subfolders ''fields'', ''odesols'' and ''graphs''.
+
+\subsection{magfield.py}
+\lstinputlisting[language=Python]{../scripts/magfield.py}
+
+\subsection{synfieldtools.py}
+\lstinputlisting[language=Python]{../scripts/synfieldtools.py}
+
+\subsection{synfieldsolver.py}
+\lstinputlisting[language=Python]{../scripts/synfieldsolver.py}
+
+\end{document}

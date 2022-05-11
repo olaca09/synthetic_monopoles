@@ -1,0 +1,274 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nty/global//global/global}
+  \entry{berry1984}{article}{}
+    \name{author}{1}{}{%
+      {{hash=BMV}{%
+         family={Berry},
+         familyi={B\bibinitperiod},
+         given={Michael\bibnamedelima Victor},
+         giveni={M\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BMV1}
+    \strng{fullhash}{BMV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    A quantal system in an eigenstate, slowly transported round a circuit C by
+  varying parameters R in its Hamiltonian Ĥ(R), will acquire a geometrical
+  phase factor exp{iγ(C)} in addition to the familiar dynamical phase factor.
+  An explicit general formula for γ(C) is derived in terms of the spectrum and
+  eigenstates of Ĥ(R) over a surface spanning C. If C lies near a degeneracy
+  of Ĥ, γ(C) takes a simple form which includes as a special case the sign
+  change of eigenfunctions of real symmetric matrices round a degeneracy. As an
+  illustration γ(C) is calculated for spinning particles in slowly-changing
+  magnetic fields; although the sign reversal of spinors on rotation is a
+  special case, the effect is predicted to occur for bosons as well as
+  fermions, and a method for observing it is proposed. It is shown that the
+  Aharonov-Bohm effect can be interpreted as a geometrical phase factor.%
+    }
+    \verb{doi}
+    \verb 10.1098/rspa.1984.0023
+    \endverb
+    \verb{eprint}
+    \verb https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.1984.0023
+    \endverb
+    \field{number}{1802}
+    \field{pages}{45\bibrangedash 57}
+    \field{title}{Quantal phase factors accompanying adiabatic changes}
+    \verb{url}
+    \verb https://royalsocietypublishing.org/doi/abs/10.1098/rspa.1984.0023
+    \endverb
+    \field{volume}{392}
+    \field{journaltitle}{Proceedings of the Royal Society of London. A.
+  Mathematical and Physical Sciences}
+    \field{year}{1984}
+  \endentry
+
+  \entry{castelnovo}{article}{}
+    \name{author}{3}{}{%
+      {{hash=CC}{%
+         family={Castelnovo},
+         familyi={C\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Moessner},
+         familyi={M\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SSL}{%
+         family={Sondhi},
+         familyi={S\bibinitperiod},
+         given={S.\bibnamedelima L.},
+         giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CCMRSSL1}
+    \strng{fullhash}{CCMRSSL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    We are familiar with elementary particles that carry either negative or
+  positive electric charge, such as electrons and protons, but there is no
+  evidence of elementary particles with a net magnetic charge. Magnets tend to
+  come with inseparable north and south poles, and there are no known magnetic
+  monopoles despite concerted efforts to find them. But an intriguing
+  theoretical study now proposes that magnetic monopoles may exist, not as
+  elementary particles, but as emergent particles in exotic condensed matter
+  magnetic systems such as 'spin ice'. The theory, based on an analogy to
+  fractional electric charges seen, for example, in quantum Hall systems in two
+  dimensions, can explain a mysterious phase transition that has been observed
+  experimentally in spin ice. The cover, by Alessandro Canossa, depicts a
+  magnetic monopole (red sphere) emerging from break-up of the dipole moment
+  (arrows) of the underlying electronic degrees of freedom in spin ice.%
+    }
+    \verb{doi}
+    \verb 10.1038/nature06433
+    \endverb
+    \field{issn}{1476-4687}
+    \field{number}{7174}
+    \field{pages}{42\bibrangedash 45}
+    \field{title}{Magnetic monopoles in spin ice}
+    \verb{url}
+    \verb https://doi.org/10.1038/nature06433
+    \endverb
+    \field{volume}{451}
+    \field{journaltitle}{Nature}
+    \field{year}{2008}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{dirac}{article}{}
+    \name{author}{1}{}{%
+      {{hash=DPAM}{%
+         family={Dirac},
+         familyi={D\bibinitperiod},
+         given={Paul Adrien\bibnamedelima Maurice},
+         giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim
+  M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DPAM1}
+    \strng{fullhash}{DPAM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \verb{doi}
+    \verb 10.1098/rspa.1931.0130
+    \endverb
+    \verb{eprint}
+    \verb https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.1931.0130
+    \endverb
+    \field{number}{821}
+    \field{pages}{60\bibrangedash 72}
+    \field{title}{Quantised singularities in the electromagnetic field,}
+    \verb{url}
+    \verb https://royalsocietypublishing.org/doi/abs/10.1098/rspa.1931.0130
+    \endverb
+    \field{volume}{133}
+    \field{journaltitle}{Proceedings of the Royal Society of London. Series A,
+  Containing Papers of a Mathematical and Physical Character}
+    \field{year}{1931}
+  \endentry
+
+  \entry{eriksson}{article}{}
+    \name{author}{2}{}{%
+      {{hash=EA}{%
+         family={Eriksson},
+         familyi={E\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SE}{%
+         family={Sjöqvist},
+         familyi={S\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {American Physical Society ({APS})}%
+    }
+    \strng{namehash}{EASE1}
+    \strng{fullhash}{EASE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \verb{doi}
+    \verb 10.1103/physreva.101.050101
+    \endverb
+    \field{number}{5}
+    \field{title}{Monopole field textures in interacting spin systems}
+    \verb{url}
+    \verb https://doi.org/10.1103%2Fphysreva.101.050101
+    \endverb
+    \field{volume}{101}
+    \field{journaltitle}{Physical Review A}
+    \field{year}{2020}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{ray}{article}{}
+    \name{author}{5}{}{%
+      {{hash=RMW}{%
+         family={Ray},
+         familyi={R\bibinitperiod},
+         given={M.\bibnamedelima W.},
+         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=RE}{%
+         family={Ruokokoski},
+         familyi={R\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=TK}{%
+         family={Tiurev},
+         familyi={T\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Möttönen},
+         familyi={M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=HDS}{%
+         family={Hall},
+         familyi={H\bibinitperiod},
+         given={D.\bibnamedelima S.},
+         giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RMW+1}
+    \strng{fullhash}{RMWRETKMMHDS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{abstract}{%
+    Some “grand unified theories” of physics predict the existence of the
+  so-called magnetic monopole. No such particles have been seen, but analogs of
+  monopoles may be observable in quantum fluids. Ray et al. created such an
+  analog in a gas of ultracold 87Rb atoms with three spin states at their
+  disposal. The authors used a protocol involving external magnetic fields with
+  particular spatial distributions to create and observe a monopole-like spin
+  texture in the gas. Science, this issue p. 544 An analog of the magnetic
+  monopole has been created and observed in an ultracold gas of rubidium-87
+  atoms. Topological defects play important roles throughout nature, appearing
+  in contexts as diverse as cosmology, particle physics, superfluidity, liquid
+  crystals, and metallurgy. Point defects can arise naturally as magnetic
+  monopoles resulting from symmetry breaking in grand unified theories. We
+  devised an experiment to create and detect quantum mechanical analogs of such
+  monopoles in a spin-1 Bose-Einstein condensate. The defects, which were
+  stable on the time scale of our experiments, were identified from
+  spin-resolved images of the condensate density profile that exhibit a
+  characteristic dependence on the choice of quantization axis. Our
+  observations lay the foundation for experimental studies of the dynamics and
+  stability of topological point defects in quantum systems.%
+    }
+    \verb{doi}
+    \verb 10.1126/science.1258289
+    \endverb
+    \verb{eprint}
+    \verb https://www.science.org/doi/pdf/10.1126/science.1258289
+    \endverb
+    \field{number}{6234}
+    \field{pages}{544\bibrangedash 547}
+    \field{title}{Observation of isolated monopoles in a quantum field}
+    \verb{url}
+    \verb https://www.science.org/doi/abs/10.1126/science.1258289
+    \endverb
+    \field{volume}{348}
+    \field{journaltitle}{Science}
+    \field{year}{2015}
+  \endentry
+\enddatalist
+\endinput
