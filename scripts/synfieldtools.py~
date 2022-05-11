@@ -12,9 +12,9 @@ import warnings
 ##derivation of the synthetic fields.
 
 #Common variables defined below:
-ntheta = 250 #Number of points of theta
+ntheta = 25 #Number of points of theta
 steptheta = np.pi/(ntheta-1) #Step size of theta
-nphi = 500 #Number of points of phi
+nphi = 50 #Number of points of phi
 stepphi = 2*np.pi/(nphi) #Step size of phi
 lablength = 1e-3 #Side length of environment cube in meters
 tmax = 1 #Maximum simulated time in seconds
@@ -35,6 +35,7 @@ tickcount=0 #For testing
 dscalaravg=0
 Faavg=0
 denergyavg=0
+energyavg=0
 
 
 ##Returns the differentiated Hamiltonian w.r.t. the specified par. diffpar=r, th_r, ph_r at
@@ -304,7 +305,7 @@ def scalarcalc(point, field, n):
 ##Returns the velocity (for integration purposes) followed by the acceleration of the 
 ##system in m/s^2.
 ##Note that the t argument is a dummy.
-def acc(t, posvel, field, n, norot):
+def acc(t, posvel, field, n, norot, nosyn):
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
     stepr = lablength/(nr-1) #Distance between lattice points
@@ -312,6 +313,10 @@ def acc(t, posvel, field, n, norot):
     pos = posvel[0:5]
     vel = posvel[5:10]
 
+    #Initialize forces
+    Fa = np.zeros(5)
+    dscalar = np.zeros(5)
+    denergy = np.zeros(5)
 
     #Fit position to a point
     point = [0,0,0,0,0]
@@ -325,86 +330,115 @@ def acc(t, posvel, field, n, norot):
 
     point = tuple(point)
 
+    if not nosyn == "True":
     ##Make sure the B-field is nonzero
-    pointx = int(point[0]) #Get point index (this is needed for dtype purposes)
-    pointy = int(point[1])
-    pointz = int(point[2])
+        pointx = int(point[0]) #Get point index (this is needed for dtype purposes)
+        pointy = int(point[1])
+        pointz = int(point[2])
+    
+        #Find the values of B at point
+        B = field[3, pointx, pointy, pointz]
+        if B == 0.0:
+            print(f'Warning, external field of zero encountered at {pos}')
+            return np.zeros(10) #Freeze stream
 
-    #Find the values of B, theta_B and phi_B at point
-    B = field[3, pointx, pointy, pointz]
-    if B == 0.0:
-        print(f'Warning, external field of zero encountered at {pos}')
-        return np.zeros(10) #Freeze stream
+    if nosyn == "False" or nosyn == "Noscalar":
+        #Find energies and eigenstates at point
+        energies, eigvec = eigensolver(point, field)
+    
+        #Differentiate the Hamiltonian w.r.t. each coordinate
+        dHam = [0,0,0,0,0]
+        dHam[0], dHam[1], dHam[2] = diffhamiltonian('r', point, field)
+        dHam[3] = diffhamiltonian('th_r', point, field)
+        dHam[4] = diffhamiltonian('ph_r', point, field)
+    
+        #Calculate the acceleration due to the syn. magnetic field
+        for i in range(5):
+            for j in range(5):
+                if not j == i: #Remove diagonals
+                    for l in range(3):
+                        if not l == n: #Remove diagonals
+                            if energies[n] == energies[l]:
+                                print(f'Degenerate fast eigenvalues {energies[n]} and {energies[l]}!')
+                            Fa[i] += (-2*hbar * vel[j] / (energies[n]-energies[l])**2 *
+                                    np.imag(np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) *
+                                    np.vdot(eigvec[l], np.dot(dHam[j], eigvec[n]))))
+    
+        #print(f'Fa = {Fa}') #For testing
+        global Faavg
+        Faavg = (Faavg + np.linalg.norm(Fa))/2
 
-    #Find energies and eigenstates at point
-    energies, eigvec = eigensolver(point, field)
+    if nosyn == "False" or nosyn == "Nomag":
 
-    #Differentiate the Hamiltonian w.r.t. each coordinate
-    dHam = [0,0,0,0,0]
-    dHam[0], dHam[1], dHam[2] = diffhamiltonian('r', point, field)
-    dHam[3] = diffhamiltonian('th_r', point, field)
-    dHam[4] = diffhamiltonian('ph_r', point, field)
+    	#To get the derivatives of the scalar fields find coordinate values of all neighbouring sites
+    
+        ##meshgrid to generate neighbours
+        neighgrid = np.mgrid[-1:2,-1:2,-1:2, -1:2, -1:2].astype('float')
+        neighgrid[3,:,:,:,:,:] *= steptheta #Fix theta and phi step sizes
+        neighgrid[4,:,:,:,:,:] *= stepphi
+        neighgrid = np.array(point)[:,None,None,None, None, None] + neighgrid 
+        #uses broadcasting to duplicate
+    	#x,y,z into each point on the grid. the result has first dimension determining which 
+    	#coordinate is given and the remaining specifying position related to the point
+    
+    	#Find neighbouring scalar field values and eigenstate energies
+        scalar = np.zeros([3, 3, 3, 3, 3]) 
+        energy = np.zeros([3, 3, 3, 3, 3]) 
+        scalar[2,1,1,1,1], energy[2,1,1,1,1] = scalarcalc(neighgrid[:,2,1,1,1,1], field, n)
+        scalar[0,1,1,1,1], energy[0,1,1,1,1] = scalarcalc(neighgrid[:,0,1,1,1,1], field, n)
+        scalar[1,2,1,1,1], energy[1,2,1,1,1] = scalarcalc(neighgrid[:,1,2,1,1,1], field, n)
+        scalar[1,0,1,1,1], energy[1,0,1,1,1] = scalarcalc(neighgrid[:,1,0,1,1,1], field, n)
+        scalar[1,1,2,1,1], energy[1,1,2,1,1] = scalarcalc(neighgrid[:,1,1,2,1,1], field, n)
+        scalar[1,1,0,1,1], energy[1,1,0,1,1] = scalarcalc(neighgrid[:,1,1,0,1,1], field, n)
+        scalar[1,1,1,2,1], energy[1,1,1,2,1] = scalarcalc(neighgrid[:,1,1,1,2,1], field, n)
+        scalar[1,1,1,0,1], energy[1,1,1,0,1] = scalarcalc(neighgrid[:,1,1,1,0,1], field, n)
+        scalar[1,1,1,1,2], energy[1,1,1,1,2] = scalarcalc(neighgrid[:,1,1,1,1,2], field, n)
+        scalar[1,1,1,1,0], energy[1,1,1,1,0] = scalarcalc(neighgrid[:,1,1,1,1,0], field, n)
+        scalar[1,1,1,1,1], energy[1,1,1,1,1] = scalarcalc(neighgrid[:,1,1,1,1,1], field, n) #For testing purposes
 
-    #Calculate the acceleration due to the syn. magnetic field
-    Fa = np.zeros(5)
-    for i in range(5):
-        for j in range(5):
-            if not j == i: #Remove diagonals
-                for l in range(3):
-                    if not l == n: #Remove diagonals
-                        if energies[n] == energies[l]:
-                            print(f'Degenerate fast eigenvalues {energies[n]} and {energies[l]}!')
-                        Fa[i] += (-2*hbar * vel[j] / (energies[n]-energies[l])**2 *
-                                np.imag(np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) *
-                                np.vdot(eigvec[l], np.dot(dHam[j], eigvec[n]))))
+        #Differentiate the scalar field
+        dscalar[0] = (scalar[2,1,1,1,1] - scalar[0,1,1,1,1])/(2*stepr)
+        dscalar[1] = (scalar[1,2,1,1,1] - scalar[1,0,1,1,1])/(2*stepr)
+        dscalar[2] = (scalar[1,1,2,1,1] - scalar[1,1,0,1,1])/(2*stepr)
+        dscalar[3] = (scalar[1,1,1,2,1] - scalar[1,1,1,0,1])/(2*steptheta)
+        dscalar[4] = (scalar[1,1,1,1,2] - scalar[1,1,1,1,0])/(2*stepphi)
 
-    #print(f'Fa = {Fa}') #For testing
-    global Faavg
-    Faavg = (Faavg + np.linalg.norm(Fa))/2
+        #print(f'dscalar = {dscalar}')
+        global dscalaravg
+        dscalaravg = (dscalaravg + np.linalg.norm(dscalar))/2
 
-	#To get the derivatives of the scalar fields find coordinate values of all neighbouring sites
+    elif nosyn == "True" or nosyn == "Noscalar":
+    	#To get the derivatives of the energies find coordinate values of all neighbouring sites
+    
+        ##meshgrid to generate neighbours
+        neighgrid = np.mgrid[-1:2,-1:2,-1:2, -1:2, -1:2].astype('float')
+        neighgrid[3,:,:,:,:,:] *= steptheta #Fix theta and phi step sizes
+        neighgrid[4,:,:,:,:,:] *= stepphi
+        neighgrid = np.array(point)[:,None,None,None, None, None] + neighgrid 
+        #uses broadcasting to duplicate
+    	#x,y,z into each point on the grid. the result has first dimension determining which 
+    	#coordinate is given and the remaining specifying position related to the point
+    
+        #Find energies at neighbouring points
+        energy = np.zeros([3, 3, 3, 3, 3])
+        energy[2,1,1,1,1] = eigensolver(neighgrid[:,2,1,1,1,1], field)[0][n]
+        energy[0,1,1,1,1] = eigensolver(neighgrid[:,0,1,1,1,1], field)[0][n]
+        energy[1,2,1,1,1] = eigensolver(neighgrid[:,1,2,1,1,1], field)[0][n]
+        energy[1,0,1,1,1] = eigensolver(neighgrid[:,1,0,1,1,1], field)[0][n]
+        energy[1,1,2,1,1] = eigensolver(neighgrid[:,1,1,2,1,1], field)[0][n]
+        energy[1,1,0,1,1] = eigensolver(neighgrid[:,1,1,0,1,1], field)[0][n]
+        energy[1,1,1,2,1] = eigensolver(neighgrid[:,1,1,1,2,1], field)[0][n]
+        energy[1,1,1,0,1] = eigensolver(neighgrid[:,1,1,1,0,1], field)[0][n]
+        energy[1,1,1,1,2] = eigensolver(neighgrid[:,1,1,1,1,2], field)[0][n]
+        energy[1,1,1,1,0] = eigensolver(neighgrid[:,1,1,1,1,0], field)[0][n]
 
-    ##meshgrid to generate neighbours
-    neighgrid = np.mgrid[-1:2,-1:2,-1:2, -1:2, -1:2].astype('float')
-    neighgrid[3,:,:,:,:,:] *= steptheta #Fix theta and phi step sizes
-    neighgrid[4,:,:,:,:,:] *= stepphi
-    neighgrid = np.array(point)[:,None,None,None, None, None] + neighgrid 
-    #uses broadcasting to duplicate
-	#x,y,z into each point on the grid. the result has first dimension determining which 
-	#coordinate is given and the remaining specifying position related to the point
+    else:
+        print(f'Incorrect parameter "nosyn" = {nosyn}')
 
-	#Find neighbouring scalar field values and eigenstate energies
-    scalar = np.zeros([3, 3, 3, 3, 3]) 
-    energy = np.zeros([3, 3, 3, 3, 3]) 
-    scalar[2,1,1,1,1], energy[2,1,1,1,1] = scalarcalc(neighgrid[:,2,1,1,1,1], field, n)
-    scalar[0,1,1,1,1], energy[0,1,1,1,1] = scalarcalc(neighgrid[:,0,1,1,1,1], field, n)
-    scalar[1,2,1,1,1], energy[1,2,1,1,1] = scalarcalc(neighgrid[:,1,2,1,1,1], field, n)
-    scalar[1,0,1,1,1], energy[1,0,1,1,1] = scalarcalc(neighgrid[:,1,0,1,1,1], field, n)
-    scalar[1,1,2,1,1], energy[1,1,2,1,1] = scalarcalc(neighgrid[:,1,1,2,1,1], field, n)
-    scalar[1,1,0,1,1], energy[1,1,0,1,1] = scalarcalc(neighgrid[:,1,1,0,1,1], field, n)
-    scalar[1,1,1,2,1], energy[1,1,1,2,1] = scalarcalc(neighgrid[:,1,1,1,2,1], field, n)
-    scalar[1,1,1,0,1], energy[1,1,1,0,1] = scalarcalc(neighgrid[:,1,1,1,0,1], field, n)
-    scalar[1,1,1,1,2], energy[1,1,1,1,2] = scalarcalc(neighgrid[:,1,1,1,1,2], field, n)
-    scalar[1,1,1,1,0], energy[1,1,1,1,0] = scalarcalc(neighgrid[:,1,1,1,1,0], field, n)
-
-    ##Test the accuracy
-    #appr = (scalar[2,1,1,1,1] - scalar[0,1,1,1,1])/scalar[2,1,1,1,1]
-    #print(f'acctest = {appr}')
-
-    #Differentiate the scalar fields
-    dscalar = np.zeros(5)
-    dscalar[0] = (scalar[2,1,1,1,1] - scalar[0,1,1,1,1])/(2*stepr)
-    dscalar[1] = (scalar[1,2,1,1,1] - scalar[1,0,1,1,1])/(2*stepr)
-    dscalar[2] = (scalar[1,1,2,1,1] - scalar[1,1,0,1,1])/(2*stepr)
-    dscalar[3] = (scalar[1,1,1,2,1] - scalar[1,1,1,0,1])/(2*steptheta)
-    dscalar[4] = (scalar[1,1,1,1,2] - scalar[1,1,1,1,0])/(2*stepphi)
-
-    #print(f'dscalar = {dscalar}')
-    global dscalaravg
-    dscalaravg = (dscalaravg + np.linalg.norm(dscalar))/2
+    global energyavg
+    energyavg = (energyavg + energy[1,1,1,1,1])/2
 
     #Differentiate the energies
-    denergy = np.zeros(5)
     denergy[0] = (energy[2,1,1,1,1] - energy[0,1,1,1,1])/(2*stepr)
     denergy[1] = (energy[1,2,1,1,1] - energy[1,0,1,1,1])/(2*stepr)
     denergy[2] = (energy[1,1,2,1,1] - energy[1,1,0,1,1])/(2*stepr)
@@ -424,7 +458,7 @@ def acc(t, posvel, field, n, norot):
         vel[3:5] = 0
         acc[3:5] = 0
 
-    if acc[3] > 1e14:
+    if acc[3] > 1e10:
         print(f'The rotation is out of control, acc = {acc}')
     #print(f'Vel, acc = {vel}, {acc}')
     #global tickcount
@@ -433,7 +467,7 @@ def acc(t, posvel, field, n, norot):
     #print(f'Velocity/acc. is: {vel}, {acc}')
     return np.concatenate((vel, acc))
 
-##Finds the acceleration due to non-synthetic effects, i.e. the fast energies only.
+##Finds the acceleration due to non-synthetic effects, i.e. the fast energies only. #Obsolete
 def accnosyn(t, posvel, field, n, norot):
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
@@ -448,8 +482,8 @@ def accnosyn(t, posvel, field, n, norot):
     for i in range(3):
         point[i] = int(round(pos[i]/stepr))
         if point[i] >= nr-2 or point[i] < 2:
-            return np.concatenate((vel, np.zeros(5))) ##Sets the acceleration to zero if a
-                                                    ##a points outside the grid is sampled
+            return np.concatenate((vel, np.zeros(5))) ##Sets the acceleration to zero if 
+                                                      ##a point outside the grid is sampled
     point[3] = pos[3]
     point[4] = pos[4]
 
@@ -506,16 +540,18 @@ def accnosyn(t, posvel, field, n, norot):
 ##The spin subsystem is assumed to remain in the fast
 ##eigenstate labeled n. Runs until the time reaches tmax.
 ##The given initial conditions must be tuples.
-def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
+def solvedyn(pos, vel, field, n, norot=False, nosyn='False'):
     posvel = pos + vel
 
     #Reset average force counters
     global Faavg
     global dscalaravg
     global denergyavg
+    global energyavg
     Faavg = 0
     dscalaravg = 0
     denergyavg = 0
+    energyavg = 0
 
     #Find times to require ODE evaluation
     t_eval = np.linspace(0, tmax, 100000)
@@ -530,23 +566,19 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn=False):
     #tolphi = 1
     atol = [tolr, tolr, tolr, toltheta, tolphi, tolr/10, tolr/10, tolr/10, toltheta/10,
             tolphi/10]
-    if nosyn:
-        edgedistance.terminal = True
-        sol = solve_ivp(accnosyn, (0,tmax), posvel, events=edgedistance, args=(field, n,
-            norot), atol=atol, t_eval=t_eval)
-    else:
-        edgedistance.terminal = True
-        sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(field, n, norot), atol=atol, t_eval=t_eval)
+    edgedistance.terminal = True
+    sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(field, n, norot, nosyn), atol=atol, t_eval=t_eval)
 
     sol.Faavg = Faavg
     sol.denergyavg = denergyavg
     sol.dscalaravg = dscalaravg
+    sol.energyavg = energyavg
 
     return sol
 
 ##Event to terminate integration, returns distance to the closest edge minus a small
 ##correction to avoid hitting the edge
-def edgedistance(t, posvel, field, n, norot):
+def edgedistance(t, posvel, field, n, norot, nosyn):
     pos= posvel[0:3]
     mindist = np.amin(pos)
     maxdist = np.amax(pos)
@@ -561,13 +593,15 @@ def edgedistance(t, posvel, field, n, norot):
 
 ##Plotting function, takes a list of solutions sol from solve_ivp, a field field and displays an 
 ##interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn):
+def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams):
 
     #For testing print average acceleration components
     for stream in sol:
+        print(f'Statistics for stream starting at {stream.y[0:3,0]}')
         print(f'Faavg = {stream.Faavg}')
         print(f'dscalaravg = {stream.dscalaravg}')
         print(f'denergyavg = {stream.denergyavg}')
+        print(f'energyavg = {stream.energyavg}')
 
     fig, ax = plt.subplots(subplot_kw={'projection': '3d'})
     #fig = plt.figure()
@@ -591,15 +625,21 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn):
     By = field[1,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
     Bz = field[2,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
 
+
     for stream in sol:
     #Extract pos
+        #Set stream colour
+        try:
+            color = stream.color
+        except AttributeError:
+            color = 'red'
         pos = stream.y[0:3,:]
-        ax.plot3D(pos[0,:], pos[1,:], pos[2,:], color='red') #Plot the integrated path
+        ax.plot3D(pos[0,:], pos[1,:], pos[2,:], color=color) #Plot the integrated path
     #Plot magnetic field for testing purposes
     ##ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
     #plot = mlab.plot3d(pos[0,:], extent=[0,0,0,lablength,lablength,lablength])
 
 
-    plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}.png',
+    plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.png',
                 bbox_inches='tight')
     plt.show()

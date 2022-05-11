@@ -8,20 +8,21 @@ if __name__ == '__main__':
     #Set field and modes
     availablefieldtypes = ['simplewire', 'oppositecoils']
     fieldtype = 'oppositecoils'
-    I = 100 #Current parameter for the field
+    I = 10 #Current parameter for the field
     norot = False #Whether to ignore rotational degrees of freedom
-    nosyn = True #Whether to ignore synthetic fields
-    overwriteresult = False #Whether to overwrite previous ODE results
+    nosyn = 'False' #Whether to ignore synthetic fields
+    overwriteresult = True #Whether to overwrite previous ODE results
+    alternatestreams = True #Whether to use alternate swarming scheme
     
     #Define parameters
 
     nr = 101 #Number of points in field lattice
     lablength = 1e-3 #Cube side of lab in m
-    tmax = 0.1 #Trajectory time in s
-    J = 1e2 #Spin-spin coupling strength
-    Gamma = 1e9 #Spin-field coupling strength
+    tmax = 0.5 #Trajectory time in s
+    J = 1e5 #Spin-spin coupling strength
+    Gamma = 1e8 #Spin-field coupling strength
     
-    mass0 = 3.58e-25 #The total mass of the dumbbell in kg, as a placeholder this is the mass of
+    mass0 = 3.58e-27 #The total mass of the dumbbell in kg, as a placeholder this is the mass of
                      #two silver atoms
     len0 = 5e-5 #The distance between dumbbell edges in m
     mass = np.repeat(mass0, 5) #Full mass vector
@@ -47,12 +48,14 @@ if __name__ == '__main__':
     swarmgrid = np.insert(swarmgrid, 2, np.zeros(swarmgrid.shape[1:3]), axis=0)
     swarmgrid = np.insert(swarmgrid, 0, np.zeros(swarmgrid.shape[1:3]), axis=0)
     initposarray = initposarray[:,None,None] + swarmgrid
+    altinitpos = initposarray[:,1,1] #Starting position for alternate swarming method
     initvel = (1e-2, 0, 0, 0, 0)
     eigenstate = 2
 
     try: #Try to load pregenerated result
-        with open(f'saves/odesols/resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}.bin', 'rb') as file:
+        with open(f'saves/odesols/resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin', 'rb') as file:
             sol = pickle.load(file)
+            print(f'Loading result from file resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin')
     except FileNotFoundError:
         overwriteresult = True
 
@@ -67,17 +70,58 @@ if __name__ == '__main__':
         #Integrate paths
         print('Integrating dynamics . . . Please wait')
         sol = []
-        for i in range(initposarray.shape[1]):
-            for j in range(initposarray.shape[2]):
-                print(tuple(initposarray[:,i,j]))
-                try:
-                    sol.append(sn.solvedyn(tuple(initposarray[:,i,j]), initvel, field, eigenstate, norot, nosyn))
-                except Exception:
-                    print(f'A stream has failed to generate, most probably due to crossing the centre')
+        if alternatestreams:
+            print(f'Simulating start {tuple(altinitpos)} with synthetic fields')
+            try:
+                stream = sn.solvedyn(tuple(altinitpos[:]), initvel, field, eigenstate, norot, 'False')
+                stream.color = 'red'
+                sol.append(stream)
+                print(f'Stream number {len(sol)} has been integrated!')
+            except Exception as e:
+                print(e)
+                print(f'A stream has failed to generate, most probably due to crossing the centre')
+            print(f'Simulating start {tuple(altinitpos)} without synthetic fields')
+            try:
+                stream = sn.solvedyn(tuple(altinitpos[:]), initvel, field, eigenstate, norot, 'True')
+                stream.color = 'blue'
+                sol.append(stream)
+                print(f'Stream number {len(sol)} has been integrated!')
+            except Exception as e:
+                print(e)
+                print(f'A stream has failed to generate, most probably due to crossing the centre')
+            print(f'Simulating start {tuple(altinitpos)} without the magnetic synthetic field')
+            try:
+                stream = sn.solvedyn(tuple(altinitpos[:]), initvel, field, eigenstate, norot, 'Nomag')
+                stream.color = 'green'
+                sol.append(stream)
+                print(f'Stream number {len(sol)} has been integrated!')
+            except Exception as e:
+                print(e)
+                print(f'A stream has failed to generate, most probably due to crossing the centre')
+            print(f'Simulating start {tuple(altinitpos)} without the scalar synthetic field')
+            try:
+                stream = sn.solvedyn(tuple(altinitpos[:]), initvel, field, eigenstate, norot, 'Noscalar')
+                stream.color = 'orange'
+                sol.append(stream)
+                print(f'Stream number {len(sol)} has been integrated!')
+            except Exception as e:
+                print(e)
+                print(f'A stream has failed to generate, most probably due to crossing the centre')
+
+        else:
+            for i in range(initposarray.shape[1]):
+                for j in range(initposarray.shape[2]):
+                    print(tuple(initposarray[:,i,j]))
+                    try:
+                        sol.append(sn.solvedyn(tuple(initposarray[:,i,j]), initvel, field, eigenstate, norot, nosyn))
+                        print(f'Stream number {len(sol)} has been integrated!')
+                    except Exception as e:
+                        print(e)
+                        print(f'A stream has failed to generate, most probably due to crossing the centre')
         
         #Save the result
-        print(f'Saving result to resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}norot{norot}nosyn{nosyn}.bin')
-        with open(f'saves/odesols/resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}.bin', 'wb') as file:
+        print(f'Saving result to file resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin')
+        with open(f'saves/odesols/resultF{fieldtype}I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin', 'wb') as file:
             pickle.dump(sol, file)
 
     else:
@@ -98,4 +142,4 @@ if __name__ == '__main__':
 
 
     
-    sn.lineplot(sol, field, I, initvel, swarmnum, eigenstate, norot, nosyn)
+    sn.lineplot(sol, field, I, initvel, swarmnum, eigenstate, norot, nosyn, alternatestreams)
