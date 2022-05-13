@@ -6,7 +6,7 @@ from scipy.constants import mu_0 as mu
 from scipy.constants import pi as pi
 
 def simplewire(nr, lablength, I, overwrite=False):
-    ##Returns a placeholder field corresponding to a current through a wire along the
+    ##Returns a placeholder field corresponding to a current I through a wire along the
     ##x-axis. Saves the field and won't generate a preexisting field unless
     ##'overwrite=True' is called. Takes nr as the number of points along each axis.
 
@@ -44,8 +44,8 @@ def simplewire(nr, lablength, I, overwrite=False):
         return field
 
 def oppositecoils(nr, lablength, I, overwrite=False):
-    ##Returns a field corresponding to two currents of opposing directions through square coils 
-    ##placed orthogonally to the z-axis centred 1/4th from the edges. Saves the field and won't generate a preexisting field unless
+    ##Returns a field corresponding to two currents I of opposing directions through square coils 
+    ##placed orthogonally to the z-axis centred 1/4th from the edges of the lattice. Saves the field and won't generate a preexisting field unless
     ##'overwrite=True' is called. Takes nr as the number of points along each axis.
 
     #Initiate variables:
@@ -53,7 +53,6 @@ def oppositecoils(nr, lablength, I, overwrite=False):
     generate = False #Whether the field needs to be generated
 
     #Positions of all flowing currents below:
-    #qindex = int(np.floor(nr/4))
     qindex = int(nr/3)
     wire1 = np.array([-qindex,-qindex]) #Current in positive x close to z=0 and y=0 (pos in y,z)
     wire2 = np.array([-qindex,nr-1+qindex]) #Current in positive y close to z=0 and far from x=0 (pos in z,x)
@@ -177,31 +176,3 @@ def cart_to_sph(cart):
     sph[1] = np.arctan2(np.sqrt(xsqysq), cart[2]) #Polar angle theta
     sph[2] = np.arctan2(cart[1],cart[0]) #Azimuthal angle phi
     return sph
-
-        
-def sliceplot(field):
-    ##Plots the given field in the y-z-plane at x=0
-
-    #Load the slice of B-values at x=0, indexed after y, z.
-    By = field.sel(direc="By")[0,:,:]
-    Bz = field.sel(direc="Bz")[0,:,:]
-    #By = By.drop(dim="x")
-    #Bz = Bz.drop(dim="x")
-    y = np.arange(field.sizes["y"])
-    z = np.arange(field.sizes["z"])
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    #Plot neat field lines
-    color = np.array(2 * np.log(np.hypot(By, Bz) + 1e-10))
-    #Note that streamplot unfortunately indexes the velocities as [vertical, horizontal],
-    #such that this yields z on the horizontal and y on the vertical.
-    ax.streamplot(z, y, Bz, By, linewidth=1,
-            cmap=plt.cm.inferno, color=color, density=2, arrowstyle='->', arrowsize=1.5)
-
-    #Touch up appearance and show plot
-    plt.xlabel('Position along z-axis')
-    plt.ylabel('Position along y-axis')
-    plt.show()
-
-

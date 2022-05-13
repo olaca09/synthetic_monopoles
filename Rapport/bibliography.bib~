@@ -6,7 +6,8 @@
         {10.1098/rspa.1931.0130}, URL =
         {https://royalsocietypublishing.org/doi/abs/10.1098/rspa.1931.0130}, eprint =
         {https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.1931.0130}}
-@Article{castelnovo, author={Castelnovo, C. and Moessner, R. and Sondhi, S. L.}, title={Magnetic monopoles in spin ice}, journal={Nature}, year={2008}, month={Jan}, day={01}, volume={451}, number={7174}, pages={42-45}, abstract={We are familiar with elementary particles that carry either negative or positive electric charge, such as electrons and protons, but there is no evidence of elementary particles with a net magnetic charge. Magnets tend to come with inseparable north and south poles, and there are no known magnetic monopoles despite concerted efforts to find them. But an intriguing theoretical study now proposes that magnetic monopoles may exist, not as elementary particles, but as emergent particles in exotic condensed matter magnetic systems such as 'spin ice'. The theory, based on an analogy to fractional electric charges seen, for example, in quantum Hall systems in two dimensions, can explain a mysterious phase transition that has been observed experimentally in spin ice. The cover, by Alessandro Canossa, depicts a magnetic monopole (red sphere) emerging from break-up of the dipole moment (arrows) of the underlying electronic degrees of freedom in spin ice.}, issn={1476-4687}, doi={10.1038/nature06433}, url={https://doi.org/10.1038/nature06433} }
+@Article{castelnovo, author={Castelnovo, C. and Moessner, R. and Sondhi, S. L.},
+        title={Magnetic monopoles in spin ice}, journal={Nature}, year={2008}, day={01}, volume={451}, number={7174}, pages={42-45}, abstract={We are familiar with elementary particles that carry either negative or positive electric charge, such as electrons and protons, but there is no evidence of elementary particles with a net magnetic charge. Magnets tend to come with inseparable north and south poles, and there are no known magnetic monopoles despite concerted efforts to find them. But an intriguing theoretical study now proposes that magnetic monopoles may exist, not as elementary particles, but as emergent particles in exotic condensed matter magnetic systems such as 'spin ice'. The theory, based on an analogy to fractional electric charges seen, for example, in quantum Hall systems in two dimensions, can explain a mysterious phase transition that has been observed experimentally in spin ice. The cover, by Alessandro Canossa, depicts a magnetic monopole (red sphere) emerging from break-up of the dipole moment (arrows) of the underlying electronic degrees of freedom in spin ice.}, issn={1476-4687}, doi={10.1038/nature06433}, url={https://doi.org/10.1038/nature06433} }
 @article{
 ray,
 author = {M. W. Ray  and E. Ruokokoski  and K. Tiurev  and M. Möttönen  and D. S. Hall },
@@ -43,24 +44,15 @@ eprint = {https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.1984.0023}
     abstract = { A quantal system in an eigenstate, slowly transported round a circuit C by varying parameters R in its Hamiltonian Ĥ(R), will acquire a geometrical phase factor exp{iγ(C)} in addition to the familiar dynamical phase factor. An explicit general formula for γ(C) is derived in terms of the spectrum and eigenstates of Ĥ(R) over a surface spanning C. If C lies near a degeneracy of Ĥ, γ(C) takes a simple form which includes as a special case the sign change of eigenfunctions of real symmetric matrices round a degeneracy. As an illustration γ(C) is calculated for spinning particles in slowly-changing magnetic fields; although the sign reversal of spinors on rotation is a special case, the effect is predicted to occur for bosons as well as fermions, and a method for observing it is proposed. It is shown that the Aharonov-Bohm effect can be interpreted as a geometrical phase factor. }
 }
 @article{eriksson,
-	doi = {10.1103/physreva.101.050101},
-  
 	url = {https://doi.org/10.1103%2Fphysreva.101.050101},
-  
 	year = 2020,
-	month = {may},
-  
 	publisher = {American Physical Society ({APS})},
-  
 	volume = {101},
-  
 	number = {5},
-  
 	author = {Andreas Eriksson and Erik Sjöqvist},
-  
 	title = {Monopole field textures in interacting spin systems},
-  
-	journal = {Physical Review A}
+	journal = {Physical Review A},
+	doi = {10.1103/physreva.101.050101}
 }
 @article{bo,
 author = {Born, M. and Oppenheimer, R.},
@@ -81,7 +73,6 @@ and Fock, V.},
 title={Beweis des Adiabatensatzes},
 journal={Zeitschrift f{\"u}r Physik},
 year={1928},
-month={Mar},
 day={01},
 volume={51},
 number={3},
@@ -95,7 +86,6 @@ url={https://doi.org/10.1007/BF01343193}
 	doi = {10.1088/0305-4470/23/13/004},
 	url = {https://doi.org/10.1088/0305-4470/23/13/004},
 	year = 1990,
-	month = {jul},
 	publisher = {{IOP} Publishing},
 	volume = {23},
 	number = {13},
@@ -105,7 +95,7 @@ url={https://doi.org/10.1007/BF01343193}
 	journal = {Journal of Physics A: Mathematical and General},
 	abstract = {The Born-Oppenheimer approximation implies gauge potentials of electric and magnetic type in the Hamiltonian governing the slow part of the system. Here the authors demonstrate that the electric gauge potential is repulsive near points in the space of slow parameters at which energies of the fast system are degenerate. The repulsion is an inverse-cube force.}
 }
-@inbook{krane,
+@book{krane,
   title={Introductory Nuclear Physics},
   pages={606},
   author={Krane, K.S. and Halliday, D. and John Wiley \& Sons},
@@ -124,7 +114,6 @@ url={https://doi.org/10.1007/BF01343193}
   pages = {1593--1596},
   numpages = {0},
   year = {1987},
-  month = {Apr},
   publisher = {American Physical Society},
   doi = {10.1103/PhysRevLett.58.1593},
   url = {https://link.aps.org/doi/10.1103/PhysRevLett.58.1593}
@@ -152,14 +141,13 @@ year = {2015}
   pages = {042104},
   numpages = {5},
   year = {2004},
-  month = {Oct},
   publisher = {American Physical Society},
   doi = {10.1103/PhysRevA.70.042104},
   url = {https://link.aps.org/doi/10.1103/PhysRevA.70.042104}
 }
-@inbook{numerical,
+@book{numerical,
 author = {Press, William H. and Teukolsky, Saul A. and Vetterling, William T. and Flannery, Brian P.},
-pages = {230}
+pages = {230},
 title = {Numerical Recipes 3rd Edition: The Art of Scientific Computing},
 year = {2007},
 isbn = {0521880688},

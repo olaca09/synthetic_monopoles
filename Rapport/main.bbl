@@ -70,7 +70,7 @@
          giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod},
       }}%
     }
-    \strng{namehash}{CCMRSSL1}
+    \strng{namehash}{CC+1}
     \strng{fullhash}{CCMRSSL1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
@@ -102,7 +102,6 @@
     \field{volume}{451}
     \field{journaltitle}{Nature}
     \field{year}{2008}
-    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{ray}{article}{}
@@ -247,9 +246,6 @@
     \strng{fullhash}{EASE1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1103/physreva.101.050101
-    \endverb
     \field{number}{5}
     \field{title}{Monopole field textures in interacting spin systems}
     \verb{url}
@@ -258,10 +254,9 @@
     \field{volume}{101}
     \field{journaltitle}{Physical Review A}
     \field{year}{2020}
-    \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{krane}{inbook}{}
+  \entry{krane}{book}{}
     \name{author}{3}{}{%
       {{hash=KK}{%
          family={Krane},
@@ -286,7 +281,7 @@
     \list{publisher}{1}{%
       {Wiley}%
     }
-    \strng{namehash}{KKHDSJW1}
+    \strng{namehash}{KK+1}
     \strng{fullhash}{KKHDSJW1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
@@ -337,7 +332,6 @@
     \field{volume}{51}
     \field{journaltitle}{Zeitschrift f{\"u}r Physik}
     \field{year}{1928}
-    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{aharonovanandan}{article}{}
@@ -374,7 +368,6 @@
     \field{volume}{58}
     \field{journaltitle}{Phys. Rev. Lett.}
     \field{year}{1987}
-    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{erikrev}{article}{}
@@ -455,7 +448,6 @@
     \field{volume}{70}
     \field{journaltitle}{Phys. Rev. A}
     \field{year}{2004}
-    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{sakurai}{book}{}
@@ -566,10 +558,9 @@
     \field{volume}{23}
     \field{journaltitle}{Journal of Physics A: Mathematical and General}
     \field{year}{1990}
-    \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{numerical}{inbook}{}
+  \entry{numerical}{book}{}
     \name{author}{4}{}{%
       {{hash=PWH}{%
          family={Press},

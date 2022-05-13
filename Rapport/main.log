@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.4.19)  11 MAY 2022 11:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.4.19)  13 MAY 2022 12:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -38,7 +38,10 @@ Package: babel 2022/02/26 3.73 The Babel package
  (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count194
- (/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
+ (/usr/share/texmf-dist/tex/generic/babel-swedish/swedish.ldf
+Language: swedish 2021/02/06 v2.3e Swedish support from the babel system
+Package babel Info: Making " an active character on input line 90.
+) (/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
@@ -369,7 +372,10 @@ Package biblatex Info: ... file 'blx-dm.def' found.
 File: blx-dm.def 2022/02/02 v3.17 biblatex localization (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'numeric.dbx' not found.
+Package biblatex Info: ... file 'phys.dbx' found.
+ (/usr/share/texmf-dist/tex/latex/biblatex-phys/phys.dbx
+File: phys.dbx 2019/12/03 v1.1b biblatex database model extension
+)
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@afterword=\count340
@@ -487,6 +493,14 @@ File: biblatex.def 2022/02/02 v3.17 biblatex compatibility (PK/MW)
 \biburllcskip=\muskip21
 \c@smartand=\count416
 )
+Package biblatex Info: Trying to load bibliography style 'phys'...
+Package biblatex Info: ... file 'phys.bbx' found.
+ (/usr/share/texmf-dist/tex/latex/biblatex-phys/phys.bbx
+File: phys.bbx 2019/12/03 v1.1b biblatex bibliography style
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
+ (/usr/share/texmf-dist/tex/latex/biblatex/bbx/numeric-comp.bbx
+File: numeric-comp.bbx 2022/02/02 v3.17 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
@@ -497,11 +511,19 @@ Package biblatex Info: ... file 'standard.bbx' found.
 File: standard.bbx 2022/02/02 v3.17 biblatex bibliography style (PK/MW)
 \c@bbx:relatedcount=\count417
 \c@bbx:relatedtotal=\count418
-))
-Package biblatex Info: Trying to load citation style 'numeric'...
-Package biblatex Info: ... file 'numeric.cbx' found.
- (/usr/share/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx
-File: numeric.cbx 2022/02/02 v3.17 biblatex citation style (PK/MW)
+))))
+Package biblatex Info: Trying to load citation style 'phys'...
+Package biblatex Info: ... file 'phys.cbx' found.
+ (/usr/share/texmf-dist/tex/latex/biblatex-phys/phys.cbx
+File: phys.cbx 2019/12/03 v1.1b biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.cbx' found.
+ (/usr/share/texmf-dist/tex/latex/biblatex/cbx/numeric-comp.cbx
+File: numeric-comp.cbx 2022/02/02 v3.17 biblatex citation style (PK/MW)
+\c@cbx@tempcnta=\count419
+\c@cbx@tempcntb=\count420
+\c@cbx@tempcntc=\count421
+\c@cbx@tempcntd=\count422
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -513,7 +535,7 @@ Package biblatex Info: Redefining '\textcites'.
 Package biblatex Info: Redefining '\cites'.
 Package biblatex Info: Redefining '\parencites'.
 Package biblatex Info: Redefining '\smartcites'.
-)
+))
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.cfg
@@ -528,22 +550,22 @@ Package biblatex Info: ... and expl3
  (/usr/share/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
 Package: blx-case-expl3 2022/02/02 v3.17 expl3 case changing code for biblatex
 )) (/usr/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count419
+\lst@mode=\count423
 \lst@gtempboxa=\box55
 \lst@token=\toks26
-\lst@length=\count420
+\lst@length=\count424
 \lst@currlwidth=\dimen162
-\lst@column=\count421
-\lst@pos=\count422
+\lst@column=\count425
+\lst@pos=\count426
 \lst@lostspace=\dimen163
 \lst@width=\dimen164
-\lst@newlines=\count423
-\lst@lineno=\count424
+\lst@newlines=\count427
+\lst@lineno=\count428
 \lst@maxwidth=\dimen165
  (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count425
-\lst@skipnumbers=\count426
+\c@lstnumber=\count429
+\lst@skipnumbers=\count430
 \lst@framebox=\box56
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
@@ -556,9 +578,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count427
-\Gm@cntv=\count428
-\c@Gm@tempcnt=\count429
+\Gm@cnth=\count431
+\Gm@cntv=\count432
+\c@Gm@tempcnt=\count433
 \Gm@bindingoffset=\dimen166
 \Gm@wd@mp=\dimen167
 \Gm@odd@mp=\dimen168
@@ -576,7 +598,7 @@ Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
 \XKV@toks=\toks28
 \XKV@tempa@toks=\toks29
 )
-\XKV@depth=\count430
+\XKV@depth=\count434
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/share/texmf-dist/tex/latex/dsserif/dsserif.sty
 Package: dsserif 2021/10/29 v1.031 U/dsserif
@@ -597,7 +619,8 @@ Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks31
 \pgfkeys@temptoks=\toks32
- (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks33
 ))
 \pgf@x=\dimen176
@@ -612,40 +635,39 @@ Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@yd=\dimen185
 \w@pgf@writea=\write4
 \r@pgf@reada=\read4
-\c@pgf@counta=\count431
-\c@pgf@countb=\count432
-\c@pgf@countc=\count433
-\c@pgf@countd=\count434
+\c@pgf@counta=\count435
+\c@pgf@countb=\count436
+\c@pgf@countc=\count437
+\c@pgf@countd=\count438
 \t@pgf@toka=\toks34
 \t@pgf@tokb=\toks35
 \t@pgf@tokc=\toks36
-\pgf@sys@id@count=\count435
+\pgf@sys@id@count=\count439
  (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
 )
 Driver file for pgf: pgfsys-pdftex.def
  (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
-
-(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+ (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
 ))) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count436
-\pgfsyssoftpath@bigbuffer@items=\count437
+\pgfsyssoftpath@smallbuffer@items=\count440
+\pgfsyssoftpath@bigbuffer@items=\count441
 ) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen186
-\pgfmath@count=\count438
+\pgfmath@count=\count442
 \pgfmath@box=\box58
 \pgfmath@toks=\toks37
 \pgfmath@stack@operand=\toks38
 \pgfmath@stack@operation=\toks39
 ) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count439
+\c@pgfmathroundto@lastzeros=\count443
 )) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@picminx=\dimen187
@@ -675,19 +697,19 @@ File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfpic=\box59
 \pgf@hbox=\box60
 \pgf@layerbox@main=\box61
-\pgf@picture@serial@count=\count440
+\pgf@picture@serial@count=\count444
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgflinewidth=\dimen261
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@pt@x=\dimen262
 \pgf@pt@y=\dimen263
 \pgf@pt@temp=\dimen264
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -697,8 +719,8 @@ File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@max=\dimen266
-\pgf@sys@shading@range@num=\count441
-\pgf@shadingcount=\count442
+\pgf@sys@shading@range@num=\count445
+\pgf@shadingcount=\count446
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
@@ -734,7 +756,7 @@ Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
 Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count443
+\pgf@plot@mark@count=\count447
 \pgfplotmarksize=\dimen271
 )
 \tikz@lastx=\dimen272
@@ -749,27 +771,28 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@figbox@bg=\box65
 \tikz@tempbox=\box66
 \tikz@tempbox@bg=\box67
-\tikztreelevel=\count444
-\tikznumberofchildren=\count445
-\tikznumberofcurrentchild=\count446
-\tikz@fig@count=\count447
+\tikztreelevel=\count448
+\tikznumberofchildren=\count449
+\tikznumberofcurrentchild=\count450
+\tikz@fig@count=\count451
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count448
-\pgfmatrixcurrentcolumn=\count449
-\pgf@matrix@numberofcolumns=\count450
+\pgfmatrixcurrentrow=\count452
+\pgfmatrixcurrentcolumn=\count453
+\pgf@matrix@numberofcolumns=\count454
 )
-\tikz@expandcount=\count451
+\tikz@expandcount=\count455
  (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-))) (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.sty
+)))
+(/usr/share/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2021-02-22 v5.2l context-sensitive quotations (JAW)
-\csq@reset=\count452
-\csq@gtype=\count453
-\csq@glevel=\count454
-\csq@qlevel=\count455
-\csq@maxlvl=\count456
-\csq@tshold=\count457
+\csq@reset=\count456
+\csq@gtype=\count457
+\csq@glevel=\count458
+\csq@qlevel=\count459
+\csq@maxlvl=\count460
+\csq@tshold=\count461
 \csq@ltx@everypar=\toks42
  (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2021-02-22 v5.2l csquotes generic definitions (JAW)
@@ -778,8 +801,7 @@ Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
  (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
-))
-(/usr/share/texmf-dist/tex/latex/subfig/subfig.sty
+)) (/usr/share/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
  (/usr/share/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2022/03/01 v3.6b Customizing captions (AR)
@@ -795,31 +817,31 @@ Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
 \caption@hangindent=\dimen287
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count458
-\c@continuedfloat=\count459
+\c@caption@flags=\count462
+\c@continuedfloat=\count463
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
-\c@KVtest=\count460
+\c@KVtest=\count464
 \sf@farskip=\skip78
 \sf@captopadj=\dimen288
 \sf@capskip=\skip79
 \sf@nearskip=\skip80
-\c@subfigure=\count461
-\c@subfigure@save=\count462
-\c@lofdepth=\count463
-\c@subtable=\count464
-\c@subtable@save=\count465
-\c@lotdepth=\count466
+\c@subfigure=\count465
+\c@subfigure@save=\count466
+\c@lofdepth=\count467
+\c@subtable=\count468
+\c@subtable@save=\count469
+\c@lotdepth=\count470
 \sf@top=\skip81
 \sf@bottom=\skip82
 ) (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count467
-\l__lipsum_a_int=\count468
-\l__lipsum_b_int=\count469
+\g__lipsum_par_int=\count471
+\l__lipsum_a_int=\count472
+\l__lipsum_b_int=\count473
  (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (/usr/share/texmf-dist/tex/latex/subfiles/subfiles.sty
 Package: subfiles 2020/11/14 v2.2 Multi-file projects (package)
  (/usr/share/texmf-dist/tex/latex/import/import.sty
@@ -836,7 +858,7 @@ File: pgflibraryarrows.meta.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfdecoratedinputsegmentcompleteddistance=\dimen295
 \pgfdecoratedinputsegmentremainingdistance=\dimen296
 \pgf@decorate@distancetomove=\dimen297
-\pgf@decorate@repeatstate=\count470
+\pgf@decorate@repeatstate=\count474
 \pgfdecorationsegmentamplitude=\dimen298
 \pgfdecorationsegmentlength=\dimen299
 )
@@ -855,36 +877,36 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/DSSerif/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/DSSerif/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count471
+\scratchcounter=\count475
 \scratchdimen=\dimen300
 \scratchbox=\box69
-\nofMPsegments=\count472
-\nofMParguments=\count473
+\nofMPsegments=\count476
+\nofMParguments=\count477
 \everyMPshowfont=\toks43
-\MPscratchCnt=\count474
+\MPscratchCnt=\count478
 \MPscratchDim=\dimen301
-\MPnumerator=\count475
-\makeMPintoPDFobject=\count476
+\MPnumerator=\count479
+\makeMPintoPDFobject=\count480
 \everyMPtoPDFconversion=\toks44
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -898,7 +920,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Package hyperref Info: Link coloring OFF on input line 51.
+Package hyperref Info: Link coloring OFF on input line 52.
  (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
@@ -906,11 +928,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count477
+\c@section@level=\count481
 )
-LaTeX Info: Redefining \ref on input line 51.
-LaTeX Info: Redefining \pageref on input line 51.
-LaTeX Info: Redefining \nameref on input line 51.
+LaTeX Info: Redefining \ref on input line 52.
+LaTeX Info: Redefining \pageref on input line 52.
+LaTeX Info: Redefining \nameref on input line 52.
  (./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
@@ -919,6 +941,11 @@ Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2022/02/02 v3.17 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load language 'swedish'...
+Package biblatex Info: ... file 'swedish.lbx' found.
+ (/usr/share/texmf-dist/tex/latex/biblatex/lbx/swedish.lbx
+File: swedish.lbx 2022/02/02 v3.17 biblatex localization (PK/MW)
 )
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
@@ -931,40 +958,17 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'castelnovo':
-(biblatex)                - Invalid format of field 'month'.
-
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'eriksson':
-(biblatex)                - Invalid format of field 'month'.
-
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'adiab':
-(biblatex)                - Invalid format of field 'month'.
-
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'aharonovanandan':
-(biblatex)                - Invalid format of field 'month'.
-
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'yi':
-(biblatex)                - Invalid format of field 'month'.
-
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'berrylim':
-(biblatex)                - Invalid format of field 'month'.
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-Package biblatex Info: Reference section=0 on input line 51.
-Package biblatex Info: Reference segment=0 on input line 51.
-\c@lstlisting=\count478
+LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
+Package biblatex Info: Reference section=0 on input line 52.
+Package biblatex Info: Reference segment=0 on input line 52.
+\c@lstlisting=\count482
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1004,7 +1008,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 (./title.tex
-<figures/UU_logo.png, id=135, 630.355pt x 601.24625pt>
+<figures/UU_logo.png, id=139, 630.355pt x 601.24625pt>
 File: figures/UU_logo.png Graphic file (type png)
 <use figures/UU_logo.png>
 Package pdftex.def Info: figures/UU_logo.png  used on input line 13.
@@ -1014,208 +1018,196 @@ Package pdftex.def Info: figures/UU_logo.png  used on input line 13.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/UU_logo.png>]) (./abstract.tex)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.56 \newpage
-              [1] (./main.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
- (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
- (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+l.57 \newpage
+              [1] (./main.toc)
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
- [2] (./introduction.tex [3]) (./background.tex
-<figures/top_train.png, id=214, 350.4pt x 183.96pt>
+ [2] (./introduction.tex) [3] (./background.tex
+<figures/top_train.png, id=217, 350.4pt x 183.96pt>
 File: figures/top_train.png Graphic file (type png)
 <use figures/top_train.png>
 Package pdftex.def Info: figures/top_train.png  used on input line 21.
 (pdftex.def)             Requested size: 362.37569pt x 190.25844pt.
- [4 <./figures/top_train.png>]
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
 (Font)              scaled to size 10.0pt on input line 46.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
 (Font)              scaled to size 7.0pt on input line 46.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
 (Font)              scaled to size 5.0pt on input line 46.
- [5]) (./derivation.tex [6] [7]
+ [4 <./figures/top_train.png>] [5]) (./derivation.tex [6] [7]
 \matrixtoks=\toks45
 \matrixtoks=\toks46
 \matrixtoks=\toks47
 \matrixtoks=\toks48
  [8]
-Overfull \hbox (61.31306pt too wide) detected at line 261
+Overfull \hbox (61.31306pt too wide) detected at line 262
 []
  []
 
 [9] [10] [11] [12]
-Overfull \hbox (20.96136pt too wide) detected at line 542
+Overfull \hbox (20.96136pt too wide) detected at line 543
 []
  []
 
-) (./simulation.tex [13]) (./results.tex [14]
-<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=364, 311.4837pt x 289.8027pt>
+) (./simulation.tex [13]) [14] (./results.tex
+<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=368, 311.4837pt x 289.8027pt>
 File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
 <use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 44.
+Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 43.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
-(Font)              scaled to size 8.0pt on input line 44.
+(Font)              scaled to size 8.0pt on input line 43.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
-(Font)              scaled to size 6.0pt on input line 44.
-<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=365, 311.4837pt x 289.8027pt>
+(Font)              scaled to size 6.0pt on input line 43.
+<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=369, 311.4837pt x 289.8027pt>
 File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
 <use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 46.
+Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 45.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=366, 311.4837pt x 289.8027pt>
+<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=370, 311.4837pt x 289.8027pt>
 File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
 <use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 48.
+Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 47.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=368, 311.4837pt x 289.8027pt>
+<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=372, 311.4837pt x 289.8027pt>
 File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
 <use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 61.
+Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 60.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=369, 311.4837pt x 289.8027pt>
+<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=373, 311.4837pt x 289.8027pt>
 File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
 <use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 65.
+Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 64.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=370, 311.4837pt x 289.8027pt>
+<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=374, 311.4837pt x 289.8027pt>
 File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
 <use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 69.
+Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 68.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
- [15 <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>]
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=393, 311.4837pt x 289.8027pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=376, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 91.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 90.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=394, 311.4837pt x 289.8027pt>
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=377, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 94.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 93.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=395, 311.4837pt x 289.8027pt>
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=378, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 97.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 96.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=403, 311.4837pt x 289.8027pt>
+[15 <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>]
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=402, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 138.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 137.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=404, 311.4837pt x 289.8027pt>
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=403, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 143.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 142.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=405, 311.4837pt x 289.8027pt>
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=404, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 148.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 147.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png, id=407, 311.4837pt x 289.8027pt>
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png, id=406, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png  used on input line 163.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png  used on input line 162.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png, id=408, 311.4837pt x 289.8027pt>
+<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png, id=407, 311.4837pt x 289.8027pt>
 File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png Graphic file (type png)
 <use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png  used on input line 168.
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png  used on input line 167.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16 <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>]
-<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=428, 311.4837pt x 289.8027pt>
+[16 <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>]
+<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=432, 311.4837pt x 289.8027pt>
 File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
 <use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 196.
+Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 195.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=429, 311.4837pt x 289.8027pt>
+<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=433, 311.4837pt x 289.8027pt>
 File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
 <use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 201.
+Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 200.
 (pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
  [17 <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png> <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>]
-<figures/n2m-25/(0,2)-comp1.png, id=450, 678.6153pt x 714.0276pt>
+<figures/n2m-25/(0,2)-comp1.png, id=454, 678.6153pt x 714.0276pt>
 File: figures/n2m-25/(0,2)-comp1.png Graphic file (type png)
 <use figures/n2m-25/(0,2)-comp1.png>
-Package pdftex.def Info: figures/n2m-25/(0,2)-comp1.png  used on input line 230.
+Package pdftex.def Info: figures/n2m-25/(0,2)-comp1.png  used on input line 229.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-25/(0,2)-comp2.png, id=451, 678.6153pt x 714.0276pt>
+<figures/n2m-25/(0,2)-comp2.png, id=455, 678.6153pt x 714.0276pt>
 File: figures/n2m-25/(0,2)-comp2.png Graphic file (type png)
 <use figures/n2m-25/(0,2)-comp2.png>
-Package pdftex.def Info: figures/n2m-25/(0,2)-comp2.png  used on input line 233.
+Package pdftex.def Info: figures/n2m-25/(0,2)-comp2.png  used on input line 232.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp1.png, id=455, 678.6153pt x 714.0276pt>
+<figures/n2m-27/(1,1)-comp1.png, id=459, 678.6153pt x 714.0276pt>
 File: figures/n2m-27/(1,1)-comp1.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp1.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp1.png  used on input line 255.
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp1.png  used on input line 254.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp2.png, id=456, 678.6153pt x 714.0276pt>
+<figures/n2m-27/(1,1)-comp2.png, id=460, 678.6153pt x 714.0276pt>
 File: figures/n2m-27/(1,1)-comp2.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp2.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp2.png  used on input line 258.
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp2.png  used on input line 257.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/n2m-27/(1,1)-comp3.png, id=460, 678.6153pt x 714.0276pt>
+[18 <./figures/n2m-25/(0,2)-comp1.png> <./figures/n2m-25/(0,2)-comp2.png>]
+<figures/n2m-27/(1,1)-comp3.png, id=477, 678.6153pt x 714.0276pt>
 File: figures/n2m-27/(1,1)-comp3.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp3.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp3.png  used on input line 283.
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp3.png  used on input line 282.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp4.png, id=461, 678.6153pt x 714.0276pt>
+<figures/n2m-27/(1,1)-comp4.png, id=478, 678.6153pt x 714.0276pt>
 File: figures/n2m-27/(1,1)-comp4.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp4.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp4.png  used on input line 286.
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp4.png  used on input line 285.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp5.png, id=462, 678.6153pt x 714.0276pt>
+<figures/n2m-27/(1,1)-comp5.png, id=479, 678.6153pt x 714.0276pt>
 File: figures/n2m-27/(1,1)-comp5.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp5.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp5.png  used on input line 289.
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp5.png  used on input line 288.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp6.png, id=463, 678.6153pt x 714.0276pt>
+<figures/n2m-27/(1,1)-comp6.png, id=480, 678.6153pt x 714.0276pt>
 File: figures/n2m-27/(1,1)-comp6.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp6.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp6.png  used on input line 292.
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp6.png  used on input line 291.
 (pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./discussion.tex [18 <./figures/n2m-25/(0,2)-comp1.png> <./figures/n2m-25/(0,2)-comp2.png>] [19 <./figures/n2m-27/(1,1)-comp1.png> <./figures/n2m-27/(1,1)-comp2.png>] [20 <./figures/n2m-27/(1,1)-comp3.png> <./figures/n2m-27/(1,1)-comp4.png> <./figures/n2m-27/(1,1)-comp5.png> <./figures/n2m-27/(1,1)-comp6.png>]) [21
+) (./discussion.tex [19 <./figures/n2m-27/(1,1)-comp1.png> <./figures/n2m-27/(1,1)-comp2.png>] [20 <./figures/n2m-27/(1,1)-comp3.png> <./figures/n2m-27/(1,1)-comp4.png> <./figures/n2m-27/(1,1)-comp5.png> <./figures/n2m-27/(1,1)-comp6.png>] [21
 
-]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 74.
- (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-Overfull \hbox (9.27829pt too wide) in paragraph at lines 74--74
-\T1/cmtt/m/n/10 onlinelibrary . wiley . com / doi / pdf / 10 . 1002 / andp . 19273892002$[]\T1/cmr/m/n/10 . \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt/m/n/10 https : / / onlinelibrary .
- []
-
-[22] (./appendix.tex
+]) (./conclusions.tex [22]) [23] [24] (./appendix.tex
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 14.
- (../scripts/magfield.py [23] [24] [25] [26]) (../scripts/synfieldtools.py [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38]) (../scripts/synfieldsolver.py [39] [40] [41])) [42] (./main.aux)
+ (../scripts/magfield.py [25] [26] [27] [28]) (../scripts/synfieldtools.py [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]) (../scripts/synfieldsolver.py [40] [41] [42])) [43] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0FACAD3E49371CC5FB464C398B687376;4774.
+(rerunfilecheck)             Checksum: 0D65A369D8ECB8F531A0D59297121C72;4833.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -1226,19 +1218,19 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38116 strings out of 478276
- 729884 string characters out of 5853013
- 1830195 words of memory out of 5000000
- 54586 multiletter control sequences out of 15000+600000
- 489744 words of font info for 80 fonts, out of 8000000 for 9000
+ 38216 strings out of 478276
+ 732352 string characters out of 5853013
+ 1845773 words of memory out of 5000000
+ 54722 multiletter control sequences out of 15000+600000
+ 488905 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,20n,133p,1839b,2263s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/dsserif/DSSerif.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0
-800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (43 pages, 3011714 bytes).
+ 85i,20n,133p,1839b,2262s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/dsserif/DSSerif.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm10
+00.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on main.pdf (44 pages, 2975353 bytes).
 PDF statistics:
- 1960 PDF objects out of 2073 (max. 8388607)
- 1771 compressed objects within 18 object streams
- 1082 named destinations out of 1200 (max. 500000)
- 399 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1874 PDF objects out of 2073 (max. 8388607)
+ 1691 compressed objects within 17 object streams
+ 1032 named destinations out of 1200 (max. 500000)
+ 407 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -11,18 +11,18 @@ if __name__ == '__main__':
     I = 10 #Current parameter for the field
     norot = False #Whether to ignore rotational degrees of freedom
     nosyn = 'False' #Whether to ignore synthetic fields
-    overwriteresult = True #Whether to overwrite previous ODE results
-    alternatestreams = True #Whether to use alternate swarming scheme
+    overwriteresult = False #Whether to overwrite previous ODE results
+    alternatestreams = False #Whether to use alternate swarming scheme
     
     #Define parameters
 
     nr = 101 #Number of points in field lattice
     lablength = 1e-3 #Cube side of lab in m
-    tmax = 0.5 #Trajectory time in s
+    tmax = 0.1 #Trajectory time in s
     J = 1e5 #Spin-spin coupling strength
-    Gamma = 1e8 #Spin-field coupling strength
+    Gamma = 1e10 #Spin-field coupling strength
     
-    mass0 = 3.58e-27 #The total mass of the dumbbell in kg, as a placeholder this is the mass of
+    mass0 = 3.58e-25 #The total mass of the dumbbell in kg, as a placeholder this is the mass of
                      #two silver atoms
     len0 = 5e-5 #The distance between dumbbell edges in m
     mass = np.repeat(mass0, 5) #Full mass vector
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     if fieldtype == 'simplewire':
         field = mg.simplewire(nr, lablength, I)
     if fieldtype == 'oppositecoils':
-        field = mg.oppositecoils(nr, lablength, I, overwrite=False)
+        field = mg.oppositecoils(nr, lablength, I)
         
     if overwriteresult: #Only perform calculations if result not avaiable on save:
     
@@ -126,20 +126,14 @@ if __name__ == '__main__':
 
     else:
         print('Loading previously generated result')
-    #Extract positions and orientations
+    #Extract positions and orientations of the first stream
     pos = sol[0].y[0:3,:]
     vel = sol[0].y[5:8,:]
     ori = sol[0].y[3:5,:]
     #Print the result
     print('Times sampled:')
     print(sol[0].t)
-#    print('Path integrated:')
-#    print(pos)
     print('Rotation integrated:')
     print(ori)
-#    print('Velocity integrated:')
-#    print(vel)
-
-
     
     sn.lineplot(sol, field, I, initvel, swarmnum, eigenstate, norot, nosyn, alternatestreams)

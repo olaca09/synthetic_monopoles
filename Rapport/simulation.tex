@@ -2,7 +2,8 @@
 
 \begin{document}
 \section{Simulation}\label{sec:simulation}
-The equation of motion \ref{eq:dynfin} represents the furthest point symbolic analysis has
+The equation of motion \ref{eq:dynfin} represents the furthest point that analytical
+methods have
 reached for this system. The inherent complexity in the problem now necessitates numerical
 analysis if further results are to be reached, and for this reason the resultant dynamics
 of the translating and rotating dumbbell have been simulated for select parameters in a predetermined external magnetic field.
@@ -13,14 +14,14 @@ It is apparent from the form of the differentiated Hamiltonians of equations
 set in proportion to the inhomogeneity of the external magnetic field. To maximize the
 action of the synthetic fields it then becomes important to consider an external field
 which varies as much as possible in both magnitude and direction. It is furthermore of
-interest that the field contain a point or points of zero magnitude. If the spin-spin
+interest that the field contains a point or points of zero magnitude. If the spin-spin
 interaction factor \(J\) is zero, these will be the points of synthetic magnetic charge
 which we wish to study. In general we consider \(J \ne 0\), for which these charges will
 not sit precisely at the points of vanishing fields but will translate as a function of
 \(J\) away from these as described in section \ref{sec:regmono}.
 
 As an initial example of such a field consider two simple coils of the same diameter and
-axis of symmetry placed some distance apart. If a current is run through both coils, but
+axis of symmetry placed some distance apart. If a current is run through both coils but
 the direction of current is different between the two, one running clockwise and the other
 counter-clockwise, a suitable field is created. Not even the complete field of a single
 coil has a closed analytic expression, but we may still note some qualitative properties.
@@ -28,7 +29,7 @@ If the axis of rotational symmetry for both coils is taken to be the \(z\)-axis,
 done in the simulations, the \(xy\)-plane at equal distance to both coils will have a field
 \(z\)-component that is zero. This follows from simple symmetry reasons, from which it is
 also apparent that the total field is precisely zero at the ''centre'' of this plane, where
-the distance to all current-carrying wires are the same. The magnetic field then increases
+the distance to all current-carrying wires are the same. The magnetic field in the plane then increases
 in magnitude as the distance between \(xy\)-plane and the nearest coil wire decreases,
 pointing either directly towards or away from the centre point depending on current
 direction. In the limit of increasing distance to the centre point the field naturally
@@ -41,32 +42,32 @@ the regular circular shape. This perturbs the field described above slightly, wh
 all does nothing but increase the desired inhomogeneity. The side length of the coils is
 taken to be the distance between the coils, so that they form edges of a cube.
 
-\subsection{Code outline}
+\subsection{Code outline}\label{sec:code}
 Simulation of the system is in essence nothing more complicated that solving the
-ordinary differential equation, the ODE, \ref{eq:dynfin}. Some difficulty arise since the fast
+ordinary differential equation, the ODE, \ref{eq:dynfin}. Some difficulties arise since the fast
 Hamiltonian is not analytically diagonalisable, all scalar fields must be calculated and in
-addition several quantities need be numerically differentiated. The dumbbell is given an
-initial velocity close to the boundary of a box of side length \(\frac{2}{3}\) times the
+addition several quantities need to be numerically differentiated. The dumbbell is given an
+initial velocity and is positioned close to the boundary of a box of side length \(\frac{2}{3}\) times the
 distance between the coils, centred about the zero-field point described in section
 \ref{sec:chofield}. All simulation is done in the box. That is to say, that the dumbbell is
 only allowed inside of this box and that field values are exclusively calculated within the
 box, which will be at times referred to as the ''lab''.
 
-For complete python scripts, see appendix \ref{app:scripts}. A few notable choices of
+For complete Python scripts, see appendix \ref{app:scripts}. A few notable choices of
 methods will be here mentioned, but further details should be discernible from the
 commented code.
 
 The lab is divided into a discrete lattice of points so that field values can be
 calculated in advance and saved to file. This has the side-effect of restricting the
 position of the dumbbell to points in this lattice. The field generation is done per numerical
-integration of the Biot-Savart law also using the same step size as the lab lattice.
+integration of the Biot-Savart law using the same step size as the lab lattice.
 
 Solution of the differential equation is done by means of the \textit{scipy} function
 solve\_ivp() which is a somewhat sophisticated tool containing error estimation and
 flexible termination conditions, here used to stop the algorithm if the dumbbell leaves the
-lab. As is often done the ODE is first transformed into first order by extension of the
+lab. As is often done the ODE is transformed into first order by extension of the
 five positional coordinates to a ten-dimensional position and velocity vector. All
-acceleration contributions is summed up in a single function called by the ODE solver. 
+acceleration contributions are summed up in a single function called by the ODE solver. 
 As part of this process the diagonalization of the fast Hamiltonian is performed by the
 \textit{scipy} funtion eigh(). It here becomes crucial to consider which eigenstate of the
 fast Hamiltonian the dumbbell is in. A predetermined eigenstate is selected for each
@@ -85,11 +86,11 @@ approximated as \[
 ,\] 
 where \(s_\omega\) is the step size of \(\omega\) implied by the lattice.
 This is sometimes called the three-point centred difference formula. No error estimation scheme
-has been implemented for these steps, so care must be taken that the step size does not
+has been implemented for these parts of the algorithm, so care must be taken that the step size does not
 become so small that rounding errors of the floating point operators dominate.
 A rule of thumb is that a step size of \(s_\omega \approx \sqrt[3]{\epsilon}\omega_c\) is
 close to the optimal point of good precision without leading to large rounding
-errors\cite{numerical}. Here \(\epsilon\) is the machine
+errors \cite{numerical}. Here \(\epsilon\) is the machine
 epsilon of order \(10^{-16}\), and \(\omega_c\) is the typical scale of \(\omega\), which
 is taken to be the lab side length, so it is clear that any lattice with less than \(10^5\) sites
 along each cube side leads to step sizes well above this limit.

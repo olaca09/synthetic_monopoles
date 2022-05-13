@@ -11,7 +11,7 @@ import warnings
 ##This is a collection of scripts related to the finding of eigenstates and thence the
 ##derivation of the synthetic fields.
 
-#Common variables defined below:
+#Common variables defined below, are adjusted by synfieldsolver.py:
 ntheta = 25 #Number of points of theta
 steptheta = np.pi/(ntheta-1) #Step size of theta
 nphi = 50 #Number of points of phi
@@ -31,7 +31,7 @@ mass = np.repeat(mass0, 5) #Full mass vector
 mass[3] = mass0*len0**2/4
 mass[4] = mass[3]
 
-tickcount=0 #For testing
+#Define statistics variables
 dscalaravg=0
 Faavg=0
 denergyavg=0
@@ -290,9 +290,8 @@ def scalarcalc(point, field, n):
                 braket = np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) #Braket for formula
                 Phi += (hbar**2 /(2*mass[i]) * #Add up contributions to the synthetic scalar
                 braket*np.conjugate(braket) / (energies[n] - energies[l])**2).real #Note the discard of the imaginary part, numerical errors otherwise arise 
-    #print(f'Phi = {Phi}')
-    returnlist = (Phi, energies[n])
 
+    returnlist = (Phi, energies[n])
     scalarsave[(point, n)] = returnlist
 
     return returnlist
@@ -302,7 +301,7 @@ def scalarcalc(point, field, n):
 ##with the field field for state number n. The position and velocity is taken to be of 
 ##shape (x, y, z, theta_r, phi_r). Note that position is here given in m, and will be
 ##fitted to the discrete lattice.
-##Returns the velocity (for integration purposes) followed by the acceleration of the 
+##Returns the velocity in m/s (for integration purposes) followed by the acceleration of the 
 ##system in m/s^2.
 ##Note that the t argument is a dummy.
 def acc(t, posvel, field, n, norot, nosyn):
@@ -364,7 +363,6 @@ def acc(t, posvel, field, n, norot, nosyn):
                                     np.imag(np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) *
                                     np.vdot(eigvec[l], np.dot(dHam[j], eigvec[n]))))
     
-        #print(f'Fa = {Fa}') #For testing
         global Faavg
         Faavg = (Faavg + np.linalg.norm(Fa))/2
 
@@ -394,7 +392,6 @@ def acc(t, posvel, field, n, norot, nosyn):
         scalar[1,1,1,0,1], energy[1,1,1,0,1] = scalarcalc(neighgrid[:,1,1,1,0,1], field, n)
         scalar[1,1,1,1,2], energy[1,1,1,1,2] = scalarcalc(neighgrid[:,1,1,1,1,2], field, n)
         scalar[1,1,1,1,0], energy[1,1,1,1,0] = scalarcalc(neighgrid[:,1,1,1,1,0], field, n)
-        scalar[1,1,1,1,1], energy[1,1,1,1,1] = scalarcalc(neighgrid[:,1,1,1,1,1], field, n) #For testing purposes
 
         #Differentiate the scalar field
         dscalar[0] = (scalar[2,1,1,1,1] - scalar[0,1,1,1,1])/(2*stepr)
@@ -403,7 +400,6 @@ def acc(t, posvel, field, n, norot, nosyn):
         dscalar[3] = (scalar[1,1,1,2,1] - scalar[1,1,1,0,1])/(2*steptheta)
         dscalar[4] = (scalar[1,1,1,1,2] - scalar[1,1,1,1,0])/(2*stepphi)
 
-        #print(f'dscalar = {dscalar}')
         global dscalaravg
         dscalaravg = (dscalaravg + np.linalg.norm(dscalar))/2
 
@@ -448,7 +444,6 @@ def acc(t, posvel, field, n, norot, nosyn):
 
     acc = Fa - dscalar - denergy #Summarize forces
 
-    #print(f'denergy = {denergy}')
     global denergyavg
     denergyavg = (denergyavg + np.linalg.norm(denergy))/2
 
@@ -461,11 +456,7 @@ def acc(t, posvel, field, n, norot, nosyn):
 
     if acc[3] > 1e10:
         print(f'The rotation is out of control, acc = {acc}')
-    #print(f'Vel, acc = {vel}, {acc}')
-    #global tickcount
-    #tickcount += 1
-    #print(f'Tick! {tickcount}') #For testing purposes
-    #print(f'Velocity/acc. is: {vel}, {acc}')
+
     return np.concatenate((vel, acc))
 
 ##Solves the ODE and returns the solution as per sscipy.integrate.solve_ivp.
@@ -494,11 +485,8 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn='False'):
     #Set error tolerances
     nr = field.shape[1]
     tolr = lablength/(2*(nr - 1))
-    #tolr = lablength/4
     toltheta = steptheta/2
-    #toltheta = 1
     tolphi = stepphi/2
-    #tolphi = 1
     atol = [tolr, tolr, tolr, toltheta, tolphi, tolr/10, tolr/10, tolr/10, toltheta/10,
             tolphi/10]
     edgedistance.terminal = True
@@ -530,7 +518,7 @@ def edgedistance(t, posvel, field, n, norot, nosyn):
 ##interactive 3D swarm plot. Uses matplotlib.
 def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams):
 
-    #For testing print average acceleration components
+    #Print average acceleration components
     for stream in sol:
         print(f'Statistics for stream starting at {stream.y[0:3,0]}')
         print(f'Faavg = {stream.Faavg}')
@@ -539,8 +527,7 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
         print(f'energyavg = {stream.energyavg}')
 
     fig, ax = plt.subplots(subplot_kw={'projection': '3d'})
-    #fig = plt.figure()
-    #ax = fig.axes(projection='3d')
+
     ax.set_xlim((0, lablength))
     ax.set_ylim((0, lablength))
     ax.set_zlim((0, lablength))
@@ -571,9 +558,7 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
         pos = stream.y[0:3,:]
         ax.plot3D(pos[0,:], pos[1,:], pos[2,:], color=color) #Plot the integrated path
     #Plot magnetic field for testing purposes
-    ##ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
-    #plot = mlab.plot3d(pos[0,:], extent=[0,0,0,lablength,lablength,lablength])
-
+    #ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
 
     plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.png',
                 bbox_inches='tight')

@@ -140,7 +140,7 @@ amount of sites would be of high priority were the code to be optimized further.
 
 It was also encountered that the ODE solver simply would not converge in any
 reasonable amount of time for many
-choices of parameters. Being highly undesirable since this narrows the parameter ranges available
+choices of parameters. Highly undesirable since this narrows the parameter ranges available
 for study, the precise reasons for this behaviour warrants further investigation. As an
 example large values of \(J\) or reductions of the dumbbell length \(l\) would often not
 integrate properly as the rotational accelerations and velocities became exceedingly large.
@@ -151,7 +151,7 @@ model. A hypothesis considering the origin of these non-convergent parameters is
 ODE solver does not behave well in conjunction with the lab discretization. The solver
 wishes to keep certain error estimates below a threshold value, here set to depend on the
 granularity of the lattice, and will reduce the step size of the integration until this is
-satisfied. It could be the case however that reductions of step size do not yield the
+satisfied. It could be the case however that reductions of step size does not yield the
 intended effect for the solver, as the fitting of all positions to points in the lattice
 puts a lower bound on the effective step size attainable. Further investigation would be
 desirable.

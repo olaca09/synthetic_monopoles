@@ -25,7 +25,7 @@ even though its environment, the train, undergoes change.
 
 This thought experiment if translated to the quantum realm, where states are kets or
 wavefunctions and the environment is encapsulated in the system Hamiltonian, captures the
-essence of the \textit{adiabatic theorem} finalized by Born and Fock\cite{adiab}. Concisely
+essence of the \textit{adiabatic theorem} finalized by Born and Fock \cite{adiab}. Concisely
 stated, the original version reads in translation to English:
 \begin{displayquote}
 A physical system remains in its instantaneous eigenstate if a given perturbation is acting
@@ -48,25 +48,27 @@ field \(\va{B}\). The total energy, and thus Hamiltonian, for such a system is \
 Here \(\va{S}\) is the spin operator and \(\gamma\) is a constant determining the magnetic
 dipole moment per unit of angular momenta, i.e. it looks typically as \(\gamma =
 \frac{g\mu}{\hbar{}}\). Here \(g\) is a dimensionless so-called \textit{g-factor} and
-\(\mu\) is an appropriate magneton. The eigenstates to this Hamiltonian are the same as the
+\(\mu\) is an appropriate magneton. The eigenstates of this Hamiltonian are the same as the
 spin eigenstates \(\ket{\va{n}, m}\) in the direction \(\va{n}\) of \(\va{B}\) with the
 quantum number \(m\) describing their directional spin eigenvalues. The eigenvalues \(E_m\) to the
-Hamiltonian, the energies of the states, then become \[
+Hamiltonian, the energies of the states, become \[
 E_m = -\gamma B \hbar{} m
 .\] 
-Here \(B\) is the magnetic field strength. The adiabatic theorem then states for this
+Here \(B\) is the magnetic field strength. The adiabatic theorem states for this
 example that any ''slow'' change of the Hamiltonian, that is any slow change of the
-magnetic field \(\va{B}\), will not change the state of the system if it were originally
-put into an eigenstate \(\ket{\va{n}, m}\). The only things that change for the state are
+magnetic field \(\va{B}\), will not change the quantum number \(m\) of the state occupied
+if the system was originally
+put into an eigenstate \(\ket{\va{n}, m}\). The only things that change in the state
+occupied are
 possibly the direction \(\va{n}\) and the energy level \(E_m\). The criteria for the
 theorem to hold will here translate into, apart from the speed of change, that \(B\) be
 nonzero. If \(B\) were zero the energy levels would be degenerate and the theorem would not be applicable.
 \subsection{The geometric phase}\label{sec:geophase}
 It was the evolution of systems satisfying the adiabatic theorem that concerned Berry as he
 demonstrated the nature of the geometrical phase in the eighties \cite{berry1984}, although non-adiabatic
-extensions have been made since\cite{aharonovanandan}. As mentioned in section
+extensions have been made since \cite{aharonovanandan}. As mentioned in section
 \ref{sec:introduction} the adiabatic geometric phase is a contribution to the phase of a
-system undergoing adiabatic change which is \textit{independent} of the energies during the
+system undergoing adiabatic changes which is \textit{independent} of the energies during the
 adiabatic change\cite{erikrev}. %Lite osäker här
 Instead it is a contribution dependent only on the path traversed through parameter space,
 which in the above example is the three-dimensional space of possible external magnetic
@@ -74,14 +76,14 @@ fields. The speed by which the path, often considered to be a loop \(\mathbb{\ca
 returning to its original position, is traversed matters not for the geometrical phase.
 Note however that this speed cannot become arbitrarily large, as it would then eventually
 break the adiabatic approximation. It is also relevant to the discussion to remind oneself
-that the accumulation of phase in quantum mechanics compromise all of dynamics, i.e. all forms
+that the accumulation of phase in quantum mechanics compromises all of dynamics, i.e. all forms
 of time evolution can be phrased as changes in the phase of states.
 
 In less abstract terms, it can be shown that an arbitrary quantum energy eigenstate \(\ket{n}\)
 (labelled after its energy \(E_n\)) affected by the Hamiltonian \(\mathbb{\cal H}\) will under adiabatic evolution along some loop
 \(\mathbb{\cal C}\) accumulate a geometric phase \(\eta_n\). This means that if the loop is
 traversed in time \(T\) the state will after one revolution end up as
-\(e^{-\frac{i}{\hbar{}}\int_0^T \bra{n}\mathbb{\cal H}\ket{n} dt} e^{\eta_n}\ket{n}\). Note
+\(e^{-\frac{i}{\hbar{}}\int_0^T \bra{n}\mathbb{\cal H}\ket{n} dt} e^{i\eta_n}\ket{n}\). Note
 the inclusion of the dynamic phase with the first factor, owing to the ''standard'' time
 evolution due to energy. The
 value of \(\eta_n\) can be calculated from the following
@@ -109,23 +111,23 @@ where
 .\end{align}
 
 It is here that the monopole field makes its entrance. While the integrand of equation
-\ref{eq:etaline} is only defined up to a constant, owing to an arbitrary phase factor of
+\ref{eq:etaline} is only defined up to the gradient of an arbitrary differentiable function, owing to an arbitrary phase factor of
 the eigenstate basis, the field \(\va{G}_n\) is but the curl of this integrand and thus
-independent of the arbitrary constant. The phase evolution due to the geometric phase has
+independent of this arbitrary term. The phase evolution due to the geometric phase has
 then taken the form of the time evolution through a magnetic field \(\va{G}_n\) derived
 from the vector potential
 \begin{align}\label{eq:Dfield}
         \va{D}_n = i\bra{n}\grad_{\va{R}}\ket{n}
 .\end{align}
-We call this field the synthetic magnetic field, or the synthetic gauge field, and consider
+We call \(\va{G}_n\) the synthetic magnetic field, or the synthetic gauge field, and consider
 it the field the action of which results in the geometric phase. The monopole
 structure so often mentioned previously is also present in precisely this field, by which it is
 meant that the singularities of this field which occur at points of energy degeneration may
-infer a non-zero divergence. Since the field is not defined at these points, divergence
+infer a non-zero divergence \(\div \va{G}_n\). Since the field is not defined at these points, divergence
 should here be interpreted in the rather loose sense of a closed flux integral about some
 point divided by the enclosed volume. A nonzero divergence of a magnetic field is not allowed for
-standard Maxwellian magnetic fields and would imply some form of magnetic charge,
-monopoles. Even though our synthetic field does not follow Maxwell's equations it shares
+standard Maxwellian magnetic fields and would imply some form of magnetic charge or
+monopole. Even though our synthetic field does not follow Maxwell's equations it shares
 the magnetic field property of being the curl of a vector potential, and as will be clear
 in section \ref{sec:BOinterp} also magnetic properties in how it establishes dynamics. For
 these reasons the monopoles present at the degeneracies allow us to study, in a sense, the
@@ -139,7 +141,7 @@ synthetic field as well. The energies of different states are there degenerate o
 external magnetic field of zero magnitude, that is at the origin of parameter space, so the
 synthetic field has a monopole precisely at the origin. The action from the synthetic
 field, that is the accumulation of geometrical phase, could be achieved either from slowly
-varying the external field magnitude and direction or likewise from the movement of the
+varying the external field magnitude and direction or likewise from the slow movement of the
 particle through an inhomogeneous external field yielding the same effect. It is further
 the case for this simple example that the synthetic field not only contains monopoles, but
 that it is \textit{purely} monopolar in origin. This is to say that a ''charge'' placed at
@@ -154,16 +156,14 @@ synthetic field simply does is allow them. %%Tror jag stämmer? Dubbelkolla med 
 
 One case for which the synthetic field is \textit{not} purely monopolar is two spin
 constituents interacting with both an external magnetic field and each other as shown by Eriksson and Sjöqvist
-\cite{eriksson}, much like the system outlined in section \ref{sec:aselsys}. Eriksson and
-Sjöqvist further note that the nonzero curl of a synthetic field that is not purely
+\cite{eriksson}, much like the system outlined in section \ref{sec:aselsys}. These authors further note that the nonzero curl of a synthetic field that is not purely
 monopolar can be used to extend the allegory between synthetic and Maxwellian magnetic
-fields through a synthetic ''current'' defined through the curl of the field. The main
+fields through a synthetic electrical ''current'' defined through the curl of the field. The main
 effect of spin-spin interaction of composite spin systems is however the ''splitting'' or
-movement of magnetic charge away from the origin of parameter space yielding more exotic fields,
-also shown by Eriksson and Sjöqvist. This movement of magnetic monopoles is continuous
+movement of magnetic charge away from the origin of parameter space yielding more exotic fields. This movement of magnetic monopoles is continuous
 with respect to the spin-spin interaction parameters, and will be fully determined by these
 parameters. Since the system outlined in section
-\ref{sec:aselsys} contains precisely an Ising interaction along some select axis the
+\ref{sec:aselsys} contains precisely an Ising interaction along some selected axis the
 synthetic field cannot be fully spherically symmetric, but must have a rotational symmetry
 determined by said axis. 
 

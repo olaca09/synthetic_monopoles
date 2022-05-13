@@ -11,7 +11,7 @@ import warnings
 ##This is a collection of scripts related to the finding of eigenstates and thence the
 ##derivation of the synthetic fields.
 
-#Common variables defined below:
+#Common variables defined below, are adjusted by synfieldsolver.py:
 ntheta = 25 #Number of points of theta
 steptheta = np.pi/(ntheta-1) #Step size of theta
 nphi = 50 #Number of points of phi
@@ -31,7 +31,7 @@ mass = np.repeat(mass0, 5) #Full mass vector
 mass[3] = mass0*len0**2/4
 mass[4] = mass[3]
 
-tickcount=0 #For testing
+#Define statistics variables
 dscalaravg=0
 Faavg=0
 denergyavg=0
@@ -290,9 +290,8 @@ def scalarcalc(point, field, n):
                 braket = np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) #Braket for formula
                 Phi += (hbar**2 /(2*mass[i]) * #Add up contributions to the synthetic scalar
                 braket*np.conjugate(braket) / (energies[n] - energies[l])**2).real #Note the discard of the imaginary part, numerical errors otherwise arise 
-    #print(f'Phi = {Phi}')
-    returnlist = (Phi, energies[n])
 
+    returnlist = (Phi, energies[n])
     scalarsave[(point, n)] = returnlist
 
     return returnlist
@@ -302,7 +301,7 @@ def scalarcalc(point, field, n):
 ##with the field field for state number n. The position and velocity is taken to be of 
 ##shape (x, y, z, theta_r, phi_r). Note that position is here given in m, and will be
 ##fitted to the discrete lattice.
-##Returns the velocity (for integration purposes) followed by the acceleration of the 
+##Returns the velocity in m/s (for integration purposes) followed by the acceleration of the 
 ##system in m/s^2.
 ##Note that the t argument is a dummy.
 def acc(t, posvel, field, n, norot, nosyn):
@@ -364,7 +363,6 @@ def acc(t, posvel, field, n, norot, nosyn):
                                     np.imag(np.vdot(eigvec[n], np.dot(dHam[i], eigvec[l])) *
                                     np.vdot(eigvec[l], np.dot(dHam[j], eigvec[n]))))
     
-        #print(f'Fa = {Fa}') #For testing
         global Faavg
         Faavg = (Faavg + np.linalg.norm(Fa))/2
 
@@ -394,7 +392,6 @@ def acc(t, posvel, field, n, norot, nosyn):
         scalar[1,1,1,0,1], energy[1,1,1,0,1] = scalarcalc(neighgrid[:,1,1,1,0,1], field, n)
         scalar[1,1,1,1,2], energy[1,1,1,1,2] = scalarcalc(neighgrid[:,1,1,1,1,2], field, n)
         scalar[1,1,1,1,0], energy[1,1,1,1,0] = scalarcalc(neighgrid[:,1,1,1,1,0], field, n)
-        scalar[1,1,1,1,1], energy[1,1,1,1,1] = scalarcalc(neighgrid[:,1,1,1,1,1], field, n) #For testing purposes
 
         #Differentiate the scalar field
         dscalar[0] = (scalar[2,1,1,1,1] - scalar[0,1,1,1,1])/(2*stepr)
@@ -431,6 +428,7 @@ def acc(t, posvel, field, n, norot, nosyn):
         energy[1,1,1,0,1] = eigensolver(neighgrid[:,1,1,1,0,1], field)[0][n]
         energy[1,1,1,1,2] = eigensolver(neighgrid[:,1,1,1,1,2], field)[0][n]
         energy[1,1,1,1,0] = eigensolver(neighgrid[:,1,1,1,1,0], field)[0][n]
+        energy[1,1,1,1,1] = eigensolver(neighgrid[:,1,1,1,1,1], field)[0][n]
 
     else:
         print(f'Incorrect parameter "nosyn" = {nosyn}')
@@ -465,72 +463,6 @@ def acc(t, posvel, field, n, norot, nosyn):
     #tickcount += 1
     #print(f'Tick! {tickcount}') #For testing purposes
     #print(f'Velocity/acc. is: {vel}, {acc}')
-    return np.concatenate((vel, acc))
-
-##Finds the acceleration due to non-synthetic effects, i.e. the fast energies only. #Obsolete
-def accnosyn(t, posvel, field, n, norot):
-    #Find nr and stepr
-    nr = field.shape[1] #Number of points along each axis of the lattice
-    stepr = lablength/(nr-1) #Distance between lattice points
-    #Extract position and velocity:
-    pos = posvel[0:5]
-    vel = posvel[5:10]
-
-
-    #Fit position to a point
-    point = [0,0,0,0,0]
-    for i in range(3):
-        point[i] = int(round(pos[i]/stepr))
-        if point[i] >= nr-2 or point[i] < 2:
-            return np.concatenate((vel, np.zeros(5))) ##Sets the acceleration to zero if 
-                                                      ##a point outside the grid is sampled
-    point[3] = pos[3]
-    point[4] = pos[4]
-
-	#To get the derivatives of the scalar fields find coordinate values of all neighbouring sites
-
-    ##meshgrid to generate neighbours
-    neighgrid = np.mgrid[-1:2,-1:2,-1:2, -1:2, -1:2].astype('float')
-    neighgrid[3,:,:,:,:,:] *= steptheta #Fix theta and phi step sizes
-    neighgrid[4,:,:,:,:,:] *= stepphi
-    neighgrid = np.array(point)[:,None,None,None, None, None] + neighgrid 
-    #uses broadcasting to duplicate
-	#x,y,z into each point on the grid. the result has first dimension determining which 
-	#coordinate is given and the remaining specifying position related to the point
-
-    #Find energies at neighbouring points
-    energy = np.zeros([3, 3, 3, 3, 3])
-    energy[2,1,1,1,1] = eigensolver(neighgrid[:,2,1,1,1,1], field)[0][n]
-    energy[0,1,1,1,1] = eigensolver(neighgrid[:,0,1,1,1,1], field)[0][n]
-    energy[1,2,1,1,1] = eigensolver(neighgrid[:,1,2,1,1,1], field)[0][n]
-    energy[1,0,1,1,1] = eigensolver(neighgrid[:,1,0,1,1,1], field)[0][n]
-    energy[1,1,2,1,1] = eigensolver(neighgrid[:,1,1,2,1,1], field)[0][n]
-    energy[1,1,0,1,1] = eigensolver(neighgrid[:,1,1,0,1,1], field)[0][n]
-    energy[1,1,1,2,1] = eigensolver(neighgrid[:,1,1,1,2,1], field)[0][n]
-    energy[1,1,1,0,1] = eigensolver(neighgrid[:,1,1,1,0,1], field)[0][n]
-    energy[1,1,1,1,2] = eigensolver(neighgrid[:,1,1,1,1,2], field)[0][n]
-    energy[1,1,1,1,0] = eigensolver(neighgrid[:,1,1,1,1,0], field)[0][n]
-
-    #Differentiate the energy
-    denergy = np.zeros(5)
-    denergy[0] = (energy[2,1,1,1,1] - energy[0,1,1,1,1])/(2*stepr)
-    denergy[1] = (energy[1,2,1,1,1] - energy[1,0,1,1,1])/(2*stepr)
-    denergy[2] = (energy[1,1,2,1,1] - energy[1,1,0,1,1])/(2*stepr)
-    denergy[3] = (energy[1,1,1,2,1] - energy[1,1,1,0,1])/(2*steptheta)
-    denergy[4] = (energy[1,1,1,1,2] - energy[1,1,1,1,0])/(2*stepphi)
-
-    global denergyavg
-    denergyavg = (denergyavg + np.linalg.norm(denergy))/2
-
-    acc =  - denergy
-    for i in range(5):
-        acc[i] = acc[i]/mass[i] #Divide by mass to get acceleration
-
-    if norot: #Freeze rotational axes if norot is turned on
-        vel[3:5] = 0
-        acc[3:5] = 0
-
-    #print("Tick!") #For testing purposes
     return np.concatenate((vel, acc))
 
 ##Solves the ODE and returns the solution as per sscipy.integrate.solve_ivp.

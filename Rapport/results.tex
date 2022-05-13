@@ -4,22 +4,21 @@
 Sample executions of the simulation outlined in section \ref{sec:simulation} have been
 performed. As a starting point a lab side length of \(1\) mm was chosen, the lattice
 granularity was set to \(101^3\) sites and the current running through each coil was
-selected as \(10\) A. All graphs presented are thus drawn with metres as axis units. In light of the typical Stern-Gerlach experiment the total mass
+selected as \(10\) A. All graphs presented are drawn with metres as axis units. In light of the typical Stern-Gerlach experiment the total mass
 of the dumbbell was initially assumed to be \(3.58\times 10^{-25}\) kg, the mass of two silver
 atoms, and additionally the distance between the two dumbbell masses was set to \(5\times
 10^{-5}\) m. At first a distance on the order of Ångström was trialled, but nonzero
 spin-spin coupling \(J\) then led to rotational accelerations too large for the ODE solver
 to handle. The velocity by which the dumbbell enters the lab was \(1\) cm/s in the positive
-\(x\) direction unless otherwise
-specified. A maximum simulation time of \(0.1\) s was
+\(x\) direction for all simulations. A maximum simulation time of \(0.1\) s was
 assumed, but this matters only for the high energy state
 since the other
 trajectories exit the lab before then. The graphs shown have been ''swarmed'', by which it
 is here meant that several simulations of equal parameters have been placed at equidistant
 initial positions along the \(yz\) plane. Note also further that the linearity of the
-external magnetic field with respect to the current \(I\) means that any multiplication of that
+external magnetic field strength \(B\) with respect to the current \(I\) means that any multiplication of that
 variable will yield the same effect as an equal change in the spin-field coupling
-\(\gamma\), since these parameters always appear as a single product. For this reason the current of the magnetic field will in general be held fixed
+\(\gamma\), since the field strength and coupling parameter always appear as a single product. For this reason the current of the magnetic field will in general be held fixed
 and \(\gamma\) will be varied instead, as this does not require additional field
 generation.
 
@@ -30,11 +29,11 @@ while it does affect the centre off mass trajectory, is not plotted.
 
 First all three possible eigenstates were tested for the given parameters, and with
 \(\gamma = 10^{10}\) J/(\(\hbar{}\)T), \(J = 10^5\) J/\(\hbar{}\), see figure
-\ref{fig:ncompare}. For all of these simulations the differential of fast Hamiltonian
+\ref{fig:ncompare}. For all of these simulations the gradient of the fast Hamiltonian
 energy was the dominating term by a factor \(\sim 10^{5}\), but note the large differences
 in behaviour of this non-synthetic action. This is the expected behaviour, as discussed in
-section %bla
-, but note for now that the low energy state is repelled away from the lab and thus not
+section \ref{sec:nonsynbeh}
+, but note for now that the low energy state is repelled away from the lab and is thus not
 very useful. The high energy state is ''caught'' between the coils while the middle state
 achieves but a perturbed straight motion through the lab.
 \begin{figure}[h]
@@ -76,7 +75,7 @@ Let now attention be turned to the \(n = 1 \) case. If the nonsynthetic term is 
 reduced in size, such that the synthetic field effects become visible, a reduction in fast
 Hamiltonian energy is desired. Note that for the special case \(J = 0\) the fast
 Hamiltonian diagonalizes, and the middle state will simply have the energy zero. This
-change in parameter yields a graph such as in figure \ref{fig:noJ1}. As predicted the fast
+change in parameter yields a graph such as the one to the left in figure \ref{fig:noJ1}. As predicted the fast
 energy is now identically zero, up to a numerical error of order \(\sim 10^{-44}\) J, and since that was previously the dominating term motion is
 simply rectilinear. While hardly a usable result in it self, it is now notable that the
 synthetic contributions to the dynamics are generally many orders of magnitude larger than the
@@ -102,7 +101,7 @@ dumbbell mass.
 Any simple tool for increasing the action of the synthetic fields is however absent. As can
 be noted both by parallell to the geometric phase and directly from equations \ref{eq:FA}
 and \ref{eq:ElPot} the synthetic potentials are generally not dependent on the magnitude of
-fast energy. As of such direct increases of parameters \(J\) and \(\gamma\) will typically
+the fast energy. As of such direct increases of parameters \(J\) and \(\gamma\) will typically
 have the effect of increased nonsynthetic action while the synthetic fields are not
 strengthened. Also relevant is the dependence of the synthetic magnetic field on the
 velocity of the dumbbell. However, much like the motion through a classical magnetic field
@@ -115,7 +114,7 @@ the derivatives present in equation \ref{eq:FA} would scale reciprocally, and no
 be achieved.
 
 All that is left is then to adjust the mass of the dumbbell, as this affects nothing but
-the acceleration of the centre of mass. Reduction of mass yields perceptible effects first
+the resultant acceleration. Reduction of mass yields perceptible effects first
 at the order of \(\sim 10^{-28}\) kg, and at \(\sim 10^{-29}\) kg, as visible in figure
 \ref{fig:noJ1}. %Unrealistic masses
 The dumbbell is clearly repelled from the point of energy degeneration, as is the predicted
@@ -151,7 +150,7 @@ force is of order \(\sim 10^{-30}\) N.
     \label{fig:noJ2}
 \end{figure}
 
-That it is indeed the synthetic \textit{scalar} field repelling the trajectories from the
+That it is indeed the synthetic scalar field repelling the trajectories from the
 centre point can be confirmed through running simulations without either the synthetic
 scalar or magnetic field, as has been done in figure \ref{fig:noJ3}
 
@@ -175,7 +174,7 @@ completely negligible, but does constitute a visible perturbation to the rectili
 motion. Further reduction of the mass to increase the synthetic magnetic dynamic lead
 however to no interesting patterns.
 
-It should be noted that such large reductions of mass as has been conducted makes the
+It should be noted that such large reductions of mass as have been done makes the
 results rather unstable to numerical errors. It can be noted in many graphs above that the
 trajectories are not fully symmetric as one would expect in the perfect case, but that
 numerical perturbations propagate. It would be a stretch to call the behaviour 'chaotic',
@@ -187,7 +186,7 @@ consider, but regrettably leads to a sharp increase in the fast eigenvalues. Thi
 limit to the size of the parameter which can be simulated before the dumbbell is quickly
 expelled from the lab, but sample simulations of \(J = 100\) J/\(\hbar{}\) were performed
 in figure \ref{fig:n1Je2}. Note here the dependence on whether synthetic field effects are
-included. Once again it is however the synthetic scalar effects that dominate.
+included. Once again it is the synthetic scalar effects that dominate.
 \begin{figure}[h]
     \centering
     \subfloat[\centering \(J =
@@ -205,11 +204,11 @@ included. Once again it is however the synthetic scalar effects that dominate.
 \end{figure}
 
 
-\subsection{The high energy state}
+\subsection{The high energy state}\label{sec:reshigh}
 The behaviour of the nonsynthetic fields to ''trap'' the dumbbell between the coils if
 placed in the high energy state is promising. Even if the fast energy gradient can be
 assumed to dominate the behaviour, the prospect of the synthetic fields acting on the
-dumbbell for extended periods of time promises perhaps notable perturbations to the
+dumbbell for extended periods of time suggests perhaps notable perturbations to the
 nonsynthetic motion. As seen in figure \ref{fig:ncompare} the graphs are quickly cluttered
 when several starting positions are considered at once, and so a different ''swarming''
 procedure was adopted. Choosing a single starting position and velocity trajectories owing
@@ -222,7 +221,7 @@ This then infers a choice of starting position. Several such choices were sample
 presented the most interesting ones found as of yet. Further reducing the number of
 starting positions and parameters possible is the fact that some trajectories cross the
 degeneration at the centre, prohibiting field action comparison. Such choices of parameters
-are not represented here. 
+are not shown here. 
 
 \begin{figure}[h]
     \centering
@@ -237,12 +236,12 @@ are not represented here.
 \end{figure}
 
 First simulations of the same parameters as in figure \ref{fig:ncompare} were performed for
-a starting position close to \(y=0\) and \(z = \frac{3}{4}\) mm, see figure
-\ref{fig:n2m-25}. Note the clearly visible action of the synthetic field on the trajectory,
+a starting position close to \(y=0\) mm and \(z = \frac{3}{4}\) mm, see figure
+\ref{fig:n2m-25}. Note the clearly visible perturbation of the synthetic field on the trajectory,
 and note further the large influence of the synthetic magnetic field on the trajectory
 compared to the synthetic scalar field. Direct comparison between the trajectory without
 synthetic fields at all and the trajectory without the synthetic magnetic field show large
-similarities, but still perturbations from the synthetic field are noticeable. It can be
+similarities, but still perturbation by the synthetic field is noticeable. It can be
 concluded that the synthetic magnetic field plays a major role in repelling the trajectory
 from the slim cylinder traversed otherwise as seen in the left hand side of figure \ref{fig:n2m-25}. This is also
 supported by the average force values, which for the present simulation were of the order
@@ -267,7 +266,7 @@ run for a mass of \(3.58\times 10^{-27}\) kg, where the spin-field coupling cons
 adjusted accordingly to \(\gamma = 10^{8}\) J/\(\hbar{}\) such that the fast energy
 acceleration remained approximately the same, see figure \ref{fig:n2m-27A}. The starting
 position was close to \(y= \frac{1}{4}\) mm and \(z = \frac{1}{4}\) mm. Here the
-synthetic effects can easily be said to at least play a significant role in the
+synthetic effects can easily be said to play a significant role in the
 dynamics of the system. Qualitative descriptions of the behaviour are not from the onset
 very clear however, except that the synthetic scalar field appears to somewhat confine the
 motion, or in the very least reduce the rotation about the system \(z\)-axis. That all
