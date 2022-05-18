@@ -10,15 +10,16 @@ if __name__ == '__main__':
     fieldtype = 'oppositecoils'
     I = 10 #Current parameter for the field
     norot = False #Whether to ignore rotational degrees of freedom
-    nosyn = 'False' #Whether to ignore synthetic fields
+    nosyn = 'False' #Whether to ignore synthetic fields, accepts the strings 'False',
+                    #'True', 'Nomag' and 'Noscalar'
     overwriteresult = False #Whether to overwrite previous ODE results
-    alternatestreams = False #Whether to use alternate swarming scheme
+    alternatestreams = True #Whether to use alternate swarming scheme
     
     #Define parameters
 
     nr = 101 #Number of points in field lattice
     lablength = 1e-3 #Cube side of lab in m
-    tmax = 0.1 #Trajectory time in s
+    tmax = 0.5 #Trajectory time in s
     J = 1e5 #Spin-spin coupling strength
     Gamma = 1e10 #Spin-field coupling strength
     
@@ -48,7 +49,7 @@ if __name__ == '__main__':
     swarmgrid = np.insert(swarmgrid, 2, np.zeros(swarmgrid.shape[1:3]), axis=0)
     swarmgrid = np.insert(swarmgrid, 0, np.zeros(swarmgrid.shape[1:3]), axis=0)
     initposarray = initposarray[:,None,None] + swarmgrid
-    altinitpos = initposarray[:,1,1] #Starting position for alternate swarming method
+    altinitpos = initposarray[:,0,2] #Starting position for alternate swarming method
     initvel = (1e-2, 0, 0, 0, 0)
     eigenstate = 2
 

@@ -6,11 +6,11 @@ The equation of motion \ref{eq:dynfin} represents the furthest point that analyt
 methods have
 reached for this system. The inherent complexity in the problem now necessitates numerical
 analysis if further results are to be reached, and for this reason the resultant dynamics
-of the translating and rotating dumbbell have been simulated for select parameters in a predetermined external magnetic field.
+of the translating and rotating dumbbell have been simulated for selected parameters in a predetermined external magnetic field.
 
 \subsection{The chosen field}\label{sec:chofield}
 It is apparent from the form of the differentiated Hamiltonians of equations
-\ref{eq:diffham1}, \ref{eq:diffham2} and \ref{eq:diffham3} that the synthetic fields are
+\ref{eq:diffham} that the synthetic fields are
 set in proportion to the inhomogeneity of the external magnetic field. To maximize the
 action of the synthetic fields it then becomes important to consider an external field
 which varies as much as possible in both magnitude and direction. It is furthermore of
@@ -19,6 +19,8 @@ interaction factor \(J\) is zero, these will be the points of synthetic magnetic
 which we wish to study. In general we consider \(J \ne 0\), for which these charges will
 not sit precisely at the points of vanishing fields but will translate as a function of
 \(J\) away from these as described in section \ref{sec:regmono}.
+
+
 
 As an initial example of such a field consider two simple coils of the same diameter and
 axis of symmetry placed some distance apart. If a current is run through both coils but
@@ -36,14 +38,52 @@ direction. In the limit of increasing distance to the centre point the field nat
 tends towards zero. If points away from the \(xy\)-plane are considered the field will tend
 in a smooth fashion towards the regular single coil field.
 
+\begin{figure}[h]
+        \centering
+        \def\dgrid[#1](#2,#3)(#4)(#5)(#6){ %[draw options](corner)(distance in x)
+        %(distance in y)(number of lines -1  per side)
+        \foreach \x in {0,1,...,#6}{
+                \pgfmathsetmacro\sx{\x*#4/#6}
+                \draw[#1] (#2+\sx,#3) -- (#2+\sx,#3+#5);
+                }
+        \foreach \y in {0,1,...,#6}{
+                \pgfmathsetmacro\sy{\y*#5/#6}
+                \draw[#1] (#2,#3+\sy) -- (#2+#4, #3+\sy);
+                }
+        }
+        \begin{tikzpicture}[decoration={markings, mark= between positions 0.1 and 1 step
+                0.2 with {\arrow{stealth}}}, z={(90:10mm)},x={(-25:6mm)},y={(0:10mm)}]
+
+            \begin{scope}[canvas is xy plane at z=0]
+                \draw[black, thick, postaction={decorate}] (0,0) -- (6,0) -- (6,6) -- (0,6) -- cycle;
+            \end{scope}
+            \begin{scope}[canvas is xy plane at z=6]
+                \draw[black, thick, postaction={decorate}] (0,0) -- (0,6)
+                        node[anchor=west, xshift=2mm, yshift=2mm]{\Large I} -- (6,6) -- (6,0) -- cycle;
+            \end{scope}
+            \dgrid[red, dotted, thick, canvas is xy plane at z=1](1,1)(4)(4)(8); %Draw the lab
+            \dgrid[red, dotted, canvas is xy plane at z=5](1,1)(4)(4)(8);
+            \dgrid[red, dotted, canvas is yz plane at x=1](1,1)(4)(4)(8);
+            \draw[blue] (3,3,3) node[circle, fill, inner sep=3pt]{}; %Zerofield marker
+            \dgrid[red, dotted, canvas is yz plane at x=5](1,1)(4)(4)(8);
+            \dgrid[red, dotted, canvas is zx plane at y=1](1,1)(4)(4)(8);
+            \dgrid[red, dotted, canvas is zx plane at y=5](1,1)(4)(4)(8);
+        \end{tikzpicture}
+        \caption{\centering The currents generating the external magnetic field enclosing the
+        simulated ''lab'' region, shown in red. A blue dot marks the point of zero field
+strength at the centre.}
+        \label{fig:extfield}
+\end{figure}
+
 For computational practicality the coils for the simulation are taken to be as described
 above, with the axis of symmetry being the \(z\)-axis, but being of square form instead of
 the regular circular shape. This perturbs the field described above slightly, which after
 all does nothing but increase the desired inhomogeneity. The side length of the coils is
-taken to be the distance between the coils, so that they form edges of a cube.
+taken to be the distance between the coils, so that they form edges of a cube, see figure
+\ref{fig:extfield}.
 
 \subsection{Code outline}\label{sec:code}
-Simulation of the system is in essence nothing more complicated that solving the
+Simulation of the system is in essence nothing more complicated than solving the
 ordinary differential equation, the ODE, \ref{eq:dynfin}. Some difficulties arise since the fast
 Hamiltonian is not analytically diagonalisable, all scalar fields must be calculated and in
 addition several quantities need to be numerically differentiated. The dumbbell is given an
@@ -58,7 +98,8 @@ methods will be here mentioned, but further details should be discernible from t
 commented code.
 
 The lab is divided into a discrete lattice of points so that field values can be
-calculated in advance and saved to file. This has the side-effect of restricting the
+calculated in advance and saved to file, illustrated by the red grid in figure
+\ref{fig:extfield}. This has the side-effect of restricting the
 position of the dumbbell to points in this lattice. The field generation is done per numerical
 integration of the Biot-Savart law using the same step size as the lab lattice.
 
@@ -77,12 +118,12 @@ cross, which would lead to eigenstates changing index. This problem is of course
 by the adiabatic approximation assumed, and any trajectories of dumbbells traversing points
 of energy degeneracy are discarded.
 
-At many stages in the process are derivatives of fields needed, as well as derivatives of
+At many stages in the process derivatives of fields are needed, as well as derivatives of
 the fast energies. Since no closed forms of these quantities are available the derivatives
 of some quantity \(\Lambda (\omega)\) depending on coordinate \(\omega\) has been
 approximated as \[
 \frac{\partial \Lambda}{\partial \omega} \approx \frac{\Lambda(\omega + s_\omega) -
-\Lambda(\omega - s_\omega}{2s_\omega}
+\Lambda(\omega - s_\omega)}{2s_\omega}
 ,\] 
 where \(s_\omega\) is the step size of \(\omega\) implied by the lattice.
 This is sometimes called the three-point centred difference formula. No error estimation scheme

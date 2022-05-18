@@ -1,52 +1,11 @@
 \documentclass[a4paper]{article}
-%
-%\usepackage[utf8]{inputenc}
-%\usepackage[T1]{fontenc}
-%\usepackage{textcomp}
-%\usepackage[english]{babel}
-%\usepackage{amsmath, amssymb}
-%\usepackage[arrowdel]{physics}
-%\usepackage{pdfpages}
-%\usepackage{graphicx}
-%\usepackage{hyperref}
-%\usepackage{appendix}
-%\usepackage[style=numeric, backend=bibtex]{biblatex}
-%\usepackage{listings}
-%\usepackage[section]{placeins}
-%
-%\usepackage{tikz}
-%
-%\addbibresource{bibliography.bib}
-%
-%\newcommand{\R}{\ensuremath{\mathbb{R}}}
-%\newcommand{\C}{\ensuremath{\mathbb{C}}}
-%\newcommand{\Arg}{\ensuremath{\text{Arg}}}
-%
-%\usetikzlibrary{arrows.meta}
-%\usetikzlibrary{decorations.pathreplacing}
-%\usetikzlibrary{decorations.markings}
-%\usetikzlibrary{patterns}
-%\lstset{language=Python, breaklines, literate=%
-%{å}{{\r{a}}}1
-%{ä}{{"a}}1
-%{ö}{{"o}}1
-%{Å}{{\r{A}}}1
-%{Ä}{{"A}}1
-%{Ö}{{"O}}1
-%}
-%
-%\title{Derivations for synthetic monopoles}
-%\author{Ola Carlsson}
-%
-%
-%\pdfsuppresswarningpagegroup=1
 
 \begin{document}
 \section{System description}
 \subsection{Coordinates and quantities}
 Here follows a complete model of the scenario outlined in section \ref{sec:aselsys}, with
 the purpose of simulating the system numerically to gain insights into the dynamics of
-synthetic magnetic fields. Consider then a dumbbell-like system consisting of two equal masses at a distance \(l\) from one
+synthetic magnetic fields. Consider a dumbbell-like system consisting of two equal masses at a distance \(l\) from one
 another, and let \(m\) be the total mass. The system can be freely translated and rotated
 throughout space, so let \(x\), \(y\), \(z\)  be the position
 of the centre off mass, and \(\theta_r\), \(\varphi_r\) be the polar and azimuthal angle
@@ -55,8 +14,8 @@ vector \[
 \va{r}
 = \begin{pmatrix} x\\ y \\ z\\ \vartheta_r \\\varphi_r\end{pmatrix}
 .\] 
-Fix the angles such that a polar angle of \(\varphi_r = 0\) implies a dumbbell parallell
-to the \(z\)-axis and so that an azimuthal angle of \(\vartheta_r = 0\) implies that the dumbbell
+Fix the angles such that a polar angle of \(\vartheta_r = 0\) implies a dumbbell parallel
+to the \(z\)-axis and so that an azimuthal angle of \(\varphi_r = 0\) implies that the dumbbell
 axis lies in the \(xz\)-plane. 
 
 Consider also each of the masses of the dumbbell to carry spin, intrinsic angular
@@ -75,7 +34,7 @@ The time evolution of such a system is governed in both classical and quantum me
 its Hamiltonian. Since spin is the epitome of a phenomena demanding a quantum mechanical
 interpretation we have no choice but to model the whole system quantum mechanically. %, at
 %least for now?
-The Hamiltonian which will be assumed for the system here is:
+The Hamiltonian which will be assumed for the system is:
 
 \begin{equation}\label{eq:Hamil0}
         \mathbb{\cal H} = \sum_{i=1}^{5} \frac{\va{p_i}^2}{2m_i} +
@@ -84,8 +43,7 @@ The Hamiltonian which will be assumed for the system here is:
 \end{equation}
 
 The first sum is over the five degrees of translational and rotational coordinates in \(\va{r}\)
-. The momentum and angular
-momentum operators are
+. Their conjugate momentum operators are
 taken to be \(p_i = i\hbar \partial_i\label{def:mom}\) with \(\partial_i\) as the derivative with respect
 to the
 corresponding coordinate. Note that it is not a priori clear that the effective masses
@@ -104,13 +62,13 @@ of these interactions, while the operators \(\va{S}\) and \(S^{(n)}_{\mu}\) are 
 the one
 related to the total spin of the system and the spin in the \(\mu\)-direction of the \(n\)th system
 component. Note that the parameter \(\gamma\) much like the example of section
-\ref{sec:adiab} typically looks like \(\gamma = \frac{g\mu_f}{\hbar{}}\) where \(g\) is a
+\ref{sec:adiab} typically looks like \(\gamma = \frac{g\mu_f}{\hbar{}}\), where \(g\) is a
 g-factor and \(\mu _f\) is some appropriate magneton.
 
-Similar systems as the one considered here has been has been studied before, in particular
-a bipartite spin-\(\frac{1}{2}\) system with coordinate-fixed Ising axis by Sjöqvist and Yi
+Similar systems as the one considered here has been studied before in the context of geometric phase, in particular
+a bipartite spin-\(\frac{1}{2}\) system with coordinate-fixed Ising axis by Yi and Sjöqvist
 \cite{yi}. If the rotational degrees of the present system are ignored and the coordinate
-\(\vartheta_r\) is set to \(0\) whenever present the system of Sjöqvist and Yi will be
+\(\vartheta_r\) is set to \(0\) whenever present the system of \cite{yi} will be
 matched in full, save for that the external field is there varied directly instead of
 through centre of mass motion.
 
@@ -126,34 +84,36 @@ correspond to the momenta received from differentiating the classical Lagrangian
 of %fråga Erik
 such we have in the classical picture that 
 \begin{align*}
-        p_4 &= \frac{\partial K}{\partial \dot \vartheta_r} = \frac{ml^2}{4}\dot \vartheta_r\\
+        p_4 &= \frac{\partial K}{\partial \dot \vartheta_r} = \frac{ml^2}{4}\dot
+        \vartheta_r,\\
         p_5 &= \frac{\partial K}{\partial \dot \varphi_r} = \frac{ml^2}{4}\dot \varphi_r
 .\end{align*}
 Performing the Legendre transform from the Lagrangian to the Hamiltonian yields:
 \begin{align*}
-        \mathbb{\cal H}_{rot}= p_4 \dot\vartheta_r + p_5 \dot\varphi_r - K = \frac{
+        \mathbb{\cal H}_{rot}= p_4 \dot\vartheta_r + p_5 \dot\varphi_r - K_{rot} = \frac{
         p_4^2 + p_5^2}{2} \frac{4}{ml^2}
 .\end{align*}
 It is then clear that the effective masses to be used in equation \ref{eq:Hamil0} are:
 \begin{align*}
         m_i = \begin{cases}
-                m & i = 1, 2, 3\\
-                \frac{ml^2}{4} & i = 4, 5
+                m, & i = 1, 2, 3,\\
+                \frac{ml^2}{4}, & i = 4, 5.
         \end{cases}
-.\end{align*}
+\end{align*}
 The rotational effective ''masses'' are of course moments of inertia, but will be
 referred to as masses such that all five degrees of freedom are treated equally.
 
 \subsection{Rotation matrices}
 The potential energy operators will be of great use in some matrix form, so let the spin
-state of the entire system be described as a coordinate vector in the basis \((\ket{0, 0}, \ket{1, -1}, \ket{1, 0},
+state of the entire system be described in the total spin basis \((\ket{0, 0}, \ket{1, -1}, \ket{1, 0},
 \ket{1, 1})\) with the coordinate \(z\)-axis as the spin measurement direction. In the special case where the axis of the dumbbell (henceforth ''Ising
-axis'') and the magnetic field \(\va{B}\) is parallell to the \(z\)-axis, it is clear that the operators take the form:
+axis'') and the magnetic field \(\va{B}\) are parallel to the \(z\)-axis, it is clear that the operators take the form:
 \begin{align}
         \va{B}\cdot \va{S} &= B\hbar \label{eq:BSmat}
         \begin{pmatrix}
         \dmat{0,-1,0,1}
         \end{pmatrix} \\
+        \text{and}\nonumber\\
         S^{(1)}_{\mu}S^{(2)}_{\mu} &= \frac{\hbar^2}{4} \label{eq:SSmat}
         \begin{pmatrix} 
         \diagonalmatrix{-1,1,-1,1}\end{pmatrix} 
@@ -161,8 +121,8 @@ axis'') and the magnetic field \(\va{B}\) is parallell to the \(z\)-axis, it is 
 
 The second matrix follows from the well known representation of a two-component
 spin-\(\frac{1}{2}\) system as singlet and triplet states: Let \(\ket{m_1, m_2}_1\) be the
-state with spin-\(z\) number \(m_1\) for the first component and \(m_2\) for the second
-component. Then
+state with spin-\(z\) number \(m_1\) for the first spin and \(m_2\) for the second
+spin. Then
 \begin{align*}
     \ket{0, 0} &= \frac{1}{\sqrt{2}}\bqty{\ket{\frac{1}{2}, -\frac{1}{2}}_1 -
                 \ket{-\frac{1}{2}, \frac{1}{2}}_1}\\
@@ -176,7 +136,7 @@ Both matrices above assume that the basis is aligned with \(\va{B}\) and the Isi
 respectively. Therefore some rotation operator must be found that can describe a state
 given in the \(z\)-axis basis in a basis aligned with \(\va{B}\) or the Ising axis.
 
-Consider therefore first a rotation of the \textit{state} vectors, which can then easily
+Consider therefore first a rotation of the \textit{state} vectors, which can 
 be inverted to receive the forward transformation also necessary for the transformation
 of operator matrices. The inversion process is but a complex
 conjugation since the operator in question is unitary. It can be shown 
@@ -187,10 +147,10 @@ given  by the matrix with elements as \cite{sakurai}:
         m'}e^{\frac{-iS_\mu\alpha}{\hbar}}e^{\frac{-iS_y\beta}{\hbar}}e^{\frac{-iS_\mu\delta}{\hbar{}}}\ket{s,
 m''}
 .\end{align*}
-Here \(s\), \(m'\), \(m''\) are spin quantum numbers of the system, which in the more general
+Here, \(s\), \(m'\), \(m''\) are spin quantum numbers of the system, which in the more general
 case can be replaced by angular momentum quantum numbers. The rotations \(\alpha\),
 \(\beta\) and \(\delta\) are done about the \(z-\), \(y-\) and then \(z-\) body axes of
-the system in turn. Since the spin states considered here are symmetric about their
+the system. Since the spin states considered here are symmetric about their
 body \(z\)-axes the final rotation \(\delta\) is superfluous and thus will be discarded.
 Identifying the angles \(\alpha = \varphi\) and \(\beta = \vartheta\) for rotation to some
 spherical coordinates it can further be
@@ -209,8 +169,8 @@ shown that the exponential operators amount to:
 }
 .\end{align*}
 An operator matrix \(A\) transforms under rotation as \(A_{rot} = \U A\U^{\dagger}\), so
-the operator of equation \ref{eq:BSmat} which is expressed in terms of a basis rotated by
-angles \(\vartheta_B\) and \(\varphi_B\) can be written in the \(z\)-axis basis as:
+the operator of equation \ref{eq:BSmat}, which is expressed in terms of a basis rotated by
+angles \(\vartheta_B\) and \(\varphi_B\), can be written in the \(z\)-axis basis as:
 \begin{align}\label{eq:BSrot}
     \va{B}\cdot \va{S} &= B\hbar{}\pmqty{
             0 & 0 & 0 & 0\\
@@ -220,7 +180,7 @@ angles \(\vartheta_B\) and \(\varphi_B\) can be written in the \(z\)-axis basis 
                     0 & 0 & \frac{e^{i\varphi_B}}{\sqrt{2} }\sin(\vartheta_B) & \cos(\vartheta_B)
             }
 .\end{align}
-Analogously the matrix of equation \ref{eq:SSmat} is expressed in a basis rotated through
+Analogously, the matrix of equation \ref{eq:SSmat} is expressed in a basis rotated through
 angles \(\vartheta_r\) and \(\varphi_r\), so in the \(z\)-axis basis it can be written:
 \begin{align}\label{eq:SSrot}
         S^{(1)}_\mu S^{(2)}_\mu &= \frac{\hbar{}^2}{4}\pmqty{-1 & 0 & 0 & 0\\
@@ -260,29 +220,29 @@ potential part of the Hamiltonian takes the form:
                         \xi \cos[2](\vartheta_r) - \cos(\vartheta_B) 
         }
 .\end{align}
-Here \(\xi = \frac{J}{\gamma B}\) is a proportionality factor between the spin-spin
-and spin-field interactions which will simplify calculations. This together with the
-kinetic part of the Hamiltonian \(\mathbb{\cal H}_s\) will determine the time evolution of
-the system:
+Here, \(\xi = \frac{J}{\gamma B}\) is a proportionality factor between the spin-spin
+and spin-field interactions. This together with the
+kinetic part of the Hamiltonian
 \begin{align}\label{eq:Hs}
         \mathbb{\cal H}_s &= \sum_{n=1}^{5} \frac{p_i^2}{2m_i}
 .\end{align}
+will determine the time evolution of the system.
 \section{The Born-Oppenheimer approximation}
 \subsection{Derivation}
 Solving for the eigenstates of such a Hamiltonian as described above is a mighty task. Note
 in particular that the contribution from potential energy to the Hamiltonian, equation
-\ref{eq:Hf}, is heavily dependent on the position and rotation of the dumbbell through all
+\ref{eq:Hf}, is heavily dependent on the position and orientation of the dumbbell through all
 parameters \(\vartheta_r \), \(\vartheta_B\), \(\varphi_r\),
 \(\varphi_B\) and \(B\). This couples all degrees of freedom for the system, which complicates
 the problem greatly.
 
-An approximation is therefore in order. If the position and rotation,
+An approximation is therefore in order. If the position and orientation,
 henceforth the ''slow'' parameters,
-is more or less static in comparison with the spin degrees of freedom, henceforth ''fast''
-parameters, the so-called Born-Oppenheimer approximation is applicable. A version of the
+are more or less static in comparison with the spin degrees of freedom, henceforth ''fast''
+parameters, the Born-Oppenheimer approximation is applicable. A version of the
 adiabatic approximation described in section \ref{sec:adiab}, it assumes that a ''fast''
 subsystem, dependent on the fast
-parameters, can be described by eigenstates to a Hamiltonian parametrised by the slow
+parameters, can be described by eigenstates of a Hamiltonian parametrised by the slow
 parameters. A fast system in such an eigenstate can be considered to remain in the same
 eigenstate as the associated ''fast'' Hamiltonian slowly changes, changing its
 eigenvalue as the slow parameters evolve. So far this is just the adiabatic
@@ -292,19 +252,20 @@ parameters then correspond to the parameter space of the fast system. %Var speci
 
 The Born-Oppenheimer approximation involves the extension of this to also consider how the
 ''slow'' system evolves, in practice finding an effective Hamiltonian to the slow system as
-well. Originally, and still mainly, an approximation used in molecular physics proposed in
-1927 \cite{bo} it applies also to the present situation. The full system is then considered to be described by the product of a wave function to the slow
-system \(\Psi_s\) and  some eigenstate to the fast Hamiltonian \(\ket{n}\), i.e.
+well. Originally an approximation used in molecular physics proposed in
+1927 \cite{bo}, it applies also to the present situation. The full system is considered to be described by the product of a wave function to the slow
+system \(\Psi_s\) and  some eigenstate of the fast Hamiltonian \(\ket{n}\), i.e.,
 \begin{align*}
         \ket{\Psi_{full}} = \Psi_s\ket{n}
 .\end{align*}
 The aforementioned fast and slow Hamiltonians are for the system in consideration the
-previously found \(\mathbb{\cal H}_f\) and \(\mathbb{\cal H}_s\) respectively. The full
-solution to the fast system is assumed to be found, i.e.
+previously found \(\mathbb{\cal H}_f\) and \(\mathbb{\cal H}_s\), respectively. The full
+solution of the fast system is assumed to be known, i.e., that
 \begin{align*}
         \mathbb{\cal H}_f \ket{n} = E_n\ket{n}
-.\end{align*}
-The Schrödinger equation then implies, since \(\frac{\partial }{\partial t} \ket{n} = 0\),
+\end{align*}
+is solved.
+The Schrödinger equation implies, since \(\frac{\partial }{\partial t} \ket{n} = 0\),
 \begin{align*}
         &i\hbar{}\frac{\partial }{\partial t} (\Psi_s\ket{n}) = (\mathbb{\cal H}_f +
         \mathbb{\cal H}_s) \Psi_s\ket{n}\\
@@ -312,20 +273,20 @@ The Schrödinger equation then implies, since \(\frac{\partial }{\partial t} \ke
         \mathbb{\cal H}_s)\ket{n}\Psi_s = (\bra{n}\mathbb{\cal H}_s\ket{n} +
         E_n)\Psi_s
 .\end{align*}
-This can be interpreted as an effective Hamiltonian \(\mathbb{\cal H}_{eff} =
+This can be interpreted as an effective Hamiltonian \(\mathbb{\cal H}^{(n)}_{eff} =
 \bra{n}\mathbb{\cal H}_s\ket{n} + E_n\) governing the slow wave function.
-The inner product term can be further manipulated as follows:
+The inner product term can be further manipulated in our system as follows:
 \begin{align*}
         \bra{n} \mathbb{\cal H}_s \ket{n} \Psi_s &= \sum_{i=1}^{5} \bigg[\bra{n}
         \frac{p_i^2}{2m_i}\ket{n} \Psi_s + \bra{n} \frac{p_i}{m_i} \ket{n}
-        p\Psi_s + p_i^2\Psi_s\bigg]
+        p_i\Psi_s + \frac{p_i^2}{2m_i}\Psi_s\bigg]
 .\end{align*}
-Here it is to be understood that the momentum operators in \(\mathbb{\cal H}_s\) act on
+Here, it is to be understood that the momentum operators in \(\mathbb{\cal H}_s\) act on
 \textit{both} the spin ket and
 and the slow wave function. An operator to the left of a ket and wave function product will
 however be understood to act on the ket only, if no clarifying parentheses are written out
 explicitly.
-Since all \(p_i\) are hermitian operators and can thus be acted on bras to the left
+Since all \(p_i\) are Hermitian operators and can thus be acted on bras to the left
 without conjugation the most troublesome term can also be
 written as: %Fult skrivsätt? Byt till derivator redan här?
 \begin{align*}
@@ -347,22 +308,22 @@ and rearranging terms with some convenient notation we arrive to the Hamiltonian
 sought after:
 
 \begin{align}\label{eq:Heff}
-        \mathbb{\cal H}_{eff} &= \sum_{i=5}^{5} \frac{(p_i - A_i)^2}{2m_i} + \Phi + E_n\\
-        A_i &= i\hbar{}\bra{n}\ket{\partial_i n}\\
-        \Phi &= \sum_{i=1}^{5} \frac{\hbar{}^{2}}{2m_i}\bra{\partial_i n}(\mathbb{1} - \ket{n}
+        \mathbb{\cal H}^{(n)}_{eff} &= \sum_{i=5}^{5} \frac{(p_i - A^{(n)}_i)^2}{2m_i} + \Phi^{(n)} + E_n,\\
+        A^{(n)}_i &= i\hbar{}\bra{n}\ket{\partial_i n},\\
+        \Phi^{(n)} &= \sum_{i=1}^{5} \frac{\hbar{}^{2}}{2m_i}\bra{\partial_i n}(\mathbb{1} - \ket{n}
     \bra{n})\ket{\partial_i n}
 .\end{align}
 \subsection{Interpretation}\label{sec:BOinterp}
 Equation \ref{eq:Heff} has been aptly written on a form which suggests the physics to be
 studied. Note that the sum over \(i\) looks precisely like the Hamiltonian of a magnetic field
-with vector potential \(\va{A} = \sum_{i=1}^{5} i\hbar{}\bra{n}\ket{\grad n}\) on a particle of charge
-\(1\) and momentum \(\va{p} = \sum_{i=1}^{5} p_i\). Note also that this magnetic field is
+with vector potential \(\va{A}^{(n)} = i\hbar{}\bra{n}\ket{\grad n}\) on a particle of charge
+\(1\) and momentum \(\va{p} = (p_1, \ldots,p_5)\). Note also that this magnetic field is
 the same as the synthetic magnetic field outlined in section \ref{sec:geophase}, and as of
 such carries precisely the same properties. In particular the field will carry a monopolar
 dependence, as desired. A difference present to Maxwellian magnetic fields is that both field and momentum are here five dimensional, and
 furthermore that the masses of the two final degrees of freedom are rather moments of
 inertia. The dynamics of this term is the
-main interest of this discussion, but we note also a scalar field, analogously called the
+main interest of this discussion, but we note also a scalar field \(\Phi^{(n)}\), analogously called the
 synthetic electric field or the synthetic scalar field. Roughly speaking however this
 field is a factor \(\hbar{}\) smaller than the synthetic magnetic field and will in most
 cases be negligible. 
@@ -377,73 +338,72 @@ the adiabatic approximation loses validity at points of degeneracy.
 Having found an effective Hamiltonian to the slow system the application of this
 Hamiltonian to the dynamics of the system remains to be performed. One could proceed with
 the quantum mechanical methods used so far, solving for eigenstates of \(\mathbb{\cal
-H}_{eff}\). This however requires finding the dependence of the eigenstates of
-\(\mathbb{\cal H}_f\) on the slow parameters, which may not be achievable analytically.
-%Säker på att just detta handlar om valet klassisk/kvant?
-Instead the slow system can be considered to be effectively lying in the classical domain,
+H}_{eff}\). The approximations taken so far however allow further simplification. %Säker på att just detta handlar om valet klassisk/kvant?
+Since the slow system is also ''heavy'' it can be considered to be effectively lying in the classical domain,
 and the Hamiltonian derived by quantum mechanical means will be utilized in the role of the
 Hamiltonian for classical mechanics. %motivera varför detta är rimligt
 
 Hamilton's canonical equations indicate the time evolution of \(\va{r}\) :%ref Goldstein
 \begin{align*} %Fixa massan i nämnarna 
-        \frac{\partial \va{r}}{\partial t} &= \frac{\partial \mathbb{\cal H}_{eff}}{\partial \va{p}} = \frac{\va{p} -
- \va{A}}{m}\\ %%Inför Hadamard-notation?
-                \frac{\partial \va{p}}{\partial t}  &= -\frac{\partial \mathbb{\cal H}_{eff}}{\partial \va{r}}=
+        \frac{d \va{r}}{d t} &= \frac{\partial \mathbb{\cal H}^{(n)}_{eff}}{\partial \va{p}} = \frac{\va{p} -
+ \va{A}^{(n)}}{m}\\ %%Inför Hadamard-notation?
+                \frac{d \va{p}}{d t}  &= -\frac{\partial \mathbb{\cal H}^{(n)}_{eff}}{\partial \va{r}}=
                 \pqty{\frac{\partial
- \va{A}}{\partial \va{r}}}^T \frac{\va{p}-\va{A}}{m} -\frac{\partial \Phi}{\partial \va{r}}
+ \va{A}^{(n)}}{\partial \va{r}}}^T \frac{\va{p}-\va{A}^{(n)}}{m} -\frac{\partial \Phi^{(n)}}{\partial \va{r}}
  -\frac{\partial E_n}{\partial \va{r}} = \pqty{\frac{\partial
- \va{A}}{\partial \va{r}}}^T \frac{\partial \va{r}}{\partial t} - \frac{\partial
-\Phi}{\partial \va{r}} - \frac{\partial E_n}{\partial \va{r}}  
+ \va{A}^{(n)}}{\partial \va{r}}}^T \frac{d \va{r}}{d t} - \frac{\partial
+\Phi^{(n)}}{\partial \va{r}} - \frac{\partial E_n}{\partial \va{r}}  
 .\end{align*}
 Note in particular that the first of these equations imply that the canonical momentum \(\va{p}\) is
-\textit{not} \(m \frac{\partial \va{r}}{\partial t} \). The effective force acting on the
+\textit{not} \(m \frac{d \va{r}}{d t} \). The effective force acting on the
 system can be found, utilizing that the synthetic vector potential does not depend explicitly
-on time, i.e. that \(\frac{\partial \va{A}}{\partial t}  = 0\):
+on time, i.e., that \(\frac{\partial \va{A}^{(n)}}{\partial t}  = 0\):
 \begin{align}\label{eq:dyn1}
-        m \frac{d^2 \va{r}}{d t^2} &= \frac{\partial \va{p}}{\partial
-        t} - \frac{d \va{A}}{d t}  = \pqty{\frac{\partial \va{A}}{\partial \va{r}}}^T \frac{\partial
-\va{r}}{\partial t} - \pqty{\frac{\partial \va{r}}{\partial t}  \vdot \grad}\va{A}
--\frac{\partial \Phi}{\partial \va{r}} - \frac{\partial E_n}{\partial \va{r}}  
+        m \frac{d^2 \va{r}}{d t^2} &= \frac{d \va{p}}{d
+        t} - \frac{d \va{A}^{(n)}}{d t}  = \pqty{\frac{\partial \va{A}^{(n)}}{\partial \va{r}}}^T \frac{d
+\va{r}}{d t} - \pqty{\frac{d \va{r}}{d t}  \vdot \grad}\va{A}^{(n)}
+-\frac{\partial \Phi^{(n)}}{\partial \va{r}} - \frac{\partial E_n}{\partial \va{r}}  
 .\end{align}
 The Jacobian matrix can be treated elementwise, as well as the second term: 
 \begin{align*}
-        \frac{1}{i\hbar{}}\pqty{\frac{\partial \va{A}}{\partial \va{r}}}_{ji} &= \partial_i
+        \frac{1}{i\hbar{}}\pqty{\frac{\partial \va{A}^{(n)}}{\partial \va{r}}}_{ji} &= \partial_i
         \bra{n}\ket{\partial_j n} = \bra{\partial_i n}\ket{\partial_j n} +
         \bra{n}\ket{\partial_i \partial_j n}\\
-        \frac{1}{i\hbar{}}\pqty{\pqty{\frac{\partial \va{r}}{\partial t} \vdot \grad}
-\va{A}}_i &= \sum_{j=1}^{5} \frac{\partial r_j}{\partial t} \partial_j
-                \bra{n}\ket{\partial_i n} =\sum_{j=1}^{5}  \frac{\partial r_j}{\partial
+        \frac{1}{i\hbar{}}\pqty{\pqty{\frac{d \va{r}}{d t} \vdot \grad}
+\va{A}^{(n)}}_i &= \sum_{j=1}^{5} \frac{d r_j}{d t} \partial_j
+                \bra{n}\ket{\partial_i n} =\sum_{j=1}^{5}  \frac{d r_j}{d
                         t}\pqty{ \bra{\partial_j
                 n}\ket{\partial_i n} + \bra{n}\ket{\partial_j \partial_i n}}
 .\end{align*}
 Insertion into equation \ref{eq:dyn1} then yields a higher dimensional analogue to a
 cross-product based Lorentz-type force:
 \begin{align*}
-             \frac{1}{i\hbar{}}\bqty{\pqty{\frac{\partial \va{A}}{\partial \va{r}}}^T \frac{\partial
-\va{r}}{\partial t} - \pqty{\frac{\partial \va{r}}{\partial t}  \vdot \grad}\va{A}}_i
- &= \frac{1}{i\hbar{}}F_{i}^A = \sum_{j=1}^{5} \frac{\partial
-        r_j}{\partial t} \bqty{\bra{\partial_i n}\ket{\partial_j n}-\bra{\partial_j n}\ket{\partial_i
+             \frac{1}{i\hbar{}}\bqty{\pqty{\frac{\partial \va{A}^{(n)}}{\partial \va{r}}}^T \frac{d
+\va{r}}{d t} - \pqty{\frac{d \va{r}}{d t}  \vdot \grad}\va{A}^{(n)}}_i
+ &= \frac{1}{i\hbar{}}F_{i}^A = \sum_{j=1}^{5} \frac{d
+        r_j}{d t} \bqty{\bra{\partial_i n}\ket{\partial_j n}-\bra{\partial_j n}\ket{\partial_i
         n}}\\
-        &= \sum_{j=1}^{5} \sum_{l} \frac{\partial r_j}{\partial t}\bqty{\bra{\partial_i
+        &= \sum_{j=1}^{5} \sum_{l} \frac{d r_j}{d t}\bqty{\bra{\partial_i
                 n}\ket{l}\bra{l}\ket{\partial_j n}- \bra{\partial_j
         n}\ket{l}\bra{l}\ket{\partial_i n}}\\
-        &= \sum_{j=1}^{5} \sum_{l \ne n} \frac{\partial r_j}{\partial t}\bqty{\bra{\partial_i
+        &= \sum_{j=1}^{5} \sum_{l \ne n} \frac{d r_j}{d t}\bqty{\bra{\partial_i
                 n}\ket{l}\bra{l}\ket{\partial_j n}- \bra{\partial_j
         n}\ket{l}\bra{l}\ket{\partial_i n}}\\
-        &= \sum_{j\ne i} \sum_{l \ne n} \frac{\partial r_j}{\partial t}\bqty{\bra{\partial_i
+        &= \sum_{j\ne i} \sum_{l \ne n} \frac{d r_j}{d t}\bqty{\bra{\partial_i
                 n}\ket{l}\bra{l}\ket{\partial_j n}- \bra{\partial_j
         n}\ket{l}\bra{l}\ket{\partial_i n}}
 .\end{align*}
-Here \(\ket{l}\) simply denotes an eigenstate to \(\mathbb{\cal H}_{f}\) of some index
-\(l\), and the sum over \(l\) is over all available states. The exclusion of \(n=l\)-terms follows as
-\(\bra{\partial_i n}\ket{n}\) is pure imaginary, which can be seen from differentiating
-\(\bra{n}\ket{n}\). This rearrangement is highly desirable, for it now so happens that this
+Here, \(\ket{l}\) simply denotes an eigenstate to \(\mathbb{\cal H}_{f}\) of some index
+\(l\), and the sum over \(l\) is over all available states. The exclusion of \(l=n\)-terms follows as
+\(\bra{\partial_i n}\ket{n}\) is purely imaginary, which can be seen from differentiating
+\(\bra{n}\ket{n} = 1\). This rearrangement is highly desirable, for it now so happens that this
 allows us to take derivatives of the Hamiltonian instead of the rather tricky
 differentiation of the eigenkets. Differentiating the Schrödinger equation and acting on it
 with some other eigenbra yields:
 \begin{align*}
-        \mathbb{\cal H}_f \ket{n} &= E_n \ket{n}\\
-        \partial \mathbb{\cal H}_f \ket{n} + \mathbb{\cal H}_f \ket{\partial n} &= E_n \ket{\partial n}\\
+        \mathbb{\cal H}_f \ket{n} &= E_n \ket{n} \implies\\
+        \partial \mathbb{\cal H}_f \ket{n} + \mathbb{\cal H}_f \ket{\partial n} &= E_n
+        \ket{\partial n} \implies\\
         \bra{l}\partial \mathbb{\cal H}_f \ket{n} &= \bra{l}\ket{\partial n}(E_n - E_l)
 .\end{align*}
 Rearranging, a very useful relation emerges:
@@ -451,36 +411,36 @@ Rearranging, a very useful relation emerges:
         \bra{l}\ket{\partial n} &= \frac{\bra{l}\partial \mathbb{\cal H}_f \ket{n}}{E_n
         - E_l}
 .\end{align}
-This we can insert into above:
+This we can insert into the above:
 \begin{align}\label{eq:FA}
 \frac{1}{i\hbar{}}F_i^A &= \sum_{j\ne i} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
         t}}{\pqty{E_n-E_l}^2}\bqty{\bra{n}\partial_i \mathbb{\cal H}_f
         \ket{l}\bra{l}\partial_j\mathbb{\cal H}_f\ket{n} - \bra{n}\partial_j \mathbb{\cal
-        H}_f\ket{l}\bra{l}\partial_i \mathbb{\cal H}_f\ket{n}}\\
+        H}_f\ket{l}\bra{l}\partial_i \mathbb{\cal H}_f\ket{n}}\nonumber\\
         &= 2i\sum_{j\ne i} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
         t}}{\pqty{E_n-E_l}^2} \Im \bqty{\bra{n}\partial_i \mathbb{\cal H}_f
         \ket{l}\bra{l}\partial_j\mathbb{\cal H}_f\ket{n}}
 .\end{align}
-Equation \ref{eq:Hdiff} can be used for something similar when evaluating the synthetic
+Equation \ref{eq:Hdiff} can also be used when evaluating the synthetic
 electric potential:
 \begin{align}\label{eq:ElPot}
-        \Phi &= \sum_{i=1}^{5} \sum_{l \ne n} \frac{\hbar{}^2}{2m_i}\pqty{\bra{\partial_i
-    n}\ket{l}\bra{l}\ket{\partial_i n}} = \sum_{i=1}^{5} \sum_{l \ne n}
+        \Phi^{(n)} &= \sum_{i=1}^{5} \sum_{l \ne n} \frac{\hbar{}^2}{2m_i}\bra{\partial_i
+    n}\ket{l}\bra{l}\ket{\partial_i n} = \sum_{i=1}^{5} \sum_{l \ne n}
     \frac{\hbar{}^2}{2m_i}\frac{\bra{n}\partial_i \mathbb{\cal H}_f\ket{l}\bra{l}\partial_i
     \mathbb{\cal H}_f\ket{n}}{\pqty{E_n-E_l}^2}\\
     &= \sum_{i=1}^{5} \sum_{l \ne n}
     \frac{\hbar{}^2}{2m_i}\frac{|\bra{n}\partial_i \mathbb{\cal H}_f\ket{l}|^2}{\pqty{E_n-E_l}^2}
 .\end{align}
 For the last equalities to hold in both contributions we require that the derivative of the Hamiltonian is
-hermitian, but thankfully derivatives of hermitian operators are hermitian so this holds
+Hermitian, but thankfully derivatives of Hermitian operators are Hermitian so this holds
 true.
-Note however that no simple form to the derivative of the electric potential \(\Phi\) has
+Note however that no simple form to the derivative of the electric potential \(\Phi^{(n)}\) has
 been found, which might not be easily described analytically.
 
 The problem has thus been reduced to evaluating, per equations \ref{eq:FA} and
 \ref{eq:ElPot},
 \begin{align}\label{eq:dynfin}
-        m\frac{d \va{r}}{d t^2} &= \va{F}^A-\frac{\partial \Phi}{\partial
+        m\frac{d \va{r}}{d t^2} &= \va{F}^A-\frac{\partial \Phi^{(n)}}{\partial
         \va{r}} - \frac{\partial E_n}{\partial \va{r}} 
 .\end{align}
 \subsection{Differentiation of the Hamiltonian}\label{sec:Hdiff}
@@ -488,13 +448,12 @@ In order to easily evaluate equations \ref{eq:FA} and \ref{eq:ElPot} derivatives
 \(\mathbb{\cal H}_f\) from equation \ref{eq:Hf} are to be found. Writing any of the coordinates \(x\), \(y\), \(z\)
 as \(r\) the derivatives can
 be written:
-\begin{align}\label{eq:diffham1}
+\begin{align}\label{eq:diffham}
         \partial_r\mathbb{\cal H}_f  &= \gamma B \hbar{} \pmqty{
  \frac{\dot B}{B}\cos(\vartheta_B) -\dot \vartheta_B \sin(\vartheta_B) & \Omega & 0 \\
  \Omega^{*} & 0 & \Omega\\
  0 & \Omega^{*}& -\frac{\dot B}{B}\cos(\vartheta_B) + \dot \vartheta_B \sin(\vartheta_B)
-        }\\
-        \label{eq:diffham2}
+        }, \nonumber\\
         \partial_{\vartheta_r} \mathbb{\cal H}_f &= \gamma B \xi \hbar{}\pmqty{
                 -\sin(2\vartheta_r) & -\sqrt{2}  e^{-i\varphi_r}\cos(2\vartheta_r) &
                  e^{-2i\varphi_r}\sin(2\vartheta_r)\\
@@ -502,8 +461,7 @@ be written:
                 \sqrt{2} e^{-i\varphi_r}\cos(2\vartheta_r)\\
                  e^{2i\varphi_r}\sin(2\vartheta_r) & \sqrt{2} 
                 e^{i\varphi_r}\cos(2\vartheta_r) & -\sin(2\vartheta_r)
-        }\\
-        \label{eq:diffham3}
+        }, \nonumber\\
         \partial_{\varphi_r} \mathbb{\cal H}_f &= \gamma B \xi \hbar{}\pmqty{
                 0 & i  \frac{e^{-i\varphi_r}}{\sqrt{2} }\sin(2\vartheta_r) &
                 -2i e^{-2i\varphi_r}\sin[2](\vartheta_r)\\
@@ -513,15 +471,14 @@ be written:
                 }\sin(2\vartheta_r) & 0
         }
 .\end{align}
-Here \(\Omega = (-\frac{\dot B}{B}\sin(\vartheta_B) + i\dot \varphi_B 
+Here, \(\Omega = (-\frac{\dot B}{B}\sin(\vartheta_B) + i\dot \varphi_B 
  \sin(\vartheta_B) -\dot \vartheta_B \cos(\vartheta_B)) \frac{e^{-i\varphi_B}}{\sqrt{2}}\) is introduced as a means of compressing the
-rather lengthy expressions for the derivative with respect to \(r\), and asterisks denote
-the complex conjugate.
+rather lengthy expressions for the derivative with respect to \(r\).
 \subsection{Solution of the fast subsystem} 
-The usage of the Born-Oppenheimer approximation requires a solution to the fast subsystem,
-i.e. that the eigenvalues and eigenvectors of \(\mathbb{\cal H}_f\) are found.
-Unfortunately this is not possible analytically for the present system, but we note that it
-is the same as solving the following transcendental characteristic equation, which follows
+The usage of the Born-Oppenheimer approximation requires a solution for the fast subsystem,
+i.e., that the eigenvalues and eigenvectors of \(\mathbb{\cal H}_f\) are found.
+Unfortunately this is not possible analytically for the present system, but note that it
+is the same as solving the following cubic characteristic equation, which follows
 from equation \ref{eq:Hf}, for the
 eigenvalues \(\lambda_n = \frac{E_n}{\gamma B\hbar{}}\): %Citera Sjöqvist, Yi
 \begin{align}\label{eq:lambda}
@@ -541,15 +498,11 @@ eigenvalues \(\lambda_n = \frac{E_n}{\gamma B\hbar{}}\): %Citera Sjöqvist, Yi
                         \xi \cos[2](\vartheta_r) - \cos(\vartheta_B) - \lambda_n 
         }
 .\end{align}
-This is rather messy, and unfortunately does not bring much clarity to the behaviour of the
-eigenvalues. 
-
-Solving for the eigenvectors as a function of the eigenvalues does not yield any strikingly
-useful relation neither, so the calculation of eigenvalues and eigenvectors may be left to numerics from
+Calculation of eigenvalues and eigenvectors may be left to numerics from
 the onset. Equation \ref{eq:lambda} could in principle be differentiated implicitly to
 receive the derivatives of the energies also needed, but since simulation of the system requires many other quantities 
-to also be calculated numerically the derivatives of the energies will be done likewise for
-practicality's sake.
+to be calculated numerically, the derivatives of the energies will be done likewise for
+the sake of practicality.
 %Derivatives of \(E_n\) are however needed, and the possibility of calculating
 %these analytically for each point in parameter space without requiring the calculation of
 %neighbouring eigenvalues is an alluring one. Numerical approximation of the derivatives

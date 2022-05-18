@@ -10,7 +10,8 @@ if __name__ == '__main__':
     fieldtype = 'oppositecoils'
     I = 10 #Current parameter for the field
     norot = False #Whether to ignore rotational degrees of freedom
-    nosyn = 'False' #Whether to ignore synthetic fields
+    nosyn = 'False' #Whether to ignore synthetic fields, accepts the strings 'False',
+                    #'True', 'Nomag' and 'Noscalar'
     overwriteresult = False #Whether to overwrite previous ODE results
     alternatestreams = False #Whether to use alternate swarming scheme
     
@@ -126,20 +127,14 @@ if __name__ == '__main__':
 
     else:
         print('Loading previously generated result')
-    #Extract positions and orientations
+    #Extract positions and orientations of the first stream
     pos = sol[0].y[0:3,:]
     vel = sol[0].y[5:8,:]
     ori = sol[0].y[3:5,:]
     #Print the result
     print('Times sampled:')
     print(sol[0].t)
-#    print('Path integrated:')
-#    print(pos)
     print('Rotation integrated:')
     print(ori)
-#    print('Velocity integrated:')
-#    print(vel)
-
-
     
     sn.lineplot(sol, field, I, initvel, swarmnum, eigenstate, norot, nosyn, alternatestreams)

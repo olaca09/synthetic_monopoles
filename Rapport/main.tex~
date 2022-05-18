@@ -35,6 +35,9 @@
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{patterns}
+\usetikzlibrary{3d}
+\usetikzlibrary{math}
+\usetikzlibrary{calc}
 \lstset{language=Python, breaklines, literate=%
 {å}{{\r{a}}}1
 {ä}{{"a}}1
@@ -43,7 +46,6 @@
 {Ä}{{"A}}1
 {Ö}{{"O}}1
 }
-
 
 \date{\today}
 

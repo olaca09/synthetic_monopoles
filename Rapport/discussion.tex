@@ -4,14 +4,14 @@
 \section{Discussion}
 \subsection{On the nonsynthetic behaviour of the eigenstates}\label{sec:nonsynbeh}
 Why is there such a sharp distinction between the nonsynthetic forces on the different fast
-Hamiltonian eigenstates as seen in figure \ref{fig:ncompare}? This can be easily understood
+Hamiltonian eigenstates as seen in figure \ref{fig:ncompare}? This can be understood
 in the limit \(J \ll \gamma\). For such parameters, which is often the case considered, the
 eigenstates of the fast Hamiltonian will tend to the simple cases of \(\ket{\va{n}, 1}\),
 \(\ket{\va{n}, 0}\) and \(\ket{\va{n}, -1}\), where the integer designates the directional
-spin in the axis \(\va{n}\) of the external magnetic field. This follows from that the fast
-Hamiltonian is easily diagonalizable at \(J = 0\), where the high and low energy states
-in addition can be seen as the dipole of the spin system standing in antiparallell or
-parallell fashion respectively to the external field. The fast energies of those
+spin along the axis \(\va{n}\) of the external magnetic field. This follows from that the fast
+Hamiltonian is diagonalizable at \(J = 0\), where the high and low energy states
+in addition can be seen as the spin pointing in antiparallell or
+parallel fashion, respectively, to the external field. The fast energies of those
 states will tend towards \(-B\gamma\hbar{}\), \(0\) and \(B\gamma \hbar{}\) respectively.
 The only quantity therein dependent on the position or angle of the dumbbell is the
 external field strength \(B\), and since the nonsynthetic force acts in opposite direction
@@ -32,7 +32,7 @@ It is a peculiar feature of the synthetic magnetic field that its strength is ha
 affected by the parameters of the setup. As discussed in section \ref{sec:resmiddle} for a
 fixed magnetic field configuration this means adjustment of the dumbbell mass is a major
 tool for exploring synthetic dynamics. For the middle state however these dynamics became
-significant first when the mass was reduced to values of the order \(\sim 10^{-29}\) kg, a
+significant first when the mass was reduced to values in the order of \(\sim 10^{-29}\) kg, a
 most displeasing result. The atomic mass unit is approximately \(1.66\times 10^{-27}\) kg, 
 dumbbell masses but a hundredth of this magnitude are far from feasible for any system
 where the movement can be considered ''slow'' and classical. Consequently the results
@@ -41,33 +41,34 @@ predicted repulsive nature of the synthetic scalar field.
 
 The case of the high energy states however bring great promise when it comes to domains of
 mass. Not only is the synthetic effects visible for the dumbbell mass of two silver atoms,
-rather heavy an element, but strong synthetic action appears already at masses on the order
+rather heavy an element, but strong synthetic action appears already at masses in the order
 of \(\sim 10^{-27}\). Diatomic dumbbells of light elements such as hydrogen lie within this
 mass region, and as of such could constitute candidates for realisations of the model if
 ever that enterprise is undertaken.
 
 Adjustments of mass lead, at least in the high energy case, to corresponding adjustments of
 the spin-field coupling strength \(\gamma B\) as was done in section  \ref{sec:reshigh}.
-There adjustments were only done to \(\gamma\), since field strength adjustments are
+There, adjustments were only done to \(\gamma\), since field strength adjustments are
 computationally more demanding, but it is of course the case that any real life realisation
 of the system would carry with it some rather fixed value of \(\gamma\). It is therefore
 fortunate that the field strength in a realisation is highly adjustable by means of the
 current flowing through the coils. It remains unknown whether the currents needed are of
-reasonable order, but this could easily be checked by estimating plausible dumbbell
+reasonable order, but this could be checked by estimating plausible dumbbell
 parameters.
 
-Is mass then the \textit{only} tool available for strengthening the synthetic effects? This
-needn't be the case. Recalling the link between the Born-Oppenheimer synthetic magnetic
-field here considered and the geometric phase it is clear that traversing larger swathes of
+Is mass the \textit{only} tool available for strengthening the synthetic effects? This
+need not be the case. Recalling the link between the Born-Oppenheimer synthetic magnetic
+field and the geometric phase, it is clear that traversing larger swathes of
 parameter space is connected to larger synthetic magnetic field action. This geometric line
 of thinking can elucidate the independence of the synthetic fields on energy magnitudes.
 Increasing the energy magnitudes, say through increasing \(B\), does not change the
 path taken through parameter space more than multiplying its distance to the origin.
-Typical geometric phases, such as Berry's initial consideration of a system like that in
+Typical geometric phases, such as Berry's initial consideration of a system like that
+discussed in
 section \ref{sec:adiab}, are independent of the path's distance to the origin, and by these
 means the energy magnitudes can be seen to not affect the synthetic magnetic field effects.
 
-Here another way of strengthening the synthetic effects become clear: by complicating the
+Here, another way of strengthening the synthetic effects become clear: by complicating the
 path taken through parameter space. The capability of the dumbbell to rotate already
 constitute a great achievement in this regard, as the relative direction of the magnetic
 field to the dumbbell axis may vary much more than what would otherwise be the case.
@@ -101,7 +102,7 @@ well as the field they generate.
 %origin. Consider then the dumbbell moving in the positive \(z\) direction in the
 %\(zx\) plane through parameter space. %%Okej tror inte riktigt jag förstår det här, fråga
 %%Erik?
-The map between this space and real space cannot however be identity, such an external
+The map between this space and real space cannot however be  the identity map, such an external
 field is not allowed by Maxwell's equations,  instead the map will be rather nontrivial in general.
 Any motion through real space must therefore first be ''translated'' by means of this map
 if that motion is to be seen as motion in a monopole field. Luckily the present choice of
@@ -147,7 +148,8 @@ integrate properly as the rotational accelerations and velocities became exceedi
 Fast rotation of the dumbbell is perhaps not unphysical for the scenario considered, but
 appeared to not behave well in the numerical simulation. In addition it will be noted that
 exceedingly quick rotation could violate the adiabatic approximation, undermining the
-model. A hypothesis considering the origin of these non-convergent parameters is that the
+model. A possible correction to the model, if such rotations are deemed physical, could be to consider
+the rotational degrees of freedom part of the fast system instead of the slow. A hypothesis considering the origin of these non-convergent parameters is that the
 ODE solver does not behave well in conjunction with the lab discretization. The solver
 wishes to keep certain error estimates below a threshold value, here set to depend on the
 granularity of the lattice, and will reduce the step size of the integration until this is
