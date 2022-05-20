@@ -13,13 +13,13 @@ if __name__ == '__main__':
     nosyn = 'False' #Whether to ignore synthetic fields, accepts the strings 'False',
                     #'True', 'Nomag' and 'Noscalar'
     overwriteresult = False #Whether to overwrite previous ODE results
-    alternatestreams = True #Whether to use alternate swarming scheme
+    alternatestreams = False #Whether to use alternate swarming scheme
     
     #Define parameters
 
     nr = 101 #Number of points in field lattice
     lablength = 1e-3 #Cube side of lab in m
-    tmax = 0.5 #Trajectory time in s
+    tmax = 0.1 #Trajectory time in s
     J = 1e5 #Spin-spin coupling strength
     Gamma = 1e10 #Spin-field coupling strength
     

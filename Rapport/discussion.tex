@@ -106,7 +106,8 @@ The map between this space and real space cannot however be  the identity map, s
 field is not allowed by Maxwell's equations,  instead the map will be rather nontrivial in general.
 Any motion through real space must therefore first be ''translated'' by means of this map
 if that motion is to be seen as motion in a monopole field. Luckily the present choice of
-external magnetic field inadvertently implies a not too complex such map. As described in
+external magnetic field inadvertently implies a not too complex such map, see figure
+\ref{fig:fieldcompare}. As described in
 section \ref{sec:chofield} the external field from the two opposing coils increase in
 magnitude with increasing distance to the zero-point at the centre. The field additionally
 points towards the \(xy\)-plane intersecting the centre, and points either away
@@ -117,6 +118,25 @@ almost the map between real space and parameter space required. Some scaling of 
 dimensions must also be performed, the details of which are potentially quite complex.
 %Jag är väldigt osäker på den här diskussionen, om transformationen mellan reell och
 %parameter ens behövs
+
+\begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+                \draw[black]
+                        (-4, 0) node{\includegraphics[width=0.3\textwidth]{figures/coilfield-e}};
+                \draw[black] (-3.9,-2.8) node{External field in real space.};
+                \draw[black, ->] (-1,0) to[out=30, in=150] (1,0);
+                \draw[black] (0,0.7) node{\(M\) };
+                \draw[black]
+                        (4, 0)node[yshift=0.4]{\includegraphics[width=0.29\textwidth]{figures/idealfield-e}};
+                \draw[black] (4.1,-2.8) node{External field in parameter space.};
+        \end{tikzpicture}
+        \caption{\centering An illustration of the map \(M\) between real space and parameter space,
+        which must map every point of external field \(\va{b}\) to the parameter space
+point with the same external field \(\va{b}\). The planes shown are the \(xz\)-planes
+through the zero-field centre point of the lab and the origin, respectively.}
+        \label{fig:fieldcompare}
+\end{figure}
 
 It can also be noted, in contrast with the established goal, that the modification of the
 pure monopolar magnetic synthetic field by the introduction of the spin-spin coupling

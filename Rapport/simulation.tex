@@ -53,21 +53,20 @@ in a smooth fashion towards the regular single coil field.
         }
         \begin{tikzpicture}[decoration={markings, mark= between positions 0.1 and 1 step
                 0.2 with {\arrow{stealth}}}, z={(90:10mm)},x={(-25:6mm)},y={(0:10mm)}]
-
             \begin{scope}[canvas is xy plane at z=0]
                 \draw[black, thick, postaction={decorate}] (0,0) -- (6,0) -- (6,6) -- (0,6) -- cycle;
             \end{scope}
+            \dgrid[red, dotted, thick, canvas is xy plane at z=1](1,1)(4)(4)(8); %Draw the lab
+            \dgrid[red, dotted, thick, canvas is xy plane at z=5](1,1)(4)(4)(8);
+            \dgrid[red, dotted, thick, canvas is yz plane at x=1](1,1)(4)(4)(8);
+            \draw[blue] (3,3,3) node[circle, fill, inner sep=3pt]{}; %Zerofield marker
+            \dgrid[red, dotted, thick, canvas is yz plane at x=5](1,1)(4)(4)(8);
+            \dgrid[red, dotted, thick, canvas is zx plane at y=1](1,1)(4)(4)(8);
+            \dgrid[red, dotted, thick, canvas is zx plane at y=5](1,1)(4)(4)(8);
             \begin{scope}[canvas is xy plane at z=6]
                 \draw[black, thick, postaction={decorate}] (0,0) -- (0,6)
                         node[anchor=west, xshift=2mm, yshift=2mm]{\Large I} -- (6,6) -- (6,0) -- cycle;
             \end{scope}
-            \dgrid[red, dotted, thick, canvas is xy plane at z=1](1,1)(4)(4)(8); %Draw the lab
-            \dgrid[red, dotted, canvas is xy plane at z=5](1,1)(4)(4)(8);
-            \dgrid[red, dotted, canvas is yz plane at x=1](1,1)(4)(4)(8);
-            \draw[blue] (3,3,3) node[circle, fill, inner sep=3pt]{}; %Zerofield marker
-            \dgrid[red, dotted, canvas is yz plane at x=5](1,1)(4)(4)(8);
-            \dgrid[red, dotted, canvas is zx plane at y=1](1,1)(4)(4)(8);
-            \dgrid[red, dotted, canvas is zx plane at y=5](1,1)(4)(4)(8);
         \end{tikzpicture}
         \caption{\centering The currents generating the external magnetic field enclosing the
         simulated ''lab'' region, shown in red. A blue dot marks the point of zero field
@@ -132,7 +131,7 @@ become so small that rounding errors of the floating point operators dominate.
 A rule of thumb is that a step size of \(s_\omega \approx \sqrt[3]{\epsilon}\omega_c\) is
 close to the optimal point of good precision without leading to large rounding
 errors \cite{numerical}. Here \(\epsilon\) is the machine
-epsilon of order \(10^{-16}\), and \(\omega_c\) is the typical scale of \(\omega\), which
+epsilon in the order of \(10^{-16}\), and \(\omega_c\) is the typical scale of \(\omega\), which
 is taken to be the lab side length, so it is clear that any lattice with less than \(10^5\) sites
 along each cube side leads to step sizes well above this limit.
 

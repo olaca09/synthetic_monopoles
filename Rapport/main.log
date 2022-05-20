@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.4.19)  18 MAY 2022 15:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.4.19)  20 MAY 2022 15:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1223,14 +1223,25 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./discussion.tex [19 <./figures/n2m-25/(0,2)-comp1.png> <./figures/n2m-25/(0,2)-comp2.png> <./figures/n2m-25/(0,2)-comp3.png>] [20 <./figures/n2m-27/(1,1)-comp1.png> <./figures/n2m-27/(1,1)-comp2.png>] [21 <./figures/n2m-27/(1,1)-comp3.png> <./figures/n2m-27/(1,1)-comp4.png> <./figures/n2m-27/(1,1)-comp5.png> <./figures/n2m-27/(1,1)-comp6.png>] [22
 
-]) (./conclusions.tex [23]) [24] [25] (./appendix.tex
+]
+<figures/coilfield-e.png, id=524, 487.0998pt x 482.7636pt>
+File: figures/coilfield-e.png Graphic file (type png)
+<use figures/coilfield-e.png>
+Package pdftex.def Info: figures/coilfield-e.png  used on input line 126.
+(pdftex.def)             Requested size: 135.89174pt x 134.67934pt.
+<figures/idealfield-e.png, id=525, 498.663pt x 504.4446pt>
+File: figures/idealfield-e.png Graphic file (type png)
+<use figures/idealfield-e.png>
+Package pdftex.def Info: figures/idealfield-e.png  used on input line 131.
+(pdftex.def)             Requested size: 131.35764pt x 132.87666pt.
+ [23 <./figures/coilfield-e.png> <./figures/idealfield-e.png>]) (./conclusions.tex) [24] [25] (./appendix.tex
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 14.
  (../scripts/magfield.py [26] [27] [28] [29]) (../scripts/synfieldtools.py [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40]) (../scripts/synfieldsolver.py [41] [42] [43])) [44] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6015891BD0BCABD52C9CB892912FC0B5;4833.
+(rerunfilecheck)             Checksum: 82B1E9DCE3D7E803B7B3938FB58BD07D;4833.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -1241,19 +1252,19 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39187 strings out of 478276
- 755325 string characters out of 5853013
- 1859289 words of memory out of 5000000
- 55672 multiletter control sequences out of 15000+600000
+ 39228 strings out of 478276
+ 756302 string characters out of 5853013
+ 1845626 words of memory out of 5000000
+ 55709 multiletter control sequences out of 15000+600000
  494309 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,20n,133p,1839b,2262s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/dsserif/DSSerif.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0
 800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on main.pdf (45 pages, 3141778 bytes).
+Output written on main.pdf (45 pages, 3173569 bytes).
 PDF statistics:
- 1896 PDF objects out of 2073 (max. 8388607)
- 1705 compressed objects within 18 object streams
- 1034 named destinations out of 1200 (max. 500000)
- 412 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1901 PDF objects out of 2073 (max. 8388607)
+ 1708 compressed objects within 18 object streams
+ 1036 named destinations out of 1200 (max. 500000)
+ 422 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy.constants import mu_0 as mu
 from scipy.constants import pi as pi
+from matplotlib import pyplot as plt
 
 def simplewire(nr, lablength, I, overwrite=False):
     ##Returns a placeholder field corresponding to a current I through a wire along the

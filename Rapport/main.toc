@@ -29,7 +29,7 @@
 \contentsline {subsection}{\numberline {7.3}On the topic of monopoles}{23}{subsection.7.3}%
 \contentsline {subsection}{\numberline {7.4}Numerical limitations}{23}{subsection.7.4}%
 \contentsline {section}{\numberline {8}Conclusions}{24}{section.8}%
-\contentsline {section}{References}{25}{section*.14}%
+\contentsline {section}{References}{25}{section*.15}%
 \contentsline {section}{\numberline {A}Code}{26}{appendix.A}%
 \contentsline {subsection}{\numberline {A.1}magfield.py}{26}{subsection.A.1}%
 \contentsline {subsection}{\numberline {A.2}synfieldtools.py}{30}{subsection.A.2}%

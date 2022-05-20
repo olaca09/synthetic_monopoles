@@ -1481,6 +1481,14 @@ INPUT discussion.tex
 INPUT ./discussion.tex
 INPUT ./discussion.tex
 INPUT discussion.tex
+INPUT ./figures/coilfield-e.png
+INPUT figures/coilfield-e.png
+INPUT ./figures/coilfield-e.png
+INPUT ./figures/coilfield-e.png
+INPUT ./figures/idealfield-e.png
+INPUT figures/idealfield-e.png
+INPUT ./figures/idealfield-e.png
+INPUT ./figures/idealfield-e.png
 INPUT ./conclusions.tex
 INPUT ./conclusions.tex
 INPUT ./conclusions.tex

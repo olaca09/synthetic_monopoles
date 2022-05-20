@@ -1,9 +1,8 @@
 import pandas as pd
-import xarray as xr
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.constants import mu_0 as mu
 from scipy.constants import pi as pi
+from matplotlib import pyplot as plt
 
 def simplewire(nr, lablength, I, overwrite=False):
     ##Returns a placeholder field corresponding to a current I through a wire along the
@@ -36,11 +35,9 @@ def simplewire(nr, lablength, I, overwrite=False):
         Bx, By, Bz = mu/(4*pi)*2*I*np.cross([1, 0, 0], distance,
                 axisb=0, axisc=0)/griddot(distance, distance)
         Br, Bth, Bph = cart_to_sph(np.array([Bx,By,Bz])) #Express as spherical coordinates
-        #field = xr.DataArray([Bx, By, Bz, Br, Bth, Bph], dims=("direc", "x", "y", "z"), coords={"direc":
         field = np.array((Bx, By, Bz, Br, Bth, Bph))
 
         np.save(f'saves/simplewire{I}field{nr},{lablength}.npy', field)
-        #field.to_netcdf("saves/simplewirefield.nc")
         return field
 
 def oppositecoils(nr, lablength, I, overwrite=False):
@@ -176,3 +173,19 @@ def cart_to_sph(cart):
     sph[1] = np.arctan2(np.sqrt(xsqysq), cart[2]) #Polar angle theta
     sph[2] = np.arctan2(cart[1],cart[0]) #Azimuthal angle phi
     return sph
+
+def sliceplot(field):
+    fig, ax = plt.subplots()
+    nr = field.shape[1]
+
+    ax.set_xlabel('x', fontsize=10, color='blue')
+    ax.set_ylabel('z', fontsize=10, color='blue')
+
+    xx, zz = np.mgrid[0:nr,0:nr]
+    bx, by, bz = field[0:3, xx, int(nr/2), zz]
+
+    ax.quiver(xx, zz, xx-3, zz-3, color='r', width=0.006)
+
+    #ax.set_xticklabels(np.linspace(0, 0.001, 20))
+    #ax.set_yticklabels(np.linspace(0, 0.001, 20))
+    plt.show()
