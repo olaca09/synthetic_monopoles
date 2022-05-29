@@ -56,12 +56,15 @@
 
 \subfile{title}
 
+\pagenumbering{gobble}
 \subfile{abstract}
 \newpage
 
 \tableofcontents
 \newpage
 
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \subfile{introduction}
 
 \subfile{background}
@@ -81,7 +84,6 @@
 \newpage
 
 \appendix
-
 
 \subfile{appendix}
          

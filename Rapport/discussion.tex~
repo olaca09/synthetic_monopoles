@@ -106,7 +106,8 @@ The map between this space and real space cannot however be  the identity map, s
 field is not allowed by Maxwell's equations,  instead the map will be rather nontrivial in general.
 Any motion through real space must therefore first be ''translated'' by means of this map
 if that motion is to be seen as motion in a monopole field. Luckily the present choice of
-external magnetic field inadvertently implies a not too complex such map. As described in
+external magnetic field inadvertently implies a not too complex such map, see figure
+\ref{fig:fieldcompare}. As described in
 section \ref{sec:chofield} the external field from the two opposing coils increase in
 magnitude with increasing distance to the zero-point at the centre. The field additionally
 points towards the \(xy\)-plane intersecting the centre, and points either away
@@ -156,7 +157,11 @@ limitations, that number would have been increased had the setup allowed it, but
 field generation function quickly ran out of available resources if this was trialled. The
 discussion of section \ref{sec:code} shows that the used granularity is far below the
 optimal selection for the performance of the numerical differentiations, so increasing the
-amount of sites would be of high priority were the code to be optimized further.
+amount of sites would be of high priority were the code to be optimized further. In
+addition to code optimization more powerful computing resources could
+further be employed to increase performance. The simulations here displayed were run but on
+a low-end personal laptop unit, so access to high-performance resources could play a
+decisive role in further studies.
 
 It was also encountered that the ODE solver simply would not converge in any
 reasonable amount of time for many

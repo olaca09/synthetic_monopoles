@@ -631,5 +631,15 @@
     }
     \field{year}{2007}
   \endentry
+
+  \entry{UPPMAX}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Uppsala Multidisciplinary Center for Advanced Computational
+  Science}
+    \verb{url}
+    \verb https://www.uppmax.uu.se/
+    \endverb
+    \field{year}{2022}
+  \endentry
 \enddatalist
 \endinput

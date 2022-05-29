@@ -190,11 +190,11 @@ in figure \ref{fig:n1Je2}. Note the dependence on whether synthetic field effect
 included. Once again it is the synthetic scalar effects that dominate.
 \begin{figure}[h]
     \centering
-    \subfloat[\centering \(J =
+    \subfloat[\centering \(\gamma = 10^{10}\) J/(\(\hbar{}\) T) and \(J =
     100\) J/\(\hbar{}\), \(n = 1\), \(m = 3.58\times 10^{-29}\)
     kg, with synthetic field effects]{{\includegraphics[width=4cm]{figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse}}}
     \qquad
-    \subfloat[\centering \(J = 100\), \(n =
+    \subfloat[\centering \(\gamma = 10^{10}\) J/(\(\hbar{}\) T) and \(J = 100\), \(n =
     1\), \(m = 3.58\times 10^{-29}\)
     kg, without synthetic field effects]{{\includegraphics[width=4cm]{figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue}}}
     \caption{\centering Simulations for the middle state with nonzero \(J\), both with synthetic field

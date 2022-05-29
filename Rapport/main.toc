@@ -1,36 +1,36 @@
 \babel@toc {english}{}\relax 
 \babel@toc {swedish}{}\relax 
 \babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {section}{\numberline {2}Background}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}The adiabatic approximation}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}The geometric phase}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Regarding the monopoles}{6}{subsection.2.3}%
-\contentsline {section}{\numberline {3}System description}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Coordinates and quantities}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}The Hamiltonian}{7}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Effective mass}{8}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Rotation matrices}{8}{subsection.3.4}%
-\contentsline {section}{\numberline {4}The Born-Oppenheimer approximation}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Derivation}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Interpretation}{11}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Dynamics}{11}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Differentiation of the Hamiltonian}{13}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Solution of the fast subsystem}{13}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Simulation}{13}{section.5}%
-\contentsline {subsection}{\numberline {5.1}The chosen field}{13}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Code outline}{14}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Results}{15}{section.6}%
-\contentsline {subsection}{\numberline {6.1}The middle state}{16}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The high energy state}{18}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Discussion}{22}{section.7}%
-\contentsline {subsection}{\numberline {7.1}On the nonsynthetic behaviour of the eigenstates}{22}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}On the topic of mass}{22}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}On the topic of monopoles}{23}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Numerical limitations}{23}{subsection.7.4}%
-\contentsline {section}{\numberline {8}Conclusions}{24}{section.8}%
-\contentsline {section}{References}{25}{section*.15}%
-\contentsline {section}{\numberline {A}Code}{26}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}magfield.py}{26}{subsection.A.1}%
-\contentsline {subsection}{\numberline {A.2}synfieldtools.py}{30}{subsection.A.2}%
-\contentsline {subsection}{\numberline {A.3}synfieldsolver.py}{41}{subsection.A.3}%
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {2}Background}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The adiabatic approximation}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The geometric phase}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Regarding the monopoles}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}System description}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Coordinates and quantities}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Hamiltonian}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Effective mass}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Rotation matrices}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}The Born-Oppenheimer approximation}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Derivation}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Interpretation}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Dynamics}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Differentiation of the Hamiltonian}{11}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Solution of the fast subsystem}{11}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Simulation}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The chosen field}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Code outline}{12}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Results}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The middle state}{14}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The high energy state}{16}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Discussion}{20}{section.7}%
+\contentsline {subsection}{\numberline {7.1}On the nonsynthetic behaviour of the eigenstates}{20}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}On the topic of mass}{20}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}On the topic of monopoles}{21}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Numerical limitations}{21}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Conclusions}{22}{section.8}%
+\contentsline {section}{References}{23}{section*.15}%
+\contentsline {section}{\numberline {A}Code}{24}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}magfield.py}{24}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}synfieldtools.py}{28}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}synfieldsolver.py}{39}{subsection.A.3}%

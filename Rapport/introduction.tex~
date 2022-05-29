@@ -5,7 +5,7 @@
 %\subsection{On the occurrence of monopoles}
 \label{sec:introduction}
 Our theory of electromagnetism carries certain asymmetries between the magnetic and
-electric fields. Such a distinction well known and often discussed is the absence of
+electric fields. A well known and often discussed such distinction is the absence of
 magnetic monopoles, i.e., that
 any analogue of electric charge is absent for the magnetic field. It is an extension often
 suggested by theorists, initially by Dirac in 1931 \cite{dirac}, to include magnetic
@@ -78,7 +78,7 @@ see figure \ref{fig:dumbbell}.
             \draw[blue, postaction=decorate, decoration={pre length = 1mm, post length = 1mm, markings, mark=
                         between positions 0.1 and 1 step
                         0.28 with {\pgftransformscale{2}\arrow{stealth}}}] plot [smooth, tension=1] coordinates {(1,3.6) (2.5,1.5) (4.2,0.8)};
-            \draw[blue] (4.2,0.8) node[anchor=west]{\Large\(\va{B}\) };
+            \draw[blue] (4.2,0.8) node[anchor=west]{\Huge\(\va{B}\) };
         \end{tikzpicture}
         \caption{A dumbbell with two spin components moving through a magnetic field.}
         \label{fig:dumbbell}
@@ -90,7 +90,7 @@ to test in a numerical simulation. Underlying the process is the hope of discern
 magnetic monopoles on the movement of the dumbbell.
 %\subsection{Interpretations of the system}
 In addition to carrying dynamics of interest, the described dumbbell is also appropriate
-for its potential to model realisable physical systems. Such a realisation of the model
+for its potential to model realisable physical systems. Such a realization of the model
 herein described opens up the possibility of experimentally measuring the action of the
 synthetic fields, and by extension the action of synthetic monopoles.
 

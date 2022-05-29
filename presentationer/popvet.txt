@@ -1,0 +1,107 @@
+Magnetism is not the same as electricity. To most people this must seem like a
+completely obvious statement, we usually think of magnetism as that which
+makes tiny little metal pieces stick to one another like fridge magnets, while
+electricity has to do with the currents running through our power outlets and
+appliances. To the physicist however who has studied the laws of
+electromagnetism, Maxwell's four equations, the two things look almost
+precisely the same. 
+
+Almost is a key word here, and it is one of these key differences which
+motivate the work that I have done. It just so turns out, that we cannot seem
+to find any magnetic 'charge' in the universe, the same way that electrical
+charge is plenty. There are for example electrons everywhere, "sources" of
+electrical fields, that lack any sense of "up", "down" or any orientation at
+all for that matter. When it comes to magnets all sources of fields lack
+net "magnetic charge" but instead have two poles, two sides, that contribute
+in opposite manner to the field. A bar magnet is a typical example of this,
+there is a norh pole, usually colored red, opposite to a south pole and we
+/cannot/ separate these. If we try to split the positive north pole from the
+south nature disagrees and we are once again left two ends to each magnet, two
+/dipoles/ as we call them.
+
+That thing which we cannot find, something which emanates a magnetic field in
+the same way that an electron emanates an electric field, would be what is
+called a magnetic monopole. There is a caveat to that statement, for we have
+actually found things that behave much like magnetic monopoles, but which
+aren't "fundamental Maxwellian monopoles". Whatever those words mean mustn't
+be too much cause for concern. Just remember that 'proper' magnetic monopoles
+do not exist, but theres many things that share properties of magnetic
+monopoles.
+
+One such case, a rather obscure one if I'm to be honest, is what I will call
+"synthetic" magnetic monopoles. Certain methods to solving quantum mechanical
+systems give rise to these. They do not exactly create magnetic fields in the
+usual sense, but they create something called a synthetic field which acts a
+lot as if it were our standard magnetic field. My project then, at last, has
+been to try and find out in precisely which manner these synthetic magnetic
+monopoles affect our world.
+
+To achieve this I have modeled some scenario, a system as I will often call it,
+which displays synthetic magnetic monopoles. Thankfully this system is, at
+least from my viewpoint, not too advanced so I will give my best at trying to
+describe it to you. Imagine two weights, masses, that are stuck together by
+some stick in between them. This is a dumbbell more or less, the kind used for
+weight lifting, and I will often call it by that name. If a dumbbell is thrown
+it will fly through the air and possibly rotate as well. This is all pretty
+standard and certainly does not give us magnetic monopoles, so let us also
+consider each mass of the dumbbell to be a magnetic dipole. We can think of
+this as sticking a bar magnet onto each end of the dumbbell, if we make sure
+that those bar magnets can rotate freely. Actually, regular bar magnets don't
+quite do the trick we require, so the dipoles are more precisely quantum
+mechanical "spins". If you have studied quantum mechanics you probably know
+what this means. If you have not, and I do not assume that you have,
+describing this would take far more than the fifteenn minutes allotted to me.
+Just think of it as bar magnets that don't quite behave as you would expect.
+
+Now, what happens if this dumbbell is thrown, just not through the air, but
+through an external magnetic field? Since the dumbbell is basically a big
+magnet, it will be attracted or repelled by the magnetic field, just as if we
+move a bar magnet next to another they will affect each other. Precisely how
+the dumbbell is magnetic depends on the rotation of both dipoles though, and
+also on the rotation of the entire dumbbell, and to add to that we must solve
+everything quantum mechanically since the dipoles are actually spins. What
+path will the dumbell take through space, and what will be the rotation of
+each component at each point in time? Perhaps
+it isn't too hard to convince you that this is a somewhat difficult problem. 
+
+As almost always in physics everything works out in the end if you just find
+the right approximations, the right assumptions that simplify the problem.
+Here something called the Born-Oppenheimer approximation is taken. I will not
+detail what this means in full, but it is here that the synthetic field
+enters, and with it the synthetic magnetic monopole.
+
+Some code had to be written to simulate the motion of dumbbells through
+magnetic fields, but this thankfully also means some neat plots of the motion. 
+
+[bla bla välj bra plots]
+
+What the synthetic magnetic monopole turns out to do is change, correct, the
+motion of the dumbbell from an otherwise 'naive' solution of the motion. A
+main result is however that it turns out to be very hard to adjust the size of
+this correction. The force from the synthetic magnetic monopole is more or
+less constant, so the main way of letting it affect the system more is
+reducing the mass of the dumbbell. For this "high energy" case then notable
+correction was found for masses of about a hydrogen atom. This is of course
+very small, but it isn't unreasonably small. Another scenario explored in this
+project required a dumbbell mass about a hundred times smaller, which is
+completely unreasonable by comparison.
+
+A large obstacle left to tackle is how this correction of motion is actually
+then supposed to be put in correspondence with monopoles specifically. We see
+that the synthetic field disturbs the motion, sure, but can we figure out that
+it is a magnetic monopole which sits behind the scene pulling the strings?
+There are several technical difficulties present here which must be solved if
+the premise of the project is to be fulfilled completely.
+
+This then constitutes one of the further developments possible. Other things
+that can be done in the future include optimization of the code. The
+simulations are presently rather limited by performance, but this could also
+be alleviated through using better hardware and infrastructure for the
+calculations. The simulations shown earlier were done on my rather low-tier
+laptop, so access to for example UPPMAX could possibly fix these problems
+rather instantly.
+
+Finally it would be interesting to figure out some experimental setup which
+could be described by the dumbbell model. Nothing encountered so far seems to
+hinder such an effort, and rather points to that something as simple as
+hydrogen gas could do the trick.
