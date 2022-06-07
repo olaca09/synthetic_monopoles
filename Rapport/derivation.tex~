@@ -39,7 +39,7 @@ The Hamiltonian which will be assumed for the system is:
 \begin{equation}\label{eq:Hamil0}
         \mathbb{\cal H} = \sum_{i=1}^{5} \frac{\va{p_i}^2}{2m_i} +
         \frac{4J}{\hbar{}}S^{(1)}_{\mu}S^{(2)}_{\mu} -
-        \gamma\va{B}\cdot \va{S}.
+        \gamma\va{B}(\va{r})\cdot \va{S}.
 \end{equation}
 
 The first sum is over the five degrees of translational and rotational coordinates in \(\va{r}\)
@@ -56,8 +56,9 @@ the first term after the sum, while the Zeeman interaction between spin and magn
 considered in the final term. %correct name of the final term?
 An Ising interaction requires a preferred axis, which for symmetry reasons
 of the system has been chosen to be the direction \(\mu\) of the dumbbell axis, the axis connecting
-the two masses.
- The parameters \(J\) and \(\gamma\) are the strengths of both
+the two masses. The necessity for selecting an axis is in essence the reason for choosing
+precisely an Ising interaction, as it breaks the spherical symmetry of the system and
+allows for more exotic synthetic field textures as described in section \ref{sec:regmono}. The parameters \(J\) and \(\gamma\) are the strengths of both
 of these interactions, while the operators \(\va{S}\) and \(S^{(n)}_{\mu}\) are respectively
 the one
 related to the total spin of the system and the spin in the \(\mu\)-direction of the \(n\)th system
@@ -126,7 +127,7 @@ spin. Then
 \begin{align*}
     \ket{0, 0} &= \frac{1}{\sqrt{2}}\bqty{\ket{\frac{1}{2}}\otimes\ket{-\frac{1}{2}} -
                 \ket{-\frac{1}{2}}\otimes\ket{\frac{1}{2}}}\\
-    \ket{1, -1} &= \ket{-\frac{1}{2}}\otimes\ket{{\frac{1}{2}}}\\
+    \ket{1, -1} &= \ket{-\frac{1}{2}}\otimes\ket{-{\frac{1}{2}}}\\
     \ket{1, 0} &= \frac{1}{\sqrt{2} }\bqty{\ket{\frac{1}{2}}\otimes\ket{-\frac{1}{2}} +
             \ket{-\frac{1}{2}}\otimes\ket{\frac{1}{2}}}\\
     \ket{1, 1} &= \ket{\frac{1}{2}}\otimes\ket{\frac{1}{2}}
@@ -338,8 +339,10 @@ the adiabatic approximation loses validity at points of degeneracy.
 Having found an effective Hamiltonian to the slow system the application of this
 Hamiltonian to the dynamics of the system remains to be performed. One could proceed with
 the quantum mechanical methods used so far, solving for eigenstates of \(\mathbb{\cal
-H}_{eff}\). The approximations taken so far however allow further simplification. %Säker på att just detta handlar om valet klassisk/kvant?
-Since the slow system is also ''heavy'' it can be considered to be effectively lying in the classical domain,
+H}_{eff}\). %The approximations taken however allow further simplification. %Säker på att just detta handlar om valet klassisk/kvant?
+%Since the slow system is also ''heavy'' it can be considered to be effectively lying in the classical domain,
+It is however now practical to consider the slow subsystem to effectively lie in the
+classical domain,
 and the Hamiltonian derived by quantum mechanical means will be utilized in the role of the
 Hamiltonian for classical mechanics. %motivera varför detta är rimligt
 

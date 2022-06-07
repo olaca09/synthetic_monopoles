@@ -1,0 +1,5 @@
+\babel@toc {swedish}{}\relax 
+\beamer@sectionintoc {1}{Kort om monopoler}{2}{0}{1}
+\beamer@sectionintoc {2}{Ett intressant system}{6}{0}{2}
+\beamer@sectionintoc {3}{Resultat}{8}{0}{3}
+\beamer@sectionintoc {4}{Vidare arbete}{11}{0}{4}

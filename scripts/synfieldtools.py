@@ -528,12 +528,12 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
 
     fig, ax = plt.subplots(subplot_kw={'projection': '3d'})
 
-    ax.set_xlim((0, lablength))
-    ax.set_ylim((0, lablength))
-    ax.set_zlim((0, lablength))
-    ax.set_xlabel('x', fontsize=10, color='blue')
-    ax.set_ylabel('y', fontsize=10, color='blue')
-    ax.set_zlabel('z', fontsize=10, color='blue')
+    ax.set_xlim((0, lablength*1000))
+    ax.set_ylim((0, lablength*1000))
+    ax.set_zlim((0, lablength*1000))
+    ax.set_xlabel('x (mm)', fontsize=10, color='blue')
+    ax.set_ylabel('y (mm)', fontsize=10, color='blue')
+    ax.set_zlabel('z (mm)', fontsize=10, color='blue')
     
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
@@ -556,6 +556,7 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
         except AttributeError:
             color = 'red'
         pos = stream.y[0:3,:]
+        pos = pos*1000 #Plot in mm
         ax.plot3D(pos[0,:], pos[1,:], pos[2,:], color=color) #Plot the integrated path
     #Plot magnetic field for testing purposes
     #ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)

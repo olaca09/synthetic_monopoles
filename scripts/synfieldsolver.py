@@ -49,7 +49,7 @@ if __name__ == '__main__':
     swarmgrid = np.insert(swarmgrid, 2, np.zeros(swarmgrid.shape[1:3]), axis=0)
     swarmgrid = np.insert(swarmgrid, 0, np.zeros(swarmgrid.shape[1:3]), axis=0)
     initposarray = initposarray[:,None,None] + swarmgrid
-    altinitpos = initposarray[:,0,2] #Starting position for alternate swarming method
+    altinitpos = initposarray[:,1,1] #Starting position for alternate swarming method
     initvel = (1e-2, 0, 0, 0, 0)
     eigenstate = 2
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.4.19)  29 MAY 2022 18:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.4.19)  5 JUN 2022 20:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -885,24 +885,24 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/DSSerif/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/DSSerif/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -929,7 +929,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Package hyperref Info: Link coloring OFF on input line 55.
+Package hyperref Info: Link coloring OFF on input line 54.
  (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
@@ -939,9 +939,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count482
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 54.
+LaTeX Info: Redefining \pageref on input line 54.
+LaTeX Info: Redefining \nameref on input line 54.
  (./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
@@ -975,8 +975,8 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
-Package biblatex Info: Reference section=0 on input line 55.
-Package biblatex Info: Reference segment=0 on input line 55.
+Package biblatex Info: Reference section=0 on input line 54.
+Package biblatex Info: Reference segment=0 on input line 54.
 \c@lstlisting=\count483
 
 *geometry* driver: auto-detecting
@@ -1031,39 +1031,36 @@ Package pdftex.def Info: figures/UU_logo.png  used on input line 13.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.64 \newpage
+l.63 \newpage
               [2] (./introduction.texpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.96 
       [1]) (./background.tex
-<figures/top_train.png, id=221, 350.4pt x 183.96pt>
-File: figures/top_train.png Graphic file (type png)
-<use figures/top_train.png>
-Package pdftex.def Info: figures/top_train.png  used on input line 21.
+<figures/marble_on_train.png, id=221, 350.4pt x 183.96pt>
+File: figures/marble_on_train.png Graphic file (type png)
+<use figures/marble_on_train.png>
+Package pdftex.def Info: figures/marble_on_train.png  used on input line 30.
 (pdftex.def)             Requested size: 362.37569pt x 190.25844pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+ [2 <./figures/marble_on_train.png>]
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
-(Font)              scaled to size 10.0pt on input line 46.
+(Font)              scaled to size 10.0pt on input line 55.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
-(Font)              scaled to size 7.0pt on input line 46.
+(Font)              scaled to size 7.0pt on input line 55.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
-(Font)              scaled to size 5.0pt on input line 46.
-[2] [3 <./figures/top_train.png>]) [4] (./derivation.tex [5]
+(Font)              scaled to size 5.0pt on input line 55.
+ [3] [4]) (./derivation.tex [5]
 \matrixtoks=\toks46
 \matrixtoks=\toks47
 \matrixtoks=\toks48
 \matrixtoks=\toks49
  [6]
-Overfull \hbox (61.31306pt too wide) detected at line 222
+Overfull \hbox (61.31306pt too wide) detected at line 223
 []
  []
 
 [7] [8] [9] [10]
-Overfull \hbox (20.96136pt too wide) detected at line 500
+Overfull \hbox (20.96136pt too wide) detected at line 503
 []
  []
 
@@ -1075,176 +1072,175 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 [12]) (./results.tex
-<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=370, 311.4837pt x 289.8027pt>
-File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
-<use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 43.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
+<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=371, 312.9291pt x 289.8027pt>
+File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
+<use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
+Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 43.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
 (Font)              scaled to size 8.0pt on input line 43.
 LaTeX Font Info:    Font shape `U/DSSerif/m/n' will be
 (Font)              scaled to size 6.0pt on input line 43.
-<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=371, 311.4837pt x 289.8027pt>
-File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
-<use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 45.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=372, 311.4837pt x 289.8027pt>
-File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
-<use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 47.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=374, 311.4837pt x 289.8027pt>
-File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
-<use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 61.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=375, 311.4837pt x 289.8027pt>
-File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
-<use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 65.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=376, 311.4837pt x 289.8027pt>
-File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
-<use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 69.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
+<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=372, 312.9291pt x 289.8027pt>
+File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
+<use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
+Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 47.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=373, 312.9291pt x 289.8027pt>
+File: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
+<use figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
+Package pdftex.def Info: figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 51.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=375, 312.9291pt x 289.8027pt>
+File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
+<use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
+Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 65.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=376, 312.9291pt x 289.8027pt>
+File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
+<use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
+Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 69.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=377, 312.9291pt x 289.8027pt>
+File: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
+<use figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
+Package pdftex.def Info: figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 73.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+ [13]
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=385, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 95.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=386, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 98.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=387, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 101.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[14 <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>]
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=416, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 142.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=417, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 147.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=418, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 152.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalaraltstreamFalse.png, id=420, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalaraltstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalaraltstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalaraltstreamFalse.png  used on input line 167.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomagaltstreamFalse.png, id=421, 312.9291pt x 289.8027pt>
+File: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomagaltstreamFalse.png Graphic file (type png)
+<use figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomagaltstreamFalse.png>
+Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomagaltstreamFalse.png  used on input line 172.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=378, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 91.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=379, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 94.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=380, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 97.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-[13] [14 <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n0vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>]
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=424, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 138.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=425, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 143.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=426, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 148.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png, id=428, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png  used on input line 163.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png, id=429, 311.4837pt x 289.8027pt>
-File: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png Graphic file (type png)
-<use figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png>
-Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png  used on input line 168.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
- [15 <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalar.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomag.png>]
-<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png, id=449, 311.4837pt x 289.8027pt>
-File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png Graphic file (type png)
-<use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png>
-Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png  used on input line 195.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png, id=450, 311.4837pt x 289.8027pt>
-File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png Graphic file (type png)
-<use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>
-Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png  used on input line 199.
-(pdftex.def)             Requested size: 113.81102pt x 105.88986pt.
-<figures/n2m-25/(0,2)-comp1.png, id=452, 678.6153pt x 714.0276pt>
+<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=425, 312.9291pt x 289.8027pt>
+File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
+<use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
+Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 201.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=426, 312.9291pt x 289.8027pt>
+File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
+<use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
+Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 207.
+(pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
+[15 <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>]
+<figures/n2m-25/(0,2)-comp1.png, id=449, 339.669pt x 310.761pt>
 File: figures/n2m-25/(0,2)-comp1.png Graphic file (type png)
 <use figures/n2m-25/(0,2)-comp1.png>
-Package pdftex.def Info: figures/n2m-25/(0,2)-comp1.png  used on input line 226.
-(pdftex.def)             Requested size: 128.0374pt x 134.71877pt.
-<figures/n2m-25/(0,2)-comp2.png, id=453, 678.6153pt x 714.0276pt>
+Package pdftex.def Info: figures/n2m-25/(0,2)-comp1.png  used on input line 234.
+(pdftex.def)             Requested size: 128.0374pt x 117.14203pt.
+<figures/n2m-25/(0,2)-comp2.png, id=450, 339.669pt x 310.761pt>
 File: figures/n2m-25/(0,2)-comp2.png Graphic file (type png)
 <use figures/n2m-25/(0,2)-comp2.png>
-Package pdftex.def Info: figures/n2m-25/(0,2)-comp2.png  used on input line 229.
-(pdftex.def)             Requested size: 128.0374pt x 134.71877pt.
-<figures/n2m-25/(0,2)-comp3.png, id=454, 678.6153pt x 714.0276pt>
+Package pdftex.def Info: figures/n2m-25/(0,2)-comp2.png  used on input line 237.
+(pdftex.def)             Requested size: 128.0374pt x 117.14203pt.
+<figures/n2m-25/(0,2)-comp3.png, id=451, 339.669pt x 310.761pt>
 File: figures/n2m-25/(0,2)-comp3.png Graphic file (type png)
 <use figures/n2m-25/(0,2)-comp3.png>
-Package pdftex.def Info: figures/n2m-25/(0,2)-comp3.png  used on input line 231.
-(pdftex.def)             Requested size: 128.0374pt x 134.71877pt.
+Package pdftex.def Info: figures/n2m-25/(0,2)-comp3.png  used on input line 239.
+(pdftex.def)             Requested size: 128.0374pt x 117.14203pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/n2m-27/(1,1)-comp1.png, id=458, 678.6153pt x 714.0276pt>
+[16 <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalaraltstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomagaltstreamFalse.png> <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>]
+<figures/n2m-27/(1,1)-comp1.png, id=471, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp1.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp1.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp1.png  used on input line 253.
-(pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp2.png, id=459, 678.6153pt x 714.0276pt>
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp1.png  used on input line 261.
+(pdftex.def)             Requested size: 199.16928pt x 182.22359pt.
+<figures/n2m-27/(1,1)-comp2.png, id=472, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp2.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp2.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp2.png  used on input line 256.
-(pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[16 <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalse.png> <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTrue.png>]
-<figures/n2m-27/(1,1)-comp3.png, id=476, 678.6153pt x 714.0276pt>
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp2.png  used on input line 264.
+(pdftex.def)             Requested size: 199.16928pt x 182.22359pt.
+<figures/n2m-27/(1,1)-comp3.png, id=476, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp3.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp3.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp3.png  used on input line 281.
-(pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp4.png, id=477, 678.6153pt x 714.0276pt>
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp3.png  used on input line 289.
+(pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
+<figures/n2m-27/(1,1)-comp4.png, id=477, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp4.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp4.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp4.png  used on input line 284.
-(pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp5.png, id=478, 678.6153pt x 714.0276pt>
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp4.png  used on input line 292.
+(pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
+<figures/n2m-27/(1,1)-comp5.png, id=478, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp5.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp5.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp5.png  used on input line 287.
-(pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
-<figures/n2m-27/(1,1)-comp6.png, id=479, 678.6153pt x 714.0276pt>
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp5.png  used on input line 295.
+(pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
+<figures/n2m-27/(1,1)-comp6.png, id=479, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp6.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp6.png>
-Package pdftex.def Info: figures/n2m-27/(1,1)-comp6.png  used on input line 290.
-(pdftex.def)             Requested size: 199.16928pt x 209.5577pt.
+Package pdftex.def Info: figures/n2m-27/(1,1)-comp6.png  used on input line 298.
+(pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./discussion.tex [17 <./figures/n2m-25/(0,2)-comp1.png> <./figures/n2m-25/(0,2)-comp2.png> <./figures/n2m-25/(0,2)-comp3.png>] [18 <./figures/n2m-27/(1,1)-comp1.png> <./figures/n2m-27/(1,1)-comp2.png>] [19 <./figures/n2m-27/(1,1)-comp3.png> <./figures/n2m-27/(1,1)-comp4.png> <./figures/n2m-27/(1,1)-comp5.png> <./figures/n2m-27/(1,1)-comp6.png>] [20
+) (./discussion.tex [17 <./figures/n2m-25/(0,2)-comp1.png> <./figures/n2m-25/(0,2)-comp2.png> <./figures/n2m-25/(0,2)-comp3.png> <./figures/n2m-27/(1,1)-comp1.png> <./figures/n2m-27/(1,1)-comp2.png>] [18 <./figures/n2m-27/(1,1)-comp3.png> <./figures/n2m-27/(1,1)-comp4.png> <./figures/n2m-27/(1,1)-comp5.png> <./figures/n2m-27/(1,1)-comp6.png>] [19
 
 ]
-<figures/coilfield-e.png, id=523, 487.0998pt x 482.7636pt>
+<figures/coilfield-e.png, id=520, 487.0998pt x 482.7636pt>
 File: figures/coilfield-e.png Graphic file (type png)
 <use figures/coilfield-e.png>
-Package pdftex.def Info: figures/coilfield-e.png  used on input line 126.
+Package pdftex.def Info: figures/coilfield-e.png  used on input line 133.
 (pdftex.def)             Requested size: 135.89174pt x 134.67934pt.
-<figures/idealfield-e.png, id=524, 498.663pt x 504.4446pt>
+<figures/idealfield-e.png, id=521, 498.663pt x 504.4446pt>
 File: figures/idealfield-e.png Graphic file (type png)
 <use figures/idealfield-e.png>
-Package pdftex.def Info: figures/idealfield-e.png  used on input line 131.
+Package pdftex.def Info: figures/idealfield-e.png  used on input line 138.
 (pdftex.def)             Requested size: 131.35764pt x 132.87666pt.
- [21 <./figures/coilfield-e.png> <./figures/idealfield-e.png>]) (./conclusions.tex) [22]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 83.
+ [20 <./figures/coilfield-e.png> <./figures/idealfield-e.png>]) (./conclusions.tex) [21]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 82.
  (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [23] (./appendix.tex
+) [22] (./appendix.tex
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 14.
- (../scripts/magfield.py [24] [25] [26] [27]) (../scripts/synfieldtools.py [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38]) (../scripts/synfieldsolver.py [39] [40] [41])) [42] (./main.aux)
+ (../scripts/magfield.py [23] [24] [25] [26]) (../scripts/synfieldtools.py [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37]) (../scripts/synfieldsolver.py [38] [39] [40])) [41] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1261,18 +1257,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  39254 strings out of 478276
- 757087 string characters out of 5853013
- 1845667 words of memory out of 5000000
+ 759838 string characters out of 5853013
+ 1845680 words of memory out of 5000000
  55731 multiletter control sequences out of 15000+600000
  494622 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,20n,133p,1839b,2262s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/dsserif/DSSerif.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0
 800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (45 pages, 3200886 bytes).
+Output written on main.pdf (44 pages, 2447149 bytes).
 PDF statistics:
- 1909 PDF objects out of 2073 (max. 8388607)
- 1714 compressed objects within 18 object streams
+ 1907 PDF objects out of 2073 (max. 8388607)
+ 1713 compressed objects within 18 object streams
  1036 named destinations out of 1200 (max. 500000)
  422 words of extra memory for PDF output out of 10000 (max. 10000000)
 

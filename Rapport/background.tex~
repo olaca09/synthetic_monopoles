@@ -4,23 +4,32 @@
 \section{Background}
 \subsection{The adiabatic approximation}\label{sec:adiab}
 %Kanske ge en full härledning här så småningom, men citera bara Berry tills vidare
-Imagine sitting in a train with a spinning top in somewhat stable movement on the table in
-front of you, see figure \ref{fig:toptrain} for a sketch of the idea. Consider then what would happen were the train to (de)accelerate. If the
-conductor brakes forcefully everything in the cabin experiences a fictitious force in the
-opposite direction of the train acceleration, and the spinning top would fall quickly onto
-the table. If instead the train slows down gradually the fictitious force will be much
-smaller. It can even be small enough in comparison with the properties of the top, its
-angular momentum and distribution of inertia, that the top manages to keep spinning on
-the table. Resilience to perturbation is the very phenomena that keeps a spinning top
-stable in the first place, even if the table were placed in a static house and not a moving
-train. The top keeps its state, the stable position and direction of rotation on the table,
-even though its environment, the train, undergoes change. 
+%Imagine sitting in a train with a spinning top in somewhat stable movement on the table in
+%front of you, see figure \ref{fig:toptrain} for a sketch of the idea. Consider then what would happen were the train to (de)accelerate. If the
+%conductor brakes forcefully everything in the cabin experiences a fictitious force in the
+%opposite direction of the train acceleration, and the spinning top would fall quickly onto
+%the table. If instead the train slows down gradually the fictitious force will be much
+%smaller. It can even be small enough in comparison with the properties of the top, its
+%angular momentum and distribution of inertia, that the top manages to keep spinning on
+%the table. Resilience to perturbation is the very phenomena that keeps a spinning top
+%stable in the first place, even if the table were placed in a static house and not a moving
+%train. The top keeps its state, the stable position and direction of rotation on the table,
+%even though its environment, the train, undergoes change. 
+Imagine sitting in a train holding a plate, in which a marble sits at rest much like in
+picture \ref{fig:marble}. Consider then what would happen were the train to (de)accelerate.
+If the conductor brakes forcefully everything in the cabin experiences a fictitious force
+in the opposite direction of the train acceleration. If this force is large enough, the marble would roll up the side
+of the rounded plate and fall down to the floor below. If instead the train slows down
+gradually the fictitious force will be much smaller, it can even be small enough for the
+marble to never roll up the entire height of the plate. Then the marble would stay confined
+at the bottom of the porcelain, even after the train stops braking. The marble keeps its
+state, the position in the plate, even though its environment, the train, undergoes change.
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=0.8\textwidth]{figures/top_train.png}
-        \caption{A spinning top on a ''train''.}
-        \label{fig:toptrain}
+        \includegraphics[width=0.8\textwidth]{figures/marble_on_train.png}
+        \caption{A marble on a plate on top of a ''train''.}
+        \label{fig:marble}
 \end{figure}
 
 This thought experiment if translated to the quantum realm, where states are kets or
@@ -164,9 +173,12 @@ magnetic field. The main
 effect of spin-spin interaction of composite spin systems is however the ''splitting'' or
 movement of magnetic charge away from the origin of parameter space yielding more exotic fields. This movement of magnetic monopoles is continuous
 with respect to the spin-spin interaction parameters, and will be fully determined by these
-parameters. Since the system outlined in section
+parameters. It is further important to the splitting of monopoles that the spin-spin interaction is of
+such nature that the total system is not spherically symmetric. Were the system spherically
+symmetric, the synthetic field would have to be likewise in parameter space, and any
+monopoles would be restricted to sit at the origin. Since the system outlined in section
 \ref{sec:aselsys} contains precisely an Ising interaction along some selected axis the
-synthetic field cannot be fully spherically symmetric, but must have a rotational symmetry
+synthetic field is in this case not fully spherically symmetric, but must have a rotational symmetry
 determined by said axis. 
 
 For the sake of this body of work we note that the synthetic field of the dumbbell

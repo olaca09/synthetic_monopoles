@@ -27,6 +27,13 @@ the lab, while the low energy state is quickly pushed away from that very point.
 state has no energy gradient in the limit of low \(J\), and so passes through the lab
 without any nonsynthetic force acting on it.
 
+Of course, a different lab setup can change this behaviour. If the coils are for example
+put \textit{inside} of the simulated lab, the low energy state becomes available to study
+as it will be attracted to the coils now present in the lab. This is a possible extension
+when considering further simulations done with the developed code, but whether it is an
+interesting one remains to be seen, and it should be noted that such a setup would repel
+the high energy state from the lab instead.
+
 \subsection{On the topic of mass}
 It is a peculiar feature of the synthetic magnetic field that its strength is hardly
 affected by the parameters of the setup. As discussed in section \ref{sec:resmiddle} for a
@@ -160,7 +167,7 @@ optimal selection for the performance of the numerical differentiations, so incr
 amount of sites would be of high priority were the code to be optimized further. In
 addition to code optimization more powerful computing resources could
 further be employed to increase performance. The simulations here displayed were run but on
-a low-end personal laptop unit, so access to high-performance resources could play a
+a low-end personal laptop unit, so access to high-performance resources such as \textit{UPPMAX} \cite{UPPMAX} could play a
 decisive role in further studies.
 
 It was also encountered that the ODE solver simply would not converge in any

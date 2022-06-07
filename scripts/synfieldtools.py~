@@ -400,7 +400,6 @@ def acc(t, posvel, field, n, norot, nosyn):
         dscalar[3] = (scalar[1,1,1,2,1] - scalar[1,1,1,0,1])/(2*steptheta)
         dscalar[4] = (scalar[1,1,1,1,2] - scalar[1,1,1,1,0])/(2*stepphi)
 
-        #print(f'dscalar = {dscalar}')
         global dscalaravg
         dscalaravg = (dscalaravg + np.linalg.norm(dscalar))/2
 
@@ -445,7 +444,6 @@ def acc(t, posvel, field, n, norot, nosyn):
 
     acc = Fa - dscalar - denergy #Summarize forces
 
-    #print(f'denergy = {denergy}')
     global denergyavg
     denergyavg = (denergyavg + np.linalg.norm(denergy))/2
 
@@ -458,11 +456,7 @@ def acc(t, posvel, field, n, norot, nosyn):
 
     if acc[3] > 1e10:
         print(f'The rotation is out of control, acc = {acc}')
-    #print(f'Vel, acc = {vel}, {acc}')
-    #global tickcount
-    #tickcount += 1
-    #print(f'Tick! {tickcount}') #For testing purposes
-    #print(f'Velocity/acc. is: {vel}, {acc}')
+
     return np.concatenate((vel, acc))
 
 ##Solves the ODE and returns the solution as per sscipy.integrate.solve_ivp.
@@ -491,11 +485,8 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn='False'):
     #Set error tolerances
     nr = field.shape[1]
     tolr = lablength/(2*(nr - 1))
-    #tolr = lablength/4
     toltheta = steptheta/2
-    #toltheta = 1
     tolphi = stepphi/2
-    #tolphi = 1
     atol = [tolr, tolr, tolr, toltheta, tolphi, tolr/10, tolr/10, tolr/10, toltheta/10,
             tolphi/10]
     edgedistance.terminal = True
@@ -527,7 +518,7 @@ def edgedistance(t, posvel, field, n, norot, nosyn):
 ##interactive 3D swarm plot. Uses matplotlib.
 def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams):
 
-    #For testing print average acceleration components
+    #Print average acceleration components
     for stream in sol:
         print(f'Statistics for stream starting at {stream.y[0:3,0]}')
         print(f'Faavg = {stream.Faavg}')
@@ -536,14 +527,13 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
         print(f'energyavg = {stream.energyavg}')
 
     fig, ax = plt.subplots(subplot_kw={'projection': '3d'})
-    #fig = plt.figure()
-    #ax = fig.axes(projection='3d')
+
     ax.set_xlim((0, lablength))
     ax.set_ylim((0, lablength))
     ax.set_zlim((0, lablength))
-    ax.set_xlabel('x', fontsize=10, color='blue')
-    ax.set_ylabel('y', fontsize=10, color='blue')
-    ax.set_zlabel('z', fontsize=10, color='blue')
+    ax.set_xlabel('x (mm)', fontsize=10, color='blue')
+    ax.set_ylabel('y (mm)', fontsize=10, color='blue')
+    ax.set_zlabel('z (mm)', fontsize=10, color='blue')
     
     #Find nr and stepr
     nr = field.shape[1] #Number of points along each axis of the lattice
@@ -566,11 +556,10 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
         except AttributeError:
             color = 'red'
         pos = stream.y[0:3,:]
+        pos = pos*1000 #Plot in mm
         ax.plot3D(pos[0,:], pos[1,:], pos[2,:], color=color) #Plot the integrated path
     #Plot magnetic field for testing purposes
-    ##ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
-    #plot = mlab.plot3d(pos[0,:], extent=[0,0,0,lablength,lablength,lablength])
-
+    #ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
 
     plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.png',
                 bbox_inches='tight')

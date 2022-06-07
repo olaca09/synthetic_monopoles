@@ -4,6 +4,7 @@
 \usepackage[]{graphicx}
 \usepackage{tikz}
 \usepackage[]{physics}
+\usepackage[swedish]{babel}
 
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{decorations.pathreplacing}
@@ -12,6 +13,13 @@
 \usetikzlibrary{3d}
 \usetikzlibrary{math}
 \usetikzlibrary{calc}
+
+\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
 
 \author[Ola Carlsson]{Ola Carlsson \\ Handledare: Erik
 Sjöqvist \\ Ämnesgranskare: Patrik Thunström}
@@ -28,6 +36,7 @@ Avdelningen för Materialteori}
 \begin{frame}[plain]
   \titlepage
 \end{frame}
+\section{Kort om monopoler}
 \begin{frame}
   \frametitle{Magnetiska monopoler}
   \begin{itemize}
@@ -39,7 +48,7 @@ Avdelningen för Materialteori}
 \begin{frame}
         \begin{figure}[h]
                 \centering
-                \subfloat[Electricity]{\includegraphics[width=0.5\textwidth]{magnetslice}}
+                \subfloat[Elektricitet]{\includegraphics[width=0.5\textwidth]{elektron}}
                 \subfloat[Magnetism]{\includegraphics[width=0.5\textwidth]{magnetslice}}
         \end{figure}
 \end{frame}
@@ -50,10 +59,10 @@ Avdelningen för Materialteori}
                   inte samma sak.
           \item Ren magnetisk laddning finns inte.
           \item Sådan laddning vore 
-                  "magnetiska monopoler".
-          \item "Riktiga" magnetiska monopoler finns ej,
+                  ''magnetiska monopoler''.
+          \item ''Riktiga'' magnetiska monopoler finns ej,
                   men monopolbeteende finns i naturen.
-          \item Ett (obskyrt) exempel är "syntetiska"
+          \item Ett (obskyrt) exempel är ''syntetiska''
                   monopoler som dyker upp vid
                   QM-approximationer.
   \end{itemize}
@@ -63,7 +72,7 @@ Avdelningen för Materialteori}
         \frametitle{Syntetiska magnetiska monopoler}
         \begin{itemize}
                 \item I vissa scenarion alstras ett
-                        "syntetiskt fält" i
+                        ''syntetiskt fält'' i
                         parameterrummet av monopoler.
                 \item Det syntetiska fältet är
                         \textit{inte} ett vanligt
@@ -77,6 +86,7 @@ Avdelningen för Materialteori}
         \end{itemize}
 \end{frame}
 
+\section{Ett intressant system}
 \begin{frame}
         \frametitle{Hanteln}
         \begin{columns}
@@ -177,6 +187,8 @@ Avdelningen för Materialteori}
         \end{column}
         \end{columns}
 \end{frame}
+
+\section{Resultat}
 \begin{frame}
         \frametitle{Simulationer}
     \begin{figure}[h]
@@ -211,6 +223,18 @@ Avdelningen för Materialteori}
     \end{itemize}
 \end{frame}
 \begin{frame}
+        \frametitle{Sammanfattning}
+        \begin{itemize}
+                \item Modell och skript färdigställt för vidare undersökning.
+                \item Märkbar påverkan från syntetiska magnetiska monopoler på systemet
+                        hittades för låga men inte orimligt låga massor.
+                \item Systemets massa härleddes som den främsta faktorn för att förstärka
+                        syntetiska effekter.
+        \end{itemize}
+        
+\end{frame}
+\section{Vidare arbete}
+\begin{frame}
         \frametitle{Vidare arbete}
         \begin{itemize}
                 \item  Kan vi se att det är just
@@ -223,5 +247,13 @@ Avdelningen för Materialteori}
                         Massuppskattingen utesluter inte
                         något vätgasliknande.
         \end{itemize}
+\end{frame}
+\begin{frame}
+        \frametitle{Frågor?}
+        \begin{center}
+        \includegraphics[width=0.3\textwidth]{qr-code}
+        \end{center}
+\blfootnote{Presentationsmall av \textit{Frederic Haziza},
+        \url{http://www.it.uu.se/katalog/daz/uppsala_beamer}}
 \end{frame}
 \end{document}
