@@ -1,0 +1,125 @@
+Magnetism är inte samma sak som elektricitet. Det kanske låter som ett så
+självklart påstående att det gränsar till dumhet --vi tänker oss vanligtvis
+magnetism som det som får små metallbitar att fastna i varandra och
+elektricitet som det som flödar genom våra eluttag och apparater-- men för
+fysikern är bilden inte lika enkel. Om man studerat de lagar som styr både
+elektriska fält tillika magnetiska, Maxwells fyra lagar alltså, ser de två
+fenomenen nästan identiska ut.
+
+Här är förstås ordet 'nästan' av största vikt, och det är en av dessa
+huvudsakliga skillnader mellan magnetism och elektricitet som motiverar
+projektet jag har genomfört. Det råkar nämligen vara fallet, att vi oberoende
+hur mycket vi letar --och tro mig, vi har letat-- inte lyckas hitta någon
+magnetisk "laddning" någonstans i världen, trots att elektrisk laddning finns
+överallt runtomkring oss. Elektroner till exempel avgör nästan alla egenskaper
+hos all materia som omger oss i våra liv, och elektroner är just elektrisk
+laddning --de alstrar elektriska fält utan att ha en ovansida, undersida eller
+någon som helst aning om "riktning". Vad gäller magnetism så har alla källor
+tvärtom netto noll magnetisk laddning, utan uppträder istället med två poler,
+två sidor, som bidrar till fältet på motsatt vis gentemot varandra. En
+stavmagnet är ett vanligt exempel på detta: det finns en "nordpol", oftast
+rödfärgad, motsatt en "sydpol" och vi /kan/ inte skilja på dem. Det är liksom
+inte materialet i nordpolsänden som gör den till just norr istället för söder,
+utan det är en riktning hos hela magneten. Ifall stavmagneten delas itu kommer
+det aldrig bildas en "nordmagnet" och en "sydmagnet", det blir alltid två
+olika sidor på de två magneter som skapas. Vi kallar detta för att vara
+magnetiska dipoler.
+
+Det som vi inte kan hitta, något som alstrar ett magnetfält på precis samma
+sätt som en elektron alstrar ett elektriskt fält, vore en magnetisk monopol.
+Dessa finns alltså inte i vår värld, men det är bara till del en sanning. Det
+är nämligen så att flera ting i naturen beter sig precis som magnetiska
+monopoler på ett eller annat vis, utan att för den delen vara de fundamentala
+Maxwellianska monopoler som inte finns. Vad de där sista orden egentligen
+betyder är inte överdrivet viktigt, kom bara ihåg att "riktiga" magnetiska
+monopoler inte finns, men det finns många andra saker som har vissa av de
+egenskaper som magnetiska monopoler har.
+
+Ett exempel på ett sådant slag av monopoler, och ett något obskyrt exempel om
+jag ska vara ärlig, är det jag kommer kalla "syntetiska" magnetiska monopoler.
+De dyker upp vid vissa särskilda metoder för att lösa knepiga kvantmekaniska
+system, och alstrar något som vi kallar ett "syntetiskt fält". Det syntetiska
+fältet är /inte/ samma sak som det vanliga magnetiska fältet, och därför är
+inte heller monopolerna magnetiska i egentlig mening, men det syntetiska
+fältet beter sig på väldigt många sätt som vårt vanliga magnetiska fält
+varifrån vi kan dra analogin. Mitt projekt handlar då om att försöka luska ut
+exakt hur dessa syntetiska monopoler påverkar vår värld, och om vi genom dem
+kan studera hur rörelse kring "riktiga" magnetiska monopoler skulle se ut.
+
+För att lyckas med detta har jag modellerat ett scenario, ett system som jag
+oftast kommer att kalla det, som uppvisar syntetiska magnetiska monopoler. Som
+tur är är det här systemet, i alla fall i mina ögon, inte alltför komplicerat
+så jag kommer att göra ett försök till att beskriva för er. Vi kan tänka oss
+två vikter, två massor, som sitter ihop med en stång emellan sig. Det här är
+mer eller mindre samma sak som en hantel, en sådan man lyfter skrot med, och
+jag kommer ofta kalla systemet just för en hantel. Om en hantel kastas kommer
+den flyga genom luften och möjligtvis rotera dessutom. Allt detta är rätt normalt
+och ger oss definitivt inga syntetiska monopoler, så låt även varje massa på
+hanteln vara en magnetisk dipol. Vi kan tänka oss detta som om vi hade limmat
+fast en stavmagnet på varje ände av hanteln, om vi även säkerställer att
+stavmagneterna kan rotera fritt till vilken riktning som helst. Låt oss till
+och med säga att dessa dipoler är kvantmekaniska så kallade spin, för att nå
+de eftersträvansvärda syntetiska monopolerna. De av er som har läst
+kvantmekanik vet antagligen vad det här innebär. För de av er som inte har gjort
+det, och det antar jag absolut inte att ni har gjort, kan jag tyvärr inte
+hinna med att beskriva precis vad det betyder utan att överskrida mina femton
+minuter med råge. Tänk bara på det tills vidare som stavmagneter som inte
+riktigt beter sig som förväntat.
+
+Nå, vad händer då om hanteln sedan kastas, inte bara genom luften, utan genom
+ett yttre magnetfält? Eftersom hanteln totalt sett är en magnet kommer den
+attraheras och repelleras av magnetfältet, ungefär som två stavmagneter
+påverkar varandra om vi rör den ena förbi den andra. Exakt på vilket vis
+hanteln är magnetisk avgörs dock av hur de två ingående dipolerna är roterade,
+och ytterligare av rotationen hos huvudaxeln av hanteln. Dessutom måste vi
+lösa hela systemet med kvantmekanikens metoder eftersom dipolerna är spin.
+Precis vilken bana kommer hanteln röra sig genom, och vad är den exakta
+rotationen hos varje ingående komponent vid varje tidpunkt? Det kanske inte är
+en alltför svår tes att motivera, att det här är ett någorlunda svårt problem.
+
+Som nästan alltid i fysiken löser sig allt bara rätt approximationer hittas,
+rätt antaganden som förenklar problemet. I detta fallet hjälper den så
+namngedda Born-Oppenheimer-approximationen. Jag tänker inte gå igenom de
+tekniska detaljerna av vad det här innebär, men det är i alla fall här som de
+syntetiska fälten och därigenom monopolerna dyker upp.
+
+Det krävdes lite teoretisk modellering av systemet först, men till sist nåddes
+fullstända rörelseekvationer för hanteln, det vill säga den matten som krävs
+för att förutspå rörelsen. Dock som ofta är fallet finns det
+ingen s.k. analytisk lösning på ekvationerna, utan numerisk simulering måste
+genomföras för att förstå vad ekvationerna innebär. Sådan gjordes
+med ett smärre egenutvecklat pythonskript, vilket dessutom ger oss lite fina
+plottar att titta på.
+
+[plotsnack]
+
+De syntetiska monopolerna visar sig korrigera hantelns rörelse från den annars
+'naiva' rörelsen som inte tar hänsyn till de syntetiska fälten. Ett
+huvudsakligt resultat är dock att det är tämligen svårt att påverka storleken
+på den här korrektionen. Kraften från de syntetiska monopolerna är mer eller
+mindre konstant oberoende av parameterval, så vårt huvudsakliga sätt att få
+större påverkan därifrån är genom att minska hantelns massa. För
+högenergifallet hittades då märkbara korrektioner för en massa ungefär lika stor
+som en väteatom. Det är förstås en väldigt liten massa, men inte orimligt
+liten. Ett annat scenario som utforskades i projektet krävde en hantelmassa
+hundra gånger mindre för att se tydliga effekter, vilket i jämförelse är helt
+orimligt.
+
+Ett stort problem kvar att lösa är hur rörelsekorrektionen faktiskt sedan kan
+sättas i korrespondens till just monopolerna i det syntetiska fältet. Vi ser
+att det syntetiska fältet stör rörelsen, absolut, men kan vi lista ut att det
+är just monopoler som står i kulisserna? Det finns flera tekniska svårigheter
+med detta som måste lösas om premissen av projektet ska till fullo nås.
+
+Detta är då endast en av flera vidare undersökningar som kan genomföras. Andra
+saker som vore intressanta är till exempel optimering av koden. Simulationerna
+är för tillfället starkt begränsade av prestandan av skripten, men det här
+skulle också kunna lösas genom använding av bättre hårdvara för beräkningarna.
+Alla simulationer som jag här har visat gjordes på min något undermåliga
+laptop, så anslutning till till exempel UPPMAX, Uppsala universitets
+högprestandainfrastruktur, kanske löser de problemen direkt.
+
+Till sist hade jag även velat klura ut en experimentell uppställning som kan
+beskrivas av den utvecklade modellen. Ingenting än så länge tyder på att det
+vore omöjligt, utan pekar snarare på att något så enkelt som vätgas under rätt
+förhållanden skulle kunna duga.
