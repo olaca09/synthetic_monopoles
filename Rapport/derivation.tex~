@@ -56,7 +56,7 @@ the first term after the sum, while the Zeeman interaction between spin and magn
 considered in the final term. %correct name of the final term?
 An Ising interaction requires a preferred axis, which for symmetry reasons
 of the system has been chosen to be the direction \(\mu\) of the dumbbell axis, the axis connecting
-the two masses. The necessity for selecting an axis is in essence the reason for choosing
+the two masses. The necessity for selecting an axis is the reason for choosing
 precisely an Ising interaction, as it breaks the spherical symmetry of the system and
 allows for more exotic synthetic field textures as described in section \ref{sec:regmono}. The parameters \(J\) and \(\gamma\) are the strengths of both
 of these interactions, while the operators \(\va{S}\) and \(S^{(n)}_{\mu}\) are respectively
@@ -416,11 +416,11 @@ Rearranging, a very useful relation emerges:
 .\end{align}
 This we can insert into the above:
 \begin{align}\label{eq:FA}
-\frac{1}{i\hbar{}}F_i^A &= \sum_{j\ne i} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
+\frac{1}{i\hbar{}}F_i^A &= \sum_{j\ne i} \sum_{l \ne n} \frac{\frac{d r_j}{d
         t}}{\pqty{E_n-E_l}^2}\bqty{\bra{n}\partial_i \mathbb{\cal H}_f
         \ket{l}\bra{l}\partial_j\mathbb{\cal H}_f\ket{n} - \bra{n}\partial_j \mathbb{\cal
         H}_f\ket{l}\bra{l}\partial_i \mathbb{\cal H}_f\ket{n}}\nonumber\\
-        &= 2i\sum_{j\ne i} \sum_{l \ne n} \frac{\frac{\partial r_j}{\partial
+        &= 2i\sum_{j\ne i} \sum_{l \ne n} \frac{\frac{d r_j}{d
         t}}{\pqty{E_n-E_l}^2} \Im \bqty{\bra{n}\partial_i \mathbb{\cal H}_f
         \ket{l}\bra{l}\partial_j\mathbb{\cal H}_f\ket{n}}
 .\end{align}
@@ -443,7 +443,7 @@ been found, which might not be easily described analytically.
 The problem has thus been reduced to evaluating, per equations \ref{eq:FA} and
 \ref{eq:ElPot},
 \begin{align}\label{eq:dynfin}
-        m\frac{d \va{r}}{d t^2} &= \va{F}^A-\frac{\partial \Phi^{(n)}}{\partial
+        m\frac{d^2 \va{r}}{d t^2} &= \va{F}^A-\frac{\partial \Phi^{(n)}}{\partial
         \va{r}} - \frac{\partial E_n}{\partial \va{r}} 
 .\end{align}
 \subsection{Differentiation of the Hamiltonian}\label{sec:Hdiff}

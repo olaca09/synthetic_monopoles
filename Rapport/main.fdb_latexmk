@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex main"] 1657100927 "main.aux" "main.bbl" "main" 1657100932
+["bibtex main"] 1657100927 "main.aux" "main.bbl" "main" 1657102065
   "/usr/share/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1650185741 65483 fc69f364ef63c07bf68a2ab4b323f197 ""
   "bibliography.bib" 1653754441 11777 93c56dbde473572f66853f051451a1d9 ""
-  "main-blx.bib" 1657100932 343 196dd1b3784b04d7eb2bfdf474db4cc3 "pdflatex"
-  "main.aux" 1657100932 21736 8a9b3163a470c92ff12db8c2d4368127 "pdflatex"
+  "main-blx.bib" 1657102065 343 196dd1b3784b04d7eb2bfdf474db4cc3 "pdflatex"
+  "main.aux" 1657102065 21736 8a9b3163a470c92ff12db8c2d4368127 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1657100927 "main.tex" "main.pdf" "main" 1657100932
+["pdflatex"] 1657102060 "main.tex" "main.pdf" "main" 1657102065
   "../scripts/magfield.py" 1657100250 7880 4d5b0b6f3dcd9915b05c6a11c6789a47 ""
   "../scripts/synfieldsolver.py" 1657099670 6760 249f6a503eaafec1d69494faab97af60 ""
   "../scripts/synfieldtools.py" 1657099670 24566 e7264aacaa4361dcc128e12530a91728 ""
@@ -292,7 +292,7 @@
   "appendix.tex" 1652083488 1015 13edf24c1c6bc81dd329b8dc7bef73fc ""
   "background.tex" 1654451068 13258 62282a5a63934019add652880b972b90 ""
   "conclusions.tex" 1652864069 1869 267b0c7feba0a9ffe94a12529c5c1697 ""
-  "derivation.tex" 1654451593 31110 bd1809cfd1af7d55192f543190239e9b ""
+  "derivation.tex" 1657102048 31084 1fc9f930188defc0c660e29afca408a0 ""
   "discussion.tex" 1654195441 13840 5f64d01bfc378b431a43ca52ec641d69 ""
   "figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png" 1654357664 74115 e80ca4ee20636771fcde171689b0e64d ""
   "figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png" 1654357812 74068 e31f0555db84c3363762ad52cf36f5d8 ""
@@ -324,12 +324,12 @@
   "figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png" 1654357556 78013 b564219a0d65c6c36d1b59aa120501cf ""
   "figures/n_compare_nosyn/I10nr101lablength0.001tmax0.1J100000.0Gamma10000000000.0mass3.58e-25len5e-05n2vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png" 1654357541 106908 9a2bfc040f4a1ae3ac91ef2a87d91f0d ""
   "introduction.tex" 1653740385 8484 c61deb2e941c63f923ca05dd07fe3cb8 ""
-  "main.aux" 1657100932 21736 8a9b3163a470c92ff12db8c2d4368127 "pdflatex"
+  "main.aux" 1657102065 21736 8a9b3163a470c92ff12db8c2d4368127 "pdflatex"
   "main.bbl" 1657100927 21648 1e55ff0f04520012717c9b6774825f11 "bibtex main"
-  "main.out" 1657100932 4833 82b1e9dce3d7e803b7b3938fb58bd07d "pdflatex"
-  "main.run.xml" 1657100932 2680 2b4fa0aa2e325958b9e32d0b638a08fe "pdflatex"
+  "main.out" 1657102065 4833 82b1e9dce3d7e803b7b3938fb58bd07d "pdflatex"
+  "main.run.xml" 1657102065 2680 2b4fa0aa2e325958b9e32d0b638a08fe "pdflatex"
   "main.tex" 1654357296 1625 8947ac363c5c7a33ffe336081b69512f ""
-  "main.toc" 1657100932 2761 d9e4b699ea0a4d76c57a5f4e57e969ed "pdflatex"
+  "main.toc" 1657102065 2761 d9e4b699ea0a4d76c57a5f4e57e969ed "pdflatex"
   "results.tex" 1654361231 19930 f8f543d8a8bfc94147c99d674b0578a8 ""
   "simulation.tex" 1657100921 9155 633ac594a3f5674b56dc83f45cbd42bf ""
   "title.tex" 1652079632 667 473abcf4fb3d400fd13db3dfb48ee560 ""
