@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import scipy
+import magfield as mg
 from matplotlib import pyplot as plt
 from matplotlib.patches import FancyArrowPatch
 from mpl_toolkits import mplot3d
@@ -12,14 +13,12 @@ import warnings
 ##derivation of the synthetic fields.
 
 #Common variables defined below, are adjusted by synfieldsolver.py:
-ntheta = 25 #Number of points of theta
-steptheta = np.pi/(ntheta-1) #Step size of theta
-nphi = 50 #Number of points of phi
-stepphi = 2*np.pi/(nphi) #Step size of phi
+steptheta = np.pi/1e5 #Step size of theta
+stepphi = 2*np.pi/1e5 #Step size of phi
+nr = 1e5 #Number of points to divide the lab length by for numerical differentiation
+         #step size
 lablength = 1e-3 #Side length of environment cube in meters
 tmax = 1 #Maximum simulated time in seconds
-
-##In general x,y,z-coordinates are gives as index numbers, angles in radians
 
 J = 1e9 #Spin-spin coupling strength
 Gamma = 1e9 #Spin-field coupling strength
@@ -31,6 +30,8 @@ mass = np.repeat(mass0, 5) #Full mass vector
 mass[3] = mass0*len0**2/4
 mass[4] = mass[3]
 
+field = (0,0,0)
+
 #Define statistics variables
 dscalaravg=0
 Faavg=0
@@ -41,18 +42,17 @@ energyavg=0
 ##Returns the differentiated Hamiltonian w.r.t. the specified par. diffpar=r, th_r, ph_r at
 ##the point given in point=(x, y, z, th_r, ph_r ) in the external field field.
 ##If diffpar=r a list of matrices for derivatives w.r.t. x, y, z are returned
-diffhamsave = {}
-def diffhamiltonian(diffpar, point, field):
+#diffhamsave = {}
+def diffhamiltonian(diffpar, pos):
 
     #Check if the differentiated Hamiltonian has already been calculated here
-    global diffhamsave
-    if (diffpar, point) in diffhamsave:
-        #print('diffhamsave used')
-        return diffhamsave[(diffpar, point)]
+#    global diffhamsave
+#    if (diffpar, pos) in diffhamsave:
+#        #print('diffhamsave used')
+#        return diffhamsave[(diffpar, pos)]
 
     #Find nr and stepr
-    nr = field.shape[1] #Number of points along each axis of the lattice
-    stepr = lablength/(nr-1) #Distance between lattice points
+    stepr = lablength/nr #Differentiation step size
     #Select derivative to return
     if(diffpar == "r"):
 
@@ -61,66 +61,41 @@ def diffhamiltonian(diffpar, point, field):
         diff_hamy = np.zeros([3, 3], dtype='complex_')
         diff_hamz = np.zeros([3, 3], dtype='complex_')
 
-	    #First find coordinate values of all neighbouring sites
-        pointx = int(point[0]) #Get point index (this is needed for dtype purposes)
-        pointy = int(point[1])
-        pointz = int(point[2])
-
-        neighgrid = np.mgrid[-1:2,-1:2,-1:2] ##Meshgrid to generate neighbours
-        neighgrid = np.array([pointx, pointy, pointz])[:,None,None,None] + neighgrid ##Uses broadcasting to duplicate
+        neighgrid = np.mgrid[-1:2,-1:2,-1:2].astype('float') ##Meshgrid to generate neighbours
+        neighgrid = np.array(pos[0:3])[:,None,None,None] + neighgrid*stepr ##Uses broadcasting to duplicate
 	    #x,y,z into each point on the grid. The result has first dimension determining which 
 	    #coordinate is given and the remaining specifying position related to the point
 
-	    #Find neighbouring r_B values
-        Bgrid = np.zeros([3,3,3])
-        Bgrid[1,1,1] = field[3, neighgrid[0,1,1,1], neighgrid[1,1,1,1], neighgrid[2,1,1,1]]
-        Bgrid[2,1,1] = field[3, neighgrid[0,2,1,1], neighgrid[1,2,1,1], neighgrid[2,2,1,1]]
-        Bgrid[0,1,1] = field[3, neighgrid[0,0,1,1], neighgrid[1,0,1,1], neighgrid[2,0,1,1]]
-        Bgrid[1,2,1] = field[3, neighgrid[0,1,2,1], neighgrid[1,1,2,1], neighgrid[2,1,2,1]]
-        Bgrid[1,0,1] = field[3, neighgrid[0,1,0,1], neighgrid[1,1,0,1], neighgrid[2,1,0,1]]
-        Bgrid[1,1,2] = field[3, neighgrid[0,1,1,2], neighgrid[1,1,1,2], neighgrid[2,1,1,2]]
-        Bgrid[1,1,0] = field[3, neighgrid[0,1,1,0], neighgrid[1,1,1,0], neighgrid[2,1,1,0]]
-        B = Bgrid[1,1,1] #Magnetic field strength at point
-
-	    #Find neighbouring theta_B values
-        thetagrid = np.zeros([3,3,3])
-        thetagrid[1,1,1] = field[4, neighgrid[0,1,1,1], neighgrid[1,1,1,1], neighgrid[2,1,1,1]]
-        thetagrid[2,1,1] = field[4, neighgrid[0,2,1,1], neighgrid[1,2,1,1], neighgrid[2,2,1,1]]
-        thetagrid[0,1,1] = field[4, neighgrid[0,0,1,1], neighgrid[1,0,1,1], neighgrid[2,0,1,1]]
-        thetagrid[1,2,1] = field[4, neighgrid[0,1,2,1], neighgrid[1,1,2,1], neighgrid[2,1,2,1]]
-        thetagrid[1,0,1] = field[4, neighgrid[0,1,0,1], neighgrid[1,1,0,1], neighgrid[2,1,0,1]]
-        thetagrid[1,1,2] = field[4, neighgrid[0,1,1,2], neighgrid[1,1,1,2], neighgrid[2,1,1,2]]
-        thetagrid[1,1,0] = field[4, neighgrid[0,1,1,0], neighgrid[1,1,1,0], neighgrid[2,1,1,0]]
-        theta = thetagrid[1,1,1] #Value of theta_B at point
-
-	    #Find neighbouring phi_B values
-        phigrid = np.zeros([3,3,3])
-        phigrid[1,1,1] = field[5, neighgrid[0,1,1,1], neighgrid[1,1,1,1], neighgrid[2,1,1,1]]
-        phigrid[2,1,1] = field[5, neighgrid[0,2,1,1], neighgrid[1,2,1,1], neighgrid[2,2,1,1]]
-        phigrid[0,1,1] = field[5, neighgrid[0,0,1,1], neighgrid[1,0,1,1], neighgrid[2,0,1,1]]
-        phigrid[1,2,1] = field[5, neighgrid[0,1,2,1], neighgrid[1,1,2,1], neighgrid[2,1,2,1]]
-        phigrid[1,0,1] = field[5, neighgrid[0,1,0,1], neighgrid[1,1,0,1], neighgrid[2,1,0,1]]
-        phigrid[1,1,2] = field[5, neighgrid[0,1,1,2], neighgrid[1,1,1,2], neighgrid[2,1,1,2]]
-        phigrid[1,1,0] = field[5, neighgrid[0,1,1,0], neighgrid[1,1,1,0], neighgrid[2,1,1,0]]
-        phi = phigrid[1,1,1] #Value of phi_B at point
+        #Find neighbouring external fields
+        Bgrid = np.zeros([6,3,3,3])
+        Bgrid[:,1,1,1] = mg.oppositecoilspos(field, neighgrid[:,1,1,1])
+        Bgrid[:,2,1,1] = mg.oppositecoilspos(field, neighgrid[:,2,1,1])
+        Bgrid[:,0,1,1] = mg.oppositecoilspos(field, neighgrid[:,0,1,1])
+        Bgrid[:,1,2,1] = mg.oppositecoilspos(field, neighgrid[:,1,2,1])
+        Bgrid[:,1,0,1] = mg.oppositecoilspos(field, neighgrid[:,1,0,1])
+        Bgrid[:,1,1,2] = mg.oppositecoilspos(field, neighgrid[:,1,1,2])
+        Bgrid[:,1,1,0] = mg.oppositecoilspos(field, neighgrid[:,1,1,0])
+        B = Bgrid[3,1,1,1] #Magnetic field strength at pos
+        theta = Bgrid[4,1,1,1] #Value of theta_B at pos
+        phi = Bgrid[5,1,1,1] #Value of phi_B at pos
 
         #Approximate the derivatives of B
         dBdr = np.zeros(3)
-        dBdr[0] = 0.5*(Bgrid[2,1,1]-Bgrid[0,1,1])/stepr
-        dBdr[1] = 0.5*(Bgrid[1,2,1]-Bgrid[1,0,1])/stepr
-        dBdr[2] = 0.5*(Bgrid[1,1,2]-Bgrid[1,1,0])/stepr
+        dBdr[0] = 0.5*(Bgrid[3,2,1,1]-Bgrid[3,0,1,1])/stepr
+        dBdr[1] = 0.5*(Bgrid[3,1,2,1]-Bgrid[3,1,0,1])/stepr
+        dBdr[2] = 0.5*(Bgrid[3,1,1,2]-Bgrid[3,1,1,0])/stepr
 
         #Approximate the derivatives of theta_B
         dthdr = np.zeros(3)
-        dthdr[0] = 0.5*(thetagrid[2,1,1]-thetagrid[0,1,1])/stepr
-        dthdr[1] = 0.5*(thetagrid[1,2,1]-thetagrid[1,0,1])/stepr
-        dthdr[2] = 0.5*(thetagrid[1,1,2]-thetagrid[1,1,0])/stepr
+        dthdr[0] = 0.5*(Bgrid[4,2,1,1]-Bgrid[4,0,1,1])/stepr
+        dthdr[1] = 0.5*(Bgrid[4,1,2,1]-Bgrid[4,1,0,1])/stepr
+        dthdr[2] = 0.5*(Bgrid[4,1,1,2]-Bgrid[4,1,1,0])/stepr
 
         #Approximate the derivatives of phi_B
         dphdr = np.zeros(3)
-        dphdr[0] = 0.5*(phigrid[2,1,1]-phigrid[0,1,1])/stepr
-        dphdr[1] = 0.5*(phigrid[1,2,1]-phigrid[1,0,1])/stepr
-        dphdr[2] = 0.5*(phigrid[1,1,2]-phigrid[1,1,0])/stepr
+        dphdr[0] = 0.5*(Bgrid[5,2,1,1]-Bgrid[5,0,1,1])/stepr
+        dphdr[1] = 0.5*(Bgrid[5,1,2,1]-Bgrid[5,1,0,1])/stepr
+        dphdr[2] = 0.5*(Bgrid[5,1,1,2]-Bgrid[5,1,1,0])/stepr
 
         #Assign matrix elements
         sin = np.sin(theta) #Calculate the sine
@@ -138,7 +113,7 @@ def diffhamiltonian(diffpar, point, field):
         diff_hamy = Gamma*hbar*diff_hamy
         diff_hamz = Gamma*hbar*diff_hamz
 
-        diffhamsave[(diffpar, point)] = diff_hamx, diff_hamy, diff_hamz #Save the result
+        #diffhamsave[(diffpar, pos)] = diff_hamx, diff_hamy, diff_hamz #Save the result
 
         return diff_hamx, diff_hamy, diff_hamz
 
@@ -147,9 +122,9 @@ def diffhamiltonian(diffpar, point, field):
         diff_ham  = np.zeros([3,3], dtype='complex_') #Initialize return matrix
 
         #Assign matrix elements
-        sin = np.sin(2*point[3]) #Calculate the sine of twice theta_r
-        cos = np.cos(2*point[3]) #Calculate the cosine of twice theta_r
-        exp = np.exp(1j*point[4]) #Calculate the complex exponential of phi_r
+        sin = np.sin(2*pos[3]) #Calculate the sine of twice theta_r
+        cos = np.cos(2*pos[3]) #Calculate the cosine of twice theta_r
+        exp = np.exp(1j*pos[4]) #Calculate the complex exponential of phi_r
         sq = np.sqrt(2) #Calculate the square root of two used
         omega = sq*exp*cos # Calculate an often occuring element
 
@@ -166,7 +141,7 @@ def diffhamiltonian(diffpar, point, field):
         #Return the matrix with correct prefactors
         diff_ham = J*hbar*diff_ham
 
-        diffhamsave[(diffpar, point)] = diff_ham #Save the result
+        #diffhamsave[(diffpar, pos)] = diff_ham #Save the result
 
         return diff_ham
 
@@ -175,9 +150,9 @@ def diffhamiltonian(diffpar, point, field):
         diff_ham  = np.zeros([3,3], dtype='complex_') #Initialize return matrix
 
         #Assign matrix elements
-        sin = np.sin(2*point[3]) #Calculate the sine of twice theta_r
-        sin2 = np.sin(point[3])**2 #Calculate the square of sine of theta_r
-        exp = np.exp(1j*point[4]) #Calculate the complex exponential of phi_r
+        sin = np.sin(2*pos[3]) #Calculate the sine of twice theta_r
+        sin2 = np.sin(pos[3])**2 #Calculate the square of sine of theta_r
+        exp = np.exp(1j*pos[4]) #Calculate the complex exponential of phi_r
         sq = np.sqrt(2) #Calculate the square root of two used
         omega = 1j*exp*sin/sq # Calculate an often occuring element
 
@@ -191,7 +166,7 @@ def diffhamiltonian(diffpar, point, field):
         #Return the matrix with correct prefactors
         diff_ham = J*hbar*diff_ham
 
-        diffhamsave[(diffpar, point)] = diff_ham #Save the result
+        #diffhamsave[(diffpar, pos)] = diff_ham #Save the result
 
         return diff_ham
 
@@ -199,31 +174,29 @@ def diffhamiltonian(diffpar, point, field):
         raise ValueError("Invalid string for differentiation coordinate passed to diffhamiltonian")
 
 
-##Solves the eigenvalue problem of the fast Hamiltonian at point point for field field.
-##The point is taken to be of shape (x, y, z, theta_r, phi_r).
+##Solves the eigenvalue problem of the fast Hamiltonian at position pos for field of par. field.
+##The position is taken to be of shape (x, y, z, theta_r, phi_r).
 ##Returns the energies and eigenvectors in pairs with ascending energies. The vectors are
 ##normalized column vectors in the singlet-triplet basis.
-def eigensolver(point, field):
+def eigensolver(pos):
 
     warnings.filterwarnings("error")
     
     #First calculate the fast Hamiltonian at point
     ham = np.zeros([3,3], dtype='complex_') #Initialize empty matrix
-    pointx = int(point[0]) #Get point index (this is needed for dtype purposes)
-    pointy = int(point[1])
-    pointz = int(point[2])
 
     #Find the values of B, theta_B and phi_B at point
-    B = field[3, pointx, pointy, pointz]
-    thetaB = field[4, pointx, pointy, pointz]
-    phiB = field[5, pointx, pointy, pointz]
+    Barray = mg.oppositecoilspos(field, pos)
+    B = Barray[3]
+    thetaB = Barray[4]
+    phiB = Barray[5]
     xi = J/(Gamma*B)
     if xi == np.inf or np.isnan(xi):
         print(f'External field is zero at point {point}! Please correct the field or the streams')
 
     #Extract theta_r and phi_r at point
-    thetar = point[3]
-    phir = point[4]
+    thetar = pos[3]
+    phir = pos[4]
 
     #Assign matrix elements
     cosr = np.cos(thetar) #Calculate the cosine of theta_r
@@ -256,31 +229,27 @@ def eigensolver(point, field):
     #Return the result
     return eigenvalues, eigenvectors
 
-##Calculates the synthetic scalar field at point point for field field for state number n.
-##The point is taken to be of shape (x, y, z, theta_r, phi_r).
+##Calculates the synthetic scalar field at position pos for field par. field for state number n.
+##The position is taken to be of shape (x, y, z, theta_r, phi_r).
 ##Returns a tuple of the scalar field value followed by the fast energy.
-scalarsave = {}
-def scalarcalc(point, field, n):
+#scalarsave = {}
+def scalarcalc(pos, n):
 
-    point = tuple(point)
 
     #First check if the scalar field has been calculated here before
-    global scalarsave
-    if (point, n) in scalarsave:
-        #print('scalarsave used')
-        return scalarsave[(point, n)]
-
-    #Fix point format
-    point = tuple(point)
+    #global scalarsave
+#    if (pos, n) in scalarsave:
+#        #print('scalarsave used')
+#        return scalarsave[(pos, n)]
 
     #First retrieve the energies and eigenstates
-    energies, eigvec = eigensolver(point, field)
+    energies, eigvec = eigensolver(pos)
     
     #Differentiate the Hamiltonian w.r.t. each coordinate
     dHam = [0,0,0,0,0]
-    dHam[0], dHam[1], dHam[2] = diffhamiltonian('r', point, field)
-    dHam[3] = diffhamiltonian('th_r', point, field)
-    dHam[4] = diffhamiltonian('ph_r', point, field)
+    dHam[0], dHam[1], dHam[2] = diffhamiltonian('r', pos)
+    dHam[3] = diffhamiltonian('th_r', pos)
+    dHam[4] = diffhamiltonian('ph_r', pos)
 
     Phi = 0 #Initialize synthetic scalar
 
@@ -292,64 +261,38 @@ def scalarcalc(point, field, n):
                 braket*np.conjugate(braket) / (energies[n] - energies[l])**2).real #Note the discard of the imaginary part, numerical errors otherwise arise 
 
     returnlist = (Phi, energies[n])
-    scalarsave[(point, n)] = returnlist
+    #scalarsave[(pos, n)] = returnlist
 
     return returnlist
 
 ##Calculates the acceleration due to the synthetic magnetic field and summarizes all
 ##acceleration contributions. This is done for the position pos, the velocity vel as a tuple
 ##with the field field for state number n. The position and velocity is taken to be of 
-##shape (x, y, z, theta_r, phi_r). Note that position is here given in m, and will be
-##fitted to the discrete lattice.
+##shape (x, y, z, theta_r, phi_r).
 ##Returns the velocity in m/s (for integration purposes) followed by the acceleration of the 
 ##system in m/s^2.
 ##Note that the t argument is a dummy.
-def acc(t, posvel, field, n, norot, nosyn):
-    #Find nr and stepr
-    nr = field.shape[1] #Number of points along each axis of the lattice
-    stepr = lablength/(nr-1) #Distance between lattice points
+def acc(t, posvel, n, norot, nosyn):
     #Extract pos and vel:
     pos = posvel[0:5]
     vel = posvel[5:10]
+
+    stepr = lablength/nr
 
     #Initialize forces
     Fa = np.zeros(5)
     dscalar = np.zeros(5)
     denergy = np.zeros(5)
 
-    #Fit position to a point
-    point = [0,0,0,0,0]
-    for i in range(3):
-        point[i] = int(round(pos[i]/stepr))
-        if point[i] >= nr-2 or point[i] < 2:
-            return np.concatenate((vel, np.zeros(5))) ##Sets the acceleration to zero if a
-                                                      ##point outside the grid is sampled
-    point[3] = pos[3]
-    point[4] = pos[4]
-
-    point = tuple(point)
-
-    if not nosyn == "True":
-    ##Make sure the B-field is nonzero
-        pointx = int(point[0]) #Get point index (this is needed for dtype purposes)
-        pointy = int(point[1])
-        pointz = int(point[2])
-    
-        #Find the values of B at point
-        B = field[3, pointx, pointy, pointz]
-        if B == 0.0:
-            print(f'Warning, external field of zero encountered at {pos}')
-            return np.zeros(10) #Freeze stream
-
     if nosyn == "False" or nosyn == "Noscalar":
         #Find energies and eigenstates at point
-        energies, eigvec = eigensolver(point, field)
+        energies, eigvec = eigensolver(pos)
     
         #Differentiate the Hamiltonian w.r.t. each coordinate
         dHam = [0,0,0,0,0]
-        dHam[0], dHam[1], dHam[2] = diffhamiltonian('r', point, field)
-        dHam[3] = diffhamiltonian('th_r', point, field)
-        dHam[4] = diffhamiltonian('ph_r', point, field)
+        dHam[0], dHam[1], dHam[2] = diffhamiltonian('r', pos)
+        dHam[3] = diffhamiltonian('th_r', pos)
+        dHam[4] = diffhamiltonian('ph_r', pos)
     
         #Calculate the acceleration due to the syn. magnetic field
         for i in range(5):
@@ -372,9 +315,10 @@ def acc(t, posvel, field, n, norot, nosyn):
     
         ##meshgrid to generate neighbours
         neighgrid = np.mgrid[-1:2,-1:2,-1:2, -1:2, -1:2].astype('float')
-        neighgrid[3,:,:,:,:,:] *= steptheta #Fix theta and phi step sizes
+        neighgrid[0:3,:,:,:,:,:] *= stepr #Fix step sizes
+        neighgrid[3,:,:,:,:,:] *= steptheta 
         neighgrid[4,:,:,:,:,:] *= stepphi
-        neighgrid = np.array(point)[:,None,None,None, None, None] + neighgrid 
+        neighgrid = np.array(pos)[:,None,None,None, None, None] + neighgrid 
         #uses broadcasting to duplicate
     	#x,y,z into each point on the grid. the result has first dimension determining which 
     	#coordinate is given and the remaining specifying position related to the point
@@ -382,16 +326,16 @@ def acc(t, posvel, field, n, norot, nosyn):
     	#Find neighbouring scalar field values and eigenstate energies
         scalar = np.zeros([3, 3, 3, 3, 3]) 
         energy = np.zeros([3, 3, 3, 3, 3]) 
-        scalar[2,1,1,1,1], energy[2,1,1,1,1] = scalarcalc(neighgrid[:,2,1,1,1,1], field, n)
-        scalar[0,1,1,1,1], energy[0,1,1,1,1] = scalarcalc(neighgrid[:,0,1,1,1,1], field, n)
-        scalar[1,2,1,1,1], energy[1,2,1,1,1] = scalarcalc(neighgrid[:,1,2,1,1,1], field, n)
-        scalar[1,0,1,1,1], energy[1,0,1,1,1] = scalarcalc(neighgrid[:,1,0,1,1,1], field, n)
-        scalar[1,1,2,1,1], energy[1,1,2,1,1] = scalarcalc(neighgrid[:,1,1,2,1,1], field, n)
-        scalar[1,1,0,1,1], energy[1,1,0,1,1] = scalarcalc(neighgrid[:,1,1,0,1,1], field, n)
-        scalar[1,1,1,2,1], energy[1,1,1,2,1] = scalarcalc(neighgrid[:,1,1,1,2,1], field, n)
-        scalar[1,1,1,0,1], energy[1,1,1,0,1] = scalarcalc(neighgrid[:,1,1,1,0,1], field, n)
-        scalar[1,1,1,1,2], energy[1,1,1,1,2] = scalarcalc(neighgrid[:,1,1,1,1,2], field, n)
-        scalar[1,1,1,1,0], energy[1,1,1,1,0] = scalarcalc(neighgrid[:,1,1,1,1,0], field, n)
+        scalar[2,1,1,1,1], energy[2,1,1,1,1] = scalarcalc(neighgrid[:,2,1,1,1,1], n)
+        scalar[0,1,1,1,1], energy[0,1,1,1,1] = scalarcalc(neighgrid[:,0,1,1,1,1], n)
+        scalar[1,2,1,1,1], energy[1,2,1,1,1] = scalarcalc(neighgrid[:,1,2,1,1,1], n)
+        scalar[1,0,1,1,1], energy[1,0,1,1,1] = scalarcalc(neighgrid[:,1,0,1,1,1], n)
+        scalar[1,1,2,1,1], energy[1,1,2,1,1] = scalarcalc(neighgrid[:,1,1,2,1,1], n)
+        scalar[1,1,0,1,1], energy[1,1,0,1,1] = scalarcalc(neighgrid[:,1,1,0,1,1], n)
+        scalar[1,1,1,2,1], energy[1,1,1,2,1] = scalarcalc(neighgrid[:,1,1,1,2,1], n)
+        scalar[1,1,1,0,1], energy[1,1,1,0,1] = scalarcalc(neighgrid[:,1,1,1,0,1], n)
+        scalar[1,1,1,1,2], energy[1,1,1,1,2] = scalarcalc(neighgrid[:,1,1,1,1,2], n)
+        scalar[1,1,1,1,0], energy[1,1,1,1,0] = scalarcalc(neighgrid[:,1,1,1,1,0], n)
 
         #Differentiate the scalar field
         dscalar[0] = (scalar[2,1,1,1,1] - scalar[0,1,1,1,1])/(2*stepr)
@@ -408,26 +352,27 @@ def acc(t, posvel, field, n, norot, nosyn):
     
         ##meshgrid to generate neighbours
         neighgrid = np.mgrid[-1:2,-1:2,-1:2, -1:2, -1:2].astype('float')
-        neighgrid[3,:,:,:,:,:] *= steptheta #Fix theta and phi step sizes
+        neighgrid[0:3,:,:,:,:,:] *= stepr #Fix step sizes
+        neighgrid[3,:,:,:,:,:] *= steptheta
         neighgrid[4,:,:,:,:,:] *= stepphi
-        neighgrid = np.array(point)[:,None,None,None, None, None] + neighgrid 
+        neighgrid = np.array(pos)[:, None, None, None, None, None] + neighgrid 
         #uses broadcasting to duplicate
     	#x,y,z into each point on the grid. the result has first dimension determining which 
     	#coordinate is given and the remaining specifying position related to the point
     
         #Find energies at neighbouring points
         energy = np.zeros([3, 3, 3, 3, 3])
-        energy[2,1,1,1,1] = eigensolver(neighgrid[:,2,1,1,1,1], field)[0][n]
-        energy[0,1,1,1,1] = eigensolver(neighgrid[:,0,1,1,1,1], field)[0][n]
-        energy[1,2,1,1,1] = eigensolver(neighgrid[:,1,2,1,1,1], field)[0][n]
-        energy[1,0,1,1,1] = eigensolver(neighgrid[:,1,0,1,1,1], field)[0][n]
-        energy[1,1,2,1,1] = eigensolver(neighgrid[:,1,1,2,1,1], field)[0][n]
-        energy[1,1,0,1,1] = eigensolver(neighgrid[:,1,1,0,1,1], field)[0][n]
-        energy[1,1,1,2,1] = eigensolver(neighgrid[:,1,1,1,2,1], field)[0][n]
-        energy[1,1,1,0,1] = eigensolver(neighgrid[:,1,1,1,0,1], field)[0][n]
-        energy[1,1,1,1,2] = eigensolver(neighgrid[:,1,1,1,1,2], field)[0][n]
-        energy[1,1,1,1,0] = eigensolver(neighgrid[:,1,1,1,1,0], field)[0][n]
-        energy[1,1,1,1,1] = eigensolver(neighgrid[:,1,1,1,1,1], field)[0][n]
+        energy[2,1,1,1,1] = eigensolver(neighgrid[:,2,1,1,1,1])[0][n]
+        energy[0,1,1,1,1] = eigensolver(neighgrid[:,0,1,1,1,1])[0][n]
+        energy[1,2,1,1,1] = eigensolver(neighgrid[:,1,2,1,1,1])[0][n]
+        energy[1,0,1,1,1] = eigensolver(neighgrid[:,1,0,1,1,1])[0][n]
+        energy[1,1,2,1,1] = eigensolver(neighgrid[:,1,1,2,1,1])[0][n]
+        energy[1,1,0,1,1] = eigensolver(neighgrid[:,1,1,0,1,1])[0][n]
+        energy[1,1,1,2,1] = eigensolver(neighgrid[:,1,1,1,2,1])[0][n]
+        energy[1,1,1,0,1] = eigensolver(neighgrid[:,1,1,1,0,1])[0][n]
+        energy[1,1,1,1,2] = eigensolver(neighgrid[:,1,1,1,1,2])[0][n]
+        energy[1,1,1,1,0] = eigensolver(neighgrid[:,1,1,1,1,0])[0][n]
+        energy[1,1,1,1,1] = eigensolver(neighgrid[:,1,1,1,1,1])[0][n]
 
     else:
         print(f'Incorrect parameter "nosyn" = {nosyn}')
@@ -466,7 +411,7 @@ def acc(t, posvel, field, n, norot, nosyn):
 ##The spin subsystem is assumed to remain in the fast
 ##eigenstate labeled n. Runs until the time reaches tmax.
 ##The given initial conditions must be tuples.
-def solvedyn(pos, vel, field, n, norot=False, nosyn='False'):
+def solvedyn(pos, vel, n, norot=False, nosyn='False'):
     posvel = pos + vel
 
     #Reset average force counters
@@ -483,14 +428,8 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn='False'):
     t_eval = np.linspace(0, tmax, 100000)
 
     #Set error tolerances
-    nr = field.shape[1]
-    tolr = lablength/(2*(nr - 1))
-    toltheta = steptheta/2
-    tolphi = stepphi/2
-    atol = [tolr, tolr, tolr, toltheta, tolphi, tolr/10, tolr/10, tolr/10, toltheta/10,
-            tolphi/10]
     edgedistance.terminal = True
-    sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(field, n, norot, nosyn), atol=atol, t_eval=t_eval)
+    sol = solve_ivp(acc, (0,tmax), posvel, events=edgedistance, args=(n, norot, nosyn), t_eval=t_eval)
 
     sol.Faavg = Faavg
     sol.denergyavg = denergyavg
@@ -501,22 +440,18 @@ def solvedyn(pos, vel, field, n, norot=False, nosyn='False'):
 
 ##Event to terminate integration, returns distance to the closest edge minus a small
 ##correction to avoid hitting the edge
-def edgedistance(t, posvel, field, n, norot, nosyn):
+def edgedistance(t, posvel, n, norot, nosyn):
     pos= posvel[0:3]
     mindist = np.amin(pos)
     maxdist = np.amax(pos)
-    distancetoedge = min(mindist, lablength - maxdist)
+    distancetoedge = min(mindist+lablength/1000, lablength - maxdist+lablength/1000)
 
-    #Find nr and stepr
-    nr = field.shape[1] #Number of points along each axis of the lattice
-    stepr = lablength/(nr-1) #Distance between lattice points
-
-    return distancetoedge - 2*stepr
+    return distancetoedge
     
 
 ##Plotting function, takes a list of solutions sol from solve_ivp, a field field and displays an 
 ##interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams):
+def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams):
 
     #Print average acceleration components
     for stream in sol:
@@ -535,17 +470,14 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
     ax.set_ylabel('y (mm)', fontsize=10, color='blue')
     ax.set_zlabel('z (mm)', fontsize=10, color='blue')
     
-    #Find nr and stepr
-    nr = field.shape[1] #Number of points along each axis of the lattice
-    stepr = lablength/(nr-1) #Distance between lattice points
     #Create grids for the quiver:
-    xx, yy, zz = stepr*np.mgrid[0:nr, 0:nr, 0:nr]
-    xx = xx[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-    yy = yy[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-    zz = zz[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-    Bx = field[0,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-    By = field[1,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-    Bz = field[2,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
+#    xx, yy, zz = stepr*np.mgrid[0:nr, 0:nr, 0:nr]
+#    xx = xx[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
+#    yy = yy[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
+#    zz = zz[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
+#    Bx = field[0,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
+#    By = field[1,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
+#    Bz = field[2,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
 
 
     for stream in sol:
@@ -561,6 +493,6 @@ def lineplot(sol, field, I, initvel, swarmnum, n, norot, nosyn, alternatestreams
     #Plot magnetic field for testing purposes
     #ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
 
-    plt.savefig(f'saves/graphs/I{I}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.png',
+    plt.savefig(f'saves/graphs/field{field}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.png',
                 bbox_inches='tight')
     plt.show()

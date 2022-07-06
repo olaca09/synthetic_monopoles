@@ -42,7 +42,7 @@ def simplewire(nr, lablength, I, overwrite=False):
 
 def oppositecoils(nr, lablength, I, overwrite=False):
     ##Returns a field corresponding to two currents I of opposing directions through square coils 
-    ##placed orthogonally to the z-axis centred 1/4th from the edges of the lattice. Saves the field and won't generate a preexisting field unless
+    ##placed orthogonally to the z-axis centred 1/3th from the edges of the lattice. Saves the field and won't generate a preexisting field unless
     ##'overwrite=True' is called. Takes nr as the number of points along each axis.
 
     #Initiate variables:
@@ -154,14 +154,114 @@ def oppositecoils(nr, lablength, I, overwrite=False):
         np.save(f'saves/fields/oppositecoils{I}field{nr},{lablength}.npy', field)
         return field
 
+def oppositecoilspos(field, pos):
+    ##Returns the field at position pos corresponding to two currents I of opposing directions through square coils 
+    ##placed orthogonally to the z-axis centred 1/3th from the edges of the lab. Takes nr as the number of points to consider along each wire.
+
+    #Initiate variables:
+    br = field[0]
+    lablength = field[1]
+    I = field[2]
+    stepr = 5/3*lablength/(br-1) #Length of each wire segment
+
+    #Positions of all flowing currents below:
+    qpos = lablength/3
+    wire1 = np.array([-qpos,-qpos]) #Current in positive x close to z=0 and y=0 (pos in y,z)
+    wire2 = np.array([-qpos,lablength+qpos]) #Current in positive y close to z=0 and far from x=0 (pos in z,x)
+    wire3 = np.array([lablength+qpos,-qpos]) #Current in negative x close to z=0 and far from y=0 (pos in y,z)
+    wire4 = np.array([-qpos,-qpos]) #Current in negative y close to z=0 and close to x=0 (pos in z,x)
+    wire5 = np.array([-qpos,lablength+qpos]) #Current in negative x far from z=0 and close to y=0 (pos in y,z)
+    wire6 = np.array([lablength+qpos,lablength+qpos]) #Current in negative y far from z=0 and x=0 (pos in z,x)
+    wire7 = np.array([lablength+qpos,lablength+qpos]) #Current in positive x far from z=0 and y=0 (pos in y,z)
+    wire8 = np.array([lablength+qpos,-qpos]) #Current in positive y far from z=0 and close to x=0 (pos in z,x)
+
+    #Generate field at point
+    #Integrate the field per Biot-Savart along all currents
+    Bx, By, Bz = 0, 0, 0
+    #Currents along x:
+    for px in range(br):
+        dx = [stepr, 0, 0]
+        #wire1
+        distance = [pos[0]-(px*stepr-qpos), pos[1]-wire1[0], pos[2]-wire1[1]]
+        dBx1, dBy1, dBz1 = (mu*I/(4*pi) * np.cross(dx, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx1
+        By += dBy1
+        Bz += dBz1
+    
+        #wire3
+        distance = [pos[0]-(px*stepr-qpos), pos[1]-wire3[0], pos[2]-wire3[1]]
+        dBx3, dBy3, dBz3 = -(mu*I/(4*pi) * np.cross(dx, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx3
+        By += dBy3
+        Bz += dBz3
+
+        #wire5
+        distance = [pos[0]-(px*stepr-qpos), pos[1]-wire5[0], pos[2]-wire5[1]]
+        dBx5, dBy5, dBz5 = -(mu*I/(4*pi) * np.cross(dx, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx5
+        By += dBy5
+        Bz += dBz5
+
+        #wire7
+        distance = [pos[0]-(px*stepr-qpos), pos[1]-wire7[0], pos[2]-wire7[1]]
+        dBx7, dBy7, dBz7 = (mu*I/(4*pi) * np.cross(dx, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx7
+        By += dBy7
+        Bz += dBz7
+
+
+    #Currents along y:
+    for py in range(br):
+        dy = [0, stepr, 0]
+        #wire2
+        distance = [pos[0]-wire2[1], pos[1]-(py*stepr-qpos), pos[2]-wire2[0]]
+        dBx2, dBy2, dBz2 = (mu*I/(4*pi) * np.cross(dy, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx2
+        By += dBy2
+        Bz += dBz2
+    
+        #wire4
+        distance = [pos[0]-wire4[1], pos[1]-(py*stepr-qpos), pos[2]-wire4[0]]
+        dBx4, dBy4, dBz4 = -(mu*I/(4*pi) * np.cross(dy, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx4
+        By += dBy4
+        Bz += dBz4
+    
+        #wire6
+        distance = [pos[0]-wire6[1], pos[1]-(py*stepr-qpos), pos[2]-wire6[0]]
+        dBx6, dBy6, dBz6 = -(mu*I/(4*pi) * np.cross(dy, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx6
+        By += dBy6
+        Bz += dBz6
+    
+        #wire8
+        distance = [pos[0]-wire8[1], pos[1]-(py*stepr-qpos), pos[2]-wire8[0]]
+        dBx8, dBy8, dBz8 = (mu*I/(4*pi) * np.cross(dy, distance, axisb=0,
+                            axisc=0)/(np.linalg.norm(distance)**3))
+        Bx += dBx8
+        By += dBy8
+        Bz += dBz8
+
+    Br, Bth, Bph = cart_to_sph(np.array([Bx,By,Bz])) #Express as spherical coordinates
+    field = np.array((Bx, By, Bz, Br, Bth, Bph))
+
+    return field
+
 def griddot(a, b):
     ##Returns the dot product for each point in the supplied grids a, b. Contracts the
     ##first dimension.
-    result = np.zeros(a[0].shape) + 1e-20 #Super ugly bodge to fix NaN
+    result = np.zeros(a[0].shape)
     for i in range(len(a)):
         result += a[i]*b[i]
 
-    result = np.where(result == 0, 1e-20, result)
+    #result = np.where(result == 0, 1e-20, result)
     return result
 
 def cart_to_sph(cart):
@@ -173,19 +273,3 @@ def cart_to_sph(cart):
     sph[1] = np.arctan2(np.sqrt(xsqysq), cart[2]) #Polar angle theta
     sph[2] = np.arctan2(cart[1],cart[0]) #Azimuthal angle phi
     return sph
-
-def sliceplot(field):
-    fig, ax = plt.subplots()
-    nr = field.shape[1]
-
-    ax.set_xlabel('x', fontsize=10, color='blue')
-    ax.set_ylabel('z', fontsize=10, color='blue')
-
-    xx, zz = np.mgrid[0:nr,0:nr]
-    bx, by, bz = field[0:3, xx, int(nr/2), zz]
-
-    ax.quiver(xx, zz, xx-3, zz-3, color='r', width=0.006)
-
-    #ax.set_xticklabels(np.linspace(0, 0.001, 20))
-    #ax.set_yticklabels(np.linspace(0, 0.001, 20))
-    plt.show()
