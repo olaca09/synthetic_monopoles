@@ -42,7 +42,7 @@ def simplewire(nr, lablength, I, overwrite=False):
 
 def oppositecoils(nr, lablength, I, overwrite=False):
     ##Returns a field corresponding to two currents I of opposing directions through square coils 
-    ##placed orthogonally to the z-axis centred 1/4th from the edges of the lattice. Saves the field and won't generate a preexisting field unless
+    ##placed orthogonally to the z-axis centred 1/3rd from the edges of the lattice. Saves the field and won't generate a preexisting field unless
     ##'overwrite=True' is called. Takes nr as the number of points along each axis.
 
     #Initiate variables:
@@ -173,19 +173,3 @@ def cart_to_sph(cart):
     sph[1] = np.arctan2(np.sqrt(xsqysq), cart[2]) #Polar angle theta
     sph[2] = np.arctan2(cart[1],cart[0]) #Azimuthal angle phi
     return sph
-
-def sliceplot(field):
-    fig, ax = plt.subplots()
-    nr = field.shape[1]
-
-    ax.set_xlabel('x', fontsize=10, color='blue')
-    ax.set_ylabel('z', fontsize=10, color='blue')
-
-    xx, zz = np.mgrid[0:nr,0:nr]
-    bx, by, bz = field[0:3, xx, int(nr/2), zz]
-
-    ax.quiver(xx, zz, xx-3, zz-3, color='r', width=0.006)
-
-    #ax.set_xticklabels(np.linspace(0, 0.001, 20))
-    #ax.set_yticklabels(np.linspace(0, 0.001, 20))
-    plt.show()

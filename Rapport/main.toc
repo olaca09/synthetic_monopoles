@@ -23,8 +23,8 @@
 \contentsline {section}{\numberline {6}Results}{13}{section.6}%
 \contentsline {subsection}{\numberline {6.1}The middle state}{14}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}The high energy state}{16}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Discussion}{19}{section.7}%
-\contentsline {subsection}{\numberline {7.1}On the nonsynthetic behaviour of the eigenstates}{19}{subsection.7.1}%
+\contentsline {section}{\numberline {7}Discussion}{18}{section.7}%
+\contentsline {subsection}{\numberline {7.1}On the nonsynthetic behaviour of the eigenstates}{18}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}On the topic of mass}{19}{subsection.7.2}%
 \contentsline {subsection}{\numberline {7.3}On the topic of monopoles}{20}{subsection.7.3}%
 \contentsline {subsection}{\numberline {7.4}Numerical limitations}{20}{subsection.7.4}%

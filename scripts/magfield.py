@@ -42,7 +42,7 @@ def simplewire(nr, lablength, I, overwrite=False):
 
 def oppositecoils(nr, lablength, I, overwrite=False):
     ##Returns a field corresponding to two currents I of opposing directions through square coils 
-    ##placed orthogonally to the z-axis centred 1/4th from the edges of the lattice. Saves the field and won't generate a preexisting field unless
+    ##placed orthogonally to the z-axis centred 1/3rd from the edges of the lattice. Saves the field and won't generate a preexisting field unless
     ##'overwrite=True' is called. Takes nr as the number of points along each axis.
 
     #Initiate variables:

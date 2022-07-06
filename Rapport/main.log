@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.4.19)  5 JUN 2022 20:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.6.19)  6 JUL 2022 11:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -6,7 +6,7 @@ entering extended mode
 **main.tex
 (./main.tex
 LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-02-24> (/usr/share/texmf-dist/tex/latex/base/article.cls
+L3 programming layer <2022-04-10> (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
@@ -115,9 +115,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (/usr/share/texmf-dist/tex/latex/physics/physics.sty
 Package: physics 
  (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-02-24 L3 programming layer (loader) 
+Package: expl3 2022-04-10 L3 programming layer (loader) 
  (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count273
 \l__pdf_internal_box=\box52
 ))
@@ -544,7 +544,7 @@ File: biblatex.cfg
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2022-02-24 L3 programming layer (loader) 
+(biblatex)             2022-04-10 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
  (/usr/share/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
@@ -1028,11 +1028,13 @@ Package pdftex.def Info: figures/UU_logo.png  used on input line 13.
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.63 \newpage
-              [2] (./introduction.texpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+              [2] (./introduction.tex
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.96 
@@ -1156,17 +1158,17 @@ Package pdftex.def Info: figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma100000
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=425, 312.9291pt x 289.8027pt>
+[15 <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>]
+<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png, id=446, 312.9291pt x 289.8027pt>
 File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png Graphic file (type png)
 <use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png>
 Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png  used on input line 201.
 (pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
-<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=426, 312.9291pt x 289.8027pt>
+<figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png, id=447, 312.9291pt x 289.8027pt>
 File: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png Graphic file (type png)
 <use figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>
 Package pdftex.def Info: figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png  used on input line 207.
 (pdftex.def)             Requested size: 128.0374pt x 118.57666pt.
-[15 <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-25len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-28len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>]
 <figures/n2m-25/(0,2)-comp1.png, id=449, 339.669pt x 310.761pt>
 File: figures/n2m-25/(0,2)-comp1.png Graphic file (type png)
 <use figures/n2m-25/(0,2)-comp1.png>
@@ -1187,43 +1189,38 @@ Package pdftex.def Info: figures/n2m-25/(0,2)-comp3.png  used on input line 239.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [16 <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNoscalaraltstreamFalse.png> <./figures/J0/I10nr101lablength0.001tmax0.1J0.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynNomagaltstreamFalse.png> <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynFalsealtstreamFalse.png> <./figures/n1Je2/I10nr101lablength0.001tmax0.1J100.0Gamma10000000000.0mass3.58e-29len5e-05n1vel(0.01, 0, 0, 0, 0)swarmnum4norotFalsenosynTruealtstreamFalse.png>]
-<figures/n2m-27/(1,1)-comp1.png, id=471, 339.669pt x 310.761pt>
+<figures/n2m-27/(1,1)-comp1.png, id=470, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp1.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp1.png>
 Package pdftex.def Info: figures/n2m-27/(1,1)-comp1.png  used on input line 261.
 (pdftex.def)             Requested size: 199.16928pt x 182.22359pt.
-<figures/n2m-27/(1,1)-comp2.png, id=472, 339.669pt x 310.761pt>
+<figures/n2m-27/(1,1)-comp2.png, id=471, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp2.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp2.png>
 Package pdftex.def Info: figures/n2m-27/(1,1)-comp2.png  used on input line 264.
 (pdftex.def)             Requested size: 199.16928pt x 182.22359pt.
-<figures/n2m-27/(1,1)-comp3.png, id=476, 339.669pt x 310.761pt>
+ [17 <./figures/n2m-25/(0,2)-comp1.png> <./figures/n2m-25/(0,2)-comp2.png> <./figures/n2m-25/(0,2)-comp3.png> <./figures/n2m-27/(1,1)-comp1.png> <./figures/n2m-27/(1,1)-comp2.png>]
+<figures/n2m-27/(1,1)-comp3.png, id=492, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp3.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp3.png>
 Package pdftex.def Info: figures/n2m-27/(1,1)-comp3.png  used on input line 289.
 (pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
-<figures/n2m-27/(1,1)-comp4.png, id=477, 339.669pt x 310.761pt>
+<figures/n2m-27/(1,1)-comp4.png, id=493, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp4.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp4.png>
 Package pdftex.def Info: figures/n2m-27/(1,1)-comp4.png  used on input line 292.
 (pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
-<figures/n2m-27/(1,1)-comp5.png, id=478, 339.669pt x 310.761pt>
+<figures/n2m-27/(1,1)-comp5.png, id=494, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp5.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp5.png>
 Package pdftex.def Info: figures/n2m-27/(1,1)-comp5.png  used on input line 295.
 (pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
-<figures/n2m-27/(1,1)-comp6.png, id=479, 339.669pt x 310.761pt>
+<figures/n2m-27/(1,1)-comp6.png, id=495, 339.669pt x 310.761pt>
 File: figures/n2m-27/(1,1)-comp6.png Graphic file (type png)
 <use figures/n2m-27/(1,1)-comp6.png>
 Package pdftex.def Info: figures/n2m-27/(1,1)-comp6.png  used on input line 298.
 (pdftex.def)             Requested size: 213.39566pt x 195.2399pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./discussion.tex [17 <./figures/n2m-25/(0,2)-comp1.png> <./figures/n2m-25/(0,2)-comp2.png> <./figures/n2m-25/(0,2)-comp3.png> <./figures/n2m-27/(1,1)-comp1.png> <./figures/n2m-27/(1,1)-comp2.png>] [18 <./figures/n2m-27/(1,1)-comp3.png> <./figures/n2m-27/(1,1)-comp4.png> <./figures/n2m-27/(1,1)-comp5.png> <./figures/n2m-27/(1,1)-comp6.png>] [19
-
-]
+) (./discussion.tex [18 <./figures/n2m-27/(1,1)-comp3.png> <./figures/n2m-27/(1,1)-comp4.png> <./figures/n2m-27/(1,1)-comp5.png> <./figures/n2m-27/(1,1)-comp6.png>] [19]
 <figures/coilfield-e.png, id=520, 487.0998pt x 482.7636pt>
 File: figures/coilfield-e.png Graphic file (type png)
 <use figures/coilfield-e.png>
@@ -1256,16 +1253,16 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39254 strings out of 478276
- 759838 string characters out of 5853013
- 1845680 words of memory out of 5000000
- 55731 multiletter control sequences out of 15000+600000
+ 39277 strings out of 478238
+ 760572 string characters out of 5850456
+ 1846708 words of memory out of 5000000
+ 55785 multiletter control sequences out of 15000+600000
  494622 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,20n,133p,1839b,2262s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/dsserif/DSSerif.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0
 800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (44 pages, 2447149 bytes).
+Output written on main.pdf (44 pages, 2447567 bytes).
 PDF statistics:
  1907 PDF objects out of 2073 (max. 8388607)
  1713 compressed objects within 18 object streams
