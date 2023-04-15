@@ -50,7 +50,7 @@ energyavg = 0
 # th_r, ph_r at the point given in point=(x, y, z, th_r, ph_r ). If diffpar=r
 # a list of matrices for derivatives w.r.t. x, y, z are returned, otherwise a
 # list with the correct matrix in all three positions is returned.
-@njit(cache=True, parallel=True, fastmath=True)
+@njit(cache=True, parallel=True, fastmath=False)
 def diffhamiltonian(diffpar, pos):
 
     # Check if the differentiated Hamiltonian has already been calculated here
@@ -219,7 +219,7 @@ def diffhamiltonian(diffpar, pos):
 # (x, y, z, theta_r, phi_r). Returns the energies and eigenvectors in pairs
 # with ascending energies. The vectors are normalized column vectors in the
 # singlet-triplet basis.
-@njit(cache=True, parallel=True, fastmath=True)
+@njit(cache=True, parallel=True, fastmath=False)
 def eigensolver(pos):
 
     # warnings.filterwarnings("error")
@@ -288,7 +288,7 @@ def eigensolver(pos):
 # for state number n. The position is taken to be of shape
 # (x, y, z, theta_r, phi_r). Returns a tuple of the scalar field value followed
 # by the fast energy.
-@njit(cache=True, parallel=True, fastmath=True)
+@njit(cache=True, parallel=True, fastmath=False)
 def scalarcalc(pos, n):
     # First check if the scalar field has been calculated here before
     # global scalarsave
@@ -334,7 +334,7 @@ def scalarcalc(pos, n):
 # The position and velocity is taken to be of shape (x, y, z, theta_r, phi_r).
 # Returns the velocity in m/s (for integration purposes) followed by the
 # acceleration of the system in m/s^2. Note that the t argument is a dummy.
-@njit(cache=True, parallel=True, fastmath=True)
+@njit(cache=True, parallel=True, fastmath=False)
 def acc(t, posvel, n, norot, nosyn):
     # Extract pos and vel:
     pos = posvel[0:5]
@@ -552,7 +552,7 @@ def solvedyn(pos, vel, n, norot=False, nosyn='False'):
 
 
 # Meshgrid function to replace np.mgrid not supported by Numba
-@numba.njit(cache=True, fastmath=True)
+@numba.njit(cache=True, fastmath=False)
 def meshgrid(x, y, z):
     xx = np.empty(shape=(x.size, y.size, z.size), dtype=numba.float64)
     yy = np.empty(shape=(x.size, y.size, z.size), dtype=numba.float64)
@@ -567,7 +567,7 @@ def meshgrid(x, y, z):
 
 
 # Meshgrid function to replace np.mgrid not supported by Numba, but larger
-@numba.njit(cache=True, fastmath=True)
+@numba.njit(cache=True, fastmath=False)
 def meshgridlarge(x, y, z, p, q):
     xx = np.empty(shape=(x.size, y.size, z.size, p.size, q.size),
                   dtype=numba.float64)
@@ -594,7 +594,7 @@ def meshgridlarge(x, y, z, p, q):
 
 # Event to terminate integration, returns distance to the closest edge minus a
 # small correction to avoid hitting the edge.
-@njit(cache=True, parallel=True, fastmath=True)
+@njit(cache=True, parallel=True, fastmath=False)
 def edgedistance(t, posvel, n, norot, nosyn):
     pos = posvel[0:3]
     mindist = pos.min()
@@ -607,7 +607,7 @@ def edgedistance(t, posvel, n, norot, nosyn):
 
 # Plotting function, takes a list of solutions sol from solve_ivp, a field
 # field and displays an interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams):
+def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams, quiver):
 
     # Print average acceleration components
     # for stream in sol:
@@ -628,14 +628,23 @@ def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams):
     ax.set_ylabel('y (mm)', fontsize=10, color='blue')
     ax.set_zlabel('z (mm)', fontsize=10, color='blue')
 
-    # Create grids for the quiver:
-    xx, yy, zz = np.mgrid[0:11, 0:11, 0:11]
-#    xx = xx[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-#    yy = yy[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-#    zz = zz[0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-#    Bx = field[0,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-#    By = field[1,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
-#    Bz = field[2,:,:,:][0::int(nr/5), 0::int(nr/5), 0::int(nr/5)]
+    # Display external field if quiver is True
+    if quiver:
+        # Create grids for the quiver:
+        qgran = 11
+        xx, yy, zz = np.mgrid[0:qgran, 0:qgran, 0:qgran]
+        magarray = np.empty((3, qgran, qgran, qgran))
+        xx = lablength/(qgran - 1) * xx
+        yy = lablength/(qgran - 1) * yy
+        zz = lablength/(qgran - 1) * zz
+        posarray = np.stack((xx, yy, zz), axis=0)
+        for i in np.ndindex(magarray[0, :, :, :].shape):
+            magarray[:, i[0], i[1], i[2]] = mg.oppositecoilspos(field,
+                                            posarray[:, i[0], i[1], i[2]])[0:3]
+        # Display positions in mm
+        xx = xx*1000
+        yy = yy*1000
+        zz = zz*1000
 
     for stream in sol:
         # Extract pos
@@ -650,7 +659,8 @@ def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams):
         # Plot the integrated path
         ax.plot(pos[0, :], pos[1, :], pos[2, :], color=color)
     # Plot magnetic field for testing purposes
-    # ax.quiver(xx, yy, zz, Bx, By, Bz, length=0.0001, normalize=True)
+    ax.quiver(xx, yy, zz, magarray[0, :, :, :], magarray[1, :, :, :],
+              magarray[2, :, :, :], length=0.1, normalize=True)
 
     plt.savefig(f'''saves/graphs/field{field}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.png''', bbox_inches='tight')
 

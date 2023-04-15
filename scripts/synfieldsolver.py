@@ -18,6 +18,8 @@ def main():
                         help='Overrides "nosyn", integrates a'
                         + ' single starting point for all combinations of'
                         + ' fields. Is on by default, turns off if set.')
+    parser.add_argument('-q', '--quiver', action='store_true',
+                        help='Plot external field if set')
     parser.add_argument('-c', '--current', default=10, type=float,
                         help='Current in amperes flowing through coils')
     parser.add_argument('--br', default=10, type=int, help='Integration'
@@ -51,6 +53,8 @@ def main():
     overwriteresult = args['overwrite']
     # Whether to use alternate swarming scheme
     alternatestreams = args['alternatestreams']
+    # Whether to plot external field
+    quiver = args['quiver']
 
     # Define parameters
 
@@ -219,7 +223,7 @@ def main():
     # print(pos)
 
     sn.lineplot(sol, initvel, swarmnum, eigenstate, norot, nosyn,
-                alternatestreams)
+                alternatestreams, quiver)
 
 
 if __name__ == '__main__':
