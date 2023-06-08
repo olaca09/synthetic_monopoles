@@ -3,6 +3,8 @@ import numpy as np
 from scipy.constants import mu_0 as mu
 from scipy.constants import pi as pi
 from matplotlib import pyplot as plt
+import numba
+from numba import njit
 
 def simplewire(nr, lablength, I, overwrite=False):
     ##Returns a placeholder field corresponding to a current I through a wire along the
@@ -42,7 +44,8 @@ def simplewire(nr, lablength, I, overwrite=False):
 
 def oppositecoils(nr, lablength, I, overwrite=False):
     ##Returns a field corresponding to two currents I of opposing directions through square coils 
-    ##placed orthogonally to the z-axis centred 1/3rd from the edges of the lattice. Saves the field and won't generate a preexisting field unless
+    ##placed orthogonally to the z-axis centred 1/3th from the edges of the lattice. Saves the field and won't generate a preexisting field unless
+    # version conflict here
     ##'overwrite=True' is called. Takes nr as the number of points along each axis.
 
     #Initiate variables:
@@ -154,16 +157,114 @@ def oppositecoils(nr, lablength, I, overwrite=False):
         np.save(f'saves/fields/oppositecoils{I}field{nr},{lablength}.npy', field)
         return field
 
+
+# Returns the field at position pos corresponding to two currents I of
+# opposing directions through square coils
+# placed orthogonally to the z-axis centred 1/3th from the edges of the
+# lab. Takes nr as the number of points to consider along each wire.
+@njit(cache=True, parallel=True, fastmath=False)
+def oppositecoilspos(field, pos):
+
+    # Initiate variables:
+    br = field[0]
+    lablength = field[1]
+    current = field[2]
+    stepr = 5/3*lablength/(br-1) #Length of each wire segment
+
+    #Positions of all flowing currents below:
+    qpos = lablength/3
+    # Current in positive x close to z=0 and y=0 (pos in y,z)
+    wire1 = np.array([-qpos,-qpos])
+    # Current in positive y close to z=0 and far from x=0 (pos in z,x)
+    wire2 = np.array([-qpos,lablength+qpos])
+    # Current in negative x close to z=0 and far from y=0 (pos in y,z)
+    wire3 = np.array([lablength+qpos,-qpos])
+    # Current in negative y close to z=0 and close to x=0 (pos in z,x)
+    wire4 = np.array([-qpos,-qpos])
+    # Current in negative x far from z=0 and close to y=0 (pos in y,z)
+    wire5 = np.array([-qpos,lablength+qpos])
+    # Current in negative y far from z=0 and x=0 (pos in z,x)
+    wire6 = np.array([lablength+qpos,lablength+qpos])
+    # Current in positive x far from z=0 and y=0 (pos in y,z)
+    wire7 = np.array([lablength+qpos,lablength+qpos])
+    # Current in positive y far from z=0 and close to x=0 (pos in z,x)
+    wire8 = np.array([lablength+qpos,-qpos])
+
+    #Generate field at pos
+    #Integrate the field per Biot-Savart along all currents
+    B = np.array((0,0,0), dtype=numba.float64)
+    #Currents along x:
+    for px in range(br):
+        dx = np.array((stepr, 0, 0))
+        # wire1
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire1[0],
+                            pos[2]-wire1[1]))
+        dB = (mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        # wire3
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire3[0],
+                             pos[2]-wire3[1]))
+        dB = -(mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire5
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire5[0],
+                             pos[2]-wire5[1]))
+        dB = -(mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire7
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire7[0],
+                             pos[2]-wire7[1]))
+        dB = (mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+
+    #Currents along y:
+    for py in range(br):
+        dy = np.array((0, stepr, 0))
+        #wire2
+        distance = np.array((pos[0]-wire2[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire2[0]))
+        dB = (mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire4
+        distance = np.array((pos[0]-wire4[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire4[0]))
+        dB = -(mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire6
+        distance = np.array((pos[0]-wire6[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire6[0]))
+        dB = -(mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire8
+        distance = np.array((pos[0]-wire8[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire8[0]))
+        dB = (mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+    Bsph = cart_to_sph(B) #Express as spherical coordinates
+    retfield = np.append(B, Bsph)
+
+    return retfield
+
+@njit(cache=True, parallel=True, fastmath=False)
 def griddot(a, b):
     ##Returns the dot product for each point in the supplied grids a, b. Contracts the
     ##first dimension.
-    result = np.zeros(a[0].shape) + 1e-20 #Super ugly bodge to fix NaN
+    result = np.zeros(a[0].shape)
     for i in range(len(a)):
         result += a[i]*b[i]
 
-    result = np.where(result == 0, 1e-20, result)
+    # result = np.where(result == 0, 1e-20, result)
     return result
 
+@njit(cache=True, parallel=True, fastmath=False)
 def cart_to_sph(cart):
     ##Returns spherical coordinates of the form(r, polar, azimuthal) for the given cartesian 
     ##coordinates of the form (x,y,z) takes an array with coords as the first dimension.
