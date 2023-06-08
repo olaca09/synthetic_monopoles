@@ -232,13 +232,13 @@ def oppositecoilspos(field, pos):
         #wire4
         distance = np.array((pos[0]-wire4[1], pos[1]-(py*stepr-qpos),
                              pos[2]-wire4[0]))
-        dB = (mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        dB = -(mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
         B += dB
 
         #wire6
         distance = np.array((pos[0]-wire6[1], pos[1]-(py*stepr-qpos),
                              pos[2]-wire6[0]))
-        dB = (mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        dB = -(mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
         B += dB
 
         #wire8

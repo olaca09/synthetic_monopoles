@@ -10,6 +10,9 @@ def main():
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     parser.add_argument('-r', '--norot', action='store_true',
                         help='Ignores rotation if set')
+    parser.add_argument('-d', '--difference', action='store_true',
+                        help='Displays difference between synthetic '
+                        + 'streams and nosyn if set')
     parser.add_argument('-s', '--nosyn', default='False', type=str,
                         help='Ignores synthetic fields if set to True')
     parser.add_argument('-o', '--overwrite', action='store_true',
@@ -20,6 +23,9 @@ def main():
                         + ' fields. Is on by default, turns off if set.')
     parser.add_argument('-q', '--quiver', action='store_true',
                         help='Plot external field if set')
+    parser.add_argument('-p', '--parameter', action='store_true',
+                        help='Plots streams in parameter space if true,'
+                        + ' currently way too slow')
     parser.add_argument('-c', '--current', default=10, type=float,
                         help='Current in amperes flowing through coils')
     parser.add_argument('--br', default=10, type=int, help='Integration'
@@ -28,8 +34,10 @@ def main():
                         + ' step is lab length divided by this number')
     parser.add_argument('--lablength', default=1e-3, type=float, help='Size'
                         + ' of lab cube side in meters')
-    parser.add_argument('--tmax', default=0.5, type=float, help='Maximum'
+    parser.add_argument('--tmax', default=0.5, type=float, help='Maximumy'
                         + ' flight time in seconds')
+    parser.add_argument('-v', '--velocity', nargs='+', default=(1e-2, 0, 0, 0, 0),
+                        type=float, help='Initial velocity in m/s')
     parser.add_argument('-j', '--jcouple', default=1e5, type=float,
                         help='Spin-spin coupling strength')
     parser.add_argument('-g', '--gammacouple', default=1e8, type=float,
@@ -38,6 +46,8 @@ def main():
                         help='The total mass of dumbbell in kg')
     parser.add_argument('-l', '--dumbbellength', default=5e-5, type=float,
                         help='The distance between dumbbell edges in m')
+    parser.add_argument('-np', '--noplot', action='store_true',
+                        help='Does not show plot if set')
     args = vars(parser.parse_args())
 
     # Set field and modes
@@ -49,12 +59,18 @@ def main():
     # Whether to ignore synthetic fields, accepts the strings 'False',
     # 'True', 'Nomag' and 'Noscalar'
     nosyn = args['nosyn']  # Must be a string.
+    # Whether to plot differences to nosyn instead of regular streams
+    difference = args['difference']
+    # Whether to hide plot
+    noplot = args['noplot']
     # Whether to overwrite previous ODE results
     overwriteresult = args['overwrite']
     # Whether to use alternate swarming scheme
     alternatestreams = args['alternatestreams']
     # Whether to plot external field
     quiver = args['quiver']
+    # Whether to plot in parameter space
+    parameter = args['parameter']
 
     # Define parameters
 
@@ -65,6 +81,8 @@ def main():
     lablength = args['lablength']
     # Trajectory time in s
     tmax = args['tmax']
+    # Initial velocity in m/s
+    initvel = tuple(args['velocity'])
     # Spin-spin coupling strength
     J = args['jcouple']
     # Spin-field coupling strength
@@ -106,7 +124,6 @@ def main():
     initposarray = initposarray[:, None, None] + swarmgrid
     # Starting position for alternate swarming method
     altinitpos = initposarray[:, 1, 1]
-    initvel = (1e-2, 0, 0, 0, 0)
     eigenstate = 2
 
     # Try to load pregenerated result
@@ -215,15 +232,25 @@ def main():
     # Extract positions and orientations of the some stream
     # pos = sol[0].y[0:3, :]
     # vel = sol[0].y[5:8, :]
-    ori = sol[0].y[3:5, :]
+    # ori = sol[0].y[3:5, :]
     # Print the result
-    print('Rotation integrated:')
-    print(ori)
+    # print('Rotation integrated:')
+    # print(ori)
     # print('Position integrated:')
     # print(pos)
 
+    # Take differences if set
+    if difference:
+        max_step = len(sol[0].y[0, :])
+        for stream in sol:
+            if len(stream.y[0, :]) < max_step:
+                max_step = len(stream.y[0, :])
+        refstream = sol.pop(1)
+        for stream in sol:
+            stream.y = stream.y[:, :max_step] - refstream.y[:, :max_step]
+
     sn.lineplot(sol, initvel, swarmnum, eigenstate, norot, nosyn,
-                alternatestreams, quiver)
+                difference, alternatestreams, quiver, parameter, noplot)
 
 
 if __name__ == '__main__':

@@ -1,13 +1,14 @@
 import numpy as np
-import magfield as mg
 from matplotlib import pyplot as plt
 # from matplotlib.patches import FancyArrowPatch
 # from mpl_toolkits import mplot3d
 from scipy.constants import hbar
+from scipy.constants import mu_0 as mu
+from scipy.constants import pi as pi
 from scipy.integrate import solve_ivp
-import warnings
 import numba
 from numba import njit
+from numba import guvectorize
 
 # This is a collection of scripts related to the finding of eigenstates and
 # thence the derivation of the synthetic fields.
@@ -50,7 +51,7 @@ energyavg = 0
 # th_r, ph_r at the point given in point=(x, y, z, th_r, ph_r ). If diffpar=r
 # a list of matrices for derivatives w.r.t. x, y, z are returned, otherwise a
 # list with the correct matrix in all three positions is returned.
-@njit(cache=True, parallel=True, fastmath=False)
+@njit(cache=False, parallel=True, fastmath=False)
 def diffhamiltonian(diffpar, pos):
 
     # Check if the differentiated Hamiltonian has already been calculated here
@@ -85,13 +86,13 @@ def diffhamiltonian(diffpar, pos):
 
         # Find neighbouring external fields
         Bgrid = np.zeros((6, 3, 3, 3))
-        Bgrid[:, 1, 1, 1] = mg.oppositecoilspos(field, neighgrid[:, 1, 1, 1])
-        Bgrid[:, 2, 1, 1] = mg.oppositecoilspos(field, neighgrid[:, 2, 1, 1])
-        Bgrid[:, 0, 1, 1] = mg.oppositecoilspos(field, neighgrid[:, 0, 1, 1])
-        Bgrid[:, 1, 2, 1] = mg.oppositecoilspos(field, neighgrid[:, 1, 2, 1])
-        Bgrid[:, 1, 0, 1] = mg.oppositecoilspos(field, neighgrid[:, 1, 0, 1])
-        Bgrid[:, 1, 1, 2] = mg.oppositecoilspos(field, neighgrid[:, 1, 1, 2])
-        Bgrid[:, 1, 1, 0] = mg.oppositecoilspos(field, neighgrid[:, 1, 1, 0])
+        Bgrid[:, 1, 1, 1] = oppositecoils(field, neighgrid[:, 1, 1, 1])
+        Bgrid[:, 2, 1, 1] = oppositecoils(field, neighgrid[:, 2, 1, 1])
+        Bgrid[:, 0, 1, 1] = oppositecoils(field, neighgrid[:, 0, 1, 1])
+        Bgrid[:, 1, 2, 1] = oppositecoils(field, neighgrid[:, 1, 2, 1])
+        Bgrid[:, 1, 0, 1] = oppositecoils(field, neighgrid[:, 1, 0, 1])
+        Bgrid[:, 1, 1, 2] = oppositecoils(field, neighgrid[:, 1, 1, 2])
+        Bgrid[:, 1, 1, 0] = oppositecoils(field, neighgrid[:, 1, 1, 0])
         # Magnetic field strength at pos
         B = Bgrid[3, 1, 1, 1]
         # Value of theta_B at pos
@@ -219,7 +220,7 @@ def diffhamiltonian(diffpar, pos):
 # (x, y, z, theta_r, phi_r). Returns the energies and eigenvectors in pairs
 # with ascending energies. The vectors are normalized column vectors in the
 # singlet-triplet basis.
-@njit(cache=True, parallel=True, fastmath=False)
+@njit(cache=False, parallel=True, fastmath=False)
 def eigensolver(pos):
 
     # warnings.filterwarnings("error")
@@ -229,7 +230,7 @@ def eigensolver(pos):
     ham = np.zeros((3, 3), dtype=numba.complex64)
 
     # Find the values of B, theta_B and phi_B at point
-    Barray = mg.oppositecoilspos(field, pos)
+    Barray = oppositecoils(field, pos)
     B = Barray[3]
     thetaB = Barray[4]
     phiB = Barray[5]
@@ -288,7 +289,7 @@ def eigensolver(pos):
 # for state number n. The position is taken to be of shape
 # (x, y, z, theta_r, phi_r). Returns a tuple of the scalar field value followed
 # by the fast energy.
-@njit(cache=True, parallel=True, fastmath=False)
+@njit(cache=False, parallel=True, fastmath=False)
 def scalarcalc(pos, n):
     # First check if the scalar field has been calculated here before
     # global scalarsave
@@ -334,7 +335,7 @@ def scalarcalc(pos, n):
 # The position and velocity is taken to be of shape (x, y, z, theta_r, phi_r).
 # Returns the velocity in m/s (for integration purposes) followed by the
 # acceleration of the system in m/s^2. Note that the t argument is a dummy.
-@njit(cache=True, parallel=True, fastmath=False)
+@njit(cache=False, parallel=True, fastmath=False)
 def acc(t, posvel, n, norot, nosyn):
     # Extract pos and vel:
     pos = posvel[0:5]
@@ -543,16 +544,16 @@ def solvedyn(pos, vel, n, norot=False, nosyn='False'):
     sol = solve_ivp(acc, (0, tmax), posvel, events=edgedistance,
                     args=(n, norot, nosyn), t_eval=t_eval)
 
-    sol.Faavg = Faavg
-    sol.denergyavg = denergyavg
-    sol.dscalaravg = dscalaravg
-    sol.energyavg = energyavg
+    # sol.Faavg = Faavg
+    # sol.denergyavg = denergyavg
+    # sol.dscalaravg = dscalaravg
+    # sol.energyavg = energyavg
 
     return sol
 
 
 # Meshgrid function to replace np.mgrid not supported by Numba
-@numba.njit(cache=True, fastmath=False)
+@numba.njit(cache=False, fastmath=False)
 def meshgrid(x, y, z):
     xx = np.empty(shape=(x.size, y.size, z.size), dtype=numba.float64)
     yy = np.empty(shape=(x.size, y.size, z.size), dtype=numba.float64)
@@ -567,7 +568,7 @@ def meshgrid(x, y, z):
 
 
 # Meshgrid function to replace np.mgrid not supported by Numba, but larger
-@numba.njit(cache=True, fastmath=False)
+@numba.njit(cache=False, fastmath=False)
 def meshgridlarge(x, y, z, p, q):
     xx = np.empty(shape=(x.size, y.size, z.size, p.size, q.size),
                   dtype=numba.float64)
@@ -594,7 +595,7 @@ def meshgridlarge(x, y, z, p, q):
 
 # Event to terminate integration, returns distance to the closest edge minus a
 # small correction to avoid hitting the edge.
-@njit(cache=True, parallel=True, fastmath=False)
+@njit(cache=False, parallel=True, fastmath=False)
 def edgedistance(t, posvel, n, norot, nosyn):
     pos = posvel[0:3]
     mindist = pos.min()
@@ -605,9 +606,139 @@ def edgedistance(t, posvel, n, norot, nosyn):
     return distancetoedge
 
 
+# Returns the field at position pos corresponding to two currents I of
+# opposing directions through square coils
+# placed orthogonally to the z-axis centred 1/3th from the edges of the
+# lab. Takes nr as the number of points to consider along each wire.
+@njit(cache=True, parallel=True, fastmath=False)
+def oppositecoils(field, pos):
+
+    # Initiate variables:
+    br = field[0]
+    lablength = field[1]
+    current = field[2]
+    # Length of each wire segment
+    stepr = 5/3*lablength/(br-1)
+    #Positions of all flowing currents below:
+    qpos = lablength/3
+    # Current in positive x close to z=0 and y=0 (pos in y,z)
+    wire1 = np.array([-qpos,-qpos])
+    # Current in positive y close to z=0 and far from x=0 (pos in z,x)
+    wire2 = np.array([-qpos,lablength+qpos])
+    # Current in negative x close to z=0 and far from y=0 (pos in y,z)
+    wire3 = np.array([lablength+qpos,-qpos])
+    # Current in negative y close to z=0 and close to x=0 (pos in z,x)
+    wire4 = np.array([-qpos,-qpos])
+    # Current in negative x far from z=0 and close to y=0 (pos in y,z)
+    wire5 = np.array([-qpos,lablength+qpos])
+    # Current in negative y far from z=0 and x=0 (pos in z,x)
+    wire6 = np.array([lablength+qpos,lablength+qpos])
+    # Current in positive x far from z=0 and y=0 (pos in y,z)
+    wire7 = np.array([lablength+qpos,lablength+qpos])
+    # Current in positive y far from z=0 and close to x=0 (pos in z,x)
+    wire8 = np.array([lablength+qpos,-qpos])
+
+    #Generate field at pos
+    #Integrate the field per Biot-Savart along all currents
+    B = np.array((0,0,0), dtype=numba.float64)
+    #Currents along x:
+    for px in range(br):
+        dx = np.array((stepr, 0, 0))
+        # wire1
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire1[0],
+                            pos[2]-wire1[1]))
+        dB = (mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        # wire3
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire3[0],
+                             pos[2]-wire3[1]))
+        dB = -(mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire5
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire5[0],
+                             pos[2]-wire5[1]))
+        dB = -(mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire7
+        distance = np.array((pos[0]-(px*stepr-qpos), pos[1]-wire7[0],
+                             pos[2]-wire7[1]))
+        dB = (mu*current/(4*pi) * np.cross(dx, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+
+    #Currents along y:
+    for py in range(br):
+        dy = np.array((0, stepr, 0))
+        #wire2
+        distance = np.array((pos[0]-wire2[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire2[0]))
+        dB = (mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire4
+        distance = np.array((pos[0]-wire4[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire4[0]))
+        dB = -(mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire6
+        distance = np.array((pos[0]-wire6[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire6[0]))
+        dB = -(mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+        #wire8
+        distance = np.array((pos[0]-wire8[1], pos[1]-(py*stepr-qpos),
+                             pos[2]-wire8[0]))
+        dB = (mu*current/(4*pi) * np.cross(dy, distance)/(np.linalg.norm(distance)**3))
+        B += dB
+
+    Bsph = cart_to_sph(B) #Express as spherical coordinates
+    retfield = np.append(B, Bsph)
+
+    return retfield
+
+
+@njit(cache=True, parallel=True, fastmath=False)
+def griddot(a, b):
+    ##Returns the dot product for each point in the supplied grids a, b. Contracts the
+    ##first dimension.
+    result = np.zeros(a[0].shape)
+    for i in range(len(a)):
+        result += a[i]*b[i]
+
+    #result = np.where(result == 0, 1e-20, result)
+    return result
+
+
+@njit(cache=True, parallel=True, fastmath=False)
+def cart_to_sph(cart):
+    ##Returns spherical coordinates of the form(r, polar, azimuthal) for the given cartesian 
+    ##coordinates of the form (x,y,z) takes an array with coords as the first dimension.
+    sph = np.zeros(cart.shape) #Initialize array
+    xsqysq = cart[0]**2 + cart[1]**2 #Value of x^2 + y^2
+    sph[0] = np.sqrt(xsqysq + cart[2]**2) #Radius r
+    sph[1] = np.arctan2(np.sqrt(xsqysq), cart[2]) #Polar angle theta
+    sph[2] = np.arctan2(cart[1],cart[0]) #Azimuthal angle phi
+    return sph
+
+
+# Takes an array of positions of shape (timestamp, pos) and returns an array of
+# corresponding external field values of shape (timestamp, fields)
+@guvectorize([(numba.float64[:], numba.float64[:], numba.float64[:])],
+             '(n),(f)->(n)', nopython=True, cache=False)
+def parameterspace(pos, f, parpos):
+    # Find stream coordinates in parameter space
+    parpos[0:3] = oppositecoils(f, pos)[0:3]
+
+
 # Plotting function, takes a list of solutions sol from solve_ivp, a field
 # field and displays an interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams, quiver):
+def lineplot(sol, initvel, swarmnum, n, norot, nosyn, difference, alternatestreams, quiver,
+             parameter, noplot):
 
     # Print average acceleration components
     # for stream in sol:
@@ -621,12 +752,44 @@ def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams, quiver):
     fig = plt.figure(dpi=100)
     ax = fig.add_subplot(projection='3d')
 
-    ax.set_xlim((0, lablength*1000))
-    ax.set_ylim((0, lablength*1000))
-    ax.set_zlim((0, lablength*1000))
-    ax.set_xlabel('x (mm)', fontsize=10, color='blue')
-    ax.set_ylabel('y (mm)', fontsize=10, color='blue')
-    ax.set_zlabel('z (mm)', fontsize=10, color='blue')
+    if not parameter:
+        ax.set_xlim((0, lablength*1000))
+        ax.set_ylim((0, lablength*1000))
+        ax.set_zlim((0, lablength*1000))
+        ax.set_xlabel('x (mm)', fontsize=10, color='blue')
+        ax.set_ylabel('y (mm)', fontsize=10, color='blue')
+        ax.set_zlabel('z (mm)', fontsize=10, color='blue')
+        if difference:
+            boxmax = 0
+            for stream in sol:
+                smax = stream.y[0:3, :].max()
+                if smax > boxmax:
+                    boxmax = smax
+                smin = stream.y[0:3, :].min()
+                if -smin > boxmax:
+                    boxmax = -smax  # WIP
+            ax.set_xlim((-boxmax*1000, boxmax*1000))
+            ax.set_ylim((-boxmax*1000, boxmax*1000))
+            ax.set_zlim((-boxmax*1000, boxmax*1000))
+    else:
+        for stream in sol:
+            stream.p = parameterspace(stream.y[0:3, :].swapaxes(0, 1), field)
+            stream.p = stream.p.swapaxes(0, 1)
+        print('Fitting done!')
+        boxmax = 0
+        for stream in sol:
+            smax = stream.p[0:3, :].max()
+            if smax > boxmax:
+                boxmax = smax
+            smin = stream.y[0:3, :].min()
+            if -smin > boxmax:
+                boxmax = -smax
+        ax.set_xlim((-boxmax, boxmax))
+        ax.set_ylim((-boxmax, boxmax))
+        ax.set_zlim((-boxmax, boxmax))
+        ax.set_xlabel('x (T)', fontsize=10, color='blue')
+        ax.set_ylabel('y (T)', fontsize=10, color='blue')
+        ax.set_zlabel('z (T)', fontsize=10, color='blue')
 
     # Display external field if quiver is True
     if quiver:
@@ -639,7 +802,7 @@ def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams, quiver):
         zz = lablength/(qgran - 1) * zz
         posarray = np.stack((xx, yy, zz), axis=0)
         for i in np.ndindex(magarray[0, :, :, :].shape):
-            magarray[:, i[0], i[1], i[2]] = mg.oppositecoilspos(field,
+            magarray[:, i[0], i[1], i[2]] = oppositecoils(field,
                                             posarray[:, i[0], i[1], i[2]])[0:3]
         # Display positions in mm
         xx = xx*1000
@@ -655,12 +818,17 @@ def lineplot(sol, initvel, swarmnum, n, norot, nosyn, alternatestreams, quiver):
             color = stream.color
         except AttributeError:
             color = 'red'
-        pos = stream.y[0:3, :]
-        # Plot in mm
-        pos = pos*1000
+        if not parameter:
+            pos = stream.y[0:3, :]
+            # Plot in mm
+            pos = pos*1000
+        else:
+            pos = stream.p[0:3, :]
         # Plot the integrated path
         ax.plot(pos[0, :], pos[1, :], pos[2, :], color=color)
+        # ax.plot(pos[0, -1], pos[1, -1], pos[2, -1], color=color, marker='o')
 
-    plt.savefig(f'''saves/graphs/field{field}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}quiver{quiver}.png''', bbox_inches='tight')
+    plt.savefig(f'''saves/graphs/field{field}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}diff{difference}altstream{alternatestreams}quiver{quiver}parameter{parameter}.png''', bbox_inches='tight')
 
-    plt.show()
+    if not noplot:
+        plt.show()
