@@ -737,7 +737,7 @@ def parameterspace(pos, f, parpos):
 
 # Plotting function, takes a list of solutions sol from solve_ivp, a field
 # field and displays an interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, initvel, swarmnum, n, norot, nosyn, difference, alternatestreams, quiver,
+def lineplot(sol, initpos, initvel, swarmnum, n, norot, nosyn, difference, alternatestreams, quiver,
              parameter, noplot):
 
     # Print average acceleration components
@@ -767,7 +767,7 @@ def lineplot(sol, initvel, swarmnum, n, norot, nosyn, difference, alternatestrea
                     boxmax = smax
                 smin = stream.y[0:3, :].min()
                 if -smin > boxmax:
-                    boxmax = -smax  # WIP
+                    boxmax = -smin
             ax.set_xlim((-boxmax*1000, boxmax*1000))
             ax.set_ylim((-boxmax*1000, boxmax*1000))
             ax.set_zlim((-boxmax*1000, boxmax*1000))
@@ -828,6 +828,9 @@ def lineplot(sol, initvel, swarmnum, n, norot, nosyn, difference, alternatestrea
         ax.plot(pos[0, :], pos[1, :], pos[2, :], color=color)
         # ax.plot(pos[0, -1], pos[1, -1], pos[2, -1], color=color, marker='o')
 
-    plt.savefig(f'''saves/graphs/field{field}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}diff{difference}altstream{alternatestreams}quiver{quiver}parameter{parameter}.png''', bbox_inches='tight')
+    plt.savefig(f'''saves/graphs/field{field}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}pos({initpos[0]:.2f},
+                {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f},
+                {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}diff{difference}altstream{alternatestreams}quiver{quiver}parameter{parameter}.png''', bbox_inches='tight')
 
-    plt.show()
+    if not noplot:
+        plt.show()
