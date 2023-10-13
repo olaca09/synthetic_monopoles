@@ -193,7 +193,7 @@ if __name__ == '__main__':
     parser.add_argument('-par', '--parameter', action='store_true',
                         help='Plots streams in parameter space if true,'
                         + ' currently way too slow')
-    parser.add_argument('-c', '--current', default=10, type=float,
+    parser.add_argument('-c', '--current', default=10.0, type=float,
                         help='Current in amperes flowing through coils')
     parser.add_argument('--br', default=10, type=int, help='Integration'
                         + ' granularity along coil side')

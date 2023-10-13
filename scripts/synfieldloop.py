@@ -25,14 +25,14 @@ def main():
     gammar = (1e8, 1e8, 1)  # Standard 1e8
     massr = (3.58e-27, 3.58e-27, 1)  # Standard 3.58e-27
     dlr = (5e-5, 5e-5, 1)  # dumbellength
-    vxr = (2e-3, 3e-3, 4)
+    vxr = (0, 0, 1)
     vyr = (0, 0, 1)
-    vzr = (0, 0, 1)
+    vzr = (1e-3, 1.5e-3, 2)
     vthetar = (0, 0, 1)
     vphir = (0, 0, 1)
-    xr = (0, 0, 1)
-    yr = (1/6, 1/2, 3)
-    zr = (1/6, 1/2, 3)
+    xr = (1/2, 1/3, 3)
+    yr = (1/2, 1/2, 1)
+    zr = (0, 0, 1)
     thetar = (0, 0, 1)
     phir = (0, 0, 1)
 
