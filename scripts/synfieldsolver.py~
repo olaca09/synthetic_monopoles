@@ -1,13 +1,16 @@
 import numpy as np
+import traceback
 import synfieldtools as sn
 import pickle
+import datetime
 import time
+import csv
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 
-def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
-         alternatestreams, quiver, parameter, nr, lablength, tmax, initvel,
-         initpos, J, Gamma, mass0, len0):
+def main(current, br, norot, nosyn, noclass, difference, noplot,
+         overwriteresult, alternatestreams, quiver, parameter, nr, lablength,
+         tmax, initvel, initpos, J, Gamma, mass0, len0):
 
     # Full mass vector
     mass = np.repeat(mass0, 5)
@@ -44,16 +47,54 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
     eigenstate = 2
 
     # Try to load pregenerated result
-    print(f"Trying to load from file saves/odesols/result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin")
+    timestamp = datetime.datetime.now()
+    with open('saves/datakey.csv', newline='') as keyfile:
+        reader = csv.DictReader(keyfile, delimiter=';')
+        for row in reader:
+#            print(f'Field: {row["field"]} = {field}')
+#            print(f'tmax: {row["tmax"]} = {tmax}')
+#            print(f'Gamma: {row["Gamma"]} = {Gamma}')
+#            print(f'len: {row["len"]} = {len0}')
+#            print(f'nr: {row["nr"]} = {nr}')
+#            print(f'J: {row["J"]} = {J}')
+#            print(f'mass: {row["mass"]} = {mass0}')
+#            print(f'n: {row["n"]} = {eigenstate}')
+#            print(f'pos: {row["pos"]} = {initpos}')
+#            print(f'vel: {row["vel"]} = {initvel}')
+#            print(f'swarmnum: {row["swarmnum"]} = {swarmnum}')
+#            print(f'norot: {row["norot"]} = {norot}')
+#            print(f'nosyn: {row["nosyn"]} = {nosyn}')
+#            print(f'altstream: {row["altstream"]} = {alternatestreams}')
+#            print(f'noclass: {row["noclass"]} = {noclass}')
+            if ((row['field'] == str(field)) & (row['nr'] == str(nr)) &
+                (row['tmax'] == str(tmax)) & (row['J'] == str(J)) &
+                (row['Gamma'] == str(Gamma)) & (row['mass'] == str(mass0)) &
+                (row['len'] == str(len0)) & (row['n'] == str(eigenstate)) &
+                (row['pos'] == str(initpos)) & (row['vel'] == str(initvel)) &
+                (row['swarmnum'] == str(swarmnum)) &
+                (row['norot'] == str(norot)) & (row['nosyn'] == str(nosyn)) &
+                (row['altstream'] == str(alternatestreams)) &
+                (row['noclass'] == str(noclass))):
+
+                timestamp = row['timestamp']
+                print(f"Trying to load from file saves/odesols/result_{timestamp}.bin")
+    # print(f"Trying to load from file saves/odesols/result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin")
     try:
-        with open(f'''saves/odesols/result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''', 'rb') as file:
+        #with open(f'''saves/odesols/result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''', 'rb') as file:
+        with open(f'''saves/odesols/result_{timestamp}.bin''', 'rb') as file:
             sol = pickle.load(file)
-            print(f'''Loaded result from file result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''')
+            #print(f'''Loaded result from file result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''')
+            print(f'''Loaded result from file result_{timestamp}.bin''')
     except FileNotFoundError:
         overwriteresult = True
 
-    # Only perform calculations if result not avaiable on save:
+    # Only perform calculations if result not available on save:
     if overwriteresult:
+        with open('saves/datakey.csv', 'a', newline='') as keyfile:
+            keywriter = csv.writer(keyfile, delimiter=';')
+            keywriter.writerow([timestamp, field, nr, tmax, J, Gamma, mass0,
+                                len0, eigenstate, initpos, initvel, swarmnum,
+                                norot, nosyn, alternatestreams, noclass])
         print(f"pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})")
         # Integrate paths
         print('Integrating dynamics . . . Please wait')
@@ -64,12 +105,12 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
             start = time.time()
             try:
                 stream = sn.solvedyn(tuple(altinitpos[:]), initvel, eigenstate,
-                                     norot, 'False')
+                                     norot, 'False', noclass)
                 stream.color = 'red'
                 sol.append(stream)
                 print(f'Stream number {len(sol)} has been integrated!')
             except Exception as e:
-                print(e)
+                traceback.print_exc(e)
                 print('A stream has failed to generate, most probably due to'
                       + ' crossing the centre')
             end = time.time()
@@ -80,7 +121,7 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
             start = time.time()
             try:
                 stream = sn.solvedyn(tuple(altinitpos[:]), initvel, eigenstate,
-                                     norot, 'True')
+                                     norot, 'True', noclass)
                 stream.color = 'blue'
                 sol.append(stream)
                 print(f'Stream number {len(sol)} has been integrated!')
@@ -96,7 +137,7 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
             start = time.time()
             try:
                 stream = sn.solvedyn(tuple(altinitpos[:]), initvel, eigenstate,
-                                     norot, 'Nomag')
+                                     norot, 'Nomag', noclass)
                 stream.color = 'green'
                 sol.append(stream)
                 print(f'Stream number {len(sol)} has been integrated!')
@@ -112,7 +153,7 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
             start = time.time()
             try:
                 stream = sn.solvedyn(tuple(altinitpos[:]), initvel, eigenstate,
-                                     norot, 'Noscalar')
+                                     norot, 'Noscalar', noclass)
                 stream.color = 'orange'
                 sol.append(stream)
                 print(f'Stream number {len(sol)} has been integrated!')
@@ -131,7 +172,7 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
                     try:
                         sol.append(sn.solvedyn(
                             tuple(initposarray[:, i, j]), initvel, eigenstate,
-                            norot, nosyn))
+                            norot, nosyn, noclass))
                         print(f'Stream number {len(sol)} has been integrated!')
                     except Exception as e:
                         raise e
@@ -142,8 +183,10 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
                     print(f'This took {end - start} seconds')
 
         # Save the result
-        print(f'''Saving result to file resultfield{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''')
-        with open(f'''saves/odesols/result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''', 'wb') as file:
+        print(f'''Saving result to file result{timestamp}.bin''')
+        #print(f'''Saving result to file resultfield{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''')
+        #with open(f'''saves/odesols/result_field{field}nr{nr}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{eigenstate}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}altstream{alternatestreams}.bin''', 'wb') as file:
+        with open(f'''saves/odesols/result_{timestamp}.bin''', 'wb') as file:
             pickle.dump(sol, file)
 
     else:
@@ -168,8 +211,7 @@ def main(current, br, norot, nosyn, difference, noplot, overwriteresult,
         for stream in sol:
             stream.y = stream.y[:, :max_step] - refstream.y[:, :max_step]
 
-    sn.lineplot(sol, initpos, initvel, swarmnum, eigenstate, norot, nosyn,
-                difference, alternatestreams, quiver, parameter, noplot)
+    sn.lineplot(sol, timestamp, quiver, parameter, difference, noplot)
 
 
 if __name__ == '__main__':
@@ -182,6 +224,8 @@ if __name__ == '__main__':
                         + 'streams and nosyn if set')
     parser.add_argument('-s', '--nosyn', default='False', type=str,
                         help='Ignores synthetic fields if set to True')
+    parser.add_argument('-nc', '--noclass', action='store_true',
+                        help='Ignores classical dynamics if set to True')
     parser.add_argument('-o', '--overwrite', action='store_true',
                         help='Always generate new data if set')
     parser.add_argument('-a', '--alternatestreams', action='store_false',
@@ -231,6 +275,8 @@ if __name__ == '__main__':
     # Whether to ignore synthetic fields, accepts the strings 'False',
     # 'True', 'Nomag' and 'Noscalar'
     nosyn = args['nosyn']  # Must be a string.
+    # Whether to ignore eigenvalue dynamics
+    noclass = args['noclass']
     # Whether to plot differences to nosyn instead of regular streams
     difference = args['difference']
     # Whether to hide plot
@@ -267,6 +313,6 @@ if __name__ == '__main__':
     # The distance between dumbbell edges in m
     len0 = args['dumbbellength']
 
-    main(current, br, norot, nosyn, difference, noplot, overwriteresult,
+    main(current, br, norot, nosyn, noclass, difference, noplot, overwriteresult,
          alternatestreams, quiver, parameter, nr, lablength, tmax, initvel,
          initpos, J, Gamma, mass0, len0)

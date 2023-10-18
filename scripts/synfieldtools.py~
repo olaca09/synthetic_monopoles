@@ -336,7 +336,7 @@ def scalarcalc(pos, n):
 # Returns the velocity in m/s (for integration purposes) followed by the
 # acceleration of the system in m/s^2. Note that the t argument is a dummy.
 @njit(cache=False, parallel=True, fastmath=False)
-def acc(t, posvel, n, norot, nosyn):
+def acc(t, posvel, n, norot, nosyn, noclass):
     # Extract pos and vel:
     pos = posvel[0:5]
     vel = posvel[5:10]
@@ -488,12 +488,13 @@ def acc(t, posvel, n, norot, nosyn):
     # global energyavg
     # energyavg = (energyavg + energy[1, 1, 1, 1, 1])/2
 
-    # Differentiate the energies
-    denergy[0] = (energy[2, 1, 1, 1, 1] - energy[0, 1, 1, 1, 1])/(2*stepr)
-    denergy[1] = (energy[1, 2, 1, 1, 1] - energy[1, 0, 1, 1, 1])/(2*stepr)
-    denergy[2] = (energy[1, 1, 2, 1, 1] - energy[1, 1, 0, 1, 1])/(2*stepr)
-    denergy[3] = (energy[1, 1, 1, 2, 1] - energy[1, 1, 1, 0, 1])/(2*steptheta)
-    denergy[4] = (energy[1, 1, 1, 1, 2] - energy[1, 1, 1, 1, 0])/(2*stepphi)
+    # Differentiate the energies if noclass(ical) is false
+    if not noclass:
+        denergy[0] = (energy[2, 1, 1, 1, 1] - energy[0, 1, 1, 1, 1])/(2*stepr)
+        denergy[1] = (energy[1, 2, 1, 1, 1] - energy[1, 0, 1, 1, 1])/(2*stepr)
+        denergy[2] = (energy[1, 1, 2, 1, 1] - energy[1, 1, 0, 1, 1])/(2*stepr)
+        denergy[3] = (energy[1, 1, 1, 2, 1] - energy[1, 1, 1, 0, 1])/(2*steptheta)
+        denergy[4] = (energy[1, 1, 1, 1, 2] - energy[1, 1, 1, 1, 0])/(2*stepphi)
 
     # Summarize forces
     acc = Fa - dscalar - denergy
@@ -523,7 +524,7 @@ def acc(t, posvel, n, norot, nosyn):
 # The spin subsystem is assumed to remain in the fast
 # eigenstate labeled n. Runs until the time reaches tmax.
 # The given initial conditions must be tuples.
-def solvedyn(pos, vel, n, norot=False, nosyn='False'):
+def solvedyn(pos, vel, n, norot=False, nosyn='False', noclass=False):
     posvel = np.array(pos + vel)
 
     # Reset average force counters
@@ -542,7 +543,7 @@ def solvedyn(pos, vel, n, norot=False, nosyn='False'):
     # Set error tolerances
     edgedistance.terminal = True
     sol = solve_ivp(acc, (0, tmax), posvel, events=edgedistance,
-                    args=(n, norot, nosyn), t_eval=t_eval)
+                    args=(n, norot, nosyn, noclass), t_eval=t_eval)
 
     # sol.Faavg = Faavg
     # sol.denergyavg = denergyavg
@@ -596,7 +597,7 @@ def meshgridlarge(x, y, z, p, q):
 # Event to terminate integration, returns distance to the closest edge minus a
 # small correction to avoid hitting the edge.
 @njit(cache=False, parallel=True, fastmath=False)
-def edgedistance(t, posvel, n, norot, nosyn):
+def edgedistance(t, posvel, n, norot, nosyn, noclass):
     pos = posvel[0:3]
     mindist = pos.min()
     maxdist = pos.max()
@@ -625,7 +626,7 @@ def oppositecoils(field, pos):
     currentpos = np.array([t for t in np.linspace(0.0, 2*pi, br+1)[0:-1]])
     currentpos = crad*np.vstack((np.cos(currentpos), np.sin(currentpos)))
     centerpos = np.array([lablength/2]*br)
-    currentpos += np.vstack(([lablength/2]*br, [lablength/2]*br))
+    currentpos += np.vstack((centerpos, centerpos))
     currentdir = np.array([t for t in np.linspace(0.0, 2*pi, br+1)[0:-1]])
     currentdir = stepr*np.vstack((-1*np.sin(currentdir), np.cos(currentdir)))
 
@@ -683,8 +684,7 @@ def parameterspace(pos, f, parpos):
 
 # Plotting function, takes a list of solutions sol from solve_ivp, a field
 # field and displays an interactive 3D swarm plot. Uses matplotlib.
-def lineplot(sol, initpos, initvel, swarmnum, n, norot, nosyn, difference,
-             alternatestreams, quiver, parameter, noplot):
+def lineplot(sol, timecurr, quiver, parameter, difference, noplot):
 
     # Print average acceleration components
     # for stream in sol:
@@ -774,13 +774,14 @@ def lineplot(sol, initpos, initvel, swarmnum, n, norot, nosyn, difference,
         ax.plot(pos[0, :], pos[1, :], pos[2, :], color=color)
         # ax.plot(pos[0, -1], pos[1, -1], pos[2, -1], color=color, marker='o')
 
-    plt.savefig(f'''saves/graphs/field{field}nr{nr}lablength{lablength}tmax{tmax}J{J}Gamma{Gamma}mass{mass0}len{len0}n{n}pos({initpos[0]:.2f}, {initpos[1]:.2f}, {initpos[2]:.2f}, {initpos[3]:.2f}, {initpos[4]:.2f})vel{initvel}swarmnum{swarmnum}norot{norot}nosyn{nosyn}diff{difference}altstream{alternatestreams}quiver{quiver}parameter{parameter}.png''', bbox_inches='tight')
+    plt.savefig(f'''saves/graphs/{timecurr}.png''', bbox_inches='tight')
 
     if not noplot:
         plt.show()
 
 
 # Prints magnetic field of the box, for debugging
+# Need fixing
 def debugquiver():
     lineplot((), [0, 0, 0, 0, 0], [0, 0, 0, 0, 0],
              0, 0, 0, 0, 0, 0, True, False, False)
