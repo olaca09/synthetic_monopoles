@@ -10,7 +10,7 @@ def main():
     nosyn = 'False'
 
     difference = False
-    noclass = True
+    noclass = False
     overwriteresult = False
     br = 10
     nr = 1e5
@@ -26,14 +26,14 @@ def main():
     gammar = (1e8, 1e8, 1)  # Standard 1e8
     massr = (3.58e-29, 3.58e-29, 1)  # Standard 3.58e-27
     dlr = (5e-5, 5e-5, 1)  # dumbellength
-    vxr = (0, 0, 1)
-    vyr = (0, 0, 1)
-    vzr = (1.5e-3, 1.5e-3, 1)
+    vxr = (3.7699e-4, 3.7699e-4, 1)
+    vyr = (2.0826e-4, 2.0826e-4, 1)
+    vzr = (2.675e-4, 2.675e-4, 1)
     vthetar = (0, 0, 1)
     vphir = (0, 0, 1)
-    xr = (13/30, 14/30, 3)
-    yr = (1/2, 1/2, 1)
-    zr = (0, 0, 1)
+    xr = (0, 0, 1)
+    yr = (0.3, 0.3, 1)
+    zr = (0.2, 0.2, 1)
     thetar = (0, 0, 1)
     phir = (0, 0, 1)
 
@@ -70,6 +70,7 @@ def main():
                                                         phir[2])):
                 initpos = np.array((x, y, z, th, phi))
                 initvel = (velx, vely, velz, velth, velphi)
+
                 p = multiprocessing.Process(target=sfs.main, name="sfs",
                                             args=(current, br, norot, nosyn,
                                                   noclass,

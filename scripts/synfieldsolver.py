@@ -51,21 +51,6 @@ def main(current, br, norot, nosyn, noclass, difference, noplot,
     with open('saves/datakey.csv', newline='') as keyfile:
         reader = csv.DictReader(keyfile, delimiter=';')
         for row in reader:
-#            print(f'Field: {row["field"]} = {field}')
-#            print(f'tmax: {row["tmax"]} = {tmax}')
-#            print(f'Gamma: {row["Gamma"]} = {Gamma}')
-#            print(f'len: {row["len"]} = {len0}')
-#            print(f'nr: {row["nr"]} = {nr}')
-#            print(f'J: {row["J"]} = {J}')
-#            print(f'mass: {row["mass"]} = {mass0}')
-#            print(f'n: {row["n"]} = {eigenstate}')
-#            print(f'pos: {row["pos"]} = {initpos}')
-#            print(f'vel: {row["vel"]} = {initvel}')
-#            print(f'swarmnum: {row["swarmnum"]} = {swarmnum}')
-#            print(f'norot: {row["norot"]} = {norot}')
-#            print(f'nosyn: {row["nosyn"]} = {nosyn}')
-#            print(f'altstream: {row["altstream"]} = {alternatestreams}')
-#            print(f'noclass: {row["noclass"]} = {noclass}')
             if ((row['field'] == str(field)) & (row['nr'] == str(nr)) &
                 (row['tmax'] == str(tmax)) & (row['J'] == str(J)) &
                 (row['Gamma'] == str(Gamma)) & (row['mass'] == str(mass0)) &

@@ -783,5 +783,50 @@ def lineplot(sol, timestamp, quiver, parameter, difference, noplot):
 # Prints magnetic field of the box, for debugging
 # Need fixing
 def debugquiver():
-    lineplot((), [0, 0, 0, 0, 0], [0, 0, 0, 0, 0],
-             0, 0, 0, 0, 0, 0, True, False, False)
+    lineplot((), "test", True, False, False, False)
+
+# Calculates velocity towards centre of par.space for position pos
+
+
+def towardmonopole(pos, field):
+
+    stepr = lablength/nr
+
+    # Meshgrid to generate neighbours
+    neighgrid = meshgrid(np.arange(-1, 2), np.arange(-1, 2),
+                         np.arange(-1, 2))
+    # Uses broadcasting to duplicate x,y,z into each point on the grid.
+    # The result has first dimension determining which coordinate is given
+    # and the remaining specifying position related to the point.
+
+    # Numba does not allow magic indexing, manual expansion of pos is
+    # instead necessary
+    pos1 = np.stack((pos[0:3], pos[0:3], pos[0:3]), axis=1)
+    pos2 = np.stack((pos1, pos1, pos1), axis=2)
+    pos3 = np.stack((pos2, pos2, pos2), axis=3)
+    neighgrid = pos3 + neighgrid*stepr
+    # Find neighbouring external fields
+    Bgrid = np.zeros((6, 3, 3, 3))
+    Bgrid[:, 1, 1, 1] = oppositecoils(field, neighgrid[:, 1, 1, 1])
+    Bgrid[:, 2, 1, 1] = oppositecoils(field, neighgrid[:, 2, 1, 1])
+    Bgrid[:, 0, 1, 1] = oppositecoils(field, neighgrid[:, 0, 1, 1])
+    Bgrid[:, 1, 2, 1] = oppositecoils(field, neighgrid[:, 1, 2, 1])
+    Bgrid[:, 1, 0, 1] = oppositecoils(field, neighgrid[:, 1, 0, 1])
+    Bgrid[:, 1, 1, 2] = oppositecoils(field, neighgrid[:, 1, 1, 2])
+    Bgrid[:, 1, 1, 0] = oppositecoils(field, neighgrid[:, 1, 1, 0])
+
+    # Approximate the Jacobian of B
+    dBdr = np.zeros((3, 3))
+    dBdr[0, 0] = 0.5*(Bgrid[0, 2, 1, 1]-Bgrid[0, 0, 1, 1])/stepr
+    dBdr[0, 1] = 0.5*(Bgrid[0, 1, 2, 1]-Bgrid[0, 1, 0, 1])/stepr
+    dBdr[0, 2] = 0.5*(Bgrid[0, 1, 1, 2]-Bgrid[0, 1, 1, 0])/stepr
+    dBdr[1, 0] = 0.5*(Bgrid[1, 2, 1, 1]-Bgrid[1, 0, 1, 1])/stepr
+    dBdr[1, 0] = 0.5*(Bgrid[1, 2, 1, 1]-Bgrid[1, 0, 1, 1])/stepr
+    dBdr[1, 1] = 0.5*(Bgrid[1, 1, 2, 1]-Bgrid[1, 1, 0, 1])/stepr
+    dBdr[2, 2] = 0.5*(Bgrid[2, 1, 1, 2]-Bgrid[2, 1, 1, 0])/stepr
+    dBdr[2, 1] = 0.5*(Bgrid[2, 1, 2, 1]-Bgrid[2, 1, 0, 1])/stepr
+    dBdr[2, 2] = 0.5*(Bgrid[2, 1, 1, 2]-Bgrid[2, 1, 1, 0])/stepr
+
+    # Solve the lin sys giving the direction
+    v = np.linalg.solve(dBdr, Bgrid[0:3, 1, 1, 1])
+    return v
